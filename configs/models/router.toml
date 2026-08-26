@@ -1,0 +1,25 @@
+model_role = "router"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-classical-v1"
+calibration_method = "sigmoid"
+calibration_folds = 3
+algorithms = ["logistic_regression", "random_forest", "extra_trees"]
+
+[parameters.logistic_regression]
+C = 1.0
+class_weight = "balanced"
+
+[parameters.random_forest]
+n_estimators = 200
+min_samples_leaf = 2
+class_weight = "balanced_subsample"
+
+[parameters.extra_trees]
+n_estimators = 200
+min_samples_leaf = 2
+class_weight = "balanced"
+
+[threshold_grid]
+top1_probabilities = [0.50, 0.60, 0.70, 0.80, 0.90]
+margins = [0.00, 0.10, 0.20, 0.30, 0.40]
+
