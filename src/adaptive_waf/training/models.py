@@ -5,6 +5,8 @@ from typing import Mapping
 
 from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 
 class CandidateAlgorithm(StrEnum):
@@ -22,7 +24,12 @@ def build_classifier(
 ):
     options = dict(parameters or {})
     if algorithm is CandidateAlgorithm.LOGISTIC_REGRESSION:
-        return LogisticRegression(random_state=random_seed, max_iter=1000, **options)
+        return Pipeline(
+            [
+                ("scaler", StandardScaler()),
+                ("classifier", LogisticRegression(random_state=random_seed, max_iter=1000, **options)),
+            ]
+        )
     if algorithm is CandidateAlgorithm.RANDOM_FOREST:
         return RandomForestClassifier(random_state=random_seed, n_jobs=-1, **options)
     if algorithm is CandidateAlgorithm.EXTRA_TREES:

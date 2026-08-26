@@ -30,6 +30,7 @@ def train_candidates(
     random_seed: int,
     algorithms: Sequence[CandidateAlgorithm],
     parameters: Mapping[CandidateAlgorithm, Mapping[str, object]] | None = None,
+    run_metadata: Mapping[str, object] | None = None,
 ) -> list[CandidateRun]:
     output_directory.mkdir(parents=True, exist_ok=False)
     runs: list[CandidateRun] = []
@@ -50,6 +51,7 @@ def train_candidates(
             "evaluation": evaluation.as_dict(),
             "model_path": str(model_path),
             "model_size_bytes": model_path.stat().st_size,
+            **dict(run_metadata or {}),
         }
         (candidate_directory / "metrics.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
         print(
