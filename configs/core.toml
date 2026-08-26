@@ -1,0 +1,8 @@
+schema_version = "1"
+random_seed = 641
+feature_version = "http-v1"
+
+[paths]
+raw_data = "datasets/raw"
+processed_data = "datasets/processed"
+artifacts = "artifacts"
