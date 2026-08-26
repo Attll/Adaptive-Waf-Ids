@@ -1,0 +1,21 @@
+model_role = "expert"
+expert_family = "EXECUTION"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-classical-v1"
+classes = ["BENIGN", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION"]
+algorithms = ["logistic_regression", "random_forest", "extra_trees"]
+
+[parameters.logistic_regression]
+C = 1.0
+class_weight = "balanced"
+
+[parameters.random_forest]
+n_estimators = 250
+min_samples_leaf = 2
+class_weight = "balanced_subsample"
+
+[parameters.extra_trees]
+n_estimators = 250
+min_samples_leaf = 2
+class_weight = "balanced"
+

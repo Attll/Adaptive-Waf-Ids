@@ -1,0 +1,9 @@
+model_role = "router"
+run_id = "router-full-v1"
+algorithm = "logistic_regression"
+artifact = "artifacts/training/router/router-full-v1/logistic_regression/model.joblib"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-classical-v1"
+minimum_top1_probability = 0.90
+minimum_top1_margin = 0.40
+
