@@ -21,6 +21,20 @@ class CicidsLoaderTests(unittest.TestCase):
             self.assertEqual(sample.label, NetworkClass.DOS_DDOS)
             self.assertEqual(sample.features, {"flow_duration": 12.5, "packets": 3.0})
 
+    def test_loader_replaces_non_finite_features_with_configured_value(self) -> None:
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / "flows.csv"
+            source.write_text("flow,label\nInfinity,Bot\n", encoding="utf-8")
+            loader = CicidsDatasetLoader(
+                CicidsSchema(label_column="label", feature_columns=("flow",), non_finite_replacement=0.0),
+                label_aliases={"Bot": NetworkClass.BOT_ANOMALY},
+            )
+
+            sample = loader.load_file(source)[0]
+
+            self.assertEqual(sample.features, {"flow": 0.0})
+            self.assertEqual(sample.replaced_non_finite_features, ("flow",))
+
 
 if __name__ == "__main__":
     unittest.main()

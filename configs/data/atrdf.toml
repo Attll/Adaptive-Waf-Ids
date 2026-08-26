@@ -1,0 +1,11 @@
+dataset_version = "atrdf-dataset3-dataset4-v1"
+
+sources = [
+  "datasets/raw/atrdf/dataset3/extracted/dataset_3_train.json",
+  "datasets/raw/atrdf/dataset4/extracted/dataset_4_train.json",
+]
+
+[split]
+train = 0.70
+validation = 0.15
+test = 0.15
