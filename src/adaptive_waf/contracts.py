@@ -21,6 +21,13 @@ class ExpertFamily(StrEnum):
     EXECUTION = "EXECUTION"
 
 
+class NetworkClass(StrEnum):
+    BENIGN = "BENIGN"
+    BRUTE_FORCE = "BRUTE_FORCE"
+    DOS_DDOS = "DOS_DDOS"
+    BOT_ANOMALY = "BOT_ANOMALY"
+
+
 class TriageDecision(StrEnum):
     BENIGN_LIKE = "BENIGN_LIKE"
     SUSPICIOUS = "SUSPICIOUS"
