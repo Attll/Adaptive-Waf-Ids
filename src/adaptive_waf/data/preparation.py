@@ -70,7 +70,7 @@ def prepare_network_samples(
         seed=seed,
         source_paths=source_paths,
         record_builder=_network_record,
-        group_key_builder=lambda sample: network_flow_group_key(sample.features),
+        group_key_builder=network_split_key,
     )
 
 
@@ -79,9 +79,8 @@ def near_duplicate_group_key(value: str) -> str:
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 
-def network_flow_group_key(features: Mapping[str, float]) -> str:
-    serialized = json.dumps(features, sort_keys=True, separators=(",", ":"), allow_nan=False)
-    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+def network_split_key(sample: NetworkFlowSample) -> str:
+    return f"{sample.label.value}:{sample.source_file.name}:{sample.source_row}"
 
 
 def _prepare_samples(

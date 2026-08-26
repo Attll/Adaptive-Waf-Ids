@@ -9,7 +9,7 @@ from adaptive_waf.data.cicids import NetworkFlowSample
 from adaptive_waf.data.preparation import (
     SplitRatios,
     near_duplicate_group_key,
-    network_flow_group_key,
+    network_split_key,
     prepare_http_samples,
     prepare_network_samples,
 )
@@ -67,8 +67,14 @@ class PreparationTests(unittest.TestCase):
     def test_near_duplicate_group_key_masks_variable_numeric_identifiers(self) -> None:
         self.assertEqual(near_duplicate_group_key("GET /orders/1001"), near_duplicate_group_key("GET /orders/2002"))
 
-    def test_network_flow_groups_preserve_distinct_numeric_values(self) -> None:
-        self.assertNotEqual(network_flow_group_key({"flow_duration": 1.0}), network_flow_group_key({"flow_duration": 2.0}))
+    def test_network_split_keys_are_label_aware_and_unique_per_source_row(self) -> None:
+        source = Path("flows.csv")
+        first = NetworkFlowSample({"flow_duration": 1.0}, NetworkClass.BENIGN, source, 2)
+        second = NetworkFlowSample({"flow_duration": 1.0}, NetworkClass.BENIGN, source, 3)
+        third = NetworkFlowSample({"flow_duration": 1.0}, NetworkClass.BOT_ANOMALY, source, 2)
+
+        self.assertNotEqual(network_split_key(first), network_split_key(second))
+        self.assertNotEqual(network_split_key(first), network_split_key(third))
 
 
 if __name__ == "__main__":

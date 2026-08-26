@@ -1,4 +1,4 @@
-dataset_version = "cicids2018-flow-subset-v2"
+dataset_version = "cicids2018-flow-subset-v3"
 non_finite_replacement = 0.0
 
 sources = [
