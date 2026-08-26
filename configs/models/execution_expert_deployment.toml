@@ -1,0 +1,8 @@
+model_role = "expert"
+expert_family = "EXECUTION"
+run_id = "execution-expert-full-v1"
+algorithm = "extra_trees"
+artifact = "artifacts/training/experts/execution/execution-expert-full-v1/extra_trees/model.joblib"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-classical-v1"
+

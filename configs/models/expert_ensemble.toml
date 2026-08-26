@@ -1,0 +1,14 @@
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-classical-v1"
+minimum_macro_f1_gain = 0.001
+
+[injection]
+run_id = "injection-expert-full-v1"
+classes = ["BENIGN", "SQL_INJECTION", "XSS", "COOKIE_INJECTION"]
+algorithms = ["logistic_regression", "random_forest", "extra_trees"]
+
+[execution]
+run_id = "execution-expert-full-v1"
+classes = ["BENIGN", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION"]
+algorithms = ["logistic_regression", "random_forest", "extra_trees"]
+

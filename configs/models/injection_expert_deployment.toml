@@ -1,0 +1,8 @@
+model_role = "expert"
+expert_family = "INJECTION"
+run_id = "injection-expert-full-v1"
+algorithm = "random_forest"
+artifact = "artifacts/training/experts/injection/injection-expert-full-v1/random_forest/model.joblib"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-classical-v1"
+
