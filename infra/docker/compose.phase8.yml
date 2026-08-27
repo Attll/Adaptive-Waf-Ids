@@ -1,0 +1,13 @@
+services:
+  network-sensor:
+    build:
+      context: ../..
+      dockerfile: network-sensor/Dockerfile
+    environment:
+      REDIS_HOST: host.docker.internal
+      REDIS_PORT: 6379
+      NETWORK_SENSOR_PORT: 8083
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8083:8083"

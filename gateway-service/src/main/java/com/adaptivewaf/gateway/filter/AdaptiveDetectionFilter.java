@@ -8,6 +8,8 @@ import com.adaptivewaf.gateway.behaviour.BehaviourSnapshot;
 import com.adaptivewaf.gateway.behaviour.OperatingMode;
 import com.adaptivewaf.gateway.behaviour.RedisBehaviourService;
 import com.adaptivewaf.gateway.behaviour.RedisLoadModeService;
+import com.adaptivewaf.gateway.network.RedisNetworkContextService;
+import com.adaptivewaf.gateway.network.NetworkContextSnapshot;
 import com.adaptivewaf.gateway.policy.GatewayPolicy;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
@@ -41,16 +43,18 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
     private final RedisBehaviourService behaviourService;
     private final RedisLoadModeService loadModeService;
     private final SecurityEventPublisher eventPublisher;
+    private final RedisNetworkContextService networkContextService;
 
     public AdaptiveDetectionFilter(DetectionClient detectionClient, DetectionProperties detectionProperties, GatewayPolicy policy,
                                    RedisBehaviourService behaviourService, RedisLoadModeService loadModeService,
-                                   SecurityEventPublisher eventPublisher) {
+                                   SecurityEventPublisher eventPublisher, RedisNetworkContextService networkContextService) {
         this.detectionClient = detectionClient;
         this.detectionProperties = detectionProperties;
         this.policy = policy;
         this.behaviourService = behaviourService;
         this.loadModeService = loadModeService;
         this.eventPublisher = eventPublisher;
+        this.networkContextService = networkContextService;
     }
 
     @Override
@@ -102,7 +106,8 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
             LOGGER.warn("Skipping model inference for request {} in {} mode", requestId, mode);
             return forwardAndRecord(cached, chain, 0.0, "SKIPPED");
         }
-        return detectionClient.detect(toDetectionRequest(cached.getRequest(), requestId, cached.body(), behaviour))
+        return networkContextService.context(cached.getRequest())
+            .flatMap(network -> detectionClient.detect(toDetectionRequest(cached.getRequest(), requestId, cached.body(), behaviour, network)))
             .flatMap(verdict -> {
                 LOGGER.debug("Detection verdict for request {}: attack={}, risk={}", requestId, verdict.predictedAttack(), verdict.overallRisk());
                 if (policy.shouldBlock(verdict)) {
@@ -149,7 +154,7 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         return new CachedExchange(exchange.mutate().request(decoratedRequest).build(), new String(bytes, StandardCharsets.UTF_8));
     }
 
-    private Map<String, Object> toDetectionRequest(ServerHttpRequest request, String requestId, String body, BehaviourSnapshot behaviour) {
+    private Map<String, Object> toDetectionRequest(ServerHttpRequest request, String requestId, String body, BehaviourSnapshot behaviour, NetworkContextSnapshot network) {
         Map<String, Object> payload = new LinkedHashMap<>();
         String normalizedPath = normalizedPath(request.getPath().value());
         String normalizedQuery = normalizedQuery(request);
@@ -163,6 +168,7 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         payload.put("source_ip", sourceIp(request));
         payload.put("request_id", requestId);
         payload.put("behaviour_context", behaviour.asDetectionContext());
+        payload.put("network_context", network.asDetectionContext());
         return payload;
     }
 

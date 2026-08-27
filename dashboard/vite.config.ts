@@ -17,6 +17,11 @@ export default defineConfig({
         target: process.env.VITE_GATEWAY_URL ?? "http://127.0.0.1:8080",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/gateway-api/, "")
+      },
+      "/sensor-api": {
+        target: process.env.VITE_NETWORK_SENSOR_URL ?? "http://127.0.0.1:8083",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/sensor-api/, "")
       }
     }
   }

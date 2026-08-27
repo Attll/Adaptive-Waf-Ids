@@ -47,6 +47,9 @@ adaptive-waf:
     elevated-requests-per-short-window: ${LOAD_MODE_ELEVATED_REQUESTS:20}
     degraded-requests-per-short-window: ${LOAD_MODE_DEGRADED_REQUESTS:40}
     emergency-requests-per-short-window: ${LOAD_MODE_EMERGENCY_REQUESTS:80}
+  network-context:
+    key-prefix: ${NETWORK_CONTEXT_KEY_PREFIX:waf:network:}
+    lookup-timeout: ${NETWORK_CONTEXT_LOOKUP_TIMEOUT:25ms}
   events:
     enabled: ${SECURITY_EVENTS_ENABLED:true}
     exchange: ${SECURITY_EVENTS_EXCHANGE:adaptive.waf.events}

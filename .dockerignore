@@ -1,0 +1,16 @@
+.git
+.idea
+.venv
+__pycache__
+*.pyc
+datasets/
+dashboard/node_modules/
+dashboard/dist/
+**/target/
+artifacts/benchmarks/
+artifacts/training/triage/
+artifacts/training/router/
+artifacts/training/experts/
+artifacts/training/deep/
+artifacts/training/calibration/
+artifacts/training/ensembles/

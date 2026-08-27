@@ -21,9 +21,16 @@ export type Audit = { auditId: string; administrator: string; occurredAt: string
 export type GatewayMode = { mode: string };
 export type GatewayPolicy = { version: number; rateLimitShortWindow: number; blockRiskThreshold: number };
 export type Health = { status: string; components?: Record<string, { status: string }> };
+export type NetworkEvidence = { source_ip: string; destination_ip?: string; network_risk: number; network_class?: string; confidence?: number; model_version: string; observed_at: string };
 
 export class ApiError extends Error {
   constructor(message: string, public readonly status?: number) { super(message); }
+}
+
+export async function recentNetworkEvidence(): Promise<{ events: NetworkEvidence[]; model_version: string }> {
+  const response = await fetch("/sensor-api/v1/network/recent");
+  if (!response.ok) throw new ApiError(`Network sensor returned ${response.status}`, response.status);
+  return response.json() as Promise<{ events: NetworkEvidence[]; model_version: string }>;
 }
 
 export class DashboardApi {
