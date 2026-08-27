@@ -1,0 +1,24 @@
+dataset_version = "atrdf-dataset3-dataset4-v1"
+methods = ["sigmoid", "isotonic"]
+bins = 10
+device = "cuda"
+
+[models.triage]
+artifact = "artifacts/training/triage/triage-full-v1/random_forest/model.joblib"
+dataset_kind = "triage"
+
+[models.injection]
+artifact = "artifacts/training/experts/injection/injection-expert-full-v1/random_forest/model.joblib"
+dataset_kind = "expert"
+classes = ["BENIGN", "SQL_INJECTION", "XSS", "COOKIE_INJECTION"]
+
+[models.execution]
+artifact = "artifacts/training/experts/execution/execution-expert-full-v1/extra_trees/model.joblib"
+dataset_kind = "expert"
+classes = ["BENIGN", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION"]
+
+[deep]
+artifact = "artifacts/training/deep/distilbert-full-gpu-v1"
+candidate = "distilbert"
+classes = ["BENIGN", "SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION"]
+

@@ -1,0 +1,8 @@
+model_role = "deep_escalation"
+run_id = "distilbert-full-gpu-v1"
+candidate = "distilbert"
+artifact = "artifacts/training/deep/distilbert-full-gpu-v1"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-deep-v1"
+device = "cuda"
+

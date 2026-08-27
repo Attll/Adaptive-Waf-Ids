@@ -2,7 +2,7 @@ model_role = "deep_escalation"
 dataset_version = "atrdf-dataset3-dataset4-v1"
 feature_version = "http-deep-v1"
 classes = ["BENIGN", "SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION"]
-device = "auto"
+device = "cuda"
 
 [candidates.char_cnn]
 epochs = 4
@@ -19,4 +19,3 @@ epochs = 2
 batch_size = 16
 learning_rate = 0.00002
 max_length = 256
-
