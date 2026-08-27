@@ -1,0 +1,20 @@
+model_role = "network_context"
+dataset_version = "cicids2018-flow-subset-v3"
+feature_version = "cicids2018-flow-v1"
+max_samples_per_class = 100000
+algorithms = ["logistic_regression", "random_forest", "extra_trees"]
+
+[parameters.logistic_regression]
+C = 1.0
+class_weight = "balanced"
+
+[parameters.random_forest]
+n_estimators = 250
+min_samples_leaf = 2
+class_weight = "balanced_subsample"
+
+[parameters.extra_trees]
+n_estimators = 250
+min_samples_leaf = 2
+class_weight = "balanced"
+
