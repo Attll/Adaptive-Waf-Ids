@@ -1,0 +1,8 @@
+strategy = "weighted_max_v1"
+supporting_evidence_minimum_risk = 0.20
+
+[source_weights]
+http = 1.0
+behaviour = 1.0
+network = 1.0
+rule = 1.0

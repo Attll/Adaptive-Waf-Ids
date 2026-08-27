@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from adaptive_waf.contracts import AttackClass, BehaviourContext, ExpertFamily, HttpRequestRecord, TriageDecision
+from adaptive_waf.contracts import AttackClass, BehaviourContext, ExpertFamily, HttpRequestRecord, NetworkContext, TriageDecision
 from adaptive_waf.runtime.pipeline import AdaptiveDetectionPipeline, PipelineThresholds
 
 
@@ -25,6 +25,13 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result.predicted_attack, AttackClass.BENIGN)
         self.assertEqual(result.overall_risk, 0.8)
         self.assertEqual(result.explanation_evidence["behaviour_failed_auth_attempts"], "4")
+
+    def test_network_risk_is_fused_without_changing_http_prediction(self) -> None:
+        pipeline = _pipeline(_Model(["BENIGN_LIKE", "SUSPICIOUS"], [0.9999, 0.0001]))
+        result = pipeline.detect(HttpRequestRecord(method="GET", path="/health"), network_context=NetworkContext(risk=0.9, network_class="DOS_DDOS", confidence=0.9))
+        self.assertEqual(result.predicted_attack, AttackClass.BENIGN)
+        self.assertEqual(result.overall_risk, 0.9)
+        self.assertEqual(result.explanation_evidence["fusion_network_risk"], "0.900000")
 
 
 def _pipeline(triage):

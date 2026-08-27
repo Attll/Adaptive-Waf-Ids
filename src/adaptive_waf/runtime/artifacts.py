@@ -9,6 +9,8 @@ import joblib
 from adaptive_waf.config import load_settings
 from adaptive_waf.contracts import AttackClass, ExpertFamily, HttpRequestRecord
 from adaptive_waf.features.canonical import serialize_deep_request
+from adaptive_waf.runtime.fusion import DeterministicRiskFusion
+from adaptive_waf.runtime.network import OfflineNetworkDetector
 from adaptive_waf.runtime.pipeline import AdaptiveDetectionPipeline, PipelineThresholds
 
 
@@ -21,6 +23,7 @@ def load_adaptive_pipeline(core_config: Path | None = None) -> AdaptiveDetection
     execution = _toml(root / "configs/models/execution_expert_deployment.toml")
     calibration = _toml(root / "configs/models/calibration_deployment.toml")
     pipeline_config = _toml(root / "configs/models/pipeline.toml")
+    fusion_config = _toml(root / "configs/models/fusion.toml")
     deep = _toml(root / "configs/models/deep_deployment.toml")
     return AdaptiveDetectionPipeline(
         joblib.load(root / calibration["triage"]["artifact"]),
@@ -44,6 +47,26 @@ def load_adaptive_pipeline(core_config: Path | None = None) -> AdaptiveDetection
             "deep": f"{deep['run_id']}:{calibration['deep']['method']}",
         },
         DistilBertPredictor(root / deep["artifact"], root / calibration["deep"]["artifact"], str(deep["device"])),
+        DeterministicRiskFusion(
+            {name: float(value) for name, value in fusion_config["source_weights"].items()},
+            float(fusion_config["supporting_evidence_minimum_risk"]),
+        ),
+    )
+
+
+def load_offline_network_detector(core_config: Path | None = None) -> OfflineNetworkDetector:
+    """Load the selected offline flow classifier and its ordered feature schema."""
+    settings = load_settings(core_config)
+    root = settings.paths.project_root
+    deployment = _toml(root / "configs/models/network_deployment.toml")
+    manifest = json.loads((root / deployment["feature_manifest"]).read_text(encoding="utf-8"))
+    feature_names = manifest.get("feature_names")
+    if not isinstance(feature_names, list) or not all(isinstance(name, str) for name in feature_names):
+        raise ValueError("network feature manifest does not contain a valid feature_names list")
+    return OfflineNetworkDetector(
+        joblib.load(root / deployment["artifact"]),
+        feature_names,
+        f"{deployment['run_id']}:{deployment['algorithm']}",
     )
 
 

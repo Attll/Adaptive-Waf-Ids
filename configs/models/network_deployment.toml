@@ -1,0 +1,7 @@
+model_role = "network_context"
+run_id = "network-full-v1"
+algorithm = "random_forest"
+artifact = "artifacts/training/network/network-full-v1/random_forest/model.joblib"
+feature_manifest = "artifacts/training/network/network-full-v1/feature_manifest.json"
+dataset_version = "cicids2018-flow-subset-v3"
+feature_version = "cicids2018-flow-v1"
