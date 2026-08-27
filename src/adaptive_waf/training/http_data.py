@@ -44,6 +44,19 @@ def load_triage_dataset(path: Path, max_samples_per_class: int | None = None) ->
     return HttpFeatureDataset(features=features, labels=labels, feature_names=feature_names or ())
 
 
+def iter_prepared_http_samples(path: Path, max_samples_per_class: int | None = None) -> Iterator[tuple[HttpRequestRecord, str]]:
+    """Yield a class-balanced prefix of a prepared HTTP split for offline demonstration."""
+    if max_samples_per_class is not None and max_samples_per_class <= 0:
+        raise ValueError("max_samples_per_class must be positive")
+    class_counts: Counter[str] = Counter()
+    for record in _read_jsonl(path):
+        label = str(record["label"])
+        if max_samples_per_class is not None and class_counts[label] >= max_samples_per_class:
+            continue
+        class_counts[label] += 1
+        yield _request_from_record(dict(record["request"])), label
+
+
 def _read_jsonl(path: Path) -> Iterator[dict[str, object]]:
     with path.open("r", encoding="utf-8") as source:
         for line_number, line in enumerate(source, start=1):

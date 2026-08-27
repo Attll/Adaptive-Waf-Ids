@@ -1,0 +1,3 @@
+dataset_version = "atrdf-dataset3-dataset4-v1"
+split = "test"
+max_samples_per_class = 100
