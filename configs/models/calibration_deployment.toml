@@ -1,0 +1,18 @@
+run_id = "calibration-full-v1"
+
+[triage]
+method = "isotonic"
+artifact = "artifacts/training/calibration/calibration-full-v1/triage/isotonic/model.joblib"
+
+[injection]
+method = "isotonic"
+artifact = "artifacts/training/calibration/calibration-full-v1/injection/isotonic/model.joblib"
+
+[execution]
+method = "isotonic"
+artifact = "artifacts/training/calibration/calibration-full-v1/execution/isotonic/model.joblib"
+
+[deep]
+method = "temperature"
+artifact = "artifacts/training/calibration/calibration-full-v1/deep/temperature.json"
+

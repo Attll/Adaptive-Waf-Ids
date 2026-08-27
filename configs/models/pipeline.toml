@@ -1,0 +1,4 @@
+triage_benign_exit_max_suspicious_probability = 0.001
+triage_early_exit_enabled = false
+expert_minimum_confidence = 0.90
+deep_device = "cuda"
