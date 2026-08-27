@@ -11,6 +11,7 @@ from adaptive_waf.contracts import AttackClass, ExpertFamily, HttpRequestRecord
 from adaptive_waf.features.canonical import serialize_deep_request
 from adaptive_waf.runtime.fusion import DeterministicRiskFusion
 from adaptive_waf.runtime.network import OfflineNetworkDetector
+from adaptive_waf.runtime.policy import OfflinePolicySimulator, PolicyThresholds
 from adaptive_waf.runtime.pipeline import AdaptiveDetectionPipeline, PipelineThresholds
 
 
@@ -67,6 +68,19 @@ def load_offline_network_detector(core_config: Path | None = None) -> OfflineNet
         joblib.load(root / deployment["artifact"]),
         feature_names,
         f"{deployment['run_id']}:{deployment['algorithm']}",
+    )
+
+
+def load_offline_policy_simulator(core_config: Path | None = None) -> OfflinePolicySimulator:
+    settings = load_settings(core_config)
+    policy = _toml(settings.paths.project_root / "configs/models/policy.toml")
+    return OfflinePolicySimulator(
+        str(policy["policy_version"]),
+        PolicyThresholds(
+            float(policy["allow_max_risk"]),
+            float(policy["monitor_max_risk"]),
+            float(policy["rate_limit_max_risk"]),
+        ),
     )
 
 

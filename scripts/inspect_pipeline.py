@@ -4,7 +4,7 @@ import argparse
 import json
 
 from adaptive_waf.contracts import BehaviourContext, HttpRequestRecord, NetworkContext
-from adaptive_waf.runtime.artifacts import load_adaptive_pipeline
+from adaptive_waf.runtime.artifacts import load_adaptive_pipeline, load_offline_policy_simulator
 
 
 def main() -> None:
@@ -23,6 +23,7 @@ def main() -> None:
         network_context=NetworkContext(risk=arguments.network_risk),
         rule_evidence=_rule_evidence(arguments.rule_risk),
     )
+    policy = load_offline_policy_simulator().evaluate(result.overall_risk, result.explanation_evidence)
     print(json.dumps({
         "triage": result.triage_decision,
         "attack": result.predicted_attack,
@@ -31,6 +32,9 @@ def main() -> None:
         "behaviour_risk": result.behaviour_risk,
         "network_risk": result.network_risk,
         "overall_risk": result.overall_risk,
+        "simulated_action": policy.action,
+        "policy_version": policy.policy_version,
+        "policy_reasons": policy.reasons,
         "evidence": result.explanation_evidence,
         "latencies_ms": result.latency_by_stage_ms,
     }, default=str, indent=2))

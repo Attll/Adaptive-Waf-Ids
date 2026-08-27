@@ -33,6 +33,13 @@ class TriageDecision(StrEnum):
     SUSPICIOUS = "SUSPICIOUS"
 
 
+class PolicyAction(StrEnum):
+    ALLOW = "ALLOW"
+    MONITOR = "MONITOR"
+    RATE_LIMIT = "RATE_LIMIT"
+    BLOCK = "BLOCK"
+
+
 @dataclass(frozen=True, slots=True)
 class HttpRequestRecord:
     method: str
@@ -152,6 +159,21 @@ class DetectionResult:
             raise ValueError("routing path must not be empty")
         if any(latency < 0 for latency in self.latency_by_stage_ms.values()):
             raise ValueError("stage latencies must not be negative")
+
+
+@dataclass(frozen=True, slots=True)
+class PolicyDecision:
+    action: PolicyAction
+    overall_risk: float
+    policy_version: str
+    reasons: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        _validate_risk("policy overall risk", self.overall_risk)
+        if not self.policy_version.strip():
+            raise ValueError("policy version must not be blank")
+        if not self.reasons:
+            raise ValueError("policy decision must include at least one reason")
 
 
 def _validate_risk(name: str, value: float) -> None:

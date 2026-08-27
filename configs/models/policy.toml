@@ -1,0 +1,4 @@
+policy_version = "phase1-offline-v1"
+allow_max_risk = 0.20
+monitor_max_risk = 0.50
+rate_limit_max_risk = 0.80
