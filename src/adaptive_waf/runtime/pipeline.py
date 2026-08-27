@@ -40,6 +40,10 @@ class AdaptiveDetectionPipeline:
         self._risk_fuser = risk_fuser or DeterministicRiskFusion({"http": 1.0, "behaviour": 1.0, "network": 1.0, "rule": 1.0})
         self._extractor = ClassicalFeatureExtractor()
 
+    @property
+    def model_versions(self) -> dict[str, str]:
+        return dict(self._model_versions)
+
     def detect(
         self,
         request: HttpRequestRecord,
