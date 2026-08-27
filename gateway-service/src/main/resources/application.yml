@@ -35,6 +35,8 @@ adaptive-waf:
     path-prefix-to-strip: ${DETECTION_PATH_PREFIX_TO_STRIP:/backend}
   policy:
     block-risk-threshold: ${WAF_BLOCK_RISK_THRESHOLD:0.81}
+    control-service-base-url: ${CONTROL_SERVICE_URL:http://127.0.0.1:8082}
+    refresh-interval: ${POLICY_REFRESH_INTERVAL:30s}
   behaviour:
     short-window: ${BEHAVIOUR_SHORT_WINDOW:10s}
     medium-window: ${BEHAVIOUR_MEDIUM_WINDOW:60s}

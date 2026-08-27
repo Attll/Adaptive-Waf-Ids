@@ -3,6 +3,7 @@ package com.adaptivewaf.control.events;
 import java.util.List;
 import java.util.Map;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,6 @@ public class SecurityEventController {
     @GetMapping
     public Map<String, List<PersistedSecurityEvent>> recent(@RequestParam(defaultValue = "50") int limit) {
         int boundedLimit = Math.max(1, Math.min(limit, 200));
-        return Map.of("events", repository.findAll(PageRequest.of(0, boundedLimit)).getContent());
+        return Map.of("events", repository.findAll(PageRequest.of(0, boundedLimit, Sort.by(Sort.Direction.DESC, "occurredAt"))).getContent());
     }
 }

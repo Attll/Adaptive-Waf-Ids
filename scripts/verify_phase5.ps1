@@ -12,13 +12,17 @@ function Invoke-StatusProbe([string]$Uri, [string]$RequestId) {
 }
 
 $requestId = [guid]::NewGuid().ToString()
+$adminUser = if ([string]::IsNullOrWhiteSpace($env:WAF_ADMIN_USERNAME)) { "admin" } else { $env:WAF_ADMIN_USERNAME }
+$adminPassword = if ([string]::IsNullOrWhiteSpace($env:WAF_ADMIN_INITIAL_PASSWORD)) { "adaptive_waf_dev" } else { $env:WAF_ADMIN_INITIAL_PASSWORD }
+$credentials = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$adminUser`:$adminPassword"))
+$adminHeaders = @{ Authorization = "Basic $credentials" }
 $attackStatus = Invoke-StatusProbe "http://127.0.0.1:8080/backend/search?q=%27%20OR%201%3D1--" $requestId
 if ($attackStatus -ne 403) { throw "Expected the gateway to block SQL injection, got HTTP $attackStatus." }
 
 $deadline = (Get-Date).AddSeconds(15)
 do {
     Start-Sleep -Milliseconds 500
-    $events = (Invoke-RestMethod "http://127.0.0.1:8082/v1/security/events?limit=50").events
+    $events = (Invoke-RestMethod -Headers $adminHeaders "http://127.0.0.1:8082/v1/security/events?limit=50").events
     $attackEvent = @($events | Where-Object { $_.requestId -eq $requestId } | Select-Object -First 1)
 } while ($attackEvent.Count -eq 0 -and (Get-Date) -lt $deadline)
 

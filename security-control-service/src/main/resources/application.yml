@@ -20,9 +20,21 @@ spring:
     listener:
       simple:
         default-requeue-rejected: true
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info
+
+adaptive-waf:
+  control:
+    admin:
+      username: ${WAF_ADMIN_USERNAME:admin}
+      initial-password: ${WAF_ADMIN_INITIAL_PASSWORD:adaptive_waf_dev}
+    blocks:
+      default-duration: ${WAF_MANUAL_BLOCK_DURATION:1h}
