@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from time import perf_counter_ns
 from typing import Callable, Mapping
 
-from adaptive_waf.contracts import AttackClass, BehaviourContext, DetectionResult, ExpertFamily, ExpertOutput, HttpRequestRecord, NetworkContext, RouterOutput, TriageDecision
+from adaptive_waf.contracts import AttackClass, BehaviourContext, DeepOutput, DetectionResult, ExpertFamily, ExpertOutput, HttpRequestRecord, NetworkContext, RouterOutput, TriageDecision
 from adaptive_waf.features.classical import ClassicalFeatureExtractor
 from adaptive_waf.runtime.behaviour import behaviour_evidence
 from adaptive_waf.runtime.fusion import DeterministicRiskFusion
@@ -70,18 +70,21 @@ class AdaptiveDetectionPipeline:
         latencies["router"] = _elapsed_ms(router_start)
         outputs = tuple(self._expert_output(family, features, latencies) for family in selected)
         best = max(outputs, key=lambda output: output.risk)
-        deep_used = best.confidence < self._thresholds.expert_minimum_confidence
-        if deep_used and self._deep_predictor is not None:
+        deep_used = best.confidence < self._thresholds.expert_minimum_confidence and self._deep_predictor is not None
+        deep_output = None
+        if deep_used:
             deep_start = perf_counter_ns()
             deep_scores = self._deep_predictor(request)
             latencies["deep"] = _elapsed_ms(deep_start)
             attack, confidence = max(deep_scores.items(), key=lambda item: item[1])
-            best = ExpertOutput(ExpertFamily.INJECTION, attack, confidence, 1.0 - deep_scores[AttackClass.BENIGN], self._model_versions["deep"], deep_scores)
+            deep_output = DeepOutput(attack, confidence, 1.0 - deep_scores[AttackClass.BENIGN], self._model_versions["deep"], deep_scores)
         behaviour_risk = (behaviour_context or BehaviourContext()).risk
         network_risk = (network_context or NetworkContext()).risk
         behaviour = behaviour_context or BehaviourContext()
         network = network_context or NetworkContext()
-        fusion = self._risk_fuser.fuse(best.risk, behaviour, network, rule_evidence)
+        http_risk = deep_output.risk if deep_output is not None else best.risk
+        predicted_attack = deep_output.predicted_attack if deep_output is not None else best.predicted_attack
+        fusion = self._risk_fuser.fuse(http_risk, behaviour, network, rule_evidence)
         return DetectionResult(
             request_id=request.request_id,
             timestamp=request.received_at,
@@ -89,8 +92,8 @@ class AdaptiveDetectionPipeline:
             triage_decision=TriageDecision.SUSPICIOUS,
             router_output=RouterOutput(router_scores, selected, self._model_versions["router"]),
             expert_outputs=outputs,
-            predicted_attack=best.predicted_attack,
-            http_risk=best.risk,
+            predicted_attack=predicted_attack,
+            http_risk=http_risk,
             behaviour_risk=behaviour_risk,
             network_risk=network_risk,
             overall_risk=fusion.overall_risk,
@@ -99,6 +102,7 @@ class AdaptiveDetectionPipeline:
             model_versions=self._model_versions,
             explanation_evidence={"triage_suspicious_probability": f"{triage_score:.6f}", **behaviour_evidence(behaviour), **fusion.supporting_evidence},
             deep_model_used=deep_used,
+            deep_output=deep_output,
         )
 
     def _expert_output(self, family: ExpertFamily, features, latencies) -> ExpertOutput:

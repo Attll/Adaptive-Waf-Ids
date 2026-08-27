@@ -125,6 +125,23 @@ class ExpertOutput:
 
 
 @dataclass(frozen=True, slots=True)
+class DeepOutput:
+    """Normalized deep-escalation summary, independent of its model architecture."""
+
+    predicted_attack: AttackClass
+    confidence: float
+    risk: float
+    model_version: str
+    class_scores: Mapping[AttackClass, float] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        _validate_risk("deep confidence", self.confidence)
+        _validate_risk("deep risk", self.risk)
+        for score in self.class_scores.values():
+            _validate_risk("deep class score", score)
+
+
+@dataclass(frozen=True, slots=True)
 class DetectionResult:
     request_id: UUID
     timestamp: datetime
@@ -143,6 +160,7 @@ class DetectionResult:
     explanation_evidence: Mapping[str, str] = field(default_factory=dict)
     ensemble_used: bool = False
     deep_model_used: bool = False
+    deep_output: DeepOutput | None = None
 
     def __post_init__(self) -> None:
         if self.timestamp.tzinfo is None:
