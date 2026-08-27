@@ -22,14 +22,15 @@ CASES = {
 
 def invoke(url: str, payload: dict[str, object]) -> tuple[float, bool, bool]:
     started = perf_counter()
-    request = Request(url, data=json.dumps(payload).encode(), method="POST", headers={"Content-Type": "application/json"})
+    request_payload = {"path": payload["path"], "query": payload.get("query", ""), "cookies": payload.get("cookies", {})}
+    request = Request(url, data=json.dumps(request_payload).encode(), method="POST", headers={"Content-Type": "application/json"})
     try:
         with urlopen(request, timeout=20) as response:
             body = json.loads(response.read())
             attack = body["detection"]["predicted_attack"] != "BENIGN"
             return (perf_counter() - started) * 1000, attack, True
     except HTTPError:
-        return (perf_counter() - started) * 1000, True, True
+        return (perf_counter() - started) * 1000, False, False
     except OSError:
         return (perf_counter() - started) * 1000, False, False
 
