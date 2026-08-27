@@ -1,0 +1,11 @@
+services:
+  training-adaptation-service:
+    build:
+      context: ../..
+      dockerfile: training-adaptation-service/Dockerfile
+    environment:
+      CONTROL_SERVICE_URL: http://host.docker.internal:8082
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8084:8084"

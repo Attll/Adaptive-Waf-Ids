@@ -115,9 +115,12 @@ public class ControlPlaneService {
 
     @Transactional
     public FeedbackView submitFeedback(FeedbackCreate request, String administrator) {
+        if ("WRONG_ATTACK_TYPE".equals(request.verdict()) && (request.correctAttackType() == null || request.correctAttackType().isBlank())) {
+            throw new IllegalArgumentException("correct attack type is required for WRONG_ATTACK_TYPE feedback");
+        }
         UUID id = UUID.randomUUID();
-        FeedbackView feedback = new FeedbackView(id, request.eventId(), request.verdict(), request.notes(), administrator);
-        jdbc.update("insert into admin_feedback(feedback_id, event_id, verdict, notes, submitted_by) values (?, ?, ?, ?, ?)", id, request.eventId(), request.verdict(), request.notes(), administrator);
+        FeedbackView feedback = new FeedbackView(id, request.eventId(), request.verdict(), request.notes(), request.correctAttackType(), administrator);
+        jdbc.update("insert into admin_feedback(feedback_id, event_id, verdict, notes, correct_attack_type, submitted_by) values (?, ?, ?, ?, ?, ?)", id, request.eventId(), request.verdict(), request.notes(), request.correctAttackType(), administrator);
         audit(administrator, "ADMIN_FEEDBACK", id.toString(), "CREATE", null, feedback);
         return feedback;
     }
@@ -153,7 +156,7 @@ public class ControlPlaneService {
     public record BlockView(String sourceIp, String reason, Instant expiresAt, boolean active) { }
     public record ModelCreate(String modelName, String artifactVersion, String metricsJson) { }
     public record ModelView(UUID modelVersionId, String modelName, String artifactVersion, String status, String metricsJson) { }
-    public record FeedbackCreate(String eventId, String verdict, String notes) { }
-    public record FeedbackView(UUID feedbackId, String eventId, String verdict, String notes, String submittedBy) { }
+    public record FeedbackCreate(String eventId, String verdict, String notes, String correctAttackType) { }
+    public record FeedbackView(UUID feedbackId, String eventId, String verdict, String notes, String correctAttackType, String submittedBy) { }
     public record AuditView(UUID auditId, String administrator, Instant occurredAt, String entityType, String entityId, String action, String oldValueJson, String newValueJson) { }
 }

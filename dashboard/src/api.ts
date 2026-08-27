@@ -22,6 +22,7 @@ export type GatewayMode = { mode: string };
 export type GatewayPolicy = { version: number; rateLimitShortWindow: number; blockRiskThreshold: number };
 export type Health = { status: string; components?: Record<string, { status: string }> };
 export type NetworkEvidence = { source_ip: string; destination_ip?: string; network_risk: number; network_class?: string; confidence?: number; model_version: string; observed_at: string };
+export type TrainingRun = { externalRunId: string; modelName: string; datasetVersion: string; status: string; shadowMode: boolean; artifactUri?: string; metricsJson: string; driftJson: string; startedAt: string; completedAt?: string };
 
 export class ApiError extends Error {
   constructor(message: string, public readonly status?: number) { super(message); }
@@ -68,7 +69,8 @@ export class DashboardApi {
   unblock(sourceIp: string) { return this.control<void>(`/v1/control/blocks/${encodeURIComponent(sourceIp)}`, { method: "DELETE" }); }
   promote(id: string) { return this.control<void>(`/v1/control/models/${id}/promote`, { method: "POST" }); }
   assign(id: string) { return this.control<void>(`/v1/control/models/${id}/assign`, { method: "POST" }); }
-  submitFeedback(eventId: string, verdict: string, notes: string) {
-    return this.control("/v1/control/feedback", { method: "POST", body: JSON.stringify({ eventId, verdict, notes }) });
+  submitFeedback(eventId: string, verdict: string, notes: string, correctAttackType?: string) {
+    return this.control("/v1/control/feedback", { method: "POST", body: JSON.stringify({ eventId, verdict, notes, correctAttackType }) });
   }
+  trainingRuns() { return this.control<{ runs: TrainingRun[] }>("/v1/control/training-runs"); }
 }
