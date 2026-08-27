@@ -13,6 +13,7 @@ import com.adaptivewaf.gateway.network.NetworkContextSnapshot;
 import com.adaptivewaf.gateway.policy.GatewayPolicy;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -37,6 +38,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdaptiveDetectionFilter.class);
+    private static final Duration REDIS_OPERATION_TIMEOUT = Duration.ofMillis(250);
     private final DetectionClient detectionClient;
     private final DetectionProperties detectionProperties;
     private final GatewayPolicy policy;
@@ -68,6 +70,7 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
             .build();
         return cacheSafeBody(correlated)
             .flatMap(cached -> loadModeService.recordRequest(requestId)
+                .timeout(REDIS_OPERATION_TIMEOUT)
                 .flatMap(mode -> process(cached, requestId, mode, chain))
                 .onErrorResume(error -> {
                     LOGGER.warn("Redis unavailable for request {}; using stateless processing", requestId);
@@ -97,7 +100,8 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
                 : behaviourService.observe(cached.getRequest(), requestId)
                     .flatMap(behaviour -> behaviour.rateLimited()
                         ? rateLimited(cached, requestId)
-                        : detectOrForward(cached, requestId, mode, behaviour, chain)));
+                        : detectOrForward(cached, requestId, mode, behaviour, chain)))
+            .timeout(REDIS_OPERATION_TIMEOUT);
     }
 
     private Mono<Void> detectOrForward(CachedExchange cached, String requestId, OperatingMode mode,
