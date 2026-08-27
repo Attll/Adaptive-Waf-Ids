@@ -2,6 +2,7 @@ package com.adaptivewaf.gateway.filter;
 
 import com.adaptivewaf.gateway.detection.DetectionClient;
 import com.adaptivewaf.gateway.detection.DetectionProperties;
+import com.adaptivewaf.gateway.detection.DetectionVerdict;
 import com.adaptivewaf.gateway.events.SecurityEvent;
 import com.adaptivewaf.gateway.events.SecurityEventPublisher;
 import com.adaptivewaf.gateway.behaviour.BehaviourSnapshot;
@@ -11,7 +12,9 @@ import com.adaptivewaf.gateway.behaviour.RedisLoadModeService;
 import com.adaptivewaf.gateway.network.RedisNetworkContextService;
 import com.adaptivewaf.gateway.network.NetworkContextSnapshot;
 import com.adaptivewaf.gateway.policy.GatewayPolicy;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.net.InetSocketAddress;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.LinkedHashMap;
@@ -22,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
@@ -68,13 +72,13 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         ServerWebExchange correlated = exchange.mutate()
             .request(request -> request.headers(headers -> headers.set("X-Request-ID", requestId)))
             .build();
-        return cacheSafeBody(correlated)
-            .flatMap(cached -> loadModeService.recordRequest(requestId)
+        return cacheSafeBody(correlated, requestId)
+            .flatMap(scope -> loadModeService.recordRequest(requestId)
                 .timeout(REDIS_OPERATION_TIMEOUT)
-                .flatMap(mode -> process(cached, requestId, mode, chain))
+                .flatMap(mode -> process(scope.withMode(mode), chain))
                 .onErrorResume(error -> {
                     LOGGER.warn("Redis unavailable for request {}; using stateless processing", requestId);
-                    return detectOrForward(cached, requestId, OperatingMode.NORMAL, BehaviourSnapshot.empty(), chain);
+                    return detectOrForward(scope.withMode(OperatingMode.NORMAL).withBehaviour(BehaviourSnapshot.empty()), chain);
                 }));
     }
 
@@ -83,69 +87,85 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         return Ordered.HIGHEST_PRECEDENCE + 100;
     }
 
-    private Mono<CachedExchange> cacheSafeBody(ServerWebExchange exchange) {
+    private Mono<RequestScope> cacheSafeBody(ServerWebExchange exchange, String requestId) {
         long contentLength = exchange.getRequest().getHeaders().getContentLength();
         if (contentLength < 0 || contentLength > detectionProperties.getMaxBodyBytes()) {
-            return Mono.just(new CachedExchange(exchange, ""));
+            return Mono.just(new RequestScope(exchange, "", requestId));
         }
         return DataBufferUtils.join(exchange.getRequest().getBody())
-            .map(buffer -> cache(exchange, buffer))
-            .defaultIfEmpty(new CachedExchange(exchange, ""));
+            .map(buffer -> cache(exchange, buffer, requestId))
+            .defaultIfEmpty(new RequestScope(exchange, "", requestId));
     }
 
-    private Mono<Void> process(CachedExchange cached, String requestId, OperatingMode mode, GatewayFilterChain chain) {
-        return behaviourService.isTemporarilyBlocked(cached.getRequest())
+    private Mono<Void> process(RequestScope scope, GatewayFilterChain chain) {
+        return behaviourService.isTemporarilyBlocked(scope.getRequest())
             .flatMap(blocked -> blocked
-                ? temporarilyBlocked(cached, requestId)
-                : behaviourService.observe(cached.getRequest(), requestId)
+                ? temporarilyBlocked(scope)
+                : behaviourService.observe(scope.getRequest(), scope.requestId())
                     .flatMap(behaviour -> behaviour.rateLimited()
-                        ? rateLimited(cached, requestId)
-                        : detectOrForward(cached, requestId, mode, behaviour, chain)))
+                        ? rateLimited(scope.withBehaviour(behaviour))
+                        : detectOrForward(scope.withBehaviour(behaviour), chain)))
             .timeout(REDIS_OPERATION_TIMEOUT);
     }
 
-    private Mono<Void> detectOrForward(CachedExchange cached, String requestId, OperatingMode mode,
-                                       BehaviourSnapshot behaviour, GatewayFilterChain chain) {
-        if (!mode.permitsModelInference()) {
-            LOGGER.warn("Skipping model inference for request {} in {} mode", requestId, mode);
-            return forwardAndRecord(cached, chain, 0.0, "SKIPPED");
+    private Mono<Void> detectOrForward(RequestScope scope, GatewayFilterChain chain) {
+        if (!scope.mode().permitsModelInference()) {
+            LOGGER.warn("Skipping model inference for request {} in {} mode", scope.requestId(), scope.mode());
+            scope.recordVerdict(new DetectionVerdict(0.0, "SKIPPED"), 0.0);
+            return forwardAndRecord(scope, chain, "INFERENCE_SKIPPED_UNDER_LOAD");
         }
-        return networkContextService.context(cached.getRequest())
-            .flatMap(network -> detectionClient.detect(toDetectionRequest(cached.getRequest(), requestId, cached.body(), behaviour, network)))
+        return networkContextService.context(scope.getRequest())
+            .doOnNext(scope::withNetwork)
+            .flatMap(network -> {
+                long detectionStart = System.nanoTime();
+                return detectionClient.detect(toDetectionRequest(scope, network))
+                    .doOnNext(verdict -> scope.recordVerdict(verdict, elapsedMs(detectionStart)));
+            })
             .flatMap(verdict -> {
-                LOGGER.debug("Detection verdict for request {}: attack={}, risk={}", requestId, verdict.predictedAttack(), verdict.overallRisk());
+                LOGGER.debug("Detection verdict for request {}: attack={}, risk={}", scope.requestId(), verdict.predictedAttack(), verdict.overallRisk());
                 if (policy.shouldBlock(verdict)) {
-                    eventPublisher.publish(event(cached, requestId, "security.attack", HttpStatus.FORBIDDEN.value(), "BLOCK", verdict.predictedAttack(), verdict.overallRisk()));
-                    return behaviourService.recordOutcome(cached.getRequest(), HttpStatus.FORBIDDEN.value(), verdict.overallRisk(), verdict.predictedAttack())
+                    eventPublisher.publish(scope.event("security.attack")
+                        .outcome(HttpStatus.FORBIDDEN.value(), "BLOCK", verdict.predictedAttack(), verdict.overallRisk(), "BLOCKED_AT_GATEWAY")
+                        .build());
+                    return behaviourService.recordOutcome(scope.getRequest(), HttpStatus.FORBIDDEN.value(), verdict.overallRisk(), verdict.predictedAttack())
                         .onErrorResume(error -> Mono.empty())
-                        .then(block(cached.exchange(), requestId, verdict.predictedAttack()));
+                        .then(block(scope.exchange(), scope.requestId(), verdict.predictedAttack()));
                 }
-                return forwardAndRecord(cached, chain, verdict.overallRisk(), verdict.predictedAttack());
+                // A request the fast experts were unsure about is forwarded now and adjudicated out of band; the
+                // mitigation records that it was allowed provisionally rather than on a settled verdict.
+                return forwardAndRecord(scope, chain,
+                    verdict.deepEscalationPending() ? "FORWARDED_PENDING_DEEP_ESCALATION" : "FORWARDED_TO_UPSTREAM");
             })
             .onErrorResume(error -> {
-                LOGGER.warn("Detection unavailable for request {}: {}; forwarding request", requestId, error.getClass().getSimpleName());
-                return forwardAndRecord(cached, chain, 0.0, "UNAVAILABLE");
+                LOGGER.warn("Detection unavailable for request {}: {}; forwarding request", scope.requestId(), error.getClass().getSimpleName());
+                scope.recordVerdict(new DetectionVerdict(0.0, "UNAVAILABLE"), 0.0);
+                return forwardAndRecord(scope, chain, "FAIL_OPEN_DETECTION_UNAVAILABLE");
             });
     }
 
-    private Mono<Void> forwardAndRecord(CachedExchange cached, GatewayFilterChain chain, double risk, String attack) {
-        cached.exchange().getResponse().beforeCommit(() -> {
-            int status = responseStatus(cached.exchange());
-            eventPublisher.publish(event(cached, requestId(cached.getRequest().getHeaders()), "security.request", status, "ALLOW", attack, risk));
-            return behaviourService.recordOutcome(cached.getRequest(), status, risk, attack)
+    private Mono<Void> forwardAndRecord(RequestScope scope, GatewayFilterChain chain, String mitigation) {
+        long forwardStart = System.nanoTime();
+        scope.exchange().getResponse().beforeCommit(() -> {
+            int status = responseStatus(scope.exchange());
+            DetectionVerdict verdict = scope.verdict();
+            eventPublisher.publish(scope.event("security.request")
+                .outcome(status, "ALLOW", verdict.predictedAttack(), verdict.overallRisk(), mitigation)
+                .timings(scope.detectionLatencyMs(), elapsedMs(forwardStart), scope.totalLatencyMs())
+                .build());
+            return behaviourService.recordOutcome(scope.getRequest(), status, verdict.overallRisk(), verdict.predictedAttack())
                 .onErrorResume(error -> {
                     LOGGER.warn("Could not persist behavioural outcome: {}", error.getClass().getSimpleName());
                     return Mono.empty();
                 });
         });
-        return chain.filter(cached.exchange());
+        return chain.filter(scope.exchange());
     }
 
     private int responseStatus(ServerWebExchange exchange) {
         return exchange.getResponse().getStatusCode() == null ? 200 : exchange.getResponse().getStatusCode().value();
     }
 
-    private CachedExchange cache(ServerWebExchange exchange, DataBuffer buffer) {
+    private RequestScope cache(ServerWebExchange exchange, DataBuffer buffer, String requestId) {
         byte[] bytes = new byte[buffer.readableByteCount()];
         buffer.read(bytes);
         DataBufferUtils.release(buffer);
@@ -155,23 +175,24 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
                 return Flux.defer(() -> Mono.just(exchange.getResponse().bufferFactory().wrap(bytes)));
             }
         };
-        return new CachedExchange(exchange.mutate().request(decoratedRequest).build(), new String(bytes, StandardCharsets.UTF_8));
+        return new RequestScope(exchange.mutate().request(decoratedRequest).build(), new String(bytes, StandardCharsets.UTF_8), requestId);
     }
 
-    private Map<String, Object> toDetectionRequest(ServerHttpRequest request, String requestId, String body, BehaviourSnapshot behaviour, NetworkContextSnapshot network) {
+    private Map<String, Object> toDetectionRequest(RequestScope scope, NetworkContextSnapshot network) {
+        ServerHttpRequest request = scope.getRequest();
         Map<String, Object> payload = new LinkedHashMap<>();
         String normalizedPath = normalizedPath(request.getPath().value());
         String normalizedQuery = normalizedQuery(request);
-        LOGGER.debug("Detection representation for request {}: path={}, queryLength={}", requestId, normalizedPath, normalizedQuery.length());
+        LOGGER.debug("Detection representation for request {}: path={}, queryLength={}", scope.requestId(), normalizedPath, normalizedQuery.length());
         payload.put("method", request.getMethod().name());
         payload.put("path", normalizedPath);
         payload.put("query", normalizedQuery);
         payload.put("headers", safeHeaders(request.getHeaders()));
         payload.put("cookies", request.getCookies().toSingleValueMap());
-        payload.put("body", body);
+        payload.put("body", scope.body());
         payload.put("source_ip", sourceIp(request));
-        payload.put("request_id", requestId);
-        payload.put("behaviour_context", behaviour.asDetectionContext());
+        payload.put("request_id", scope.requestId());
+        payload.put("behaviour_context", scope.behaviour().asDetectionContext());
         payload.put("network_context", network.asDetectionContext());
         return payload;
     }
@@ -200,6 +221,10 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
     }
 
     private String sourceIp(ServerHttpRequest request) {
+        String forwarded = request.getHeaders().getFirst("X-Forwarded-For");
+        if (forwarded != null && !forwarded.isBlank()) {
+            return forwarded.split(",")[0].trim();
+        }
         InetSocketAddress remoteAddress = request.getRemoteAddress();
         return remoteAddress == null || remoteAddress.getAddress() == null ? null : remoteAddress.getAddress().getHostAddress();
     }
@@ -224,6 +249,10 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         return supplied == null || supplied.isBlank() ? UUID.randomUUID().toString() : supplied;
     }
 
+    private static double elapsedMs(long startNanos) {
+        return (System.nanoTime() - startNanos) / 1_000_000.0;
+    }
+
     private Mono<Void> block(ServerWebExchange exchange, String requestId, String predictedAttack) {
         exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
         exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
@@ -232,14 +261,18 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         return exchange.getResponse().writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(message)));
     }
 
-    private Mono<Void> rateLimited(CachedExchange cached, String requestId) {
-        eventPublisher.publish(event(cached, requestId, "security.decision", HttpStatus.TOO_MANY_REQUESTS.value(), "RATE_LIMIT", "RATE_LIMIT", 1.0));
-        return securityResponse(cached.exchange(), requestId, HttpStatus.TOO_MANY_REQUESTS, "rate_limited", "RATE_LIMIT");
+    private Mono<Void> rateLimited(RequestScope scope) {
+        eventPublisher.publish(scope.event("security.decision")
+            .outcome(HttpStatus.TOO_MANY_REQUESTS.value(), "RATE_LIMIT", "RATE_LIMIT", 1.0, "RATE_LIMITED_AT_GATEWAY")
+            .build());
+        return securityResponse(scope.exchange(), scope.requestId(), HttpStatus.TOO_MANY_REQUESTS, "rate_limited", "RATE_LIMIT");
     }
 
-    private Mono<Void> temporarilyBlocked(CachedExchange cached, String requestId) {
-        eventPublisher.publish(event(cached, requestId, "security.decision", HttpStatus.FORBIDDEN.value(), "TEMPORARY_BLOCK", "BEHAVIOURAL", 1.0));
-        return securityResponse(cached.exchange(), requestId, HttpStatus.FORBIDDEN, "temporary_block", "BEHAVIOURAL");
+    private Mono<Void> temporarilyBlocked(RequestScope scope) {
+        eventPublisher.publish(scope.event("security.decision")
+            .outcome(HttpStatus.FORBIDDEN.value(), "TEMPORARY_BLOCK", "BEHAVIOURAL", 1.0, "TEMPORARY_BLOCK_ACTIVE")
+            .build());
+        return securityResponse(scope.exchange(), scope.requestId(), HttpStatus.FORBIDDEN, "temporary_block", "BEHAVIOURAL");
     }
 
     private Mono<Void> securityResponse(ServerWebExchange exchange, String requestId, HttpStatus status, String code, String predictedAttack) {
@@ -250,14 +283,72 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         return exchange.getResponse().writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(message)));
     }
 
-    private SecurityEvent event(CachedExchange cached, String requestId, String category, int status, String action,
-                                String predictedAttack, double risk) {
-        ServerHttpRequest request = cached.getRequest();
-        return SecurityEvent.create(category, requestId, sourceIp(request), request.getMethod().name(),
-            normalizedPath(request.getPath().value()), status, action, predictedAttack, risk);
-    }
+    /** Mutable per-request state used to assemble one fully evidenced security event. */
+    private final class RequestScope {
+        private final ServerWebExchange exchange;
+        private final String body;
+        private final String requestId;
+        private final long startNanos = System.nanoTime();
+        private OperatingMode mode = OperatingMode.NORMAL;
+        private BehaviourSnapshot behaviour = BehaviourSnapshot.empty();
+        private NetworkContextSnapshot network = NetworkContextSnapshot.empty();
+        private DetectionVerdict verdict = new DetectionVerdict(0.0, "UNEVALUATED");
+        private double detectionLatencyMs;
 
-    private record CachedExchange(ServerWebExchange exchange, String body) {
+        private RequestScope(ServerWebExchange exchange, String body, String requestId) {
+            this.exchange = exchange; this.body = body; this.requestId = requestId;
+        }
+
+        ServerWebExchange exchange() { return exchange; }
         ServerHttpRequest getRequest() { return exchange.getRequest(); }
+        String body() { return body; }
+        String requestId() { return requestId; }
+        OperatingMode mode() { return mode; }
+        BehaviourSnapshot behaviour() { return behaviour; }
+        DetectionVerdict verdict() { return verdict; }
+        double detectionLatencyMs() { return detectionLatencyMs; }
+        double totalLatencyMs() { return elapsedMs(startNanos); }
+
+        RequestScope withMode(OperatingMode value) { this.mode = value; return this; }
+        RequestScope withBehaviour(BehaviourSnapshot value) { this.behaviour = value; return this; }
+        RequestScope withNetwork(NetworkContextSnapshot value) { this.network = value; return this; }
+        void recordVerdict(DetectionVerdict value, double latencyMs) { this.verdict = value; this.detectionLatencyMs = latencyMs; }
+
+        SecurityEvent.Builder event(String category) {
+            ServerHttpRequest request = getRequest();
+            JsonNode evidence = verdict.evidence();
+            return SecurityEvent.builder(category)
+                .request(requestId, sourceIp(request), request.getMethod().name(),
+                    normalizedPath(request.getPath().value()), normalizedQuery(request))
+                .context(mode.name(), request.getHeaders().getFirst(HttpHeaders.USER_AGENT), upstream())
+                .timings(detectionLatencyMs, 0.0, totalLatencyMs())
+                .evidence(behaviourEvidence(), networkEvidence(), evidence);
+        }
+
+        private Map<String, Object> behaviourEvidence() {
+            Map<String, Object> values = new LinkedHashMap<>();
+            values.put("risk", behaviour.risk());
+            values.put("shortWindowRequests", behaviour.shortWindowRequests());
+            values.put("mediumWindowRequests", behaviour.mediumWindowRequests());
+            values.put("failedAuthAttempts", behaviour.failedAuthAttempts());
+            values.put("endpointRequests", behaviour.endpointRequests());
+            values.put("previousAttackCount", behaviour.previousAttackCount());
+            values.put("rateLimited", behaviour.rateLimited());
+            values.put("temporarilyBlocked", behaviour.temporarilyBlocked());
+            return values;
+        }
+
+        private Map<String, Object> networkEvidence() {
+            Map<String, Object> values = new LinkedHashMap<>();
+            values.put("risk", network.risk());
+            values.put("networkClass", network.networkClass() == null ? "UNKNOWN" : network.networkClass());
+            values.put("confidence", network.confidence());
+            return values;
+        }
+
+        private String upstream() {
+            Object routed = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR);
+            return routed instanceof URI uri ? uri.toString() : null;
+        }
     }
 }

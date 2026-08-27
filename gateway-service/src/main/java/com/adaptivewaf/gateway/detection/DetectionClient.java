@@ -34,6 +34,10 @@ public class DetectionClient {
         if (!risk.isNumber()) {
             throw new IllegalStateException("detection service response did not contain overall risk");
         }
-        return new DetectionVerdict(risk.doubleValue(), detection.path("predicted_attack").asText("UNKNOWN"));
+        return new DetectionVerdict(
+            risk.doubleValue(),
+            detection.path("predicted_attack").asText("UNKNOWN"),
+            detection,
+            response.path("service_inference_ms").asDouble(0.0));
     }
 }

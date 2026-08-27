@@ -3,6 +3,7 @@ WORKDIR /app
 COPY pyproject.toml ./
 COPY src ./src
 COPY configs ./configs
+COPY datasets/samples ./datasets/samples
 COPY scripts ./scripts
 COPY artifacts/training/network ./artifacts/training/network
 RUN pip install --no-cache-dir ".[service]"

@@ -4,6 +4,7 @@
 __pycache__
 *.pyc
 datasets/
+!datasets/samples/
 dashboard/node_modules/
 dashboard/dist/
 **/target/

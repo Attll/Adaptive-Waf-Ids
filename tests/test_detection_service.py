@@ -74,6 +74,48 @@ class DetectionServiceTests(unittest.TestCase):
         self.assertEqual(response.status_code, 504)
         self.assertEqual(response.json()["error"]["code"], "inference_timeout")
 
+    def test_batch_detection_scores_every_probe_against_its_expected_class(self) -> None:
+        with _client(_FakePipeline()) as client:
+            response = client.post("/v1/detect/batch", json={
+                "requests": [
+                    {"path": "/search", "query": "q=' OR 1=1--"},
+                    {"path": "/health"},
+                ],
+                "labels": ["SQL_INJECTION", "SQL_INJECTION"],
+            })
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(len(body["results"]), 2)
+        self.assertTrue(body["results"][0]["matched"])
+        self.assertFalse(body["results"][1]["matched"])
+        summary = body["summary"]
+        self.assertEqual(summary["evaluated"], 2)
+        self.assertEqual(summary["matched"], 1)
+        self.assertEqual(summary["accuracy"], 0.5)
+        self.assertEqual(summary["attacks"], {"SQL_INJECTION": 1, "BENIGN": 1})
+        self.assertIn("TRIAGE > ROUTER_TOP1 > INJECTION_FAST > POLICY_PENDING", summary["routes"])
+
+    def test_empty_batch_is_rejected(self) -> None:
+        with _client(_FakePipeline()) as client:
+            response = client.post("/v1/detect/batch", json={"requests": []})
+
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.json()["error"]["code"], "empty_batch")
+
+    def test_model_catalog_reports_every_stage_with_its_candidates(self) -> None:
+        with _client(_FakePipeline()) as client:
+            response = client.get("/v1/models/catalog")
+
+        self.assertEqual(response.status_code, 200)
+        catalog = response.json()
+        stages = {stage["stage"] for stage in catalog["stages"]}
+        self.assertEqual(stages, {"triage", "router", "injection", "execution", "deep", "network"})
+        triage = next(stage for stage in catalog["stages"] if stage["stage"] == "triage")
+        self.assertTrue(triage["candidates"])
+        self.assertEqual(sum(1 for candidate in triage["candidates"] if candidate["deployed"]), 1)
+        self.assertEqual(catalog["runtime"], _FakePipeline.model_versions | {"network": "fake-network-v1"})
+
     def test_concurrent_requests_are_serialized_safely(self) -> None:
         pipeline = _FakePipeline(delay_seconds=0.01)
         with _client(pipeline) as client:

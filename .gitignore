@@ -9,6 +9,8 @@ htmlcov/
 
 datasets/raw/
 datasets/processed/
+# The sampled probe corpus is small, deterministic, and shipped with the services.
+!datasets/samples/
 artifacts/
 **/target/
 dashboard/node_modules/

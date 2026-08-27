@@ -47,6 +47,11 @@ public class ControlPlaneService {
         return current;
     }
 
+    public List<BlockView> blocks() {
+        return jdbc.query("select source_ip, reason, expires_at, active from blocked_entities order by updated_at desc",
+            (row, index) -> new BlockView(row.getString("source_ip"), row.getString("reason"), row.getTimestamp("expires_at").toInstant(), row.getBoolean("active")));
+    }
+
     public List<ApplicationView> applications() {
         return jdbc.query("select application_id, name, upstream_url, enabled from protected_applications order by name",
             (row, index) -> new ApplicationView(row.getObject("application_id", UUID.class), row.getString("name"), row.getString("upstream_url"), row.getBoolean("enabled")));
@@ -59,6 +64,16 @@ public class ControlPlaneService {
         jdbc.update("insert into protected_applications(application_id, name, upstream_url, enabled) values (?, ?, ?, true)", id, request.name(), request.upstreamUrl());
         audit(administrator, "PROTECTED_APPLICATION", id.toString(), "CREATE", null, created);
         return created;
+    }
+
+    @Transactional
+    public ApplicationView setApplicationEnabled(UUID applicationId, boolean enabled, String administrator) {
+        ApplicationView old = applications().stream().filter(app -> app.applicationId().equals(applicationId)).findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("protected application does not exist"));
+        jdbc.update("update protected_applications set enabled = ? where application_id = ?", enabled, applicationId);
+        ApplicationView current = new ApplicationView(applicationId, old.name(), old.upstreamUrl(), enabled);
+        audit(administrator, "PROTECTED_APPLICATION", applicationId.toString(), enabled ? "ENABLE" : "DISABLE", old, current);
+        return current;
     }
 
     @Transactional
@@ -151,6 +166,7 @@ public class ControlPlaneService {
     public record PolicySnapshot(UUID applicationId, int version, double blockRiskThreshold, long rateLimitShortWindow) { }
     public record PolicyUpdate(double blockRiskThreshold, long rateLimitShortWindow) { }
     public record ApplicationCreate(String name, String upstreamUrl) { }
+    public record ApplicationToggle(boolean enabled) { }
     public record ApplicationView(UUID applicationId, String name, String upstreamUrl, boolean enabled) { }
     public record BlockRequest(String sourceIp, String reason, java.time.Duration duration) { }
     public record BlockView(String sourceIp, String reason, Instant expiresAt, boolean active) { }

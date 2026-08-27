@@ -38,3 +38,6 @@ adaptive-waf:
       initial-password: ${WAF_ADMIN_INITIAL_PASSWORD:adaptive_waf_dev}
     blocks:
       default-duration: ${WAF_MANUAL_BLOCK_DURATION:1h}
+    database:
+      # Reported to the console so an operator can point an external client at the journal.
+      external-url: ${WAF_POSTGRES_EXTERNAL_URL:jdbc:postgresql://127.0.0.1:55432/adaptive_waf}

@@ -3,17 +3,19 @@ package com.adaptivewaf.control.events;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 
+/**
+ * Removes credential material from a security event while keeping the request representation intact. Request
+ * identity, payloads, and model evidence are retained verbatim so an operator can see exactly what was submitted
+ * and how the pipeline judged it.
+ */
 @Component
 public class SecurityEventSanitizer {
-    private static final int MAX_DETAILS_LENGTH = 4096;
+    private static final int MAX_DETAILS_LENGTH = 32_768;
     private final ObjectMapper objectMapper;
 
     public SecurityEventSanitizer(ObjectMapper objectMapper) { this.objectMapper = objectMapper; }
@@ -31,23 +33,13 @@ public class SecurityEventSanitizer {
         } catch (Exception error) { throw new IllegalArgumentException("event cannot be serialized", error); }
     }
 
-    public String hash(String value) {
-        if (value == null || value.isBlank()) { return null; }
-        try {
-            byte[] hash = MessageDigest.getInstance("SHA-256").digest(value.getBytes(StandardCharsets.UTF_8));
-            StringBuilder encoded = new StringBuilder();
-            for (byte entry : hash) { encoded.append(String.format("%02x", entry)); }
-            return encoded.toString();
-        } catch (NoSuchAlgorithmException error) { throw new IllegalStateException("SHA-256 is unavailable", error); }
-    }
-
     private void redact(JsonNode node) {
         if (node.isObject()) {
             ObjectNode object = (ObjectNode) node;
             Iterator<Map.Entry<String, JsonNode>> fields = object.fields();
             while (fields.hasNext()) {
                 Map.Entry<String, JsonNode> field = fields.next();
-                if (sensitive(field.getKey())) { object.put(field.getKey(), "***REDACTED***"); }
+                if (credential(field.getKey())) { object.put(field.getKey(), "***REDACTED***"); }
                 else { redact(field.getValue()); }
             }
         } else if (node.isArray()) {
@@ -55,9 +47,9 @@ public class SecurityEventSanitizer {
         }
     }
 
-    private boolean sensitive(String key) {
+    private boolean credential(String key) {
         String normalized = key.toLowerCase(Locale.ROOT);
         return normalized.contains("authorization") || normalized.contains("password") || normalized.contains("token")
-            || normalized.contains("secret") || normalized.contains("api_key") || normalized.contains("cookie") || normalized.equals("body");
+            || normalized.contains("secret") || normalized.contains("api_key") || normalized.contains("apikey");
     }
 }

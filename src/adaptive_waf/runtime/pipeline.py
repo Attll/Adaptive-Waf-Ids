@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from time import perf_counter_ns
 from typing import Callable, Mapping
+from uuid import uuid4
 
 from adaptive_waf.contracts import AttackClass, BehaviourContext, DeepOutput, DetectionResult, ExpertFamily, ExpertOutput, HttpRequestRecord, NetworkContext, RouterOutput, TriageDecision
 from adaptive_waf.features.classical import ClassicalFeatureExtractor
@@ -18,6 +19,7 @@ class PipelineThresholds:
     expert_minimum_confidence: float
     router_minimum_top1_probability: float
     router_minimum_top1_margin: float
+    asynchronous_deep_escalation_enabled: bool = False
 
 
 class AdaptiveDetectionPipeline:
@@ -30,6 +32,7 @@ class AdaptiveDetectionPipeline:
         model_versions: Mapping[str, str],
         deep_predictor: Callable[[HttpRequestRecord], Mapping[AttackClass, float]] | None = None,
         risk_fuser: DeterministicRiskFusion | None = None,
+        deep_scheduler: Callable[[str, HttpRequestRecord, "DetectionResult"], None] | None = None,
     ) -> None:
         self._triage_model = triage_model
         self._router_model = router_model
@@ -37,6 +40,7 @@ class AdaptiveDetectionPipeline:
         self._thresholds = thresholds
         self._model_versions = dict(model_versions)
         self._deep_predictor = deep_predictor
+        self._deep_scheduler = deep_scheduler
         self._risk_fuser = risk_fuser or DeterministicRiskFusion({"http": 1.0, "behaviour": 1.0, "network": 1.0, "rule": 1.0})
         self._extractor = ClassicalFeatureExtractor()
 
@@ -74,7 +78,9 @@ class AdaptiveDetectionPipeline:
         latencies["router"] = _elapsed_ms(router_start)
         outputs = tuple(self._expert_output(family, features, latencies) for family in selected)
         best = max(outputs, key=lambda output: output.risk)
-        deep_used = best.confidence < self._thresholds.expert_minimum_confidence and self._deep_predictor is not None
+        unsure = best.confidence < self._thresholds.expert_minimum_confidence and self._deep_predictor is not None
+        deferred = unsure and self._thresholds.asynchronous_deep_escalation_enabled and self._deep_scheduler is not None
+        deep_used = unsure and not deferred
         deep_output = None
         if deep_used:
             deep_start = perf_counter_ns()
@@ -82,14 +88,13 @@ class AdaptiveDetectionPipeline:
             latencies["deep"] = _elapsed_ms(deep_start)
             attack, confidence = max(deep_scores.items(), key=lambda item: item[1])
             deep_output = DeepOutput(attack, confidence, 1.0 - deep_scores[AttackClass.BENIGN], self._model_versions["deep"], deep_scores)
-        behaviour_risk = (behaviour_context or BehaviourContext()).risk
-        network_risk = (network_context or NetworkContext()).risk
+        escalation_id = str(uuid4()) if deferred else None
         behaviour = behaviour_context or BehaviourContext()
         network = network_context or NetworkContext()
         http_risk = deep_output.risk if deep_output is not None else best.risk
         predicted_attack = deep_output.predicted_attack if deep_output is not None else best.predicted_attack
         fusion = self._risk_fuser.fuse(http_risk, behaviour, network, rule_evidence)
-        return DetectionResult(
+        result = DetectionResult(
             request_id=request.request_id,
             timestamp=request.received_at,
             triage_score=triage_score,
@@ -98,16 +103,52 @@ class AdaptiveDetectionPipeline:
             expert_outputs=outputs,
             predicted_attack=predicted_attack,
             http_risk=http_risk,
-            behaviour_risk=behaviour_risk,
-            network_risk=network_risk,
+            behaviour_risk=behaviour.risk,
+            network_risk=network.risk,
             overall_risk=fusion.overall_risk,
-            routing_path=("TRIAGE", "ROUTER_TOP1" if len(selected) == 1 else "ROUTER_TOP2", *(f"{output.family}_FAST" for output in outputs), *( ("DEEP_ESCALATION",) if deep_used else ()), "POLICY_PENDING"),
+            routing_path=(
+                "TRIAGE",
+                "ROUTER_TOP1" if len(selected) == 1 else "ROUTER_TOP2",
+                *(f"{output.family}_FAST" for output in outputs),
+                *(("DEEP_ESCALATION",) if deep_used else ()),
+                *(("DEEP_ESCALATION_DEFERRED",) if deferred else ()),
+                "POLICY_PENDING",
+            ),
             latency_by_stage_ms=latencies,
             model_versions=self._model_versions,
-            explanation_evidence={"triage_suspicious_probability": f"{triage_score:.6f}", **behaviour_evidence(behaviour), **fusion.supporting_evidence},
+            explanation_evidence={
+                "triage_suspicious_probability": f"{triage_score:.6f}",
+                "expert_confidence": f"{best.confidence:.6f}",
+                **({"deep_escalation": "deferred_to_background_worker"} if deferred else {}),
+                **behaviour_evidence(behaviour),
+                **fusion.supporting_evidence,
+            },
             deep_model_used=deep_used,
             deep_output=deep_output,
+            deep_escalation_pending=deferred,
+            deep_escalation_id=escalation_id,
         )
+        if deferred:
+            # The caller is answered from the fast experts and the deep model adjudicates out of band; the revised
+            # verdict is reported afterwards so an operator can act on a request that was allowed provisionally.
+            self._deep_scheduler(escalation_id, request, result)
+        return result
+
+    def warm_deep_model(self) -> None:
+        """Loads the deep artifact ahead of first use. Safe to call when no deep predictor is configured."""
+        warm = getattr(self._deep_predictor, "warm", None)
+        if warm is not None:
+            warm()
+
+    def adjudicate(self, request: HttpRequestRecord) -> tuple[DeepOutput, float]:
+        """Run the deep model alone. Used by the background worker that resolves a deferred escalation."""
+        if self._deep_predictor is None:
+            raise RuntimeError("no deep predictor is configured")
+        start = perf_counter_ns()
+        scores = self._deep_predictor(request)
+        elapsed = _elapsed_ms(start)
+        attack, confidence = max(scores.items(), key=lambda item: item[1])
+        return DeepOutput(attack, confidence, 1.0 - scores[AttackClass.BENIGN], self._model_versions["deep"], scores), elapsed
 
     def _expert_output(self, family: ExpertFamily, features, latencies) -> ExpertOutput:
         start = perf_counter_ns()

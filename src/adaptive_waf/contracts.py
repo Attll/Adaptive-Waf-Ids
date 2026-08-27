@@ -161,6 +161,8 @@ class DetectionResult:
     ensemble_used: bool = False
     deep_model_used: bool = False
     deep_output: DeepOutput | None = None
+    deep_escalation_pending: bool = False
+    deep_escalation_id: str | None = None
 
     def __post_init__(self) -> None:
         if self.timestamp.tzinfo is None:

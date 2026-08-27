@@ -5,6 +5,7 @@ from pathlib import Path
 import tomllib
 
 import joblib
+from threading import Lock
 
 from adaptive_waf.config import load_settings
 from adaptive_waf.contracts import AttackClass, ExpertFamily, HttpRequestRecord
@@ -15,7 +16,7 @@ from adaptive_waf.runtime.policy import OfflinePolicySimulator, PolicyThresholds
 from adaptive_waf.runtime.pipeline import AdaptiveDetectionPipeline, PipelineThresholds
 
 
-def load_adaptive_pipeline(core_config: Path | None = None) -> AdaptiveDetectionPipeline:
+def load_adaptive_pipeline(core_config: Path | None = None, deep_scheduler=None) -> AdaptiveDetectionPipeline:
     settings = load_settings(core_config)
     root = settings.paths.project_root
     triage = _toml(root / "configs/models/triage_deployment.toml")
@@ -39,6 +40,7 @@ def load_adaptive_pipeline(core_config: Path | None = None) -> AdaptiveDetection
             float(pipeline_config["expert_minimum_confidence"]),
             float(router["minimum_top1_probability"]),
             float(router["minimum_top1_margin"]),
+            bool(pipeline_config.get("asynchronous_deep_escalation_enabled", False)),
         ),
         {
             "triage": f"{triage['run_id']}:{calibration['triage']['method']}",
@@ -52,7 +54,20 @@ def load_adaptive_pipeline(core_config: Path | None = None) -> AdaptiveDetection
             {name: float(value) for name, value in fusion_config["source_weights"].items()},
             float(fusion_config["supporting_evidence_minimum_risk"]),
         ),
+        deep_scheduler,
     )
+
+
+def load_pipeline_settings(core_config: Path | None = None) -> dict:
+    """Runtime knobs the service layer needs before the pipeline itself is constructed."""
+    settings = load_settings(core_config)
+    config = _toml(settings.paths.project_root / "configs/models/pipeline.toml")
+    return {
+        "asynchronous_deep_escalation_enabled": bool(config.get("asynchronous_deep_escalation_enabled", False)),
+        "deep_escalation_workers": int(config.get("deep_escalation_workers", 2)),
+        "deep_escalation_queue_limit": int(config.get("deep_escalation_queue_limit", 256)),
+        "expert_minimum_confidence": float(config.get("expert_minimum_confidence", 0.9)),
+    }
 
 
 def load_offline_network_detector(core_config: Path | None = None) -> OfflineNetworkDetector:
@@ -85,12 +100,19 @@ def load_offline_policy_simulator(core_config: Path | None = None) -> OfflinePol
 
 
 class DistilBertPredictor:
+    """Loads the transformer on first use. The load is guarded because escalation workers call this concurrently."""
+
     def __init__(self, artifact_directory: Path, temperature_path: Path, device_name: str) -> None:
         self._artifact_directory = artifact_directory
         self._temperature = float(json.loads(temperature_path.read_text(encoding="utf-8"))["temperature"])
         self._device_name = device_name
         self._model = None
         self._tokenizer = None
+        self._load_lock = Lock()
+
+    def warm(self) -> None:
+        """Loads the artifact ahead of the first request so a cold start never sits in the escalation queue."""
+        self._loaded()
 
     def __call__(self, request: HttpRequestRecord) -> dict[AttackClass, float]:
         torch, model, tokenizer, device = self._loaded()
@@ -101,13 +123,17 @@ class DistilBertPredictor:
 
     def _loaded(self):
         if self._model is None:
-            import torch
-            from transformers import AutoModelForSequenceClassification, AutoTokenizer
+            with self._load_lock:
+                if self._model is None:
+                    import torch
+                    from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-            device = _resolve_inference_device(torch, self._device_name)
-            self._model = AutoModelForSequenceClassification.from_pretrained(self._artifact_directory / "model").to(device).eval()
-            self._tokenizer = AutoTokenizer.from_pretrained(self._artifact_directory / "tokenizer")
-            self._device_name = str(device)
+                    device = _resolve_inference_device(torch, self._device_name)
+                    tokenizer = AutoTokenizer.from_pretrained(self._artifact_directory / "tokenizer")
+                    model = AutoModelForSequenceClassification.from_pretrained(self._artifact_directory / "model").to(device).eval()
+                    self._tokenizer = tokenizer
+                    self._device_name = str(device)
+                    self._model = model  # published last: another thread never sees a half-initialised predictor
         import torch
 
         return torch, self._model, self._tokenizer, torch.device(self._device_name)

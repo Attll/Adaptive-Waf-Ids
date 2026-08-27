@@ -2,3 +2,10 @@ triage_benign_exit_max_suspicious_probability = 0.001
 triage_early_exit_enabled = false
 expert_minimum_confidence = 0.90
 deep_device = "cuda"
+
+# When a fast expert is below expert_minimum_confidence the request is answered immediately from the fast verdict
+# and the deep model adjudicates on a background worker. The revised verdict is reported to the control plane, so a
+# request allowed provisionally can still be acted on. Set to false to keep escalation inline and blocking.
+asynchronous_deep_escalation_enabled = true
+deep_escalation_workers = 2
+deep_escalation_queue_limit = 256

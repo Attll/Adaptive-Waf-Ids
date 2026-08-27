@@ -34,6 +34,7 @@ public class SecurityConfiguration {
         return http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/actuator/health", "/actuator/info", "/internal/**").permitAll()
+                .requestMatchers("/v1/stream/**").permitAll()
                 .anyRequest().hasRole("ADMIN"))
             .httpBasic(httpBasic -> httpBasic.authenticationEntryPoint((request, response, exception) ->
                 response.sendError(401, "Administrator credentials are required")))
