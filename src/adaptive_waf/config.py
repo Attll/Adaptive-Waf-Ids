@@ -46,4 +46,7 @@ def load_settings(config_path: Path | str | None = None) -> CoreSettings:
 
 
 def _default_config_path() -> Path:
+    working_copy = Path.cwd() / "configs" / "core.toml"
+    if working_copy.is_file():
+        return working_copy
     return Path(__file__).resolve().parents[2] / "configs" / "core.toml"

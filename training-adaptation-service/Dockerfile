@@ -6,4 +6,4 @@ COPY configs ./configs
 COPY scripts ./scripts
 RUN pip install --no-cache-dir ".[service]"
 EXPOSE 8084
-CMD ["python", "-m", "scripts.run_training_adaptation_service"]
+CMD ["python", "-m", "scripts.run_training_adaptation_service", "--host", "0.0.0.0"]

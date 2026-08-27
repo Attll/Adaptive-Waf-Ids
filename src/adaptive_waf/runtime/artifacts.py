@@ -104,12 +104,19 @@ class DistilBertPredictor:
             import torch
             from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-            device = torch.device(self._device_name)
+            device = _resolve_inference_device(torch, self._device_name)
             self._model = AutoModelForSequenceClassification.from_pretrained(self._artifact_directory / "model").to(device).eval()
             self._tokenizer = AutoTokenizer.from_pretrained(self._artifact_directory / "tokenizer")
+            self._device_name = str(device)
         import torch
 
         return torch, self._model, self._tokenizer, torch.device(self._device_name)
+
+
+def _resolve_inference_device(torch, configured: str):
+    if configured.startswith("cuda") and not torch.cuda.is_available():
+        return torch.device("cpu")
+    return torch.device(configured)
 
 
 def _toml(path: Path) -> dict[str, object]:

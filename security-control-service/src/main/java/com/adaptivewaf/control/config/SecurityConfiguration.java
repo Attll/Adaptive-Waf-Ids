@@ -5,7 +5,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -36,7 +35,8 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/actuator/health", "/actuator/info", "/internal/**").permitAll()
                 .anyRequest().hasRole("ADMIN"))
-            .httpBasic(Customizer.withDefaults())
+            .httpBasic(httpBasic -> httpBasic.authenticationEntryPoint((request, response, exception) ->
+                response.sendError(401, "Administrator credentials are required")))
             .build();
     }
 }
