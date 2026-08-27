@@ -1,0 +1,40 @@
+name: adaptive-waf
+services:
+  redis:
+    image: redis:7.4-alpine
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    ports: ["15672:15672"]
+  postgres:
+    image: postgres:16-alpine
+    environment: { POSTGRES_DB: adaptive_waf, POSTGRES_USER: adaptive_waf, POSTGRES_PASSWORD: adaptive_waf_dev }
+  detection:
+    build: { context: ../.., dockerfile: detection-service/Dockerfile }
+    ports: ["8000:8000"]
+  gateway:
+    build: { context: ../../gateway-service, dockerfile: Dockerfile }
+    environment: { REDIS_HOST: redis, RABBITMQ_HOST: rabbitmq, DETECTION_SERVICE_URL: http://detection:8000, CONTROL_SERVICE_URL: http://control:8082, DEMO_BACKEND_URL: http://demo:8081 }
+    ports: ["8080:8080"]
+    depends_on: [redis, rabbitmq, detection]
+  demo:
+    build: { context: ../../demo-backend, dockerfile: Dockerfile }
+  control:
+    build: { context: ../../security-control-service, dockerfile: Dockerfile }
+    environment: { WAF_POSTGRES_URL: jdbc:postgresql://postgres:5432/adaptive_waf, REDIS_HOST: redis, RABBITMQ_HOST: rabbitmq }
+    ports: ["8082:8082"]
+    depends_on: [postgres, redis, rabbitmq]
+  sensor:
+    build: { context: ../.., dockerfile: network-sensor/Dockerfile }
+    environment: { REDIS_HOST: redis }
+    ports: ["8083:8083"]
+  adaptation:
+    build: { context: ../.., dockerfile: training-adaptation-service/Dockerfile }
+    environment: { CONTROL_SERVICE_URL: http://control:8082 }
+    ports: ["8084:8084"]
+  dashboard:
+    build: { context: ../.., dockerfile: dashboard/Dockerfile }
+    ports: ["3000:80"]
+  crs:
+    image: owasp/modsecurity-crs:nginx
+    environment: { BACKEND: http://gateway:8080, SERVER_NAME: localhost, PORT: "8080", MODSEC_RULE_ENGINE: "on" }
+    ports: ["8090:8080"]
