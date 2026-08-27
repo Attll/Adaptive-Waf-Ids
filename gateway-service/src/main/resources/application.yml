@@ -8,6 +8,9 @@ spring:
     redis:
       host: ${REDIS_HOST:127.0.0.1}
       port: ${REDIS_PORT:6379}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:127.0.0.1}
+    port: ${RABBITMQ_PORT:5672}
   cloud:
     gateway:
       routes:
@@ -42,3 +45,7 @@ adaptive-waf:
     elevated-requests-per-short-window: ${LOAD_MODE_ELEVATED_REQUESTS:20}
     degraded-requests-per-short-window: ${LOAD_MODE_DEGRADED_REQUESTS:40}
     emergency-requests-per-short-window: ${LOAD_MODE_EMERGENCY_REQUESTS:80}
+  events:
+    enabled: ${SECURITY_EVENTS_ENABLED:true}
+    exchange: ${SECURITY_EVENTS_EXCHANGE:adaptive.waf.events}
+    queue-capacity: ${SECURITY_EVENTS_QUEUE_CAPACITY:500}

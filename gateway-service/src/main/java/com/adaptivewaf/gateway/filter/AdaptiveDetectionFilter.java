@@ -2,6 +2,8 @@ package com.adaptivewaf.gateway.filter;
 
 import com.adaptivewaf.gateway.detection.DetectionClient;
 import com.adaptivewaf.gateway.detection.DetectionProperties;
+import com.adaptivewaf.gateway.events.SecurityEvent;
+import com.adaptivewaf.gateway.events.SecurityEventPublisher;
 import com.adaptivewaf.gateway.behaviour.BehaviourSnapshot;
 import com.adaptivewaf.gateway.behaviour.OperatingMode;
 import com.adaptivewaf.gateway.behaviour.RedisBehaviourService;
@@ -38,14 +40,17 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
     private final GatewayPolicy policy;
     private final RedisBehaviourService behaviourService;
     private final RedisLoadModeService loadModeService;
+    private final SecurityEventPublisher eventPublisher;
 
     public AdaptiveDetectionFilter(DetectionClient detectionClient, DetectionProperties detectionProperties, GatewayPolicy policy,
-                                   RedisBehaviourService behaviourService, RedisLoadModeService loadModeService) {
+                                   RedisBehaviourService behaviourService, RedisLoadModeService loadModeService,
+                                   SecurityEventPublisher eventPublisher) {
         this.detectionClient = detectionClient;
         this.detectionProperties = detectionProperties;
         this.policy = policy;
         this.behaviourService = behaviourService;
         this.loadModeService = loadModeService;
+        this.eventPublisher = eventPublisher;
     }
 
     @Override
@@ -84,10 +89,10 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
     private Mono<Void> process(CachedExchange cached, String requestId, OperatingMode mode, GatewayFilterChain chain) {
         return behaviourService.isTemporarilyBlocked(cached.getRequest())
             .flatMap(blocked -> blocked
-                ? temporarilyBlocked(cached.exchange(), requestId)
+                ? temporarilyBlocked(cached, requestId)
                 : behaviourService.observe(cached.getRequest(), requestId)
                     .flatMap(behaviour -> behaviour.rateLimited()
-                        ? rateLimited(cached.exchange(), requestId)
+                        ? rateLimited(cached, requestId)
                         : detectOrForward(cached, requestId, mode, behaviour, chain)));
     }
 
@@ -101,6 +106,7 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
             .flatMap(verdict -> {
                 LOGGER.debug("Detection verdict for request {}: attack={}, risk={}", requestId, verdict.predictedAttack(), verdict.overallRisk());
                 if (policy.shouldBlock(verdict)) {
+                    eventPublisher.publish(event(cached, requestId, "security.attack", HttpStatus.FORBIDDEN.value(), "BLOCK", verdict.predictedAttack(), verdict.overallRisk()));
                     return behaviourService.recordOutcome(cached.getRequest(), HttpStatus.FORBIDDEN.value(), verdict.overallRisk(), verdict.predictedAttack())
                         .onErrorResume(error -> Mono.empty())
                         .then(block(cached.exchange(), requestId, verdict.predictedAttack()));
@@ -114,11 +120,15 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
     }
 
     private Mono<Void> forwardAndRecord(CachedExchange cached, GatewayFilterChain chain, double risk, String attack) {
-        cached.exchange().getResponse().beforeCommit(() -> behaviourService.recordOutcome(cached.getRequest(), responseStatus(cached.exchange()), risk, attack)
+        cached.exchange().getResponse().beforeCommit(() -> {
+            int status = responseStatus(cached.exchange());
+            eventPublisher.publish(event(cached, requestId(cached.getRequest().getHeaders()), "security.request", status, "ALLOW", attack, risk));
+            return behaviourService.recordOutcome(cached.getRequest(), status, risk, attack)
                 .onErrorResume(error -> {
                     LOGGER.warn("Could not persist behavioural outcome: {}", error.getClass().getSimpleName());
                     return Mono.empty();
-                }));
+                });
+        });
         return chain.filter(cached.exchange());
     }
 
@@ -212,12 +222,14 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         return exchange.getResponse().writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(message)));
     }
 
-    private Mono<Void> rateLimited(ServerWebExchange exchange, String requestId) {
-        return securityResponse(exchange, requestId, HttpStatus.TOO_MANY_REQUESTS, "rate_limited", "RATE_LIMIT");
+    private Mono<Void> rateLimited(CachedExchange cached, String requestId) {
+        eventPublisher.publish(event(cached, requestId, "security.decision", HttpStatus.TOO_MANY_REQUESTS.value(), "RATE_LIMIT", "RATE_LIMIT", 1.0));
+        return securityResponse(cached.exchange(), requestId, HttpStatus.TOO_MANY_REQUESTS, "rate_limited", "RATE_LIMIT");
     }
 
-    private Mono<Void> temporarilyBlocked(ServerWebExchange exchange, String requestId) {
-        return securityResponse(exchange, requestId, HttpStatus.FORBIDDEN, "temporary_block", "BEHAVIOURAL");
+    private Mono<Void> temporarilyBlocked(CachedExchange cached, String requestId) {
+        eventPublisher.publish(event(cached, requestId, "security.decision", HttpStatus.FORBIDDEN.value(), "TEMPORARY_BLOCK", "BEHAVIOURAL", 1.0));
+        return securityResponse(cached.exchange(), requestId, HttpStatus.FORBIDDEN, "temporary_block", "BEHAVIOURAL");
     }
 
     private Mono<Void> securityResponse(ServerWebExchange exchange, String requestId, HttpStatus status, String code, String predictedAttack) {
@@ -226,6 +238,13 @@ public class AdaptiveDetectionFilter implements GlobalFilter, Ordered {
         exchange.getResponse().getHeaders().set("X-Request-ID", requestId);
         byte[] message = ("{\"error\":{\"code\":\"" + code + "\",\"predicted_attack\":\"" + predictedAttack + "\"},\"request_id\":\"" + requestId + "\"}").getBytes(StandardCharsets.UTF_8);
         return exchange.getResponse().writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(message)));
+    }
+
+    private SecurityEvent event(CachedExchange cached, String requestId, String category, int status, String action,
+                                String predictedAttack, double risk) {
+        ServerHttpRequest request = cached.getRequest();
+        return SecurityEvent.create(category, requestId, sourceIp(request), request.getMethod().name(),
+            normalizedPath(request.getPath().value()), status, action, predictedAttack, risk);
     }
 
     private record CachedExchange(ServerWebExchange exchange, String body) {
