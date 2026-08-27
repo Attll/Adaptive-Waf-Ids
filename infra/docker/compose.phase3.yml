@@ -1,0 +1,19 @@
+name: adaptive-waf-phase3
+
+services:
+  crs:
+    image: owasp/modsecurity-crs:nginx
+    environment:
+      BACKEND: http://host.docker.internal:8080
+      SERVER_NAME: localhost
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "on"
+      DETECTION_PARANOIA: "1"
+      BLOCKING_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      PROXY_TIMEOUT: "10s"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - "8090:8080"
+      - "8443:8443"

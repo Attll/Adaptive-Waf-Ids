@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: gateway-service
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
   cloud:
     gateway:
       routes:
@@ -25,5 +29,16 @@ adaptive-waf:
     base-url: ${DETECTION_SERVICE_URL:http://127.0.0.1:8000}
     timeout: ${DETECTION_TIMEOUT:5s}
     max-body-bytes: ${DETECTION_MAX_BODY_BYTES:65536}
+    path-prefix-to-strip: ${DETECTION_PATH_PREFIX_TO_STRIP:/backend}
   policy:
     block-risk-threshold: ${WAF_BLOCK_RISK_THRESHOLD:0.81}
+  behaviour:
+    short-window: ${BEHAVIOUR_SHORT_WINDOW:10s}
+    medium-window: ${BEHAVIOUR_MEDIUM_WINDOW:60s}
+    rate-limit-short-window: ${BEHAVIOUR_RATE_LIMIT_SHORT_WINDOW:40}
+    temporary-block-threshold: ${BEHAVIOUR_TEMPORARY_BLOCK_THRESHOLD:40}
+    temporary-block-duration: ${BEHAVIOUR_TEMPORARY_BLOCK_DURATION:60s}
+    failed-auth-block-threshold: ${BEHAVIOUR_FAILED_AUTH_BLOCK_THRESHOLD:5}
+    elevated-requests-per-short-window: ${LOAD_MODE_ELEVATED_REQUESTS:20}
+    degraded-requests-per-short-window: ${LOAD_MODE_DEGRADED_REQUESTS:40}
+    emergency-requests-per-short-window: ${LOAD_MODE_EMERGENCY_REQUESTS:80}

@@ -2,6 +2,8 @@ package com.adaptivewaf.backend;
 
 import java.util.Map;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,19 @@ public class DemoController {
     @GetMapping("/public/hello")
     public Map<String, String> hello(@RequestHeader(value = "X-Request-ID", required = false) String requestId) {
         return Map.of("status", "backend_reached", "request_id", requestId == null ? "missing" : requestId);
+    }
+
+    @GetMapping("/search")
+    public Map<String, String> search(@RequestHeader(value = "X-Request-ID", required = false) String requestId) {
+        return Map.of("status", "backend_reached", "request_id", requestId == null ? "missing" : requestId);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> login(@RequestHeader(value = "X-Request-ID", required = false) String requestId) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
+            "status", "invalid_credentials",
+            "request_id", requestId == null ? "missing" : requestId
+        ));
     }
 
     @PostMapping("/api/echo")

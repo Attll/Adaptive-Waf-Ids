@@ -8,6 +8,7 @@ public class DetectionProperties {
     private String baseUrl = "http://127.0.0.1:8000";
     private Duration timeout = Duration.ofSeconds(5);
     private int maxBodyBytes = 65536;
+    private String pathPrefixToStrip = "/backend";
 
     public String getBaseUrl() { return baseUrl; }
     public void setBaseUrl(String baseUrl) { this.baseUrl = baseUrl; }
@@ -15,4 +16,6 @@ public class DetectionProperties {
     public void setTimeout(Duration timeout) { this.timeout = timeout; }
     public int getMaxBodyBytes() { return maxBodyBytes; }
     public void setMaxBodyBytes(int maxBodyBytes) { this.maxBodyBytes = maxBodyBytes; }
+    public String getPathPrefixToStrip() { return pathPrefixToStrip; }
+    public void setPathPrefixToStrip(String pathPrefixToStrip) { this.pathPrefixToStrip = pathPrefixToStrip; }
 }
