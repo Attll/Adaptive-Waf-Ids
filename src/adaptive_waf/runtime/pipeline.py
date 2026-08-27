@@ -6,6 +6,7 @@ from typing import Callable, Mapping
 
 from adaptive_waf.contracts import AttackClass, BehaviourContext, DetectionResult, ExpertFamily, ExpertOutput, HttpRequestRecord, NetworkContext, RouterOutput, TriageDecision
 from adaptive_waf.features.classical import ClassicalFeatureExtractor
+from adaptive_waf.runtime.behaviour import behaviour_evidence, combine_http_and_behaviour_risk
 from adaptive_waf.training.router_evaluation import select_experts
 
 
@@ -74,6 +75,8 @@ class AdaptiveDetectionPipeline:
             best = ExpertOutput(ExpertFamily.INJECTION, attack, confidence, 1.0 - deep_scores[AttackClass.BENIGN], self._model_versions["deep"], deep_scores)
         behaviour_risk = (behaviour_context or BehaviourContext()).risk
         network_risk = (network_context or NetworkContext()).risk
+        behaviour = behaviour_context or BehaviourContext()
+        network = network_context or NetworkContext()
         return DetectionResult(
             request_id=request.request_id,
             timestamp=request.received_at,
@@ -85,11 +88,11 @@ class AdaptiveDetectionPipeline:
             http_risk=best.risk,
             behaviour_risk=behaviour_risk,
             network_risk=network_risk,
-            overall_risk=best.risk,
+            overall_risk=combine_http_and_behaviour_risk(best.risk, behaviour),
             routing_path=("TRIAGE", "ROUTER_TOP1" if len(selected) == 1 else "ROUTER_TOP2", *(f"{output.family}_FAST" for output in outputs), *( ("DEEP_ESCALATION",) if deep_used else ()), "POLICY_PENDING"),
             latency_by_stage_ms=latencies,
             model_versions=self._model_versions,
-            explanation_evidence={"triage_suspicious_probability": f"{triage_score:.6f}"},
+            explanation_evidence={"triage_suspicious_probability": f"{triage_score:.6f}", **behaviour_evidence(behaviour)},
             deep_model_used=deep_used,
         )
 
@@ -110,6 +113,7 @@ def _elapsed_ms(start: int) -> float:
 
 
 def _early_result(request, triage_score, behaviour, network, latencies, versions) -> DetectionResult:
+    behaviour_context = behaviour or BehaviourContext()
     return DetectionResult(
         request_id=request.request_id,
         timestamp=request.received_at,
@@ -119,11 +123,11 @@ def _early_result(request, triage_score, behaviour, network, latencies, versions
         expert_outputs=(),
         predicted_attack=AttackClass.BENIGN,
         http_risk=triage_score,
-        behaviour_risk=(behaviour or BehaviourContext()).risk,
+        behaviour_risk=behaviour_context.risk,
         network_risk=(network or NetworkContext()).risk,
-        overall_risk=triage_score,
+        overall_risk=combine_http_and_behaviour_risk(triage_score, behaviour_context),
         routing_path=("TRIAGE", "TRIAGE_EARLY_EXIT", "POLICY_PENDING"),
         latency_by_stage_ms=latencies,
         model_versions=versions,
-        explanation_evidence={"triage_suspicious_probability": f"{triage_score:.6f}"},
+        explanation_evidence={"triage_suspicious_probability": f"{triage_score:.6f}", **behaviour_evidence(behaviour_context)},
     )
