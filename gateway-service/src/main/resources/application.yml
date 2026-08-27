@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: demo-backend
+          uri: ${DEMO_BACKEND_URL:http://127.0.0.1:8081}
+          predicates:
+            - Path=/backend/**
+          filters:
+            - StripPrefix=1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+adaptive-waf:
+  detection:
+    base-url: ${DETECTION_SERVICE_URL:http://127.0.0.1:8000}
+    timeout: ${DETECTION_TIMEOUT:5s}
+    max-body-bytes: ${DETECTION_MAX_BODY_BYTES:65536}
+  policy:
+    block-risk-threshold: ${WAF_BLOCK_RISK_THRESHOLD:0.81}

@@ -10,3 +10,4 @@ htmlcov/
 datasets/raw/
 datasets/processed/
 artifacts/
+**/target/
