@@ -1,0 +1,154 @@
+ Image adaptive-waf-ids/dashboard:1.1.0 Building 
+ Image adaptive-waf-ids/control:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.59kB done
+#1 DONE 0.0s
+
+#2 [dashboard internal] load build definition from Dockerfile
+#2 transferring dockerfile: 453B 0.0s done
+#2 DONE 0.0s
+
+#3 [control internal] load build definition from Dockerfile
+#3 transferring dockerfile: 550B 0.0s done
+#3 DONE 0.0s
+
+#4 [control internal] load metadata for docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#4 DONE 1.7s
+
+#5 [control internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#5 ...
+
+#6 [dashboard internal] load metadata for docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#6 DONE 1.7s
+
+#7 [dashboard internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#7 ...
+
+#5 [control internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#5 DONE 2.2s
+
+#8 [control internal] load .dockerignore
+#8 transferring context: 63B 0.0s done
+#8 DONE 0.0s
+
+#7 [dashboard internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#7 DONE 2.2s
+
+#9 [dashboard internal] load .dockerignore
+#9 transferring context: 265B done
+#9 DONE 0.0s
+
+#10 [control stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#10 resolve docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a 0.0s done
+#10 DONE 0.0s
+
+#11 [control build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#11 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e 0.0s done
+#11 DONE 0.0s
+
+#12 [control internal] load build context
+#12 transferring context: 12.17kB done
+#12 DONE 0.0s
+
+#13 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#13 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.0s done
+#13 DONE 0.0s
+
+#14 [dashboard build 1/6] FROM docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#14 resolve docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85 0.0s done
+#14 DONE 0.0s
+
+#15 [control build 2/6] WORKDIR /workspace
+#15 CACHED
+
+#16 [control build 3/6] COPY pom.xml .
+#16 CACHED
+
+#17 [control build 4/6] RUN mvn -q -DskipTests dependency:go-offline
+#17 CACHED
+
+#18 [dashboard internal] load build context
+#18 transferring context: 448.86kB 0.0s done
+#18 DONE 0.1s
+
+#19 [control build 5/6] COPY src src
+#19 DONE 0.0s
+
+#20 [dashboard build 2/6] WORKDIR /app
+#20 CACHED
+
+#21 [dashboard build 3/6] COPY dashboard/package*.json ./
+#21 CACHED
+
+#22 [dashboard build 4/6] RUN npm ci
+#22 CACHED
+
+#23 [dashboard build 5/6] COPY dashboard .
+#23 DONE 0.0s
+
+#24 [control build 6/6] RUN mvn -q -DskipTests package
+#24 ...
+
+#25 [dashboard build 6/6] RUN npm run build
+#25 0.482 
+#25 0.482 > adaptive-waf-dashboard@0.1.0 build
+#25 0.482 > tsc -b && vite build
+#25 0.482 
+#25 4.572 vite v6.4.3 building for production...
+#25 4.651 transforming...
+#25 5.667 ✓ 56 modules transformed.
+#25 5.798 rendering chunks...
+#25 5.804 computing gzip size...
+#25 5.813 dist/index.html                   0.81 kB │ gzip:   0.43 kB
+#25 5.813 dist/assets/index-PU_C-jH0.css   29.49 kB │ gzip:   6.58 kB
+#25 5.813 dist/assets/index-Dzz2ybbl.js   394.49 kB │ gzip: 113.78 kB
+#25 5.814 ✓ built in 1.21s
+#25 DONE 5.9s
+
+#13 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#13 CACHED
+
+#26 [dashboard stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+#26 DONE 0.0s
+
+#27 [dashboard stage-1 3/3] COPY dashboard/nginx.conf /etc/nginx/conf.d/default.conf
+#27 DONE 0.0s
+
+#28 [dashboard] exporting to image
+#28 exporting layers 0.0s done
+#28 exporting manifest sha256:7f68b1ceb2ce6524d60d6896a4cd77cc1322a565ad033635dc85544ea74954b9 done
+#28 exporting config sha256:153ddb7589894ae08afde2295c6797545cb810b0cf10596faa1dca7129208d46 done
+#28 exporting attestation manifest sha256:d80f9482ffe83fc18b54f1e3d37cb04d1ad510716b0ea1b00fe4a841e7f95d6d done
+#28 exporting manifest list sha256:13f8e1c3dbc6c26d47a225ad2d889a85adfaecfeb49bdec237dabb5ab96c9693 done
+#28 naming to docker.io/adaptive-waf-ids/dashboard:1.1.0
+#28 naming to docker.io/adaptive-waf-ids/dashboard:1.1.0 done
+#28 unpacking to docker.io/adaptive-waf-ids/dashboard:1.1.0 0.0s done
+#28 DONE 0.1s
+
+#29 [dashboard] resolving provenance for metadata file
+#29 DONE 0.0s
+
+#24 [control build 6/6] RUN mvn -q -DskipTests package
+#24 DONE 9.3s
+
+#30 [control stage-1 2/3] WORKDIR /app
+#30 CACHED
+
+#31 [control stage-1 3/3] COPY --from=build /workspace/target/security-control-service-0.1.0.jar app.jar
+#31 DONE 0.1s
+
+#32 [control] exporting to image
+#32 exporting layers 1.7s done
+#32 exporting manifest sha256:b352e5aeb016ef064517c825dedc5f9a5bb18112208653a49e884fcbd587ff83 done
+#32 exporting config sha256:ed83c8762df454e995d3b492646ea81986a609fe3dcd4335c9679e76dca1b3e0 done
+#32 exporting attestation manifest sha256:03c233a28315059f7b2473ff29af88db6365aac0456373d907d137a6012acdd0 0.0s done
+#32 exporting manifest list sha256:b1be674b5984bba87d28cb338f5a2cb971511ee2b7c9c905f7b98115a4c957de done
+#32 naming to docker.io/adaptive-waf-ids/control:1.1.0 done
+#32 unpacking to docker.io/adaptive-waf-ids/control:1.1.0
+#32 unpacking to docker.io/adaptive-waf-ids/control:1.1.0 0.3s done
+#32 DONE 2.1s
+
+#33 [control] resolving provenance for metadata file
+#33 DONE 0.0s
+ Image adaptive-waf-ids/dashboard:1.1.0 Built 
+ Image adaptive-waf-ids/control:1.1.0 Built 

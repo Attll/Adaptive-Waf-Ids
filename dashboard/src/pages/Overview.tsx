@@ -53,17 +53,18 @@ export function Overview(props: ViewProps) {
 
   return (
     <div className="stack">
+      {props.runs.length>0&&<Panel title="Recent console runs" subtitle="Shared across Generator, Model Lab and Timing; gateway totals below come from the persisted journal"><div className="table-wrap"><table><thead><tr><th>Run</th><th>Requests</th><th>Outcome</th></tr></thead><tbody>{props.runs.slice(0,5).map(run=><tr key={run.id}><td>{run.kind}{run.stop&&run.summary?.state==='running'&&<button className="btn danger" onClick={run.stop}>Stop run</button>}</td><td>{run.count}</td><td>{run.kind==='Timing'?`${Number(run.summary?.p95Ms??0).toFixed(1)} ms p95 · ${Number(run.summary?.httpResponsesPerSecond??0).toFixed(1)} responses/s · ${run.summary?.errors??0} errors`:run.kind==='RL Training'?'Six shadow policies trained':run.kind==='Model Lab'?'Model-only outputs available':run.kind==='Network Generator'?`${run.summary?.classified??0} flows classified`:`${String(run.summary?.state??'running')} · ${run.summary?.journalled??0} journalled`}</td></tr>)}</tbody></table></div></Panel>}
       <div className="grid-4 stagger">
         <Metric
           label="Requests observed"
-          value={summary.total}
-          detail={`${summary.uniqueSources} distinct source addresses`}
+          value={summary.allTimeTotal??summary.total}
+          detail={`${summary.total} recent requests · ${summary.fullyInspected ?? 0} fully inspected in that window`}
           tone="info"
           icon={<Icon name="requests" size={13} />}
           spark={timeline.map((point) => point.total)}
         />
         <Metric
-          label="Detections"
+          label="Recent detections"
           value={summary.detections}
           detail={`${percent(detectionRate, 1)} of observed traffic`}
           tone="warning"
@@ -71,7 +72,7 @@ export function Overview(props: ViewProps) {
           spark={timeline.map((point) => point.detections)}
         />
         <Metric
-          label="Blocked at gateway"
+          label="Recent gateway blocks"
           value={summary.blocked}
           detail={`${summary.rateLimited} additionally rate limited`}
           tone="danger"

@@ -1,0 +1,815 @@
+{
+  "scope": "warmed single-client development diagnostic; no final-set or generalization claim",
+  "predictions_and_risk_equivalent": true,
+  "records": [
+    {
+      "threads": null,
+      "repeat": 0,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 239.5702999929199,
+      "stages_ms": {
+        "feature_extraction": 0.2859,
+        "triage": 59.0598,
+        "router": 2.2141,
+        "injection_expert": 33.3887,
+        "deep": 144.4899
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 0,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 91.66040000854991,
+      "stages_ms": {
+        "feature_extraction": 0.1211,
+        "triage": 48.7889,
+        "router": 1.6891,
+        "injection_expert": 36.0754,
+        "deep": 4.8922
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 0,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 74.66699999349657,
+      "stages_ms": {
+        "feature_extraction": 0.1033,
+        "triage": 37.0613,
+        "router": 1.4947,
+        "injection_expert": 35.9506
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 0,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 67.97769998956937,
+      "stages_ms": {
+        "feature_extraction": 0.0778,
+        "triage": 34.8344,
+        "router": 1.4246,
+        "injection_expert": 31.5844
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 0,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 82.6865999988513,
+      "stages_ms": {
+        "feature_extraction": 0.0937,
+        "triage": 43.7554,
+        "router": 1.4133,
+        "injection_expert": 33.9607,
+        "deep": 3.3972
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 0,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 81.62009999796283,
+      "stages_ms": {
+        "feature_extraction": 0.0645,
+        "triage": 44.7954,
+        "router": 1.4148,
+        "injection_expert": 31.9992,
+        "deep": 3.2766
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 1,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 166.65359999751672,
+      "stages_ms": {
+        "feature_extraction": 0.0607,
+        "triage": 33.4489,
+        "router": 1.3918,
+        "injection_expert": 127.8973,
+        "deep": 3.7898
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 1,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 70.29950000287499,
+      "stages_ms": {
+        "feature_extraction": 0.0771,
+        "triage": 32.6355,
+        "router": 1.4388,
+        "injection_expert": 32.5979,
+        "deep": 3.4786
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 1,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 70.0665000040317,
+      "stages_ms": {
+        "feature_extraction": 0.0835,
+        "triage": 34.6497,
+        "router": 1.41,
+        "injection_expert": 33.871
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 1,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 64.21409999893513,
+      "stages_ms": {
+        "feature_extraction": 0.0741,
+        "triage": 31.2808,
+        "router": 1.4604,
+        "injection_expert": 31.3483
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 1,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 73.36340000620112,
+      "stages_ms": {
+        "feature_extraction": 0.0743,
+        "triage": 37.1099,
+        "router": 1.4958,
+        "injection_expert": 31.4449,
+        "deep": 3.1767
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 1,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 84.94000000064261,
+      "stages_ms": {
+        "feature_extraction": 0.0643,
+        "triage": 44.5763,
+        "router": 1.5023,
+        "injection_expert": 33.9801,
+        "deep": 4.7442
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 2,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 81.0063000099035,
+      "stages_ms": {
+        "feature_extraction": 0.064,
+        "triage": 42.5771,
+        "router": 1.3568,
+        "injection_expert": 33.681,
+        "deep": 3.2606
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 2,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 74.53670000541024,
+      "stages_ms": {
+        "feature_extraction": 0.0759,
+        "triage": 32.4646,
+        "router": 1.3953,
+        "injection_expert": 36.8309,
+        "deep": 3.6878
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 2,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 68.54169999132864,
+      "stages_ms": {
+        "feature_extraction": 0.0922,
+        "triage": 34.31,
+        "router": 1.4477,
+        "injection_expert": 32.6372
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 2,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 67.0510999916587,
+      "stages_ms": {
+        "feature_extraction": 0.0808,
+        "triage": 32.8727,
+        "router": 1.6161,
+        "injection_expert": 32.4135
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 2,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 71.75529999949504,
+      "stages_ms": {
+        "feature_extraction": 0.0918,
+        "triage": 33.0834,
+        "router": 1.6946,
+        "injection_expert": 32.8232,
+        "deep": 3.9142
+      }
+    },
+    {
+      "threads": null,
+      "repeat": 2,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 70.80109999515116,
+      "stages_ms": {
+        "feature_extraction": 0.0781,
+        "triage": 31.6529,
+        "router": 1.7205,
+        "injection_expert": 33.9304,
+        "deep": 3.352
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 0,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 26.931499989586882,
+      "stages_ms": {
+        "feature_extraction": 0.0583,
+        "triage": 10.7087,
+        "router": 1.6736,
+        "injection_expert": 10.1208,
+        "deep": 4.308
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 0,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 24.733699989155866,
+      "stages_ms": {
+        "feature_extraction": 0.0818,
+        "triage": 11.3004,
+        "router": 1.418,
+        "injection_expert": 8.7186,
+        "deep": 3.1601
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 0,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 22.454499994637445,
+      "stages_ms": {
+        "feature_extraction": 0.0707,
+        "triage": 10.9303,
+        "router": 1.8495,
+        "injection_expert": 9.552
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 0,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 24.921000003814697,
+      "stages_ms": {
+        "feature_extraction": 0.0806,
+        "triage": 12.5487,
+        "router": 1.6671,
+        "injection_expert": 10.5719
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 0,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 25.67260000796523,
+      "stages_ms": {
+        "feature_extraction": 0.0795,
+        "triage": 10.45,
+        "router": 1.4489,
+        "injection_expert": 8.6938,
+        "deep": 4.9267
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 0,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 26.62150000105612,
+      "stages_ms": {
+        "feature_extraction": 0.0803,
+        "triage": 11.1842,
+        "router": 1.7511,
+        "injection_expert": 10.1084,
+        "deep": 3.4314
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 1,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 26.883900005486794,
+      "stages_ms": {
+        "feature_extraction": 0.0648,
+        "triage": 11.5963,
+        "router": 1.6854,
+        "injection_expert": 9.9468,
+        "deep": 3.5212
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 1,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 27.34099999361206,
+      "stages_ms": {
+        "feature_extraction": 0.0869,
+        "triage": 11.7621,
+        "router": 1.6311,
+        "injection_expert": 10.2723,
+        "deep": 3.5167
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 1,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 23.700200006715022,
+      "stages_ms": {
+        "feature_extraction": 0.0887,
+        "triage": 11.7257,
+        "router": 1.6372,
+        "injection_expert": 10.1833
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 1,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 23.487200000090525,
+      "stages_ms": {
+        "feature_extraction": 0.0965,
+        "triage": 11.7708,
+        "router": 1.5904,
+        "injection_expert": 9.973
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 1,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 27.01130000059493,
+      "stages_ms": {
+        "feature_extraction": 0.085,
+        "triage": 11.6832,
+        "router": 1.5822,
+        "injection_expert": 9.9894,
+        "deep": 3.6015
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 1,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 25.877300009597093,
+      "stages_ms": {
+        "feature_extraction": 0.0705,
+        "triage": 11.6295,
+        "router": 1.5563,
+        "injection_expert": 9.1915,
+        "deep": 3.3514
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 2,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 27.716600001440383,
+      "stages_ms": {
+        "feature_extraction": 0.0675,
+        "triage": 13.4098,
+        "router": 1.3993,
+        "injection_expert": 9.4442,
+        "deep": 3.3309
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 2,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 22.926499994355254,
+      "stages_ms": {
+        "feature_extraction": 0.076,
+        "triage": 10.0114,
+        "router": 1.358,
+        "injection_expert": 8.8454,
+        "deep": 2.5839
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 2,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 21.227400007774122,
+      "stages_ms": {
+        "feature_extraction": 0.0677,
+        "triage": 10.5156,
+        "router": 1.4842,
+        "injection_expert": 9.1021
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 2,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 22.878600007970817,
+      "stages_ms": {
+        "feature_extraction": 0.0807,
+        "triage": 10.8372,
+        "router": 2.4284,
+        "injection_expert": 9.4721
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 2,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 25.572899990947917,
+      "stages_ms": {
+        "feature_extraction": 0.0828,
+        "triage": 10.4481,
+        "router": 1.4743,
+        "injection_expert": 8.9942,
+        "deep": 4.4966
+      }
+    },
+    {
+      "threads": 1,
+      "repeat": 2,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 24.640899995574728,
+      "stages_ms": {
+        "feature_extraction": 0.0648,
+        "triage": 10.9908,
+        "router": 1.4019,
+        "injection_expert": 8.908,
+        "deep": 3.2139
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 0,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 64.35390000115149,
+      "stages_ms": {
+        "feature_extraction": 0.0536,
+        "triage": 35.0855,
+        "router": 1.5334,
+        "injection_expert": 24.2299,
+        "deep": 3.3821
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 0,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 64.07180000678636,
+      "stages_ms": {
+        "feature_extraction": 0.0881,
+        "triage": 35.4746,
+        "router": 1.4014,
+        "injection_expert": 23.7453,
+        "deep": 3.2943
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 0,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 60.328699997626245,
+      "stages_ms": {
+        "feature_extraction": 0.0839,
+        "triage": 34.863,
+        "router": 1.4054,
+        "injection_expert": 23.9255
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 0,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 59.614400001009926,
+      "stages_ms": {
+        "feature_extraction": 0.0733,
+        "triage": 33.8303,
+        "router": 1.3815,
+        "injection_expert": 24.2771
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 0,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 64.20719999005087,
+      "stages_ms": {
+        "feature_extraction": 0.085,
+        "triage": 34.5065,
+        "router": 1.4045,
+        "injection_expert": 23.5535,
+        "deep": 4.5887
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 0,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 66.8831999937538,
+      "stages_ms": {
+        "feature_extraction": 0.0703,
+        "triage": 35.1899,
+        "router": 1.5122,
+        "injection_expert": 25.6074,
+        "deep": 4.398
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 1,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 66.54169999819715,
+      "stages_ms": {
+        "feature_extraction": 0.0818,
+        "triage": 35.6331,
+        "router": 1.5385,
+        "injection_expert": 24.8154,
+        "deep": 4.3907
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 1,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 65.96930000523571,
+      "stages_ms": {
+        "feature_extraction": 0.0943,
+        "triage": 35.3302,
+        "router": 1.4405,
+        "injection_expert": 24.4778,
+        "deep": 4.555
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 1,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 61.77929999830667,
+      "stages_ms": {
+        "feature_extraction": 0.0836,
+        "triage": 35.7216,
+        "router": 1.6363,
+        "injection_expert": 24.2725
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 1,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 61.61279999651015,
+      "stages_ms": {
+        "feature_extraction": 0.1008,
+        "triage": 34.9363,
+        "router": 1.7066,
+        "injection_expert": 24.8108
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 1,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 64.64470000355504,
+      "stages_ms": {
+        "feature_extraction": 0.0804,
+        "triage": 35.1952,
+        "router": 1.4882,
+        "injection_expert": 24.4612,
+        "deep": 3.3528
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 1,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 65.09089999599382,
+      "stages_ms": {
+        "feature_extraction": 0.0653,
+        "triage": 34.7382,
+        "router": 1.3903,
+        "injection_expert": 23.9773,
+        "deep": 4.8322
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 2,
+      "case_id": "benign",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 64.3837999959942,
+      "stages_ms": {
+        "feature_extraction": 0.0754,
+        "triage": 35.5934,
+        "router": 1.4253,
+        "injection_expert": 23.8398,
+        "deep": 3.3843
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 2,
+      "case_id": "sqli",
+      "predicted_attack": "SQL_INJECTION",
+      "risk": 0.9999950340338728,
+      "elapsed_ms": 63.718599994899705,
+      "stages_ms": {
+        "feature_extraction": 0.0749,
+        "triage": 34.7322,
+        "router": 1.4087,
+        "injection_expert": 23.8162,
+        "deep": 3.623
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 2,
+      "case_id": "xss",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 59.66080000507645,
+      "stages_ms": {
+        "feature_extraction": 0.0753,
+        "triage": 33.8747,
+        "router": 1.3737,
+        "injection_expert": 24.2809
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 2,
+      "case_id": "traversal",
+      "predicted_attack": "BENIGN",
+      "risk": 0.0,
+      "elapsed_ms": 72.01470001018606,
+      "stages_ms": {
+        "feature_extraction": 0.0758,
+        "triage": 35.5265,
+        "router": 1.4244,
+        "injection_expert": 34.9348
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 2,
+      "case_id": "rce",
+      "predicted_attack": "BENIGN",
+      "risk": 0.016630828380584717,
+      "elapsed_ms": 64.35240000428166,
+      "stages_ms": {
+        "feature_extraction": 0.0773,
+        "triage": 34.385,
+        "router": 1.399,
+        "injection_expert": 24.8784,
+        "deep": 3.5496
+      }
+    },
+    {
+      "threads": 2,
+      "repeat": 2,
+      "case_id": "cookie",
+      "predicted_attack": "BENIGN",
+      "risk": 1.1920928955078125e-07,
+      "elapsed_ms": 63.69959999574348,
+      "stages_ms": {
+        "feature_extraction": 0.0622,
+        "triage": 34.5915,
+        "router": 1.4545,
+        "injection_expert": 24.3731,
+        "deep": 3.1534
+      }
+    }
+  ],
+  "summary": [
+    {
+      "threads": null,
+      "p50_ms": 73.95005000580568,
+      "p95_ms": 177.59110499682708
+    },
+    {
+      "threads": 1,
+      "p50_ms": 25.246949997381307,
+      "p95_ms": 27.397339994786307
+    },
+    {
+      "threads": 2,
+      "p50_ms": 64.27979999716626,
+      "p95_ms": 67.65292499621863
+    }
+  ]
+}

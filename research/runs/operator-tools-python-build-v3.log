@@ -1,0 +1,331 @@
+ Image adaptive-waf-ids/adaptation:1.1.0 Building 
+ Image adaptive-waf-ids/detection:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.67kB done
+#1 DONE 0.0s
+
+#2 [adaptation internal] load build definition from Python.Dockerfile
+#2 DONE 0.0s
+
+#2 [adaptation internal] load build definition from Python.Dockerfile
+#2 transferring dockerfile: 2.27kB done
+#2 DONE 0.0s
+
+#3 [detection internal] load metadata for docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#3 DONE 0.0s
+
+#4 [adaptation internal] load .dockerignore
+#4 transferring context: 265B done
+#4 DONE 0.0s
+
+#5 [adaptation dependencies 1/4] FROM docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#5 resolve docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd 0.0s done
+#5 DONE 0.0s
+
+#6 [adaptation dependencies 2/4] WORKDIR /app
+#6 CACHED
+
+#7 [detection internal] load build context
+#7 ...
+
+#8 [adaptation base 3/9] RUN useradd --uid 10001 --create-home waf && mkdir -p /app/artifacts && chown waf:waf /app/artifacts
+#8 DONE 0.2s
+
+#7 [detection internal] load build context
+#7 ...
+
+#9 [adaptation internal] load build context
+#9 transferring context: 1.73MB 0.5s done
+#9 DONE 0.5s
+
+#10 [adaptation dependencies 3/4] COPY pyproject.toml ./
+#10 CACHED
+
+#7 [detection internal] load build context
+#7 transferring context: 73.54MB 5.6s
+#7 transferring context: 142.38MB 10.7s
+#7 ...
+
+#11 [adaptation dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#11 3.333 Collecting scikit-learn==1.9.0
+#11 3.410   Downloading scikit_learn-1.9.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (11 kB)
+#11 3.440 Collecting joblib==1.5.3
+#11 3.452   Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+#11 3.554 Collecting ijson<4,>=3.2 (from -r /tmp/requirements.txt (line 1))
+#11 3.568   Downloading ijson-3.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (23 kB)
+#11 3.689 Collecting fastapi<1,>=0.115 (from -r /tmp/requirements.txt (line 4))
+#11 3.701   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#11 3.749 Collecting uvicorn<1,>=0.30 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 3.759   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+#11 3.786 Collecting httpx<1,>=0.28 (from -r /tmp/requirements.txt (line 6))
+#11 3.798   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#11 3.817 Collecting pika<2,>=1.3 (from -r /tmp/requirements.txt (line 7))
+#11 3.827   Downloading pika-1.4.4-py3-none-any.whl.metadata (13 kB)
+#11 3.857 Collecting psycopg<4,>=3.2 (from psycopg[binary]<4,>=3.2->-r /tmp/requirements.txt (line 8))
+#11 3.866   Downloading psycopg-3.3.6-py3-none-any.whl.metadata (4.4 kB)
+#11 4.133 Collecting numpy>=1.24.1 (from scikit-learn==1.9.0)
+#11 4.143   Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+#11 4.272 Collecting scipy>=1.10.0 (from scikit-learn==1.9.0)
+#11 4.286   Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+#11 4.292      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 14.0 MB/s eta 0:00:00
+#11 4.362 Collecting narwhals>=2.0.1 (from scikit-learn==1.9.0)
+#11 4.377   Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+#11 4.395 Collecting threadpoolctl>=3.5.0 (from scikit-learn==1.9.0)
+#11 4.410   Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+#11 4.499 Collecting starlette>=0.46.0 (from fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 4.508   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#11 4.627 Collecting pydantic>=2.9.0 (from fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 4.640   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#11 4.659      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 137.6/137.6 kB 7.3 MB/s eta 0:00:00
+#11 4.682 Collecting typing-extensions>=4.8.0 (from fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 4.693   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#11 4.711 Collecting typing-inspection>=0.4.2 (from fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 4.721   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#11 4.736 Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 4.745   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#11 4.776 Collecting opentelemetry-api>=1.44.0 (from fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 4.784   Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+#11 4.812 Collecting click>=7.0 (from uvicorn<1,>=0.30->uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 4.823   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#11 4.838 Collecting h11>=0.8 (from uvicorn<1,>=0.30->uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 4.848   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#11 4.878 Collecting anyio (from httpx<1,>=0.28->-r /tmp/requirements.txt (line 6))
+#11 4.887   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#11 4.966 Collecting certifi (from httpx<1,>=0.28->-r /tmp/requirements.txt (line 6))
+#11 4.977   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+#11 5.000 Collecting httpcore==1.* (from httpx<1,>=0.28->-r /tmp/requirements.txt (line 6))
+#11 5.010   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#11 5.030 Collecting idna (from httpx<1,>=0.28->-r /tmp/requirements.txt (line 6))
+#11 5.040   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#11 5.264 Collecting psycopg-binary==3.3.6 (from psycopg[binary]<4,>=3.2->-r /tmp/requirements.txt (line 8))
+#11 5.275   Downloading psycopg_binary-3.3.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+#11 5.326 Collecting httptools>=0.8.0 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 5.336   Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#11 5.358 Collecting python-dotenv>=0.13 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 5.369   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+#11 5.417 Collecting pyyaml>=5.1 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 5.426   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#11 5.471 Collecting uvloop>=0.15.1 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 5.480   Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+#11 5.580 Collecting watchfiles>=0.20 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 5.591   Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#11 5.767 Collecting websockets>=13.0 (from uvicorn[standard]<1,>=0.30->-r /tmp/requirements.txt (line 5))
+#11 5.802   Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+#11 5.840 Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 5.848   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#11 6.757 Collecting pydantic-core==2.50.2 (from pydantic>=2.9.0->fastapi<1,>=0.115->-r /tmp/requirements.txt (line 4))
+#11 6.767   Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+#11 6.870 Downloading scikit_learn-1.9.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.3 MB)
+#11 9.658    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.3/9.3 MB 3.3 MB/s eta 0:00:00
+#11 9.668 Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+#11 9.754    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 309.1/309.1 kB 3.6 MB/s eta 0:00:00
+#11 9.763 Downloading ijson-3.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (135 kB)
+#11 9.787    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.6/135.6 kB 6.5 MB/s eta 0:00:00
+#11 9.799 Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
+#11 9.856    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.9/148.9 kB 2.5 MB/s eta 0:00:00
+#11 9.865 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+#11 9.881    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.4/87.4 kB 6.2 MB/s eta 0:00:00
+#11 9.890 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#11 9.900    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 16.4 MB/s eta 0:00:00
+#11 9.912 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#11 9.922    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 9.5 MB/s eta 0:00:00
+#11 9.968 Downloading pika-1.4.4-py3-none-any.whl (165 kB)
+#11 9.988    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 165.3/165.3 kB 9.0 MB/s eta 0:00:00
+#11 10.00 Downloading psycopg-3.3.6-py3-none-any.whl (215 kB)
+#11 10.03    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 215.5/215.5 kB 6.9 MB/s eta 0:00:00
+#11 10.04 Downloading psycopg_binary-3.3.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+#11 ...
+
+#7 [detection internal] load build context
+#7 transferring context: 215.18MB 15.8s
+#7 transferring context: 284.27MB 21.0s
+#7 ...
+
+#11 [adaptation dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#11 11.56    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 3.5 MB/s eta 0:00:00
+#11 11.61 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#11 11.62 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#11 11.65    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 4.7 MB/s eta 0:00:00
+#11 11.66 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#11 11.67 Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (499 kB)
+#11 11.85    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 499.1/499.1 kB 2.7 MB/s eta 0:00:00
+#11 11.87 Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+#11 11.96    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 490.6/490.6 kB 5.2 MB/s eta 0:00:00
+#11 11.97 Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+#11 16.43    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 3.9 MB/s eta 0:00:00
+#11 16.44 Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+#11 16.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 27.7 MB/s eta 0:00:00
+#11 16.46 Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
+#11 16.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 490.4/490.4 kB 4.5 MB/s eta 0:00:00
+#11 16.58 Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+#11 17.22    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 3.5 MB/s eta 0:00:00
+#11 17.23 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+#11 17.25 Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+#11 17.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 5.6 MB/s eta 0:00:00
+#11 17.40 Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+#11 ...
+
+#7 [detection internal] load build context
+#7 transferring context: 357.30MB 26.0s done
+#7 DONE 26.0s
+
+#10 [detection dependencies 3/4] COPY pyproject.toml ./
+#10 CACHED
+
+#11 [detection dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#11 27.06    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 3.5 MB/s eta 0:00:00
+#11 27.07 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+#11 27.10    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.6/80.6 kB 2.6 MB/s eta 0:00:00
+#11 27.11 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#11 27.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 440.1 kB/s eta 0:00:00
+#11 27.40 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#11 27.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 4.7 MB/s eta 0:00:00
+#11 27.43 Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+#11 27.45 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#11 27.46    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 21.9 MB/s eta 0:00:00
+#11 27.47 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#11 27.48 Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.0 MB)
+#11 28.43    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 4.2 MB/s eta 0:00:00
+#11 28.45 Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+#11 28.58    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 458.4/458.4 kB 3.3 MB/s eta 0:00:00
+#11 28.60 Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (225 kB)
+#11 28.65    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.5/225.5 kB 4.7 MB/s eta 0:00:00
+#11 28.66 Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+#11 28.69    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.1/135.1 kB 5.2 MB/s eta 0:00:00
+#11 28.70 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#11 28.94 Installing collected packages: websockets, uvloop, typing-extensions, threadpoolctl, pyyaml, python-dotenv, psycopg-binary, pika, numpy, narwhals, joblib, ijson, idna, httptools, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, scipy, pydantic-core, psycopg, opentelemetry-api, httpcore, anyio, watchfiles, starlette, scikit-learn, pydantic, httpx, fastapi
+#11 35.08 Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.23 click-8.5.0 fastapi-0.162.0 h11-0.16.0 httpcore-1.0.9 httptools-0.9.0 httpx-0.28.1 idna-3.20 ijson-3.6.0 joblib-1.5.3 narwhals-2.28.0 numpy-2.4.6 opentelemetry-api-1.45.2 pika-1.4.4 psycopg-3.3.6 psycopg-binary-3.3.6 pydantic-2.14.2 pydantic-core-2.50.2 python-dotenv-1.2.4 pyyaml-6.0.3 scikit-learn-1.9.0 scipy-1.17.1 starlette-1.10.0 threadpoolctl-3.7.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.3
+#11 35.21 
+#11 35.21 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#11 35.21 [notice] To update, run: python -m pip install --upgrade pip
+#11 DONE 35.8s
+
+#11 [detection dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#11 DONE 35.8s
+
+#12 [detection dependencies 3/4] COPY pyproject.toml ./
+#12 CACHED
+
+#13 [detection dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#13 CACHED
+
+#14 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#14 0.458 Looking in indexes: https://download.pytorch.org/whl/cpu
+#14 0.756 Collecting torch==2.13.0
+#14 1.172   Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (37 kB)
+#14 1.445 Collecting filelock (from torch==2.13.0)
+#14 1.526   Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+#14 1.527 Requirement already satisfied: typing-extensions>=4.10.0 in /opt/venv/lib/python3.11/site-packages (from torch==2.13.0) (4.16.0)
+#14 1.529 Requirement already satisfied: setuptools>=77.0.3 in /opt/venv/lib/python3.11/site-packages (from torch==2.13.0) (79.0.1)
+#14 1.569 Collecting sympy>=1.13.3 (from torch==2.13.0)
+#14 1.590   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+#14 1.640 Collecting networkx>=2.5.1 (from torch==2.13.0)
+#14 1.652   Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+#14 1.681 Collecting jinja2 (from torch==2.13.0)
+#14 ...
+
+#15 [adaptation base 4/9] COPY --from=dependencies /opt/venv /opt/venv
+#15 DONE 0.9s
+
+#14 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#14 1.703   Downloading https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#14 1.751 Collecting fsspec>=0.8.5 (from torch==2.13.0)
+#14 1.762   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+#14 1.878 Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.13.0)
+#14 1.889   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+#14 1.926 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.13.0)
+#14 1.944   Downloading https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#14 2.279 Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl (191.8 MB)
+#14 ...
+
+#16 [detection base 5/9] RUN /opt/venv/bin/pip install --no-cache-dir 'psutil>=7,<8'
+#16 1.941 Collecting psutil<8,>=7
+#16 2.050   Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+#16 2.103 Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+#16 2.207    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 1.4 MB/s eta 0:00:00
+#16 2.358 Installing collected packages: psutil
+#16 2.402 Successfully installed psutil-7.2.2
+#16 2.505 
+#16 2.505 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#16 2.505 [notice] To update, run: pip install --upgrade pip
+#16 DONE 2.6s
+
+#17 [detection base 6/9] COPY src ./src
+#17 DONE 0.0s
+
+#18 [adaptation base 7/9] COPY configs ./configs
+#18 DONE 0.0s
+
+#18 [detection base 7/9] COPY configs ./configs
+#18 DONE 0.0s
+
+#19 [detection base 8/9] COPY scripts ./scripts
+#19 DONE 0.0s
+
+#20 [adaptation base 9/9] COPY datasets/samples ./datasets/samples
+#20 DONE 0.0s
+
+#21 [adaptation adaptation 1/1] RUN mkdir -p /app/artifacts/adaptation && chown -R waf:waf /app/artifacts/adaptation
+#21 DONE 0.2s
+
+#14 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#14 4.836    ━                                        6.7/191.8 MB 2.6 MB/s eta 0:01:11
+#14 4.875 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+#14 4.894    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.7/221.7 kB 11.9 MB/s eta 0:00:00
+#14 4.907 Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+#14 5.346    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 4.8 MB/s eta 0:00:00
+#14 5.356 Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+#14 7.221    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 3.4 MB/s eta 0:00:00
+#14 7.229 Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+#14 7.279    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.5/162.5 kB 3.3 MB/s eta 0:00:00
+#14 7.304 Downloading https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl (134 kB)
+#14 7.314    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 13.7 MB/s eta 0:00:00
+#14 7.335 Downloading https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#14 7.344 Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#14 7.488    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 3.9 MB/s eta 0:00:00
+#14 7.493 ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, please update the hashes. Otherwise, examine the package contents carefully; someone may have tampered with them.
+#14 7.493     unknown package:
+#14 7.493         Expected sha256 6746dbcbeb526eb61330b76b41ff1b4eb848951103a892eeb080dfa2b264667b
+#14 7.493              Got        85de2325bf9f96a6a5dc9cc709dd4d7227000a3e5687f96e7e2013e80779fbea
+#14 7.493 
+#14 ERROR: process "/bin/sh -c /opt/venv/bin/pip install --no-cache-dir --index-url ${TORCH_INDEX_URL} 'torch==2.13.0'" did not complete successfully: exit code: 1
+
+#22 [adaptation] exporting to image
+#22 exporting layers
+#22 exporting layers 3.8s done
+#22 CANCELED
+------
+ > [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0':
+7.279    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.5/162.5 kB 3.3 MB/s eta 0:00:00
+7.304 Downloading https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl (134 kB)
+7.314    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 13.7 MB/s eta 0:00:00
+7.335 Downloading https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+
+7.493 ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, please update the hashes. Otherwise, examine the package contents carefully; someone may have tampered with them.
+7.493     unknown package:
+7.493         Expected sha256 6746dbcbeb526eb61330b76b41ff1b4eb848951103a892eeb080dfa2b264667b
+7.493              Got        85de2325bf9f96a6a5dc9cc709dd4d7227000a3e5687f96e7e2013e80779fbea
+7.493 
+------
+Python.Dockerfile:8
+
+--------------------
+
+   6 |     FROM dependencies AS deep-dependencies
+
+   7 |     ARG TORCH_INDEX_URL=https://download.pytorch.org/whl/cpu
+
+   8 | >>> RUN /opt/venv/bin/pip install --no-cache-dir --index-url ${TORCH_INDEX_URL} 'torch==2.13.0'
+
+   9 |     RUN /opt/venv/bin/pip install --no-cache-dir 'transformers==5.16.1'
+
+  10 |     
+
+--------------------
+
+target detection: failed to solve: process "/bin/sh -c /opt/venv/bin/pip install --no-cache-dir --index-url ${TORCH_INDEX_URL} 'torch==2.13.0'" did not complete successfully: exit code: 1
+
+
+
+View build details: docker-desktop://dashboard/build/default/default/6vnq3reqpjqx1o5d5doivs49j
+

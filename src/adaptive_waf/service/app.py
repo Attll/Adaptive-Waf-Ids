@@ -4,12 +4,13 @@ from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from functools import partial
 import os
+import hmac
 from pathlib import Path
 import tomllib
 from typing import Any
 from uuid import UUID, uuid4
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
@@ -20,17 +21,22 @@ from adaptive_waf.runtime.artifacts import load_adaptive_pipeline, load_offline_
 from adaptive_waf.service.catalog import build_catalog
 from adaptive_waf.service.corpus import CorpusLibrary
 from adaptive_waf.service.escalation import ControlPlaneReporter, DisabledEscalationWorker, EscalationWorker
-from adaptive_waf.service.runtime import InferenceTimeoutError, ModelUnavailableError, RuntimeStore
+from adaptive_waf.service.runtime import InferenceBusyError, InferenceTimeoutError, ModelUnavailableError, RuntimeStore
 
 
 @dataclass(frozen=True, slots=True)
 class ServiceConfig:
     inference_timeout_ms: int = 30_000
     network_inference_timeout_ms: int = 5_000
+    http_workers: int = 1
+    network_workers: int = 1
+    inference_queue_limit: int = 16
 
     def __post_init__(self) -> None:
         if self.inference_timeout_ms <= 0 or self.network_inference_timeout_ms <= 0:
             raise ValueError("service timeouts must be positive")
+        if self.http_workers < 1 or self.network_workers < 1 or self.inference_queue_limit < 0:
+            raise ValueError("invalid inference capacity")
 
 
 class BehaviourPayload(BaseModel):
@@ -59,6 +65,7 @@ class DetectPayload(BaseModel):
     behaviour_context: BehaviourPayload | None = None
     network_context: NetworkPayload | None = None
     rule_evidence: dict[str, float] = Field(default_factory=dict)
+    session_key: str | None = Field(default=None, pattern="^[0-9a-f]{64}$")
 
 
 class NetworkDetectPayload(BaseModel):
@@ -72,6 +79,39 @@ class BatchDetectPayload(BaseModel):
     labels: list[str] = Field(default_factory=list)
 
 
+class PolicyCandidatePayload(BaseModel):
+    version: str = Field(min_length=1,max_length=128)
+    strategy: str
+    metrics: dict[str,float]
+    verification_reference: str
+    shadow_only: bool = True
+
+
+class PolicyPromotionPayload(BaseModel):
+    operator_approval_reference: str = Field(min_length=1,max_length=256)
+
+class SessionCorrectionPayload(BaseModel):
+    session_key: str = Field(pattern="^[0-9a-f]{64}$")
+    request_id: UUID
+    evidence_id: UUID
+    verified_risk: float = Field(ge=0,le=1)
+    review_reference: str = Field(min_length=1,max_length=256)
+
+class ProfileObservationPayload(BaseModel):
+    request: DetectPayload
+    observation_id: UUID
+    review_reference: str = Field(min_length=1,max_length=256)
+
+class MonitoringFeedbackPayload(BaseModel):
+    request_id: UUID
+    verified_label: str
+    review_reference: str = Field(min_length=1,max_length=256)
+
+class DriftReferencePayload(BaseModel):
+    risks: list[float] = Field(min_length=20,max_length=1000)
+    review_reference: str = Field(min_length=1,max_length=256)
+
+
 def create_app(
     config: ServiceConfig | None = None,
     pipeline_loader=load_adaptive_pipeline,
@@ -82,27 +122,81 @@ def create_app(
     worker = escalation_worker if escalation_worker is not None else _default_escalation_worker()
     if pipeline_loader is load_adaptive_pipeline:
         pipeline_loader = partial(load_adaptive_pipeline, deep_scheduler=worker.submit)
-    store = RuntimeStore(pipeline_loader, network_loader, service_config.inference_timeout_ms, service_config.network_inference_timeout_ms, worker)
+    store = RuntimeStore(pipeline_loader, network_loader, service_config.inference_timeout_ms, service_config.network_inference_timeout_ms, worker,
+                         service_config.http_workers, service_config.network_workers, service_config.inference_queue_limit)
 
     @asynccontextmanager
     async def lifespan(application: FastAPI):
         store.start()
-        yield
+        try:
+            yield
+        finally:
+            store.close()
 
-    application = FastAPI(title="Adaptive WAF Detection Service", version="0.1.0", lifespan=lifespan)
+    application = FastAPI(title="Adaptive WAF-IDS Detection Service", version="0.1.0", lifespan=lifespan)
     application.state.runtime_store = store
     application.state.corpus = CorpusLibrary()
+    from adaptive_waf.service.telemetry import InferenceTelemetry
+    application.state.telemetry = InferenceTelemetry()
+
+    @application.post("/internal/v1/tools/models/query")
+    def model_query(body: dict):
+        from adaptive_waf.service.model_tools import query_models
+        import json
+        if len(json.dumps(body))>200000:raise HTTPException(status_code=413,detail="Model query exceeds capacity")
+        try:return query_models(body,store._require_pipeline(),load_settings().paths.project_root)
+        except (ValueError,KeyError,TypeError,FileNotFoundError) as error:raise HTTPException(status_code=422,detail=str(error)) from error
+
+    @application.get("/v1/research/telemetry")
+    def telemetry(request: Request):
+        result = request.app.state.telemetry.snapshot()
+        result["model_versions"] = request.app.state.runtime_store.model_versions()
+        result["deep_queue"] = request.app.state.runtime_store.escalations.statistics()
+        result["deep_batch"] = store.batch_statistics()
+        result["measurement_scope"] = "detection API; gateway request throughput is a separate metric"
+        try:
+            result["context"] = store.research_context().research_snapshot()
+        except ValueError:
+            result["context"] = {"available":False,"reason":"context disabled"}
+        manager = store._policy_lifecycle
+        result["policy_lifecycle"] = manager.snapshot() if manager else {"available":False,"activation_enabled":False,"events":[]}
+        return result
+
+    @application.get("/v1/research/results")
+    def research_results():
+        import json
+        configured = os.environ.get("WAF_RESEARCH_RESULTS_PATH")
+        if not configured:
+            return {"available":False,"reason":"No measured research run selected"}
+        path = Path(configured).resolve()
+        allowed = (load_settings().paths.project_root / "research" / "runs").resolve()
+        if not path.is_relative_to(allowed) or not path.is_file() or path.stat().st_size > 10_000_000:
+            return {"available":False,"reason":"Selected research run unavailable"}
+        try:
+            return {"available":True,"report":json.loads(path.read_text(encoding="utf-8"))}
+        except (OSError,ValueError):
+            return {"available":False,"reason":"Selected research run could not be read"}
+
+    @application.exception_handler(InferenceBusyError)
+    async def busy_handler(request: Request, error: InferenceBusyError):
+        return _error_response(request, 503, "inference_busy", str(error))
 
     @application.middleware("http")
     async def request_id_middleware(request: Request, call_next):
         request.state.request_id = _request_id_from_header(request.headers.get("x-request-id"))
+        if request.url.path.startswith("/internal/"):
+            expected = os.environ.get("WAF_INTERNAL_TOKEN", "")
+            supplied = request.headers.get("X-WAF-Internal-Token", "")
+            if not expected or not hmac.compare_digest(expected, supplied):
+                return _error_response(request, 401, "service_authentication_required", "Service credentials are required")
         response = await call_next(request)
         response.headers["x-request-id"] = str(request.state.request_id)
         return response
 
     @application.exception_handler(RequestValidationError)
     async def validation_error_handler(request: Request, error: RequestValidationError):
-        return _error_response(request, 422, "validation_error", "request validation failed", error.errors())
+        safe_errors = [{"type": item["type"], "loc": item["loc"]} for item in error.errors()]
+        return _error_response(request, 422, "validation_error", "request validation failed", safe_errors)
 
     @application.get("/health")
     def health() -> dict[str, str]:
@@ -134,6 +228,7 @@ def create_app(
                 body=payload.body,
                 source_ip=payload.source_ip,
                 request_id=payload.request_id or request.state.request_id,
+                session_key=payload.session_key,
             )
             result, timing = request.app.state.runtime_store.detect(
                 record,
@@ -147,7 +242,68 @@ def create_app(
             return _error_response(request, 504, "inference_timeout", str(error))
         except ValueError as error:
             return _error_response(request, 422, "invalid_detection_input", str(error))
+        request.app.state.telemetry.record(result)
         return {"detection": _detection_payload(result), "service_inference_ms": timing.elapsed_ms}
+
+    @application.post("/internal/v1/research/policies")
+    def prepare_policy(payload: PolicyCandidatePayload, request: Request):
+        from adaptive_waf.adaptation.lifecycle import PolicyCandidate
+        try:
+            return request.app.state.runtime_store.prepare_policy(PolicyCandidate(**payload.model_dump()))
+        except (ValueError, ModelUnavailableError) as error:
+            return _error_response(request,422,"candidate_rejected",str(error))
+
+    @application.post("/internal/v1/research/context/corrections")
+    def correct_session(payload:SessionCorrectionPayload, request:Request):
+        from adaptive_waf.runtime.session_risk import RiskRevision
+        try:
+            pipeline=store.research_context()
+            revision=RiskRevision(str(payload.request_id),str(payload.evidence_id),"operator-reviewed",
+                payload.review_reference,payload.verified_risk,True,pipeline.sessions.clock())
+            risk=pipeline.sessions.revise(payload.session_key,revision)
+            return {"risk":risk,"verified":True,"applies_to":"future requests only","mode":pipeline.mode}
+        except ValueError as error:
+            return _error_response(request,422,"context_rejected",str(error))
+
+    @application.get("/internal/v1/research/review-candidates")
+    def review_candidates(limit:int=20):
+        return {"candidates":application.state.telemetry.monitor.candidates(limit),"selection":"lowest retained prediction confidence; no automatic labels"}
+
+    @application.post("/internal/v1/research/feedback")
+    def monitoring_feedback(payload:MonitoringFeedbackPayload, request:Request):
+        try:
+            application.state.telemetry.monitor.feedback(str(payload.request_id),payload.verified_label,payload.review_reference)
+            return application.state.telemetry.monitor.snapshot()
+        except ValueError as error:
+            return _error_response(request,422,"feedback_rejected",str(error))
+
+    @application.post("/internal/v1/research/drift-reference")
+    def drift_reference(payload:DriftReferencePayload, request:Request):
+        try:
+            application.state.telemetry.monitor.set_reference(payload.risks,payload.review_reference)
+            return application.state.telemetry.monitor.snapshot()
+        except ValueError as error:
+            return _error_response(request,422,"reference_rejected",str(error))
+
+    @application.post("/internal/v1/research/context/profiles")
+    def observe_profile(payload:ProfileObservationPayload, request:Request):
+        try:
+            pipeline=store.research_context()
+            values=payload.request.model_dump(exclude={"behaviour_context","network_context","rule_evidence","request_id"})
+            pipeline.profiles.observe(HttpRequestRecord(**values),str(payload.observation_id),"VERIFIED_BENIGN")
+            return pipeline.research_snapshot()
+        except ValueError as error:
+            return _error_response(request,422,"profile_rejected",str(error))
+
+    @application.post("/internal/v1/research/policies/{version}/promote")
+    def promote_policy(version: str, payload: PolicyPromotionPayload, request: Request):
+        try:
+            request.app.state.runtime_store.policy_lifecycle().promote(version,payload.operator_approval_reference)
+            return {"status":"ACTIVE", "runtime_versions":request.app.state.runtime_store.model_versions()}
+        except PermissionError as error:
+            return _error_response(request,403,"live_promotion_disabled",str(error))
+        except (KeyError,ValueError) as error:
+            return _error_response(request,422,"promotion_rejected",type(error).__name__)
 
     @application.post("/v1/detect/batch")
     def detect_batch(payload: BatchDetectPayload, request: Request):
@@ -166,6 +322,7 @@ def create_app(
                     body=entry.body,
                     source_ip=entry.source_ip,
                     request_id=entry.request_id or uuid4(),
+                    session_key=entry.session_key,
                 )
                 result, timing = request.app.state.runtime_store.detect(
                     record,
@@ -184,6 +341,7 @@ def create_app(
                 })
                 continue
             detection = _detection_payload(result)
+            request.app.state.telemetry.record(result)
             results.append({
                 "index": index,
                 "expected": label,
@@ -236,6 +394,11 @@ def create_app(
     def escalation_statistics(request: Request):
         return request.app.state.runtime_store.escalations.statistics()
 
+    @application.get("/v1/deep/jobs")
+    def deep_jobs(request: Request, limit: int = 50,offset:int=0):
+        worker = request.app.state.runtime_store.escalations
+        return {"jobs": worker.jobs(limit,offset) if hasattr(worker, "jobs") else [], "statistics": worker.statistics()}
+
     @application.post("/v1/network/detect")
     def detect_network(payload: NetworkDetectPayload, request: Request):
         try:
@@ -258,6 +421,11 @@ def create_app(
 
 def _default_escalation_worker():
     """Builds the background adjudicator from configuration, or a disabled stand-in when escalation stays inline."""
+    if os.environ.get("WAF_DEEP_QUEUE_BACKEND") == "rabbitmq":
+        from adaptive_waf.service.durable_escalation import DurableEscalationWorker
+        control_url = os.environ.get("CONTROL_SERVICE_URL")
+        return DurableEscalationWorker(os.environ["WAF_DEEP_POSTGRES_DSN"], os.environ["WAF_DEEP_RABBITMQ_URL"],
+                                       reporter=ControlPlaneReporter(control_url) if control_url else None)
     try:
         settings = load_pipeline_settings()
     except (OSError, KeyError, ValueError):
@@ -276,7 +444,8 @@ def load_service_config(core_config: Path | None = None) -> ServiceConfig:
     settings = load_settings(core_config)
     with (settings.paths.project_root / "configs/service.toml").open("rb") as source:
         config = tomllib.load(source)
-    return ServiceConfig(int(config["inference_timeout_ms"]), int(config["network_inference_timeout_ms"]))
+    return ServiceConfig(int(config["inference_timeout_ms"]), int(config["network_inference_timeout_ms"]),
+                         int(config.get("http_workers", 1)), int(config.get("network_workers", 1)), int(config.get("inference_queue_limit", 16)))
 
 
 def _request_id_from_header(value: str | None) -> UUID:
@@ -313,6 +482,8 @@ def _detection_payload(result) -> dict[str, Any]:
         "explanation_evidence": result.explanation_evidence,
         "deep_escalation_pending": result.deep_escalation_pending,
         "deep_escalation_id": result.deep_escalation_id,
+        "decision": dict(result.decision_context),
+        "inspection_status": result.decision_context.get("inspection_status"),
     }
 
 

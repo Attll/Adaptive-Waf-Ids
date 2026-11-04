@@ -1,0 +1,11 @@
+adaptation adaptive-waf-ids/adaptation:1.1.0 healthy
+control adaptive-waf-ids/control:1.1.0 healthy
+crs owasp/modsecurity-crs:nginx@sha256:ccec5e3ecd1dcf6b48903268f4fe415fd17914e8bf30fc21263fd05cc7045f29 healthy
+dashboard adaptive-waf-ids/dashboard:1.1.0 healthy
+demo adaptive-waf-ids/demo:1.0.0 healthy
+detection adaptive-waf-ids/detection:1.1.0 healthy
+gateway adaptive-waf-ids/gateway:1.1.0 healthy
+postgres postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685 healthy
+rabbitmq rabbitmq:3.13-management-alpine@sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281 healthy
+redis redis:7.4-alpine@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf healthy
+sensor adaptive-waf-ids/sensor:1.0.0 healthy

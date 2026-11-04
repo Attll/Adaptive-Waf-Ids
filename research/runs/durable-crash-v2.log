@@ -1,0 +1,10 @@
+test_broker_job_survives_producer_restart_and_is_processed_once (test_durable_escalation.DurableEscalationTests.test_broker_job_survives_producer_restart_and_is_processed_once) ... ok
+test_capacity_rejects_without_overwriting_job_and_outbox_retries (test_durable_escalation.DurableEscalationTests.test_capacity_rejects_without_overwriting_job_and_outbox_retries) ... ok
+test_failure_retries_are_bounded_and_terminal (test_durable_escalation.DurableEscalationTests.test_failure_retries_are_bounded_and_terminal) ... ok
+test_orphaned_pending_job_and_stale_lease_expire (test_durable_escalation.DurableEscalationTests.test_orphaned_pending_job_and_stale_lease_expire) ... ok
+test_unacknowledged_delivery_recovers_after_worker_process_crash (test_durable_escalation.DurableEscalationTests.test_unacknowledged_delivery_recovers_after_worker_process_crash) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.932s
+
+OK

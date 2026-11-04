@@ -1,0 +1,222 @@
+{
+  "checks": {
+    "all_requests_persisted": true,
+    "benign_forwarded": true,
+    "five_attacks_blocked": true,
+    "network_full_vector": true,
+    "durable_completed_jobs": true,
+    "dashboard_html": true,
+    "dashboard_authenticated_proxy": true,
+    "browser_internal_route_blocked": true
+  },
+  "requests": [
+    {
+      "case": "benign",
+      "request_id": "bc53a935-4d48-43b4-a3f5-0fd6eb66db66",
+      "http_status": 200,
+      "round_trip_ms": 86.20819999487139,
+      "persisted": true,
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "action": "ALLOW",
+      "prediction": "COOKIE_INJECTION"
+    },
+    {
+      "case": "sqli",
+      "request_id": "ad079bd8-878a-48e3-82d1-e8bde93f7931",
+      "http_status": 403,
+      "round_trip_ms": 29.96980000170879,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "SQL_INJECTION"
+    },
+    {
+      "case": "xss",
+      "request_id": "550d1420-b25b-45d5-8a88-d0b6820b0d44",
+      "http_status": 403,
+      "round_trip_ms": 19.769900012761354,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "XSS"
+    },
+    {
+      "case": "traversal",
+      "request_id": "9e899d7e-eb7b-4923-bb50-dba74c95aebd",
+      "http_status": 403,
+      "round_trip_ms": 22.05669999239035,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "DIRECTORY_TRAVERSAL"
+    },
+    {
+      "case": "rce",
+      "request_id": "be325c6a-66ee-46ee-8a96-3a1e69d8e8ca",
+      "http_status": 403,
+      "round_trip_ms": 19.026199996005744,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "REMOTE_CODE_EXECUTION"
+    },
+    {
+      "case": "cookie",
+      "request_id": "4c66f8fb-8340-4259-aea4-05923a4e9804",
+      "http_status": 403,
+      "round_trip_ms": 16.641700000036508,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "COOKIE_INJECTION"
+    }
+  ],
+  "network": {
+    "status": 200,
+    "result": {
+      "network_context": {
+        "source_ip": "192.0.2.71",
+        "destination_ip": null,
+        "network_risk": 0.026524787549106366,
+        "network_class": "BENIGN",
+        "confidence": 0.9734752124508936,
+        "model_version": "network-full-v1:random_forest",
+        "observed_at": "2026-10-30T03:20:17.787236+00:00",
+        "observation_scope": "PROVIDED_FLOW",
+        "feature_contract": "PROVIDED_FLOW"
+      }
+    }
+  },
+  "deep_jobs": {
+    "jobs": [
+      {
+        "job_id": "6bc0aab3-6417-4e33-ab69-0cb985b789dd",
+        "request_id": "bc53a935-4d48-43b4-a3f5-0fd6eb66db66",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:20:17.536347+00:00"
+      },
+      {
+        "job_id": "b81bd0c4-54a0-4670-96d1-ebdfb0438edc",
+        "request_id": "53baa648-50c5-42c3-b1fd-f6c58fbbf575",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:20:13.859944+00:00"
+      },
+      {
+        "job_id": "fb77e407-ca05-407e-98fa-33924b869cec",
+        "request_id": "4e780ba7-537b-42bb-a0cc-ea1191726df8",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:20:13.652369+00:00"
+      },
+      {
+        "job_id": "f4212ef8-7f81-4e4a-9b53-38ed82f3a7c7",
+        "request_id": "6cfcc3a3-9c25-4044-b06e-0536923c42a9",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:18:56.940299+00:00"
+      },
+      {
+        "job_id": "a83a078c-834e-4533-980f-f8cb2bd48382",
+        "request_id": "af8bbafe-61c9-4427-8400-6cd3d96a0709",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:18:53.171613+00:00"
+      },
+      {
+        "job_id": "e5845a7a-02c3-480a-b4a8-278ff99da5b0",
+        "request_id": "f08227c8-8ccd-48bc-b792-deb8e2d9ab36",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:18:52.801605+00:00"
+      },
+      {
+        "job_id": "b41e17db-2449-4027-90a8-4facce9ceff9",
+        "request_id": "966717e6-4cbc-487a-b4c1-82b67e46700d",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:45.159227+00:00"
+      },
+      {
+        "job_id": "615adbb3-138e-42f4-be12-77ce0d699f7b",
+        "request_id": "a667a371-a0db-4912-81ce-b85ef01df6c4",
+        "state": "FAILED",
+        "attempts": 0,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:29.532029+00:00"
+      },
+      {
+        "job_id": "8a839857-047a-4882-90ba-33bc1384ef36",
+        "request_id": "b4d1e5e9-ec56-4d3a-b7d3-4b7f33669889",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:27.563348+00:00"
+      },
+      {
+        "job_id": "4f0a9889-abae-414e-b736-c5a23e4ef63f",
+        "request_id": "e50868fb-f237-4d55-8d44-f400ceb391a2",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:21.335855+00:00"
+      },
+      {
+        "job_id": "21aca6b1-356d-4c6c-ad36-68415fb3cc11",
+        "request_id": "9bcfe4db-9832-4b86-81ba-b42a820714a7",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:20.188525+00:00"
+      },
+      {
+        "job_id": "99cd5aee-f4bc-4644-90d1-9187f8e59184",
+        "request_id": "2241d0e7-d844-4bc3-9dba-aafe4f2a08d6",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:13:47.914483+00:00"
+      },
+      {
+        "job_id": "b6a399b5-6745-4d99-adb4-b2d93d53b888",
+        "request_id": "88931df9-0817-402f-8696-50a8db1fb1e6",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:11:38.368486+00:00"
+      },
+      {
+        "job_id": "a8efefb9-77bd-4c66-9fae-b09dd974e765",
+        "request_id": "215ad2a3-f60c-48b4-ae4b-8fddf27ee4af",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:11:37.951201+00:00"
+      }
+    ],
+    "statistics": {
+      "enabled": true,
+      "backend": "rabbitmq_postgresql",
+      "workers": 1,
+      "queue_limit": 256,
+      "queue_depth": 0,
+      "running": 0,
+      "pending": 0,
+      "submitted": 14,
+      "resolved": 13,
+      "failed": 1,
+      "expired": 0,
+      "rejected": 0,
+      "last_error_type": null
+    }
+  },
+  "scope": "six development diagnostics; no representative model-only accuracy or browser automation claim"
+}

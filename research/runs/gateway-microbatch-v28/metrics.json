@@ -1,0 +1,1720 @@
+{
+  "created_at": "2026-10-28T15:30:31.027848+00:00",
+  "input_id": "six-development-probes-repeated",
+  "seed": 641,
+  "input_sha256": "76d3ce628fa44c70fb7f66e0d22e5cffb3df4adc6dc5b538b7c3e5b249e202c8",
+  "transport_encoding_shared_across_modes": true,
+  "provenance": {
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "git_revision": "f1fbd01781c62fb8c8f3a312f6147d96518ed4f7",
+    "runtime_flags": {
+      "WAF_MODEL_THREADS": "1",
+      "WAF_DEEP_DEVICE": "cuda",
+      "WAF_CONTEXT_MODE": null,
+      "WAF_DEEP_BATCH_SIZE": "4",
+      "WAF_DEEP_BATCH_WAIT_MS": null,
+      "WAF_DEEP_BATCH_QUEUE": null,
+      "WAF_DEEP_BATCH_TIMEOUT_SECONDS": null
+    },
+    "http_workers": 8,
+    "torch_threads": 1,
+    "sha256": {
+      "configs\\adaptation_service.toml": "c902499bf41534a5c471248d012e79ccd7f21b9272865af43148b6c352db8a4b",
+      "configs\\core.toml": "2456889c8d57d6463c5766562da9844c195f1656535f1e31310fd9c310047b76",
+      "configs\\network_sensor.toml": "0cc0d0f07179d6d60edba8fc920b3e4632cda2c95227a6f407454d147dcfefee",
+      "configs\\service.toml": "daff0eaa66fb976cb4072c16184fc304a2e3cbdc196daa6e9cef2f821aa2db25",
+      "configs\\data\\atrdf.toml": "8ce5f76238ec1e21910d1b0edfc18486af35a4bce74459ee2f1e8f4b5ab39b92",
+      "configs\\data\\cicids2018.toml": "cb281dd4298ae3e07b0222890ea44cf4d94ec8e24d2c90caf9f33bbeb30b0230",
+      "configs\\models\\benchmark.toml": "8aa12a339fcc993f69008e8b38a1af3f2d272aab2a526b33c5edd853081a4844",
+      "configs\\models\\calibration.toml": "8575823ae45bac655c1ed504b7cddb841c7beaea27ab09fd2ef007777ff5c3f9",
+      "configs\\models\\calibration_deployment.toml": "576d4555ad8927443c4eb0deb39a2fcac0bc87d3eb908202ed3094df8f33bd03",
+      "configs\\models\\candidate_experiment_v2.toml": "6d3d1b43b60371bcbb06b23a535d0266a977d5cb1cf854581bcc6ad813036876",
+      "configs\\models\\deep.toml": "36962d353e693f7ca364f2822518513b6d8c8ff14fbe12ff2f451ca7e61952d8",
+      "configs\\models\\deep_deployment.toml": "b33c94da3a9ac194f093f44983095355826ed00b5a973c47fd4309a2dcaec754",
+      "configs\\models\\deep_research.toml": "8d12e8c45461a7f047fa0a607eae65ab02454810f14153d154d3e3b167b51bc7",
+      "configs\\models\\execution_expert.toml": "ea537e05ef0b17190f8f0edad424bc95456734313699909f39d349e3230d5823",
+      "configs\\models\\execution_expert_deployment.toml": "4ca10aad67b26df233ef9a68d8604344057b015f87f5def80a41f44c2816a28c",
+      "configs\\models\\expert_ensemble.toml": "99ac498e69d333ff686b68629d8a83c2701f57429e5d170194e2c8d119cfe6b0",
+      "configs\\models\\fusion.toml": "a2b4c0cb418fbd799142d38cc5b20b398fbf751c804c9901f3b47e9aa78e584d",
+      "configs\\models\\injection_expert.toml": "3c42ef5238d552747dd7a5930ca3824f541efa4bcde86339fa3d3bb225db42f6",
+      "configs\\models\\injection_expert_deployment.toml": "773f0a46889ff38ad7837f3676e6615677048738f68f2a6c74a9fc9ebbddb3a4",
+      "configs\\models\\network.toml": "e6fb4a9780f6c4c710598021d7e437bbe869469474181f49a7ecace2e098f060",
+      "configs\\models\\network_deployment.toml": "e9da36196c7584082d4734201d92095d4e4ccbdf0fdbc163c85bd0af3d6dd2d5",
+      "configs\\models\\pipeline.toml": "e592f90d90e77c00749f014c4a13a3733564a61ac9e1b1fd9922aac51d875e42",
+      "configs\\models\\policy.toml": "bb71979348bbbea8bd547284115bfbc479219d5fb88a75c49a92537b37b45129",
+      "configs\\models\\portfolio_research.toml": "6eda3492891146503217a6be9ac9cff3643a32e668b1c3158f90c1e4cb243b3a",
+      "configs\\models\\router.toml": "fb8ae11226dddd192340388493feffae2b5cf40fd1127b36c38585116c0aa153",
+      "configs\\models\\router_deployment.toml": "43ac4410063821913f02b931f9bd9f43890f2748616bb1a78f7e4976aa83ef9e",
+      "configs\\models\\triage.toml": "81278022f1a1cb3c39dc307787593e392b3683d53f81afa23fd47aa9664dd1df",
+      "configs\\models\\triage_deployment.toml": "22d67a91cc6ba59cfb6bca8fcd0d37cf0dcaf923a7f05d2995bdd75797262d3e",
+      "src\\adaptive_waf\\config.py": "80078f11b7a59a4edf3e6a1dc4e9e5a08e2a7416c9c15a434d34a857a531a29e",
+      "src\\adaptive_waf\\contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+      "src\\adaptive_waf\\randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+      "src\\adaptive_waf\\__init__.py": "0a187e76f485b9dbf613ba5329b3c4b59a41b2154a8ba6ed842b6f89ae4ea976",
+      "src\\adaptive_waf\\adaptation\\drift.py": "af47920ec569157ef715d38620ce4f6dccf824ebec577510f5ad4b9cf960d9a6",
+      "src\\adaptive_waf\\adaptation\\lifecycle.py": "cb4256e0307184dc317370532d76a39a9b5c4bfd4bda3f951e4983b4ba5ba45f",
+      "src\\adaptive_waf\\adaptation\\monitoring.py": "522cca1cce35614fcd8347078558ee18ce661ca3a727a058d2f86cf9f07d62a3",
+      "src\\adaptive_waf\\adaptation\\service.py": "a1a1e68648fe5dff144cc58a2720668545392763d1b52219d08f02811d8a3dbd",
+      "src\\adaptive_waf\\adaptation\\__init__.py": "0363c4f80e8e14e784f8a6fa90fc490910dccacd3c08edb9e3dbab8277a6e5fd",
+      "src\\adaptive_waf\\data\\atrdf.py": "fe15347efa836a18304e2b34e8c40c75f2b4c88663e07a3884865c209c7a28f3",
+      "src\\adaptive_waf\\data\\cicids.py": "e9d2bebf90458c63866e97209e1dc60e151030118df5510a700f490f9c01be5b",
+      "src\\adaptive_waf\\data\\inspection.py": "ecee03d85f0ff3c488933a6ff02796f853226f404fd4fad38f812cb6b327042d",
+      "src\\adaptive_waf\\data\\preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+      "src\\adaptive_waf\\data\\__init__.py": "dfb743d5fa35c4dd54ddc6675c295c2fcde5ca1de57c4baf77dc6d05c7e77370",
+      "src\\adaptive_waf\\features\\canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+      "src\\adaptive_waf\\features\\classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+      "src\\adaptive_waf\\features\\inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+      "src\\adaptive_waf\\features\\__init__.py": "a44d560980600a510881a2db417f344bea41e0f50b02c523e6230fe34e932193",
+      "src\\adaptive_waf\\network_sensor\\core.py": "b5b27c1fbadcc22d440c26ad4dfa1191bfbdbba7c46ad4967e30ee15d91e85c2",
+      "src\\adaptive_waf\\network_sensor\\flows.py": "fd8fcd0b8f42dc09102e81aa11a8948bb66e57d77359886cf85cc4f3ea24de36",
+      "src\\adaptive_waf\\network_sensor\\pcap.py": "d5e171e3b841d56cb2c279c23d1ec22b285e96e191b0a6e7d48604b4610f8eac",
+      "src\\adaptive_waf\\network_sensor\\redis_store.py": "bde938cad4a5cac98083d9cd6c6cb257c5bdc1308330821ceedcc98ab3ba5c5d",
+      "src\\adaptive_waf\\network_sensor\\service.py": "7252011205ae547e55e625ea188613b3747c5474a29fadf7543e8d495c7c5ffd",
+      "src\\adaptive_waf\\network_sensor\\table.py": "17f377708dc325be0a8023dac2209d0ebca473cd38f9b580839d80ba33784304",
+      "src\\adaptive_waf\\network_sensor\\__init__.py": "0856e31eb26049dadd52ae341f850ad708ae9a9b91ef980f4b15d282b6fbe824",
+      "src\\adaptive_waf\\runtime\\artifacts.py": "2c09ac3014ab213a46d15de8e7fad78664ba0a7c045ba9063d6afe95b5c178ad",
+      "src\\adaptive_waf\\runtime\\behaviour.py": "98c1838f8ea84169cf0ea8074b9925f29ab81cd17036c057ef222f15ac0e2a74",
+      "src\\adaptive_waf\\runtime\\benchmark.py": "5fa4be05b070cea09163b6d0e6c51a87cfb9030d74742deafd601431a4538af1",
+      "src\\adaptive_waf\\runtime\\context.py": "c9d1bca4f09d32c173c90c9576ea40419b00efe8f76d31519cc133cff8e67a54",
+      "src\\adaptive_waf\\runtime\\fusion.py": "d272730939912fc8d7c8bd306c37d6407603ff3e0454ec017fe3b86be856f486",
+      "src\\adaptive_waf\\runtime\\guarded.py": "85cd54e9ec1f9e3a540b48f0c9d3325cda84330c0c20475816e745ee075b2229",
+      "src\\adaptive_waf\\runtime\\microbatch.py": "4da920583b2b190c8a4c59c203e7734fc214e33bc6ae4f2ba814762b68df351b",
+      "src\\adaptive_waf\\runtime\\network.py": "660e323f1dfc72559ba634aa2a6d7e0395b9deecb89afd8849fba75a65ceeb6a",
+      "src\\adaptive_waf\\runtime\\optimization.py": "3ca6b7a4288267a8d37e47203a5f361ae1e0072724213c6bda0b96b8c87de736",
+      "src\\adaptive_waf\\runtime\\pipeline.py": "e81e651bfe3d642e9b173e80d3503cedac8a1b2afd1b37d526cac88aa8b85da9",
+      "src\\adaptive_waf\\runtime\\policy.py": "a62e8db1f74d8e0e5b1830780d1eae51df7ed40fb87943637c7d88e7a5d4f0da",
+      "src\\adaptive_waf\\runtime\\profiles.py": "03a5f14b2ff61acddbefc60c1c081388f0ee12d33e2a8c242fb1cc4629739786",
+      "src\\adaptive_waf\\runtime\\replay.py": "34536e31223b7a0247549d895bf210883ac9f2e187575380d24254e70e044957",
+      "src\\adaptive_waf\\runtime\\research_baselines.py": "465f7e5ab8b688c56ed297ac246a53396ae5fdbe68ed5a1f6ea293576fe2b173",
+      "src\\adaptive_waf\\runtime\\routing.py": "f5d8896cd12182a8bdfe687a1cc345ded2a7806e81d2bf9ec210274a244659f7",
+      "src\\adaptive_waf\\runtime\\rules.py": "fc612b753e2637b0aede581438b53bcd616e0446e93536432f7b667505c43ccc",
+      "src\\adaptive_waf\\runtime\\session_risk.py": "d1655949bba0f221b586f07afdbc919ea817a35f48779001aee5d666fb44601d",
+      "src\\adaptive_waf\\runtime\\strategies.py": "6deec564044c6351fde7d135b7bfd0b406090ac303b631ae6cf3137edd6d5dfa",
+      "src\\adaptive_waf\\runtime\\uncertainty.py": "cf95bec5f68fdff77b5e48571a1ed8eea20ea945ab9f204620e770e1274b9dae",
+      "src\\adaptive_waf\\runtime\\__init__.py": "e7bbedc78221cf7025a41638ed559f973067a6cca15f9beba8946f698cb79fd3",
+      "src\\adaptive_waf\\service\\app.py": "08b8ec404293740fd9993d64e99129ff0a61c8c1db80184c67db6bb9367d2c06",
+      "src\\adaptive_waf\\service\\catalog.py": "d361701834c256667fd213b92f545f0a330ee2f9bfd34aed1cee66f1b332fe66",
+      "src\\adaptive_waf\\service\\corpus.py": "d8359d9ad7a9918cc3aab8da4f03264d862285392c870b48cdc80db9c64704ab",
+      "src\\adaptive_waf\\service\\durable_escalation.py": "a8f10fd2060b273d172897b5b69d2c6a323748fc6a7f16a72b1286130ad45c2e",
+      "src\\adaptive_waf\\service\\escalation.py": "bacffde76bae7e3529adff266bfd97646730025884598fa6e1b6021b82b33386",
+      "src\\adaptive_waf\\service\\runtime.py": "ff329c870b0e025452899c70bede2efa4bb6696eb8a64639ab02222616c06d10",
+      "src\\adaptive_waf\\service\\telemetry.py": "901f5bc0b6265103c45fef912d1873a6099a43c9a5e259b12babba22e9201f34",
+      "src\\adaptive_waf\\service\\__init__.py": "120cf8483c5c368bd745c166cb20e8279946c1d163b3f143eefce1658afd6781",
+      "src\\adaptive_waf\\training\\calibration.py": "59e8fba59cf97bc4225224437d08d71d80fcce2b913e23b1a02520794c0d5d3b",
+      "src\\adaptive_waf\\training\\candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+      "src\\adaptive_waf\\training\\candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+      "src\\adaptive_waf\\training\\deep_calibration.py": "e8501561843093e775e2257db7084e46c3b7fb619a251197f566220fde6f4f01",
+      "src\\adaptive_waf\\training\\deep_data.py": "8dbaa669a6dc3fe2a40bdb4fe5ae990f07abac226f22a55e01350b32d048bba5",
+      "src\\adaptive_waf\\training\\deep_evaluation.py": "89864432925cc864dfbc979e023b07ae8c55ce91e8eefa4595cec736bd406b5a",
+      "src\\adaptive_waf\\training\\deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+      "src\\adaptive_waf\\training\\ensemble.py": "b9b5d008bf442315a7eaea6e5cf27dda37074a080320ded1288d37bb60ad21a6",
+      "src\\adaptive_waf\\training\\ensemble_evaluation.py": "af7185b9a87011e716b5f59c9726bc3f30ef1d1c4cdeaa4b9a43cc3b4d2cccb0",
+      "src\\adaptive_waf\\training\\evaluation.py": "ed158ab6541bb8d2fa57aad962fae5541aeac6aa4820aa7ed1a9736211b38be9",
+      "src\\adaptive_waf\\training\\expert_data.py": "2ce45a7da1065e56ad6a887df12201e20d7bee28d8e6e1a6e45103ae5f7bdcd3",
+      "src\\adaptive_waf\\training\\http_data.py": "999b813770d76a465a202a868e7e108ab5f38a1eca70c78526e66e491292c0f9",
+      "src\\adaptive_waf\\training\\models.py": "601d61562dfe0a116943cae812f4af6729b5c978b4c4a0fd337d83b0663672cd",
+      "src\\adaptive_waf\\training\\network_data.py": "25f2849a58f5d57c642974d80beeb32d15c54147fc5c88767bf50c008c7fdea5",
+      "src\\adaptive_waf\\training\\portfolio.py": "efb95f46dbc82bf83f6a3cbf9d5ec581abe09cfbc0bbb6a5b9f86b30a2967462",
+      "src\\adaptive_waf\\training\\router_data.py": "cf129affc8cb235ed18e0b6d460c8d01006aa81a8037198512ffe27965ae4f54",
+      "src\\adaptive_waf\\training\\router_evaluation.py": "1a64aaf8cece7b26712ea65c8c30ef9c2ab53d3ed3d56fe282cb8dd1f324fddf",
+      "src\\adaptive_waf\\training\\router_runner.py": "e7d7826fe2dbb24d4480b346016ccb49545e102f4af258b081dc0b27fc55d6bc",
+      "src\\adaptive_waf\\training\\runner.py": "fde7f16d663efde127ff01978b4dc2a6350bb67263f11dd7d0d6e6964ed9bae8",
+      "src\\adaptive_waf\\training\\__init__.py": "8841ae024ffb36b35a29389c3f37c0f821eab2b237d9e9f6c3f3946f2c8bc7ae",
+      "scripts\\audit_http_population.py": "7f26a071fa494e92b297a0ec8065dba84c18a029b8d698482f3b5bb20ea84834",
+      "scripts\\benchmark_crs.py": "ce10905c22a9dd8065a8caa914e3a0f9fcaf8af932ffeef6112c780e4ce437f9",
+      "scripts\\benchmark_gateway_research.py": "8459dd5fb240aadf396d7ee50a7ca3c6c4e6ad84fb3ffc1cfe12dba2bed53ee9",
+      "scripts\\benchmark_pipeline.py": "98af1214462e1793c29abb1cbce6aacc02e834cf962a92f94e369de448b90a5f",
+      "scripts\\build_probe_corpus.py": "0a0ce6cc76561e77db6e48d69a0a2bd66cc3a044d1306067c74be22905ba174e",
+      "scripts\\calibrate_models.py": "4c87f507480c12ebdfce2ac5897dc7f5342a0ecfda7de13cbb325ff3effe1223",
+      "scripts\\calibrate_research.py": "96fb04b25b2d76b57132ca0791764d74aae5b6fd8b9228f726444612c75f8d8b",
+      "scripts\\candidate_experiments.py": "7f92cab8874a3f8b86af69c8ce050bf14f10b3d3bc0812b497730b7e4bffa5bc",
+      "scripts\\capture_network_flows.py": "a103225d3a42a40331226505cf2ddc1e45a0163886d584b8a31aa8f428df77d6",
+      "scripts\\derive_research_summary.py": "362856235b4d01497ae4b29ae8df42118afe92ba1e1d585617e23b9cc251a362",
+      "scripts\\evaluate_expert_ensembles.py": "32e4331680fb37135f5cd6223f8b1eb52c39bb66e4ca68dea932577eb47239f8",
+      "scripts\\evaluate_phase10.py": "35b5ec8005c155df821e2b266e3ffd0dd2d5e6a3420a43d50a71e0158cf7dd09",
+      "scripts\\inspect_datasets.py": "7af8ce043f9b1c2f95c15ba962d60fa5f522841bd23edd3b78ea68f91a8370fb",
+      "scripts\\inspect_network.py": "0e2cec27d3f8b3c61a1594dd0fc4eba7c8296c1fabb64a8351140171e263dfa4",
+      "scripts\\inspect_pipeline.py": "0c8506a7151667b66387f7101781296e58c1f65cdcaa0caad53ee6921d58d0c2",
+      "scripts\\inspect_runtime.py": "51d5368d8d1169358da98aa12099b461da74eaf82e00c3e9a3aa70b71a8dcfe8",
+      "scripts\\plot_research.py": "d62fdb234d5fe411a0455dcb238d97122c0edcf31577f6426bede6d7e56cdf53",
+      "scripts\\prepare_atrdf.py": "3a8be0635e58a960d7d5924c3336c8157dbdfdaf30c0445e8a4a4684a79dddfe",
+      "scripts\\prepare_candidate_protocol.py": "ed3d46a88a62502c254881971fdf4761a8d9b3e3ef11ea494325b5d8d7b6f73b",
+      "scripts\\prepare_cicids.py": "dceabdbd672a8722ca05b67bde183a529d83b9cbfdfdc1c72a59d8b4f4c644e4",
+      "scripts\\profile_deep_batches.py": "3322c85d7de7b1722f18f6d2714845b7e7c7adbb0764c9d2e75b06c68579930c",
+      "scripts\\profile_deep_devices.py": "5b303c45e4e2b69881b6197c6ae54cc904bd79ec68066d34de79186c805012b1",
+      "scripts\\profile_model_threads.py": "a439c1b684e49cec906a92bcc67200f7abeb6dd4da62d46b9136886682c1ffe1",
+      "scripts\\replay_network_flows.py": "0b389fe24110f1be08bb7cd52c75d0b4ffdbdece67e2f3e06c2275d85502bf18",
+      "scripts\\research_inventory.py": "1e6c1f64109cd53000c60f78a02a4755708b7c96d8cdff69a19a257a865f56a9",
+      "scripts\\research_probe.py": "1b660c0bb8b1d1993c90ab5d5e0bbf9cb4f6f7dae00329089a904df9032da044",
+      "scripts\\run_network_sensor.py": "12175e76a68c023e99ebaca6850d81a97da7430c2d06607489366c8688ecca0f",
+      "scripts\\run_training_adaptation_service.py": "129101e4f205c3b55759b82b942a3a7732dfc219425ce5bc3b87a9a474d8e315",
+      "scripts\\serve_research_fixture.py": "4cd53f23424f5557d4626786ca75b2a8e2af8c8a8d85277a060050f2adbcfb61",
+      "scripts\\simulate_policy.py": "da8ee9c8e6f1242501eb459566247d54a53c8dd5ca7bceb1bc028721775f2eee",
+      "scripts\\smoke_platform.py": "b045ff83278ab78198afe069beea57d39e6044c148d1fc94519e95178cf97b5d",
+      "scripts\\train_deep.py": "e2af4c0f3429172c5bd66bf27110f8fee693f308df5858d4b59e2757ecc522f0",
+      "scripts\\train_expert.py": "5a493a4b2b8cdea56099a6cdce3db3987e2bfdfc50b640fe0ae1629b530c8a05",
+      "scripts\\train_network.py": "b3a3843e7356405624009f2e01722db9708477baaf00dbda7c1f7eb87649a365",
+      "scripts\\train_router.py": "5d61bfaf9bfe97cfff10847fc7c2a5022aaf696c5d4377cfde4d898ba0f66dbb",
+      "scripts\\train_routing_replay.py": "bb907fa015f8d344e3a924cf3eea1008b2f724452bd0c096d4ff1114166d204b",
+      "scripts\\train_triage.py": "60768941bc7200938d3e1f22a016170f262dba50d88e25499b149fc633e17ab3",
+      "scripts\\wait_research_fixtures.py": "ad03bf7c71774d25152ba5d5d59fcfe440ae8fe6bbbdf923b650585d9c941d98",
+      "scripts\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gateway-service\\target\\gateway-service-0.1.0.jar": "233e075a391bd73707f59515867ecbd2ac7b08d181b426bc5b85db7a280c7226",
+      "security-control-service\\target\\security-control-service-0.1.0.jar": "ed9b0e7fef07b53db914da7aed5f3e38dddd7f6db8901b33941a7e700e84eeab",
+      "demo-backend\\target\\demo-backend-0.1.0.jar": "462dfe5643fda8c221b72d10ed82fa043147d6075bfe2fedbcf153fb742f4e68",
+      "artifacts\\training\\calibration\\calibration-full-v1\\deep\\temperature.json": "f64f1f3bf283829922bf1c304f7b17a6e4148e657d427a6046cb0b0917940b06",
+      "artifacts\\training\\calibration\\calibration-full-v1\\execution\\isotonic\\model.joblib": "bb2bbcd232a9537aef73e64d8bf8b88c7ad9fe654a63f51822bff64396ac43ee",
+      "artifacts\\training\\calibration\\calibration-full-v1\\injection\\isotonic\\model.joblib": "52cf228373d7e5c76d211cdb0cc427758890e4b16a8f6ecbf298254926b66ed1",
+      "artifacts\\training\\calibration\\calibration-full-v1\\triage\\isotonic\\model.joblib": "cd4897324ed0922d737d33192ca7c74bb0cac8c9e71903f72048265ab0a98115",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\class_mapping.json": "78feca4fba3bef7c017ec3236f121c028daf4e8521c00b3052c4d8ad48e13d4d",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\config.json": "76be2a31f495dbf5530a04e5d5a3a999f3a07ceac0267c4acdd75ff0fd21c36a",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\metrics.json": "2de31985a08ddec17412f1e1c225ba33c5718f257cb1c9d113adc0e8990ef9e5",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\model\\config.json": "50137774787e902b158dadb66ae443fec1d095bd14854d9f671367e393bf9d8c",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\model\\model.safetensors": "0341dc9bece2e28495a8b1a1c952f970c4c08fe832e5509b3a1e8ce4715fde81",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\tokenizer\\tokenizer.json": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\tokenizer\\tokenizer_config.json": "71cd48543bec670f50e0c9c3556df16b1f58ea720ead6a1b4675f08870c60b17",
+      "artifacts\\training\\deep\\distilbert-full-gpu-v1\\train.log": "b5aaf2a26f1b626d92271fb8b1fdb78dbbc6b3c86c0efcfe494e0f9002f37108",
+      "artifacts\\training\\experts\\execution\\execution-expert-full-v1\\extra_trees\\model.joblib": "fe8606a1ee31584756c563c0b001d9c65032a438e755399da9dab1d1dbe853dd",
+      "artifacts\\training\\experts\\injection\\injection-expert-full-v1\\random_forest\\model.joblib": "f2b8559671189b0c66d3fad7b95b2823fa559c412e51e4cc7b1942848ed70338",
+      "artifacts\\training\\network\\network-full-v1\\feature_manifest.json": "d78e5d2c54b59b91957ea16b4cec17558311af017438fcb49e579f0bb9633d96",
+      "artifacts\\training\\network\\network-full-v1\\random_forest\\model.joblib": "7d60ab39a4ab23b900cfc30b5f9ee86e5e5bc258393a81468027ade00ac312c4",
+      "artifacts\\training\\router\\router-full-v1\\logistic_regression\\model.joblib": "54fd6b36abfe2ed555f9ad36a4f95812942458fd0040889de20f69a834503f97",
+      "artifacts\\training\\triage\\triage-full-v1\\random_forest\\model.joblib": "16c861933d66492d9f289e5c94a7a42b3938340724683200006d154cbe56d646"
+    },
+    "torch": "2.13.0+cu126",
+    "cuda": "12.6",
+    "sklearn": "1.9.0",
+    "cuda_device": "NVIDIA GeForce RTX 4070 Laptop GPU"
+  },
+  "model_versions": {
+    "triage": "triage-full-v1:isotonic",
+    "router": "router-full-v1:logistic_regression",
+    "injection": "injection-expert-full-v1:isotonic",
+    "execution": "execution-expert-full-v1:isotonic",
+    "deep": "distilbert-full-gpu-v1:temperature"
+  },
+  "experiments": [
+    {
+      "mode": "deep_only_control_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 6,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 6.813531969737513,
+        "fully_inspected_rps": 6.813531969737513,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.6666666666666666,
+        "attack_detection_recall_all_submitted": 0.6,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 4,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 6,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 81.00320000085048,
+        "latency_p95_ms": 438.2077149966784,
+        "latency_p99_ms": 775.1961029956879,
+        "elapsed_seconds": 1.7612011000019265,
+        "macro_f1": 0.5833333333333334,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.6,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 2.125,
+        "cpu_equivalent_percent": 120.65629529743512,
+        "process_group_rss_bytes": 2183049216,
+        "gpu_process_allocated_bytes": 277489152,
+        "gpu_process_peak_allocated_bytes": 279112704,
+        "gpu_device_samples": [
+          {
+            "gpu_percent": 0.0,
+            "device_memory_mib": 1012.0,
+            "device_power_watts": 3.85
+          },
+          {
+            "gpu_percent": 0.0,
+            "device_memory_mib": 1042.0,
+            "device_power_watts": 3.85
+          },
+          {
+            "gpu_percent": 0.0,
+            "device_memory_mib": 1042.0,
+            "device_power_watts": 4.42
+          },
+          {
+            "gpu_percent": 31.0,
+            "device_memory_mib": 1044.0,
+            "device_power_watts": 4.72
+          },
+          {
+            "gpu_percent": 45.0,
+            "device_memory_mib": 1044.0,
+            "device_power_watts": 5.49
+          }
+        ],
+        "deep_batch_cumulative_snapshot": {
+          "enabled": true,
+          "queue_depth": 0,
+          "inflight": 0,
+          "max_batch": 4,
+          "queue_limit": 32,
+          "wait_ms": 2.0,
+          "batches": 12,
+          "completed": 12,
+          "expired": 0,
+          "rejected": 0,
+          "caller_timeouts": 0,
+          "total_queue_wait_ms": 90.60490001866128,
+          "closed": false
+        },
+        "cpu_ms_per_submitted_request": 177.08333333333334
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "ab964d4c-a12d-47e0-8c5c-654078c2c94f",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 859.4431999954395,
+          "inference_ms": 733.4384,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 706.6595
+          }
+        },
+        {
+          "case_id": "xss",
+          "request_id": "41f9751b-672d-4f2e-a80b-f66b9e7cb2d7",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 84.28969999658875,
+          "inference_ms": 46.7018,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 42.4284
+          }
+        },
+        {
+          "case_id": "rce",
+          "request_id": "857d8f2a-f57d-4934-88c0-141acb5bc27f",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 93.56049999769311,
+          "inference_ms": 58.9667,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 54.6195
+          }
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "21a5f313-27f2-451b-af89-b324dd12f5f6",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 77.89539999794215,
+          "inference_ms": 62.7699,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 57.928
+          }
+        },
+        {
+          "case_id": "rce",
+          "request_id": "2186e7a2-068d-4854-af74-09d5f64e3704",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 88.36439999868162,
+          "inference_ms": 59.4253,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 54.5703
+          }
+        },
+        {
+          "case_id": "xss",
+          "request_id": "8e3600ca-6e47-4d99-8f56-c69779762dd1",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 74.79850000527222,
+          "inference_ms": 44.8196,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 40.7893
+          }
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "7d3d7d55-d128-41cf-82cc-e28d4ec51e05",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 79.43019999947865,
+          "inference_ms": 46.8833,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 42.8872
+          }
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "f2130b17-ba69-4cf2-9b16-5d8189f88402",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 88.79669998714235,
+          "inference_ms": 46.7613,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 42.8854
+          }
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "aaed4820-44cc-4dd4-bec9-646379883264",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 77.8858000121545,
+          "inference_ms": 42.9914,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 39.1366
+          }
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "238c7aec-ca3a-4764-8366-1ca21ebacf40",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 79.81350000773091,
+          "inference_ms": 42.3802,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 38.4619
+          }
+        },
+        {
+          "case_id": "benign",
+          "request_id": "9c48d0c4-c9f6-4910-80a6-4a65f01905fb",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 82.19289999397006,
+          "inference_ms": 48.4174,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 44.8013
+          }
+        },
+        {
+          "case_id": "benign",
+          "request_id": "06ea70b8-4aac-4782-84aa-baab183e3169",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 72.68930001009721,
+          "inference_ms": 45.1339,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 41.3697
+          }
+        }
+      ]
+    },
+    {
+      "mode": "deep_only_control_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 6,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 26.25664867590028,
+        "fully_inspected_rps": 26.25664867590028,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.6666666666666666,
+        "attack_detection_recall_all_submitted": 0.6,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 4,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 6,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 97.75719999015564,
+        "latency_p95_ms": 263.7918950007588,
+        "latency_p99_ms": 265.18453900833265,
+        "elapsed_seconds": 0.4570270999975037,
+        "macro_f1": 0.5833333333333334,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.6,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 1.0,
+        "cpu_equivalent_percent": 218.80540563250233,
+        "process_group_rss_bytes": 2321870848,
+        "gpu_process_allocated_bytes": 277489152,
+        "gpu_process_peak_allocated_bytes": 283022336,
+        "gpu_device_samples": [
+          {
+            "gpu_percent": 45.0,
+            "device_memory_mib": 1044.0,
+            "device_power_watts": 5.49
+          },
+          {
+            "gpu_percent": 0.0,
+            "device_memory_mib": 1044.0,
+            "device_power_watts": 5.6
+          }
+        ],
+        "deep_batch_cumulative_snapshot": {
+          "enabled": true,
+          "queue_depth": 0,
+          "inflight": 0,
+          "max_batch": 4,
+          "queue_limit": 32,
+          "wait_ms": 2.0,
+          "batches": 18,
+          "completed": 24,
+          "expired": 0,
+          "rejected": 0,
+          "caller_timeouts": 0,
+          "total_queue_wait_ms": 544.2627000447828,
+          "closed": false
+        },
+        "cpu_ms_per_submitted_request": 83.33333333333333
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "3d000317-4ba6-47a4-86fa-a238379b5bec",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 262.36759999301285,
+          "inference_ms": 224.161,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 214.3649
+          }
+        },
+        {
+          "case_id": "xss",
+          "request_id": "45895cf2-cfc4-4c4a-adf3-6e766249251f",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 260.331600002246,
+          "inference_ms": 223.4127,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 214.7955
+          }
+        },
+        {
+          "case_id": "rce",
+          "request_id": "b4bca81f-3586-483f-8b21-25fab3dca67b",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 265.5327000102261,
+          "inference_ms": 225.4292,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 214.2341
+          }
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "8c49e70c-643c-4931-9fca-48795d07b946",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 79.99509999353904,
+          "inference_ms": 45.1616,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 39.8784
+          }
+        },
+        {
+          "case_id": "rce",
+          "request_id": "e88b8582-ab9c-4689-99fd-3d8cb8802ceb",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 226.87169999699108,
+          "inference_ms": 197.2494,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 193.9013
+          }
+        },
+        {
+          "case_id": "xss",
+          "request_id": "a6a69dfa-f7f4-4a09-9925-fd4164559c9f",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 96.01029999612365,
+          "inference_ms": 60.8363,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 56.6657
+          }
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "5d8137ca-7f73-4e6f-8003-d02cf121498c",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 94.01869999419432,
+          "inference_ms": 58.7054,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 55.9523
+          }
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "f355660c-2f3e-40dd-b862-2c117e22dd78",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 90.4688000009628,
+          "inference_ms": 60.1462,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 56.568
+          }
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "03e57338-d943-45c7-a006-f84eda3f8427",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 95.21039998799097,
+          "inference_ms": 61.2329,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 57.4131
+          }
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "9d3669a4-2f47-4987-b085-09edab105b77",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 99.06300000147894,
+          "inference_ms": 80.6157,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 74.6862
+          }
+        },
+        {
+          "case_id": "benign",
+          "request_id": "dc6f3519-256c-41c4-b9c5-809ab38235f8",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 96.99229999387171,
+          "inference_ms": 79.6364,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 75.8508
+          }
+        },
+        {
+          "case_id": "benign",
+          "request_id": "02e9ab54-f666-49f5-952d-e000156e748b",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 98.52209998643957,
+          "inference_ms": 81.4562,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 72.9327
+          }
+        }
+      ]
+    },
+    {
+      "mode": "deep_only_control_gateway",
+      "concurrency": 8,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 6,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 59.63669326314454,
+        "fully_inspected_rps": 59.63669326314454,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.6666666666666666,
+        "attack_detection_recall_all_submitted": 0.6,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 4,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 6,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 89.1859499970451,
+        "latency_p95_ms": 126.27980499746624,
+        "latency_p99_ms": 143.47804099597855,
+        "elapsed_seconds": 0.20121840000501834,
+        "macro_f1": 0.5833333333333334,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.6,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.5,
+        "cpu_equivalent_percent": 248.4862219297689,
+        "process_group_rss_bytes": 2321190912,
+        "gpu_process_allocated_bytes": 277489152,
+        "gpu_process_peak_allocated_bytes": 283991040,
+        "gpu_device_samples": [
+          {
+            "gpu_percent": 47.0,
+            "device_memory_mib": 1044.0,
+            "device_power_watts": 5.92
+          }
+        ],
+        "deep_batch_cumulative_snapshot": {
+          "enabled": true,
+          "queue_depth": 0,
+          "inflight": 0,
+          "max_batch": 4,
+          "queue_limit": 32,
+          "wait_ms": 2.0,
+          "batches": 22,
+          "completed": 36,
+          "expired": 0,
+          "rejected": 0,
+          "caller_timeouts": 0,
+          "total_queue_wait_ms": 815.6402000458911,
+          "closed": false
+        },
+        "cpu_ms_per_submitted_request": 41.666666666666664
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "c9296953-bf57-479b-b308-3d863824baf8",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 66.54090000665747,
+          "inference_ms": 50.2182,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 43.1991
+          }
+        },
+        {
+          "case_id": "xss",
+          "request_id": "d7daa4d5-5fc1-419f-83e2-9e1694b680dc",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 63.93090001074597,
+          "inference_ms": 49.509,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 43.0862
+          }
+        },
+        {
+          "case_id": "rce",
+          "request_id": "d8d99608-c1a6-45d3-82d2-2a2b493ee65c",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 65.47180000052322,
+          "inference_ms": 48.4071,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 43.1763
+          }
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "006acd85-40b9-4c0d-9fd5-584551fcc7f2",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 108.69069999898784,
+          "inference_ms": 85.7885,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 79.157
+          }
+        },
+        {
+          "case_id": "rce",
+          "request_id": "8a0232cf-ac98-4649-8894-9e9e469b45fe",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 105.58529999980237,
+          "inference_ms": 86.3691,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 82.5901
+          }
+        },
+        {
+          "case_id": "xss",
+          "request_id": "13b5eae3-5653-4382-af23-1a5b95d26e6a",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 147.77759999560658,
+          "inference_ms": 121.7363,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 115.5923
+          }
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "eb76b89e-13ed-447c-a050-96055523b3cb",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 106.89300000376534,
+          "inference_ms": 86.1127,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 77.6198
+          }
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "fd7e4a80-4c00-42e4-a35f-9c16a4dc4e61",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 102.261299995007,
+          "inference_ms": 83.9121,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 76.1834
+          }
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "d4bd8b00-11fa-45bd-a1b5-046f8882b5b0",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 86.23119999538176,
+          "inference_ms": 50.1714,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 46.4685
+          }
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "900ba806-03d0-4b60-8601-ef836a838bf2",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 84.36989999609068,
+          "inference_ms": 51.7453,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 46.2736
+          }
+        },
+        {
+          "case_id": "benign",
+          "request_id": "febe3cb1-c85e-4d33-a5e2-bdc85917f7e9",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 84.76399999926798,
+          "inference_ms": 53.6624,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 48.68
+          }
+        },
+        {
+          "case_id": "benign",
+          "request_id": "827045bd-b007-42de-a4b1-777ae099002c",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 92.14069999870844,
+          "inference_ms": 80.4863,
+          "routing_path": [
+            "DEEP_ONLY_RESEARCH_CONTROL",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "decision": {
+            "route": "DEEP_ONLY_RESEARCH_CONTROL",
+            "inspection_status": "FULLY_INSPECTED",
+            "reason": "research_comparator_all_requests_deep",
+            "semantic_guards_enabled": false
+          },
+          "model_versions": {
+            "deep": "distilbert-full-gpu-v1:temperature",
+            "strategy": "deep-only-research-control-v1"
+          },
+          "stages_ms": {
+            "deep": 76.6655
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Prepared development probes only; no generalization or final-test claim.",
+    "Repeated inputs are not independent samples; no security confidence interval inferred.",
+    "Fixed and guarded strategies differ in available mandatory rules; this is not isolated routing novelty evidence.",
+    "Resource CPU/RSS covers client, detection and three Java processes; GPU metrics are allocator observations, not GPU utilization.",
+    "nvidia-smi samples cover the entire device; power, memory and utilization can include unrelated workloads. RSS is end-of-trial, not peak.",
+    "No CRS-only, fitted-conformal or trained-bandit results exist in this report."
+  ]
+}

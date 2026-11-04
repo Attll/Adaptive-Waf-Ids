@@ -24,6 +24,8 @@ export type EventRecord = {
   triageDecision?: string;
   confidence: number;
   detailsJson: string;
+  inspectionStatus?: string | null;
+  processedAt?: string;
 };
 
 export type Policy = { applicationId: string; version: number; blockRiskThreshold: number; rateLimitShortWindow: number };
@@ -56,6 +58,11 @@ export type SourceProfile = {
 export type Statistics = {
   summary: {
     total: number;
+    allTimeTotal?:number;
+    fullyInspected?: number;
+    partiallyInspected?: number;
+    detectionUnavailable?: number;
+    coverageUnknown?: number;
     detections: number;
     blocked: number;
     rateLimited: number;
@@ -154,6 +161,8 @@ export type BatchProbe = {
   query?: string;
   body?: string;
   expected: string;
+  cookies?: Record<string,string>;
+  headers?: Record<string,string>;
 };
 
 export type BatchResult = {
@@ -193,6 +202,7 @@ export type GatewayProbeResult = {
   blocked: boolean;
   predictedAttack?: string;
   roundTripMs: number;
+  proxyRoundTripMs?:number;
   requestId?: string;
   bodyPreview: string;
   error?: string;
@@ -216,6 +226,8 @@ export type EscalationOutcome = {
 };
 
 export type EscalationStatistics = {
+  pending?: number;
+  running?: number;
   enabled: boolean;
   workers: number;
   queue_depth: number;
@@ -261,7 +273,7 @@ export type CorpusSummary = {
   network: { available: boolean; records: number; labels: Record<string, number>; source: string };
 };
 
-export type HttpCorpusRecord = { label: string; method: string; path: string; query: string; body: string; cookies: Record<string, string> };
+export type HttpCorpusRecord = { label: string; method: string; path: string; query: string; body: string; cookies: Record<string, string>;headers?:Record<string,string> };
 export type NetworkCorpusRecord = { label: string; features: Record<string, number> };
 
 export type DashboardSnapshot = {
@@ -395,13 +407,15 @@ export async function detectBatch(probes: BatchProbe[]): Promise<BatchResponse> 
 
 /** Replays a probe through the gateway so the whole chain — enforcement, upstream, journal — is exercised. */
 export async function probeGateway(probe: BatchProbe): Promise<GatewayProbeResult> {
-  const target = `/gateway-api/backend${probe.path}${probe.query ? `?${probe.query}` : ""}`;
+  const encoded=(text:string)=>encodeURI(text).replace(/%25(?=[0-9a-f]{2})/gi,'%').replace(/#/g,'%23');
+  const target = `/gateway-api/backend${encoded(probe.path)}${probe.query ? `?${encoded(probe.query)}` : ""}`;
   const started = performance.now();
   try {
     const response = await fetch(target, {
       method: probe.method,
       headers: probe.body ? { "Content-Type": "application/json" } : undefined,
       body: probe.body || undefined
+      ,signal:AbortSignal.timeout(30000)
     });
     const text = await response.text();
     let predictedAttack: string | undefined;
@@ -499,6 +513,27 @@ export class DashboardApi {
 
   infrastructure() {
     return this.control<Infrastructure>("/v1/control/infrastructure");
+  }
+  redis(cursor="0") { return this.control<{cursor:string;entries:{key:string;ttl:number;type:string;value:unknown;valueScope:string}[];scope:string}>(`/v1/control/tools/redis?cursor=${encodeURIComponent(cursor)}`); }
+  modelQuery(body:unknown) {return this.control<Record<string,unknown>>("/v1/control/tools/models/query",{method:"POST",body:JSON.stringify(body)});}
+  trainRouting(body:unknown) {return this.control<Record<string,unknown>>("/v1/control/tools/rl/train",{method:"POST",body:JSON.stringify(body)});}
+  validateRouting() {return this.control<Record<string,unknown>>("/v1/control/tools/rl/validate",{method:"POST"});}
+  routingRuns() {return this.control<{runs:{run_id:string;data_origin:string;elapsed_seconds:number;shadow_only:boolean}[]}>("/v1/control/tools/rl/runs");}
+  routingRun(id:string) {return this.control<Record<string,unknown>>(`/v1/control/tools/rl/runs/${encodeURIComponent(id)}`);}
+  async replay(probe:BatchProbe):Promise<GatewayProbeResult> {
+    const started=performance.now();
+    const result=await this.control<{status:number;requestId:string;roundTripMs:number;bodyPreview:string}>("/v1/control/tools/replay",{method:"POST",body:JSON.stringify(probe)});
+    let predictedAttack:string|undefined;try{predictedAttack=JSON.parse(result.bodyPreview)?.error?.predicted_attack;}catch{/* Backend may return plain text. */}
+    return {...result,proxyRoundTripMs:result.roundTripMs,roundTripMs:performance.now()-started,label:probe.label,method:probe.method,target:probe.path,blocked:[403,429].includes(result.status),predictedAttack};
+  }
+  async awaitJournal(identifiers:string[]) {
+    const ids=new Set(identifiers);let seen=0;
+    for(let i=0;i<20;i++) {
+      const response=await this.events({limit:500});seen=response.events.filter(event=>event.requestId&&ids.has(event.requestId)).length;
+      if(seen>=ids.size)break;
+      await new Promise(resolve=>window.setTimeout(resolve,250));
+    }
+    return {expected:ids.size,journalled:seen};
   }
 
   journalledEscalations(limit = 50) {

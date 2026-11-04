@@ -1,0 +1,124 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.adaptivewaf:security-control-service >--------------
+[INFO] Building security-control-service 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ security-control-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 6 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ security-control-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ security-control-service ---
+[INFO] skip non existing resourceDirectory C:\Projects\Adaptive Waf Ids\security-control-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ security-control-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ security-control-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.adaptivewaf.control.config.InternalSecurityTest
+08:40:39.727 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.adaptivewaf.control.config.InternalSecurityTest]: InternalSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:40:39.827 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.adaptivewaf.control.SecurityControlApplication for test class com.adaptivewaf.control.config.InternalSecurityTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2026-10-30T08:40:40.168+05:30  INFO 39340 --- [security-control-service] [           main] c.a.control.config.InternalSecurityTest  : Starting InternalSecurityTest using Java 21.0.11 with PID 39340 (started by atula in C:\Projects\Adaptive Waf Ids\security-control-service)
+2026-10-30T08:40:40.169+05:30  INFO 39340 --- [security-control-service] [           main] c.a.control.config.InternalSecurityTest  : No active profile set, falling back to 1 default profile: "default"
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+2026-10-30T08:40:41.442+05:30  INFO 39340 --- [security-control-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name users
+2026-10-30T08:40:42.038+05:30  INFO 39340 --- [security-control-service] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-30T08:40:42.038+05:30  INFO 39340 --- [security-control-service] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-30T08:40:42.039+05:30  INFO 39340 --- [security-control-service] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-30T08:40:42.062+05:30  INFO 39340 --- [security-control-service] [           main] c.a.control.config.InternalSecurityTest  : Started InternalSecurityTest in 2.179 seconds (process running for 2.889)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.652 s -- in com.adaptivewaf.control.config.InternalSecurityTest
+[INFO] Running com.adaptivewaf.control.events.EventPipelineIntegrationTest
+2026-10-30T08:40:42.299+05:30  INFO 39340 --- [security-control-service] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.adaptivewaf.control.events.EventPipelineIntegrationTest]: EventPipelineIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-30T08:40:42.321+05:30  INFO 39340 --- [security-control-service] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.adaptivewaf.control.SecurityControlApplication for test class com.adaptivewaf.control.events.EventPipelineIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2026-10-30T08:40:42.352+05:30  INFO 39340 --- [security-control-service] [           main] c.a.c.e.EventPipelineIntegrationTest     : Starting EventPipelineIntegrationTest using Java 21.0.11 with PID 39340 (started by atula in C:\Projects\Adaptive Waf Ids\security-control-service)
+2026-10-30T08:40:42.353+05:30  INFO 39340 --- [security-control-service] [           main] c.a.c.e.EventPipelineIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
+2026-10-30T08:40:42.891+05:30  INFO 39340 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T08:40:42.892+05:30  INFO 39340 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-30T08:40:42.927+05:30  INFO 39340 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
+2026-10-30T08:40:42.944+05:30  INFO 39340 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-30T08:40:42.945+05:30  INFO 39340 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-30T08:40:42.955+05:30  INFO 39340 --- [security-control-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.adaptivewaf.control.events.SecurityEventRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-30T08:40:42.955+05:30  INFO 39340 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-10-30T08:40:43.386+05:30  INFO 39340 --- [security-control-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-30T08:40:43.514+05:30  INFO 39340 --- [security-control-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@76a1cc1a
+2026-10-30T08:40:43.515+05:30  INFO 39340 --- [security-control-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-30T08:40:43.536+05:30  INFO 39340 --- [security-control-service] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:52702/waf_fixture (PostgreSQL 16.15)
+2026-10-30T08:40:43.571+05:30  INFO 39340 --- [security-control-service] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-30T08:40:43.575+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.017s)
+2026-10-30T08:40:43.586+05:30  INFO 39340 --- [security-control-service] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-30T08:40:43.648+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-30T08:40:43.657+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - security events"
+2026-10-30T08:40:43.703+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - control plane"
+2026-10-30T08:40:43.746+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - training adaptation"
+2026-10-30T08:40:43.789+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - request evidence"
+2026-10-30T08:40:43.833+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - inspection coverage"
+2026-10-30T08:40:43.847+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - durable deep jobs"
+2026-10-30T08:40:43.866+05:30  INFO 39340 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 6 migrations to schema "public", now at version v6 (execution time 00:00.111s)
+2026-10-30T08:40:43.958+05:30  INFO 39340 --- [security-control-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-30T08:40:44.013+05:30  INFO 39340 --- [security-control-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2026-10-30T08:40:44.047+05:30  INFO 39340 --- [security-control-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-30T08:40:44.152+05:30  INFO 39340 --- [security-control-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-30T08:40:44.219+05:30  INFO 39340 --- [security-control-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-30T08:40:44.781+05:30  INFO 39340 --- [security-control-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-30T08:40:44.815+05:30  INFO 39340 --- [security-control-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-30T08:40:45.506+05:30  INFO 39340 --- [security-control-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name users
+2026-10-30T08:40:45.854+05:30  INFO 39340 --- [security-control-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-30T08:40:46.264+05:30  INFO 39340 --- [security-control-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:52700]
+2026-10-30T08:40:46.296+05:30  INFO 39340 --- [security-control-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#486ab192:0/SimpleConnection@1f39afe [delegate=amqp://guest@127.0.0.1:52700/, localPort=60127]
+2026-10-30T08:40:46.371+05:30  INFO 39340 --- [security-control-service] [           main] c.a.c.e.EventPipelineIntegrationTest     : Started EventPipelineIntegrationTest in 4.044 seconds (process running for 7.198)
+2026-10-30T08:40:47.156+05:30  WARN 39340 --- [security-control-service] [ntContainer#0-1] o.s.a.r.retry.RepublishMessageRecoverer  : Republishing failed message to exchange 'adaptive.waf.dead' with routing key security.events.failed
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.356 s -- in com.adaptivewaf.control.events.EventPipelineIntegrationTest
+[INFO] Running com.adaptivewaf.control.events.SecurityEventConsumerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s -- in com.adaptivewaf.control.events.SecurityEventConsumerTest
+[INFO] Running com.adaptivewaf.control.events.SecurityEventSanitizerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.adaptivewaf.control.events.SecurityEventSanitizerTest
+[INFO] Running com.adaptivewaf.control.events.StreamTicketServiceTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.adaptivewaf.control.events.StreamTicketServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.590 s
+[INFO] Finished at: 2026-10-30T08:40:48+05:30
+[INFO] ------------------------------------------------------------------------

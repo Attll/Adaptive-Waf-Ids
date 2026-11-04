@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from time import perf_counter_ns
 from typing import Callable, Mapping
 from uuid import uuid4
@@ -32,7 +32,7 @@ class AdaptiveDetectionPipeline:
         model_versions: Mapping[str, str],
         deep_predictor: Callable[[HttpRequestRecord], Mapping[AttackClass, float]] | None = None,
         risk_fuser: DeterministicRiskFusion | None = None,
-        deep_scheduler: Callable[[str, HttpRequestRecord, "DetectionResult"], None] | None = None,
+        deep_scheduler: Callable[[str, HttpRequestRecord, "DetectionResult"], bool | None] | None = None,
     ) -> None:
         self._triage_model = triage_model
         self._router_model = router_model
@@ -131,7 +131,11 @@ class AdaptiveDetectionPipeline:
         if deferred:
             # The caller is answered from the fast experts and the deep model adjudicates out of band; the revised
             # verdict is reported afterwards so an operator can act on a request that was allowed provisionally.
-            self._deep_scheduler(escalation_id, request, result)
+            accepted = self._deep_scheduler(escalation_id, request, result)
+            if accepted is False:
+                result = replace(result, deep_escalation_pending=False, deep_escalation_id=None,
+                                 routing_path=tuple("DEEP_ESCALATION_REJECTED" if step == "DEEP_ESCALATION_DEFERRED" else step for step in result.routing_path),
+                                 explanation_evidence={**result.explanation_evidence, "deep_escalation": "rejected_capacity_or_unavailable"})
         return result
 
     def warm_deep_model(self) -> None:
@@ -139,6 +143,15 @@ class AdaptiveDetectionPipeline:
         warm = getattr(self._deep_predictor, "warm", None)
         if warm is not None:
             warm()
+
+    def close(self):
+        close = getattr(self._deep_predictor, "close", None)
+        if close:
+            close()
+
+    def batch_statistics(self):
+        statistics = getattr(self._deep_predictor, "statistics", None)
+        return statistics() if statistics else {"enabled":False}
 
     def adjudicate(self, request: HttpRequestRecord) -> tuple[DeepOutput, float]:
         """Run the deep model alone. Used by the background worker that resolves a deferred escalation."""

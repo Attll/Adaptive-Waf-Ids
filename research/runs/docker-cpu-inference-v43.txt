@@ -1,0 +1,4 @@
+
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 104/104 [00:00<00:00, 4113.03it/s]
+{'device': 'cpu', 'class': 'BENIGN', 'cuda_available': False}

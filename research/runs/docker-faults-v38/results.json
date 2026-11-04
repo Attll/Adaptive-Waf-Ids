@@ -1,0 +1,50 @@
+{
+  "detection": {
+    "gateway_status_during_outage": 503,
+    "response": {
+      "error": {
+        "code": "detection_unavailable",
+        "predicted_attack": "UNAVAILABLE"
+      },
+      "request_id": "6994b2d0-e989-4c0e-99df-127ee05b877c"
+    },
+    "recovered_status": 200
+  },
+  "redis": {
+    "gateway_status_during_outage": 200,
+    "response": {
+      "status": "ok"
+    },
+    "recovered_status": 200
+  },
+  "rabbitmq": {
+    "gateway_status_during_outage": 503,
+    "response": {
+      "error": {
+        "code": "detection_unavailable",
+        "predicted_attack": "UNAVAILABLE"
+      },
+      "request_id": "a667a371-a0db-4912-81ce-b85ef01df6c4"
+    },
+    "recovered_status": 200
+  },
+  "restart": {
+    "before_job_ids": [
+      "99cd5aee-f4bc-4644-90d1-9187f8e59184",
+      "b6a399b5-6745-4d99-adb4-b2d93d53b888",
+      "a8efefb9-77bd-4c66-9fae-b09dd974e765"
+    ],
+    "after_job_ids": [
+      "b41e17db-2449-4027-90a8-4facce9ceff9",
+      "615adbb3-138e-42f4-be12-77ce0d699f7b",
+      "8a839857-047a-4882-90ba-33bc1384ef36",
+      "4f0a9889-abae-414e-b736-c5a23e4ef63f",
+      "21aca6b1-356d-4c6c-ad36-68415fb3cc11",
+      "99cd5aee-f4bc-4644-90d1-9187f8e59184",
+      "b6a399b5-6745-4d99-adb4-b2d93d53b888",
+      "a8efefb9-77bd-4c66-9fae-b09dd974e765"
+    ],
+    "preserved": true
+  },
+  "limits": "Real service outages/recovery and persistent deep-job metadata. Gateway publication has no disk spool; not an exactly-once or partition durability guarantee."
+}

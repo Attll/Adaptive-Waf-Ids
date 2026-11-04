@@ -106,8 +106,8 @@ export function riskTone(risk: number): Tone {
 export const BENIGN_LABELS = new Set(["BENIGN", "UNAVAILABLE", "SKIPPED", "UNEVALUATED", "UNKNOWN", ""]);
 
 export function isDetection(event: EventRecord): boolean {
-  if (event.action === "BLOCK" || event.action === "RATE_LIMIT" || event.action === "TEMPORARY_BLOCK") return true;
-  return !BENIGN_LABELS.has((event.predictedAttack ?? "").toUpperCase());
+  return ["SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION", "BRUTE_FORCE", "DOS_DDOS", "BOT_ANOMALY"]
+    .includes((event.predictedAttack ?? "").toUpperCase());
 }
 
 /** Deterministic palette so a given attack class or stage keeps the same colour in every chart. */

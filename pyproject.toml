@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "adaptive-waf"
 version = "0.1.0"
-description = "Adaptive web application firewall ML core"
+description = "Adaptive Web Application Firewall and Intrusion Detection System ML core"
 requires-python = ">=3.11"
 dependencies = [
   "ijson>=3.2,<4",
@@ -25,6 +25,14 @@ service = [
 ]
 sensor = [
   "scapy>=2.5,<3",
+]
+durable = [
+  "pika>=1.3,<2",
+  "psycopg[binary]>=3.2,<4",
+]
+research = [
+  "matplotlib>=3.10,<4",
+  "psutil>=7,<8",
 ]
 
 [tool.setuptools]

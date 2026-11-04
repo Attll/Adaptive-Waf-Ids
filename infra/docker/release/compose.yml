@@ -1,0 +1,425 @@
+{
+  "name": "adaptive-waf-ids-release",
+  "services": {
+    "redis": {
+      "image": "redis:7.4-alpine@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+      "command": [
+        "redis-server",
+        "--appendonly",
+        "yes"
+      ],
+      "volumes": [
+        "redis-data:/data"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "redis-cli",
+          "ping"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 20
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "rabbitmq": {
+      "image": "rabbitmq:3.13-management-alpine@sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "hostname": "rabbitmq",
+      "environment": {
+        "RABBITMQ_DEFAULT_USER": "waf",
+        "RABBITMQ_DEFAULT_PASS": "${BROKER_PASSWORD:?set BROKER_PASSWORD}"
+      },
+      "volumes": [
+        "rabbit-data:/var/lib/rabbitmq"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "rabbitmq-diagnostics",
+          "-q",
+          "check_running"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 20
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "postgres": {
+      "image": "postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "environment": {
+        "POSTGRES_DB": "adaptive_waf",
+        "POSTGRES_USER": "adaptive_waf",
+        "POSTGRES_PASSWORD": "${DB_PASSWORD:?set DB_PASSWORD}"
+      },
+      "volumes": [
+        "postgres-data:/var/lib/postgresql/data"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -U adaptive_waf -d adaptive_waf"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 20
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "gateway": {
+      "image": "adaptive-waf-ids/gateway:1.1.0",
+      "build": {
+        "context": "../../../gateway-service",
+        "dockerfile": "Dockerfile"
+      },
+      "init": true,
+      "environment": {
+        "WAF_INTERNAL_TOKEN": "${WAF_INTERNAL_TOKEN:?set WAF_INTERNAL_TOKEN}",
+        "REDIS_HOST": "redis",
+        "RABBITMQ_HOST": "rabbitmq",
+        "SPRING_RABBITMQ_USERNAME": "waf",
+        "SPRING_RABBITMQ_PASSWORD": "${BROKER_PASSWORD}",
+        "DETECTION_SERVICE_URL": "http://detection:8000",
+        "CONTROL_SERVICE_URL": "http://control:8082",
+        "DEMO_BACKEND_URL": "http://demo:8081",
+        "DETECTION_FAIL_CLOSED": "true"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "bash -c \"exec 3<>/dev/tcp/127.0.0.1/8080; printf 'GET /actuator/health HTTP/1.0\\r\\n\\r\\n' >&3; head -1 <&3 | grep -q '200'\""
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 20,
+        "start_period": "40s"
+      },
+      "ports": [
+        "127.0.0.1:${GATEWAY_PORT:-8080}:8080"
+      ],
+      "depends_on": {
+        "detection": {
+          "condition": "service_healthy"
+        },
+        "control": {
+          "condition": "service_healthy"
+        },
+        "demo": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "control": {
+      "image": "adaptive-waf-ids/control:1.1.0",
+      "build": {
+        "context": "../../../security-control-service",
+        "dockerfile": "Dockerfile"
+      },
+      "init": true,
+      "environment": {
+        "WAF_INTERNAL_TOKEN": "${WAF_INTERNAL_TOKEN:?set WAF_INTERNAL_TOKEN}",
+        "WAF_POSTGRES_URL": "jdbc:postgresql://postgres:5432/adaptive_waf",
+        "WAF_POSTGRES_PASSWORD": "${DB_PASSWORD}",
+        "REDIS_HOST": "redis",
+        "RABBITMQ_HOST": "rabbitmq",
+        "SPRING_RABBITMQ_USERNAME": "waf",
+        "SPRING_RABBITMQ_PASSWORD": "${BROKER_PASSWORD}",
+        "WAF_ADMIN_USERNAME": "${ADMIN_USERNAME:-admin}",
+        "WAF_ADMIN_INITIAL_PASSWORD": "${ADMIN_PASSWORD:?set ADMIN_PASSWORD}"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "bash -c \"exec 3<>/dev/tcp/127.0.0.1/8082; printf 'GET /actuator/health HTTP/1.0\\r\\n\\r\\n' >&3; head -1 <&3 | grep -q '200'\""
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 20,
+        "start_period": "40s"
+      },
+      "ports": [
+        "127.0.0.1:${CONTROL_PORT:-8082}:8082"
+      ],
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy"
+        },
+        "rabbitmq": {
+          "condition": "service_healthy"
+        },
+        "postgres": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "demo": {
+      "image": "adaptive-waf-ids/demo:1.0.0",
+      "build": {
+        "context": "../../../demo-backend",
+        "dockerfile": "Dockerfile"
+      },
+      "init": true,
+      "environment": {},
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "bash -c \"exec 3<>/dev/tcp/127.0.0.1/8081; printf 'GET /health HTTP/1.0\\r\\n\\r\\n' >&3; head -1 <&3 | grep -q '200'\""
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 20,
+        "start_period": "40s"
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "dashboard": {
+      "image": "adaptive-waf-ids/dashboard:1.1.0",
+      "build": {
+        "context": "../../..",
+        "dockerfile": "dashboard/Dockerfile"
+      },
+      "init": true,
+      "environment": {},
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "wget -q -O /dev/null http://127.0.0.1:80/ || exit 1"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 20,
+        "start_period": "40s"
+      },
+      "ports": [
+        "127.0.0.1:${DASHBOARD_PORT:-3000}:80"
+      ],
+      "depends_on": {
+        "gateway": {
+          "condition": "service_healthy"
+        },
+        "sensor": {
+          "condition": "service_healthy"
+        },
+        "adaptation": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "detection": {
+      "image": "adaptive-waf-ids/detection:1.1.0",
+      "build": {
+        "context": "../../..",
+        "dockerfile": "infra/docker/release/Python.Dockerfile",
+        "target": "detection"
+      },
+      "init": true,
+      "environment": {
+        "WAF_INTERNAL_TOKEN": "${WAF_INTERNAL_TOKEN:?set WAF_INTERNAL_TOKEN}",
+        "CONTROL_SERVICE_URL": "http://control:8082",
+        "WAF_DEEP_DEVICE": "cpu",
+        "WAF_DETECTION_STRATEGY": "${WAF_DETECTION_STRATEGY:-fixed}",
+        "WAF_MODEL_THREADS": "1",
+        "WAF_DEEP_BATCH_SIZE": "1",
+        "WAF_DEEP_QUEUE_BACKEND": "rabbitmq",
+        "WAF_DEEP_POSTGRES_DSN": "postgresql://adaptive_waf:${DB_PASSWORD}@postgres/adaptive_waf",
+        "WAF_DEEP_RABBITMQ_URL": "amqp://waf:${BROKER_PASSWORD}@rabbitmq:5672/%2F"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen(\"http://127.0.0.1:8000/ready\",timeout=3)"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 18,
+        "start_period": "45s"
+      },
+      "ports": [
+        "127.0.0.1:${DETECTION_PORT:-8000}:8000"
+      ],
+      "depends_on": {
+        "control": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "sensor": {
+      "image": "adaptive-waf-ids/sensor:1.0.0",
+      "build": {
+        "context": "../../..",
+        "dockerfile": "infra/docker/release/Python.Dockerfile",
+        "target": "sensor"
+      },
+      "init": true,
+      "environment": {
+        "REDIS_HOST": "redis"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen(\"http://127.0.0.1:8083/ready\",timeout=3)"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 18,
+        "start_period": "45s"
+      },
+      "ports": [
+        "127.0.0.1:${SENSOR_PORT:-8083}:8083"
+      ],
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "adaptation": {
+      "image": "adaptive-waf-ids/adaptation:1.1.0",
+      "build": {
+        "context": "../../..",
+        "dockerfile": "infra/docker/release/Python.Dockerfile",
+        "target": "adaptation"
+      },
+      "init": true,
+      "environment": {
+        "WAF_INTERNAL_TOKEN": "${WAF_INTERNAL_TOKEN:?set WAF_INTERNAL_TOKEN}",
+        "CONTROL_SERVICE_URL": "http://control:8082"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen(\"http://127.0.0.1:8084/health\",timeout=3)"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 18,
+        "start_period": "45s"
+      },
+      "ports": [
+        "127.0.0.1:${ADAPTATION_PORT:-8084}:8084"
+      ],
+      "depends_on": {
+        "control": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "volumes": [
+        "adaptation-data:/app/artifacts/adaptation"
+      ]
+    },
+    "crs": {
+      "image": "owasp/modsecurity-crs:nginx@sha256:ccec5e3ecd1dcf6b48903268f4fe415fd17914e8bf30fc21263fd05cc7045f29",
+      "environment": {
+        "BACKEND": "http://gateway:8080",
+        "SERVER_NAME": "localhost",
+        "PORT": "8080",
+        "MODSEC_RULE_ENGINE": "on"
+      },
+      "ports": [
+        "127.0.0.1:${CRS_PORT:-8090}:8080"
+      ],
+      "depends_on": {
+        "gateway": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    }
+  },
+  "volumes": {
+    "redis-data": {},
+    "rabbit-data": {},
+    "postgres-data": {},
+    "adaptation-data": {}
+  }
+}

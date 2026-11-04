@@ -4,6 +4,7 @@ import { Icon, Mark, ToastLayer, type Toast } from "./components/Ui";
 import { formatTime, isDetection, type Tone } from "./lib/format";
 import { useEventStream } from "./lib/useEventStream";
 import type { Section, ViewProps } from "./lib/view";
+import type { ToolRun } from "./lib/view";
 import { Overview } from "./pages/Overview";
 import { LiveAttacks } from "./pages/LiveAttacks";
 import { Requests } from "./pages/Requests";
@@ -12,6 +13,7 @@ import { Escalations } from "./pages/Escalations";
 import { Generator } from "./pages/Generator";
 import { Models } from "./pages/Models";
 import { Training } from "./pages/Training";
+import { Research } from "./pages/Research";
 import { PolicyPage } from "./pages/Policy";
 import { AccessControl } from "./pages/AccessControl";
 import { Applications } from "./pages/Applications";
@@ -20,6 +22,7 @@ import { Review } from "./pages/Review";
 import { Services } from "./pages/Services";
 import { AuditPage } from "./pages/Audit";
 import { SettingsPage } from "./pages/Settings";
+import {CachePage,ModelLab,TimingPage,RoutingTraining} from './pages/Tools';
 
 type Credentials = { username: string; password: string };
 
@@ -34,7 +37,9 @@ const NAV: [string, { section: Section; icon: string }[]][] = [
   ["Intelligence", [
     { section: "Models", icon: "models" },
     { section: "Generator", icon: "play" },
-    { section: "Training", icon: "training" }
+    { section: "Training", icon: "training" },
+    { section: "Research", icon: "models" }
+    ,{section:"Model Lab",icon:"models"},{section:"RL Training",icon:"training"}
   ]],
   ["Enforce", [
     { section: "Policy", icon: "policy" },
@@ -47,6 +52,7 @@ const NAV: [string, { section: Section; icon: string }[]][] = [
     { section: "Services", icon: "health" },
     { section: "Audit", icon: "audit" },
     { section: "Settings", icon: "settings" }
+    ,{section:"Redis Cache",icon:"health"},{section:"Timing",icon:"clock"}
   ]]
 ];
 
@@ -68,6 +74,11 @@ export function App() {
   const [refreshInterval, setRefreshInterval] = useState(15);
   const [liveIds, setLiveIds] = useState<Set<string>>(new Set());
   const toastId = useRef(0);
+  const [runs,setRuns]=useState<ToolRun[]>([]);
+  const runEpoch=useRef(0);const activeRunEpoch=runEpoch.current;
+  const recordRun=useCallback((run:ToolRun)=>{if(activeRunEpoch===runEpoch.current)setRuns(current=>[run,...current.filter(item=>item.id!==run.id)].slice(0,20));},[activeRunEpoch]);
+  const refreshSequence=useRef(0);
+  const eventRefresh=useRef<number|undefined>(undefined);
 
   const api = useMemo(
     () => (credentials ? new DashboardApi(credentials.username, credentials.password) : undefined),
@@ -81,16 +92,24 @@ export function App() {
   }, []);
 
   const applySnapshot = useCallback((next: DashboardSnapshot) => {
-    setSnapshot(next);
+    setSnapshot(current=>{
+      const events=[...new Map([...(current?.events??[]),...next.events].filter(event=>event.category!=='security.escalation'&&event.method&&event.path).map(event=>[event.eventId,event])).values()]
+        .sort((a,b)=>b.occurredAt.localeCompare(a.occurredAt)).slice(0,MAX_LIVE_EVENTS);
+      const currentTotal=current?.statistics.summary.allTimeTotal??current?.statistics.summary.total??0;
+      const nextTotal=next.statistics.summary.allTimeTotal??next.statistics.summary.total;
+      return {...next,events,statistics:current&&currentTotal>nextTotal?current.statistics:next.statistics};
+    });
     setSelected((current) => next.events.find((event) => event.eventId === current?.eventId) ?? current ?? next.events[0]);
     setLastRefresh(new Date());
   }, []);
 
   const refresh = useCallback(async () => {
     if (!api) return;
+    const sequence=++refreshSequence.current;
     setLoading(true);
     try {
-      applySnapshot(await api.snapshot());
+      const next=await api.snapshot();
+      if(sequence===refreshSequence.current)applySnapshot(next);
     } catch (error) {
       notify(
         error instanceof ApiError && error.status === 401 ? "Session expired" : "Refresh failed",
@@ -104,6 +123,16 @@ export function App() {
 
   /** A streamed event is merged into the retained window immediately; statistics catch up on the next poll. */
   const onStreamedEvent = useCallback((event: EventRecord) => {
+    if(eventRefresh.current===undefined)eventRefresh.current=window.setTimeout(()=>{
+      eventRefresh.current=undefined;
+      if(api)void api.statistics().then(statistics=>setSnapshot(current=>{
+        if(!current)return current;
+        const incoming=statistics.summary.allTimeTotal??statistics.summary.total;
+        const retained=current.statistics.summary.allTimeTotal??current.statistics.summary.total;
+        return incoming>=retained?{...current,statistics}:current;
+      })).catch(()=>{/* The regular refresh reports service failures. */});
+    },500);
+    if(event.category==='security.escalation'||!event.method||!event.path)return;
     setSnapshot((current) => {
       if (!current) return current;
       if (current.events.some((existing) => existing.eventId === event.eventId)) return current;
@@ -119,7 +148,7 @@ export function App() {
       next.delete(event.eventId);
       return next;
     }), 2000);
-  }, []);
+  }, [api]);
 
   const stream = useEventStream({ api, enabled: streamEnabled && Boolean(credentials), onEvent: onStreamedEvent });
 
@@ -136,12 +165,13 @@ export function App() {
     try {
       const candidate = new DashboardApi(username.trim(), password);
       const next = await candidate.snapshot();
+      runEpoch.current++;
       setCredentials({ username: username.trim(), password });
       applySnapshot(next);
     } catch (error) {
       setLoginError(
         error instanceof ApiError && error.status === 401
-          ? "Incorrect username or password."
+          ? "Sign-in could not be verified. Check credentials and control-service health."
           : `Unavailable: ${error instanceof Error ? error.message : "unknown error"}`
       );
     } finally {
@@ -160,12 +190,17 @@ export function App() {
   }, [notify, refresh]);
 
   const signOut = () => {
+    runs.forEach(run=>run.stop?.());
+    runEpoch.current++;
+    refreshSequence.current++;
+    window.clearTimeout(eventRefresh.current);eventRefresh.current=undefined;
     setCredentials(undefined);
     setSnapshot(undefined);
     setSelected(undefined);
     setPassword("");
     setSection("Overview");
     setLoginError("");
+    setRuns([]);
   };
 
   if (!credentials || !snapshot || !api) {
@@ -178,13 +213,13 @@ export function App() {
         onUsername={setUsername}
         onPassword={setPassword}
         onSubmit={signIn}
-        onFillDemo={() => { setUsername("admin"); setPassword("adaptive_waf_dev"); setLoginError(""); }}
       />
     );
   }
 
   const detections = snapshot.events.filter(isDetection).length;
   const props: ViewProps = {
+    runs,recordRun,
     snapshot,
     selected,
     select: setSelected,
@@ -280,6 +315,11 @@ function renderSection(section: Section, props: ViewProps) {
     case "Generator": return <Generator {...props} />;
     case "Models": return <Models {...props} />;
     case "Training": return <Training {...props} />;
+    case "Research": return <Research {...props} />;
+    case "Redis Cache":return <CachePage {...props}/>;
+    case "Model Lab":return <ModelLab {...props}/>;
+    case "Timing":return <TimingPage {...props}/>;
+    case "RL Training":return <RoutingTraining {...props}/>;
     case "Policy": return <PolicyPage {...props} />;
     case "Access Control": return <AccessControl {...props} />;
     case "Applications": return <Applications {...props} />;
@@ -298,8 +338,7 @@ function SignIn({
   error,
   onUsername,
   onPassword,
-  onSubmit,
-  onFillDemo
+  onSubmit
 }: {
   username: string;
   password: string;
@@ -308,7 +347,6 @@ function SignIn({
   onUsername: (value: string) => void;
   onPassword: (value: string) => void;
   onSubmit: (event: FormEvent) => void;
-  onFillDemo: () => void;
 }) {
   return (
     <main className="auth-shell">
@@ -331,9 +369,6 @@ function SignIn({
             {loading ? "Connecting…" : "Continue"}
           </button>
         </form>
-        <div className="auth-secondary">
-          <button type="button" className="link-btn" onClick={onFillDemo}>Use local credentials</button>
-        </div>
       </section>
       <footer className="auth-footer">Local environment</footer>
     </main>

@@ -1,0 +1,43 @@
+== service readiness ==
+[ok]   detection /health � HTTP 200 {"status": "ok"}
+[ok]   detection /ready � HTTP 200 {"status": "ready"}
+[ok]   gateway actuator � HTTP 200 {"status": "UP"}
+[ok]   control actuator � HTTP 200 {"status": "UP"}
+[ok]   sensor /health � HTTP 200 {"status": "ok", "redis": "up", "model_version": "network-full-v1:random_forest"}
+[ok]   adaptation /health � HTTP 200 {"status": "ok"}
+
+== models and corpus ==
+[ok]   model catalog � 6 stages: triage=random_forest, router=logistic_regression, injection=random_forest, execution=extra_trees, deep=distilbert, network=random_forest
+[ok]   hyperparameters recorded � all stages
+[ok]   payload corpus � 360 HTTP, 160 network records
+
+== detection pipeline ==
+[ok]   batch detection � 3 evaluated, 3/3 matched, p95 29.9ms
+[ok]   escalation worker � enabled=True workers=1 submitted=12 resolved=10
+
+== gateway enforcement and journalling ==
+[ok]   benign request forwarded � HTTP 200 (expected 200)
+[ok]   attack blocked at the gateway � HTTP 403 on the fast verdict
+[ok]   requests journalled in Postgres � 31 -> 35 rows
+[ok]   Postgres reachable � 1.324ms, connect with jdbc:postgresql://127.0.0.1:55432/adaptive_waf
+[ok]   Redis reachable � PONG in 0.656ms
+[ok]   Redis carrying WAF state � 12 tracked keys: Manual blocks=0, Per-source behaviour=9, Failed authentication=0, Network risk context=1, Load shedding=2
+[ok]   journal carries decision evidence � route=SEMANTIC_RULES > MANDATORY_RULE > POLICY_PENDING latency=10.30645ms
+[ok]   source address stored unhashed � sourceIp=172.26.0.1
+
+== network sensor ==
+[warn] flow classified � sensor rejected the partial feature vector (expected with a trimmed sample)
+
+== control plane surface ==
+[ok]   control policy � HTTP 200
+[ok]   control applications � HTTP 200
+[ok]   control blocks � HTTP 200
+[ok]   control models � HTTP 200
+[ok]   control training runs � HTTP 200
+[ok]   control feedback � HTTP 200
+[ok]   control audit � HTTP 200
+[ok]   control statistics � HTTP 200
+[ok]   control escalations � HTTP 200
+[ok]   control stream ticket � HTTP 200
+
+29 passed, 1 warnings, 0 failed

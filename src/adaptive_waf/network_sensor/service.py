@@ -4,7 +4,7 @@ from collections import deque
 from contextlib import asynccontextmanager
 from dataclasses import asdict
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
@@ -18,6 +18,8 @@ class FlowPayload(BaseModel):
     source_ip: str
     destination_ip: str | None = None
     features: dict[str, float]
+    observation_scope: Literal["PROVIDED_FLOW", "PACKET_WINDOW", "CLOSED_FLOW"] = "PROVIDED_FLOW"
+    feature_contract: Literal["PROVIDED_FLOW", "frame-population-v1", "payload-sample-v2"] = "PROVIDED_FLOW"
 
 
 class SensorSettings(BaseModel):
@@ -44,7 +46,7 @@ def create_app(
         application.state.sensor = sensor
         yield
 
-    application = FastAPI(title="Adaptive WAF Network Sensor", version="0.1.0", lifespan=lifespan)
+    application = FastAPI(title="Adaptive WAF-IDS Network Sensor", version="0.1.0", lifespan=lifespan)
 
     @application.get("/health")
     def health() -> dict[str, object]:
@@ -60,7 +62,7 @@ def create_app(
     @application.post("/v1/flows")
     def process_flow(payload: FlowPayload) -> dict[str, object]:
         try:
-            evidence = sensor.process(payload.source_ip, payload.destination_ip, payload.features)
+            evidence = sensor.process(payload.source_ip, payload.destination_ip, payload.features, payload.observation_scope,payload.feature_contract)
         except (ConnectionError, OSError) as error:
             raise HTTPException(status_code=503, detail="Redis network context store is unavailable") from error
         except ValueError as error:

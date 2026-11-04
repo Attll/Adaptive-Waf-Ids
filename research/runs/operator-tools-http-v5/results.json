@@ -1,0 +1,5239 @@
+{
+  "unauthenticated_cache_status": 401,
+  "replay": [
+    {
+      "status": 200,
+      "result": {
+        "roundTripMs": 166.524929,
+        "status": 200,
+        "requestId": "ef4a3d57-227c-40ea-9624-5e1ea6486d51",
+        "bodyPreview": "{\"status\":\"ok\"}"
+      }
+    },
+    {
+      "status": 200,
+      "result": {
+        "roundTripMs": 23.921077,
+        "status": 403,
+        "requestId": "4fa405aa-213e-4e65-98c5-4e7ef7cbcde1",
+        "bodyPreview": "{\"error\":{\"code\":\"waf_blocked\",\"predicted_attack\":\"XSS\"},\"request_id\":\"4fa405aa-213e-4e65-98c5-4e7ef7cbcde1\"}"
+      }
+    },
+    {
+      "status": 200,
+      "result": {
+        "roundTripMs": 22.099064,
+        "status": 403,
+        "requestId": "c82c8834-57cc-49f2-bcbc-22a2cbf39be1",
+        "bodyPreview": "{\"error\":{\"code\":\"waf_blocked\",\"predicted_attack\":\"COOKIE_INJECTION\"},\"request_id\":\"c82c8834-57cc-49f2-bcbc-22a2cbf39be1\"}"
+      }
+    },
+    {
+      "status": 200,
+      "result": {
+        "roundTripMs": 77.945604,
+        "status": 200,
+        "requestId": "32ff9aa9-6ee1-4cb2-b750-d458069aba8c",
+        "bodyPreview": "{\"body\":\"{\\\"note\\\":\\\"operator fixture\\\"}\",\"request_id\":\"32ff9aa9-6ee1-4cb2-b750-d458069aba8c\",\"status\":\"backend_reached\"}"
+      }
+    }
+  ],
+  "redis": {
+    "status": 200,
+    "data": {
+      "cursor": "0",
+      "entries": [
+        {
+          "key": "waf:ip:172.26.0.7:requests:medium",
+          "ttl": 120,
+          "type": "zset",
+          "value": [
+            {
+              "value": "003803ca-39e7-4705-ab2d-7bcb5da2c42e",
+              "score": 1793334064113.0
+            },
+            {
+              "value": "808729fc-9ee7-4074-bc09-39b4484660a3",
+              "score": 1793334064333.0
+            },
+            {
+              "value": "e28c94a1-6e03-42b3-b7f7-939e6227b06f",
+              "score": 1793334064429.0
+            },
+            {
+              "value": "9bd9633f-7770-4414-92ae-055773b7ea08",
+              "score": 1793334064511.0
+            }
+          ],
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:system:mode",
+          "ttl": 20,
+          "type": "string",
+          "value": "NORMAL",
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:ip:172.26.0.7:endpoint:ae6449577b19ad30b8a827f60ccc71206707fc3e48252d227ee43f3f20dafacd",
+          "ttl": 119,
+          "type": "zset",
+          "value": [
+            {
+              "value": "4990edef-cf8b-4e08-91be-1a058fab8031",
+              "score": 1793334064113.0
+            }
+          ],
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:ip:172.26.0.7:endpoint:acfe3d976f135207ca191d8f39576e03bc3f352aa23ae615f79813907547bdb3",
+          "ttl": 120,
+          "type": "zset",
+          "value": [
+            {
+              "value": "0bf9f051-e9bb-4ece-9486-2805101d5db1",
+              "score": 1793334064333.0
+            },
+            {
+              "value": "9732f764-7c76-49e9-8eab-bf755f4d0112",
+              "score": 1793334064429.0
+            }
+          ],
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:ip:172.26.0.7:endpoint:14c6a966ae48334fd3601d44354fd6f54206b3904200e434b80ee02f2db3abc1",
+          "ttl": 120,
+          "type": "zset",
+          "value": [
+            {
+              "value": "bf2bad2d-3cc8-45e5-94ab-e150a045fe44",
+              "score": 1793334064511.0
+            }
+          ],
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:system:requests:short",
+          "ttl": 20,
+          "type": "zset",
+          "value": [
+            {
+              "value": "3ed43779-2b38-4238-b7d2-b379d13f6cf0",
+              "score": 1793334064101.0
+            },
+            {
+              "value": "f7f76c87-76c7-431d-af67-c3b1817c3a86",
+              "score": 1793334064328.0
+            },
+            {
+              "value": "d56db344-2516-449c-8b33-274b626d2798",
+              "score": 1793334064425.0
+            },
+            {
+              "value": "bd96700e-c89a-452c-b73a-095a84fd0ccb",
+              "score": 1793334064508.0
+            }
+          ],
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:ip:172.26.0.7:requests:short",
+          "ttl": 20,
+          "type": "zset",
+          "value": [
+            {
+              "value": "c7f84d2a-37ab-4afc-890a-5de2829c3760",
+              "score": 1793334064112.0
+            },
+            {
+              "value": "ef1474a6-9b85-44c8-8a59-58d073f04f88",
+              "score": 1793334064333.0
+            },
+            {
+              "value": "76a6bc28-05dd-480d-9d9e-c436d8e6c851",
+              "score": 1793334064429.0
+            },
+            {
+              "value": "a5bfccd1-e5fa-4392-bd02-a7c00b0fe4a8",
+              "score": 1793334064511.0
+            }
+          ],
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        },
+        {
+          "key": "waf:ip:172.26.0.7:attacks",
+          "ttl": 60,
+          "type": "string",
+          "value": "2",
+          "valueScope": "string <=2048 characters; collection sample <=25 elements"
+        }
+      ],
+      "scope": "Live waf:* keys only; sample-offset pages up to 10000 keys. SCAN order can change; not a transactional snapshot"
+    }
+  },
+  "models": [
+    {
+      "stage": "triage",
+      "algorithm": "deployed",
+      "status": 200,
+      "response": {
+        "stage": "triage",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "runtime deployed calibration",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 1.0,
+              "SUSPICIOUS": 0.0
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 10.080990999995265
+          },
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 1.0,
+              "SUSPICIOUS": 0.0
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 10.835201000190864
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "triage",
+      "algorithm": "random_forest",
+      "status": 200,
+      "response": {
+        "stage": "triage",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 0.7904752702839796,
+              "SUSPICIOUS": 0.20952472971602043
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 45.97830100010469
+          },
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 0.9204752702839797,
+              "SUSPICIOUS": 0.07952472971602047
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 13.66682000025321
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "triage",
+      "algorithm": "extra_trees",
+      "status": 200,
+      "response": {
+        "stage": "triage",
+        "algorithm": "extra_trees",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 0.9580976161712147,
+              "SUSPICIOUS": 0.041902383828781885
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 50.21478199978446
+          },
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 0.9714334953239142,
+              "SUSPICIOUS": 0.028566504676082675
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 10.00048199966841
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "triage",
+      "algorithm": "logistic_regression",
+      "status": 200,
+      "response": {
+        "stage": "triage",
+        "algorithm": "logistic_regression",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 0.9256968149281899,
+              "SUSPICIOUS": 0.07430318507181011
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 0.8830670003590058
+          },
+          {
+            "probabilities": {
+              "BENIGN_LIKE": 0.987613926298191,
+              "SUSPICIOUS": 0.012386073701809046
+            },
+            "prediction": "BENIGN_LIKE",
+            "latency_ms": 0.3256559994042618
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "deployed",
+      "status": 200,
+      "response": {
+        "stage": "router",
+        "algorithm": "logistic_regression",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "runtime deployed calibration",
+        "results": [
+          {
+            "probabilities": {
+              "EXECUTION": 0.06735544496285924,
+              "INJECTION": 0.9326445550371408
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 1.981457000511
+          },
+          {
+            "probabilities": {
+              "EXECUTION": 0.000538213862549671,
+              "INJECTION": 0.9994617861374504
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 1.6096419994937605
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "random_forest",
+      "status": 200,
+      "response": {
+        "stage": "router",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "EXECUTION": 0.00020928646516464125,
+              "INJECTION": 0.9997907135348353
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 73.7991410005634
+          },
+          {
+            "probabilities": {
+              "EXECUTION": 0.0001474212138384834,
+              "INJECTION": 0.9998525787861615
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 23.325398999986646
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "extra_trees",
+      "status": 200,
+      "response": {
+        "stage": "router",
+        "algorithm": "extra_trees",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "EXECUTION": 0.0007845308552649014,
+              "INJECTION": 0.999215469144735
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 78.89555400015524
+          },
+          {
+            "probabilities": {
+              "EXECUTION": 0.00021238633874050747,
+              "INJECTION": 0.9997876136612595
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 21.524034999856667
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "logistic_regression",
+      "status": 200,
+      "response": {
+        "stage": "router",
+        "algorithm": "logistic_regression",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "EXECUTION": 0.06735544496285924,
+              "INJECTION": 0.9326445550371408
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 2.7960070001427084
+          },
+          {
+            "probabilities": {
+              "EXECUTION": 0.000538213862549671,
+              "INJECTION": 0.9994617861374504
+            },
+            "prediction": "INJECTION",
+            "latency_ms": 1.8512990000090213
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "deployed",
+      "status": 200,
+      "response": {
+        "stage": "injection",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "runtime deployed calibration",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.6931231525104861,
+              "COOKIE_INJECTION": 0.0,
+              "SQL_INJECTION": 0.0,
+              "XSS": 0.306876847489514
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 8.452237999335921
+          },
+          {
+            "probabilities": {
+              "BENIGN": 0.8189198934128085,
+              "COOKIE_INJECTION": 0.0,
+              "SQL_INJECTION": 0.0,
+              "XSS": 0.1810801065871916
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 8.155907999935152
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "random_forest",
+      "status": 200,
+      "response": {
+        "stage": "injection",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.564299587792331,
+              "COOKIE_INJECTION": 0.0,
+              "SQL_INJECTION": 0.0,
+              "XSS": 0.435700412207669
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 30.08730999954423
+          },
+          {
+            "probabilities": {
+              "BENIGN": 0.7003075396880905,
+              "COOKIE_INJECTION": 0.0,
+              "SQL_INJECTION": 0.0,
+              "XSS": 0.2996924603119095
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 11.226616999920225
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "extra_trees",
+      "status": 200,
+      "response": {
+        "stage": "injection",
+        "algorithm": "extra_trees",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9007832767794337,
+              "COOKIE_INJECTION": 0.009548826023718036,
+              "SQL_INJECTION": 0.007428699122191165,
+              "XSS": 0.08223919807462635
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 42.56765500031179
+          },
+          {
+            "probabilities": {
+              "BENIGN": 0.9328473384693589,
+              "COOKIE_INJECTION": 0.0059190022091286714,
+              "SQL_INJECTION": 0.01158642313051134,
+              "XSS": 0.04964723619096802
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 13.999560000229394
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "logistic_regression",
+      "status": 200,
+      "response": {
+        "stage": "injection",
+        "algorithm": "logistic_regression",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9999999999236013,
+              "COOKIE_INJECTION": 8.77425863269508e-19,
+              "SQL_INJECTION": 3.9087868743126094e-11,
+              "XSS": 3.7310716478656286e-11
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 0.8217200002036407
+          },
+          {
+            "probabilities": {
+              "BENIGN": 0.999988884565185,
+              "COOKIE_INJECTION": 1.6350531142103183e-19,
+              "SQL_INJECTION": 1.1115434812394656e-05,
+              "XSS": 2.686267912545084e-15
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 0.345542000104615
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "deployed",
+      "status": 200,
+      "response": {
+        "stage": "execution",
+        "algorithm": "extra_trees",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "runtime deployed calibration",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 1.0,
+              "DIRECTORY_TRAVERSAL": 0.0,
+              "REMOTE_CODE_EXECUTION": 0.0
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 9.032799999658891
+          },
+          {
+            "probabilities": {
+              "BENIGN": 1.0,
+              "DIRECTORY_TRAVERSAL": 0.0,
+              "REMOTE_CODE_EXECUTION": 0.0
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 8.972515000095882
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "random_forest",
+      "status": 200,
+      "response": {
+        "stage": "execution",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 1.0,
+              "DIRECTORY_TRAVERSAL": 0.0,
+              "REMOTE_CODE_EXECUTION": 0.0
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 31.352945000435284
+          },
+          {
+            "probabilities": {
+              "BENIGN": 1.0,
+              "DIRECTORY_TRAVERSAL": 0.0,
+              "REMOTE_CODE_EXECUTION": 0.0
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 7.46098899981007
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "extra_trees",
+      "status": 200,
+      "response": {
+        "stage": "execution",
+        "algorithm": "extra_trees",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9894283887864416,
+              "DIRECTORY_TRAVERSAL": 0.008422585198815035,
+              "REMOTE_CODE_EXECUTION": 0.00214902601474557
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 42.33998699965014
+          },
+          {
+            "probabilities": {
+              "BENIGN": 0.9955769008032445,
+              "DIRECTORY_TRAVERSAL": 0.0038798379130061582,
+              "REMOTE_CODE_EXECUTION": 0.0005432612837518737
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 9.347164000246266
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "logistic_regression",
+      "status": 200,
+      "response": {
+        "stage": "execution",
+        "algorithm": "logistic_regression",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9971799540421563,
+              "DIRECTORY_TRAVERSAL": 3.3323986374083614e-08,
+              "REMOTE_CODE_EXECUTION": 0.002820012633857389
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 0.8619159998488612
+          },
+          {
+            "probabilities": {
+              "BENIGN": 0.9999999864300533,
+              "DIRECTORY_TRAVERSAL": 2.1757282578663555e-13,
+              "REMOTE_CODE_EXECUTION": 1.3569729104705293e-08
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 0.32662699959473684
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "deep",
+      "algorithm": "deployed",
+      "status": 200,
+      "response": {
+        "stage": "deep",
+        "algorithm": "distilbert",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "runtime deployed calibration",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 1.0,
+              "SQL_INJECTION": 1.1643825459373147e-08,
+              "XSS": 1.2417740613557271e-08,
+              "COOKIE_INJECTION": 1.2133254401192062e-08,
+              "DIRECTORY_TRAVERSAL": 5.423791638037301e-09,
+              "REMOTE_CODE_EXECUTION": 3.738538723041529e-08
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 22.945128999708686
+          },
+          {
+            "probabilities": {
+              "BENIGN": 1.3542026522372907e-07,
+              "SQL_INJECTION": 0.9999995231628418,
+              "XSS": 3.058467541450227e-07,
+              "COOKIE_INJECTION": 5.3682459366655166e-08,
+              "DIRECTORY_TRAVERSAL": 4.7315094064970253e-08,
+              "REMOTE_CODE_EXECUTION": 2.8258845929940435e-08
+            },
+            "prediction": "SQL_INJECTION",
+            "latency_ms": 15.07495999976527
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "deployed",
+      "status": 200,
+      "response": {
+        "stage": "network",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "runtime deployed calibration",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9734752124508935,
+              "BOT_ANOMALY": 1.2293175822503085e-06,
+              "BRUTE_FORCE": 0.002617074417842115,
+              "DOS_DDOS": 0.023906483813682832
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 40.85375500017108
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "random_forest",
+      "status": 200,
+      "response": {
+        "stage": "network",
+        "algorithm": "random_forest",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9734752124508935,
+              "BOT_ANOMALY": 1.2293175822503085e-06,
+              "BRUTE_FORCE": 0.002617074417842115,
+              "DOS_DDOS": 0.023906483813682832
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 8.604840999396401
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "extra_trees",
+      "status": 200,
+      "response": {
+        "stage": "network",
+        "algorithm": "extra_trees",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9397684013842426,
+              "BOT_ANOMALY": 0.008125097985373239,
+              "BRUTE_FORCE": 0.0008830063041739393,
+              "DOS_DDOS": 0.05122349432620766
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 44.25319400070293
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "logistic_regression",
+      "status": 200,
+      "response": {
+        "stage": "network",
+        "algorithm": "logistic_regression",
+        "model_only": true,
+        "rules_used": false,
+        "calibration": "raw candidate artifact",
+        "results": [
+          {
+            "probabilities": {
+              "BENIGN": 0.9997423663257264,
+              "BOT_ANOMALY": 0.00025763367427346644,
+              "BRUTE_FORCE": 6.241804467774472e-83,
+              "DOS_DDOS": 8.128807103827736e-131
+            },
+            "prediction": "BENIGN",
+            "latency_ms": 0.8265750002465211
+          }
+        ],
+        "scope": "direct model query; no gateway request or security event is implied"
+      }
+    }
+  ],
+  "rl": {
+    "status": 200,
+    "report": {
+      "run_id": "20f5832d-597f-40f2-ac55-eeae2f74b528",
+      "shadow_only": true,
+      "automatic_promotion": false,
+      "elapsed_seconds": 0.045826988999579044,
+      "data_origin": "CONTROLLED_SIMULATION",
+      "results": [
+        {
+          "seed": 641,
+          "constrained": false,
+          "training_rows": 100,
+          "evaluation_rows": 40,
+          "mean_reward": 0.9780000000000009,
+          "decisions": [
+            {
+              "request_id": "evaluation-0",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-1",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-2",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-3",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-4",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-5",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-6",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-7",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-8",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-9",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-10",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-11",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-12",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-13",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-14",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-15",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-16",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-17",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-18",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-19",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-20",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-21",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-22",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-23",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-24",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-25",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-26",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-27",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-28",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-29",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-30",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-31",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-32",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-33",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-34",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-35",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-36",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-37",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-38",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-39",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "seed": 641,
+          "constrained": true,
+          "training_rows": 100,
+          "evaluation_rows": 40,
+          "mean_reward": 0.9835000000000005,
+          "decisions": [
+            {
+              "request_id": "evaluation-0",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-1",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-2",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-3",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-4",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-5",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-6",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-7",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-8",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-9",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-10",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-11",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-12",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-13",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-14",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-15",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-16",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-17",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-18",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-19",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-20",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-21",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-22",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-23",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-24",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-25",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-26",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-27",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-28",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-29",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-30",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-31",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-32",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-33",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-34",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-35",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-36",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-37",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-38",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-39",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "seed": 642,
+          "constrained": false,
+          "training_rows": 100,
+          "evaluation_rows": 40,
+          "mean_reward": 0.9780000000000009,
+          "decisions": [
+            {
+              "request_id": "evaluation-0",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-1",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-2",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-3",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-4",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-5",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-6",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-7",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-8",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-9",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-10",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-11",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-12",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-13",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-14",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-15",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-16",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-17",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-18",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-19",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-20",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-21",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-22",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-23",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-24",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-25",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-26",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-27",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-28",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-29",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-30",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-31",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-32",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-33",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-34",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-35",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-36",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-37",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-38",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-39",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "seed": 642,
+          "constrained": true,
+          "training_rows": 100,
+          "evaluation_rows": 40,
+          "mean_reward": 0.9780000000000009,
+          "decisions": [
+            {
+              "request_id": "evaluation-0",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-1",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-2",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-3",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-4",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-5",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-6",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-7",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-8",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-9",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-10",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-11",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-12",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-13",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-14",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-15",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-16",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-17",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-18",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-19",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-20",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-21",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-22",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-23",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-24",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-25",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-26",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-27",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-28",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-29",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-30",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-31",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-32",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-33",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-34",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-35",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-36",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-37",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-38",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-39",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "seed": 643,
+          "constrained": false,
+          "training_rows": 100,
+          "evaluation_rows": 40,
+          "mean_reward": 0.9780000000000009,
+          "decisions": [
+            {
+              "request_id": "evaluation-0",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-1",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-2",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-3",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-4",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-5",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-6",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-7",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-8",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-9",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-10",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-11",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-12",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-13",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-14",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-15",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-16",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-17",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-18",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-19",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-20",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-21",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-22",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-23",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-24",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-25",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-26",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-27",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-28",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-29",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-30",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-31",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-32",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-33",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-34",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-35",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-36",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-37",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-38",
+              "expected": "BENIGN",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-39",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "seed": 643,
+          "constrained": true,
+          "training_rows": 100,
+          "evaluation_rows": 40,
+          "mean_reward": 0.9835000000000005,
+          "decisions": [
+            {
+              "request_id": "evaluation-0",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-1",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-2",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-3",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-4",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-5",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-6",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-7",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-8",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-9",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-10",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-11",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-12",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-13",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-14",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-15",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-16",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-17",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-18",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-19",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-20",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-21",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-22",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-23",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-24",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-25",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-26",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-27",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-28",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-29",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-30",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-31",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-32",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-33",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-34",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-35",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-36",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-37",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-38",
+              "expected": "BENIGN",
+              "route": "FAST_ONLY",
+              "outcome": {
+                "predicted": "BENIGN",
+                "latency_ms": 1,
+                "compute_cost": 0.01
+              },
+              "reward": 0.989,
+              "propensities": {
+                "FAST_ONLY": 1.0,
+                "BOTH": 0.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            },
+            {
+              "request_id": "evaluation-39",
+              "expected": "XSS",
+              "route": "BOTH",
+              "outcome": {
+                "predicted": "XSS",
+                "latency_ms": 2,
+                "compute_cost": 0.02
+              },
+              "reward": 0.978,
+              "propensities": {
+                "FAST_ONLY": 0.0,
+                "BOTH": 1.0,
+                "SYNC_DEEP": 0.0,
+                "DEFERRED_DEEP": 0.0,
+                "RULES_ONLY": 0.0
+              }
+            }
+          ]
+        }
+      ],
+      "static_baselines": {
+        "BOTH": 0.9780000000000009,
+        "FAST_ONLY": -4.5109999999999975
+      },
+      "review_reference": "CONTROLLED_SIMULATION_BY_CONSTRUCTION",
+      "input_sha256": "1f73fc6f8bda1c7334560d7ed45ea14c45ba500aa5120c9df1e3ffc2420480c7",
+      "limitations": "Full-information offline replay. Controlled simulation costs are prescribed, not hardware measurements or real-world accuracy. User-provided VERIFIED provenance must be reviewed; no live security or shift guarantee."
+    }
+  },
+  "checks": {
+    "cache_auth": true,
+    "replay_gateway_results": true,
+    "cookie_evidence_blocked": true,
+    "journal_correlation": true,
+    "live_redis_values": true,
+    "all_models_queryable": true,
+    "rl_shadow_validation": true
+  }
+}

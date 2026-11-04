@@ -59,6 +59,7 @@ export function EventTable({
               {!compact && <td className="mono muted">{event.sourceIp ?? "—"}</td>}
               <td>
                 <span className="cell-strong">{humanize(event.predictedAttack ?? "UNKNOWN")}</span>
+                {!compact && <span className="cell-sub">{humanize(event.inspectionStatus ?? "COVERAGE_UNKNOWN")}</span>}
                 {!compact && event.deepModelUsed && <span className="cell-sub">deep escalation</span>}
               </td>
               <td><RiskBar risk={event.risk} /></td>

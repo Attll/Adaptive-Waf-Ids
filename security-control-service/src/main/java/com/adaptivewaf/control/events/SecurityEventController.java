@@ -63,8 +63,13 @@ public class SecurityEventController {
             .toList();
         Map<String, Object> summary = new LinkedHashMap<>();
         summary.put("total", events.size());
+        summary.put("allTimeTotal",repository.countByCategoryNotAndMethodIsNotNullAndPathIsNotNull(ESCALATION_CATEGORY));
+        summary.put("fullyInspected", events.stream().filter(event -> "FULLY_INSPECTED".equals(event.getInspectionStatus())).count());
+        summary.put("partiallyInspected", events.stream().filter(event -> "PARTIALLY_INSPECTED".equals(event.getInspectionStatus())).count());
+        summary.put("detectionUnavailable", events.stream().filter(event -> "DETECTION_UNAVAILABLE".equals(event.getInspectionStatus())).count());
+        summary.put("coverageUnknown", events.stream().filter(event -> event.getInspectionStatus() == null).count());
         summary.put("detections", detections.size());
-        summary.put("blocked", events.stream().filter(event -> "BLOCK".equals(event.getAction())).count());
+        summary.put("blocked", events.stream().filter(event -> "BLOCK".equals(event.getAction()) || "TEMPORARY_BLOCK".equals(event.getAction())).count());
         summary.put("rateLimited", events.stream().filter(event -> "RATE_LIMIT".equals(event.getAction())).count());
         summary.put("deepEscalations", events.stream().filter(PersistedSecurityEvent::isDeepModelUsed).count());
         summary.put("uniqueSources", events.stream().map(PersistedSecurityEvent::getSourceIp).filter(java.util.Objects::nonNull).distinct().count());
@@ -95,15 +100,15 @@ public class SecurityEventController {
 
     /** Request-shaped journal entries only: an escalation is a later revision of a request, not a request itself. */
     private List<PersistedSecurityEvent> window(int limit) {
-        return repository.findByCategoryNotOrderByOccurredAtDesc(ESCALATION_CATEGORY, PageRequest.of(0, bounded(limit)));
+        return repository.findByCategoryNotAndMethodIsNotNullAndPathIsNotNullOrderByOccurredAtDesc(ESCALATION_CATEGORY, PageRequest.of(0, bounded(limit)));
     }
 
     private static int bounded(int limit) { return Math.max(1, Math.min(limit, MAX_LIMIT)); }
 
     private static boolean isDetection(PersistedSecurityEvent event) {
         String attack = event.getPredictedAttack();
-        return "BLOCK".equals(event.getAction()) || "RATE_LIMIT".equals(event.getAction())
-            || (attack != null && !attack.isBlank() && !"BENIGN".equals(attack) && !"UNAVAILABLE".equals(attack) && !"SKIPPED".equals(attack));
+        return attack != null && java.util.Set.of("SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL",
+            "REMOTE_CODE_EXECUTION", "BRUTE_FORCE", "DOS_DDOS", "BOT_ANOMALY").contains(attack);
     }
 
     private static String normalize(String value) { return value == null || value.isBlank() ? "UNKNOWN" : value; }

@@ -1,0 +1,126 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.adaptivewaf:gateway-service >-------------------
+[INFO] Building gateway-service 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gateway-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ gateway-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 23 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gateway-service ---
+[INFO] skip non existing resourceDirectory C:\Projects\Adaptive Waf Ids\gateway-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ gateway-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 9 source files with javac [debug parameters release 21] to target\test-classes
+[WARNING] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/GatewayHttpIntegrationTest.java:[46,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/GatewayHttpIntegrationTest.java:[47,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/GatewayHttpIntegrationTest.java:[48,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/GatewayHttpIntegrationTest.java:[49,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/GatewayHttpIntegrationTest.java:[50,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[INFO] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/AdaptiveDetectionFilterTest.java: C:\Projects\Adaptive Waf Ids\gateway-service\src\test\java\com\adaptivewaf\gateway\filter\AdaptiveDetectionFilterTest.java uses unchecked or unsafe operations.
+[INFO] /C:/Projects/Adaptive Waf Ids/gateway-service/src/test/java/com/adaptivewaf/gateway/filter/AdaptiveDetectionFilterTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ gateway-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.adaptivewaf.gateway.behaviour.OperatingModeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in com.adaptivewaf.gateway.behaviour.OperatingModeTest
+[INFO] Running com.adaptivewaf.gateway.behaviour.RedisWindowIntegrationTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.335 s -- in com.adaptivewaf.gateway.behaviour.RedisWindowIntegrationTest
+[INFO] Running com.adaptivewaf.gateway.detection.SourceIdentityTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.adaptivewaf.gateway.detection.SourceIdentityTest
+[INFO] Running com.adaptivewaf.gateway.events.PublisherConfirmationIntegrationTest
+13:51:10.422 [main] INFO org.springframework.amqp.rabbit.connection.CachingConnectionFactory -- Attempting to connect to: 127.0.0.1:52085
+13:51:10.472 [main] INFO org.springframework.amqp.rabbit.connection.CachingConnectionFactory -- Created new connection: SpringAMQP#1c62c3fd:0/SimpleConnection@55421b8d [delegate=amqp://guest@127.0.0.1:52085/, localPort=60985]
+13:51:10.701 [spring-rabbit-deferred-pool-11] WARN org.springframework.amqp.rabbit.core.RabbitTemplate -- Returned message but no callback available
+13:51:10.701 [AMQP Connection 127.0.0.1:52085] WARN com.adaptivewaf.gateway.events.SecurityEventPublisher -- Security event 5c71056d-e40e-4aaa-a9b9-d45642fec363 was not confirmed as routed
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.380 s -- in com.adaptivewaf.gateway.events.PublisherConfirmationIntegrationTest
+[INFO] Running com.adaptivewaf.gateway.events.SecurityEventPublisherTest
+13:51:10.932 [main] WARN com.adaptivewaf.gateway.events.SecurityEventPublisher -- Security event queue is full; dropping category=security.request
+Exception in thread "security-event-1" java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1133)
+	at java.base/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:276)
+	at com.adaptivewaf.gateway.events.SecurityEventPublisherTest.lambda$saturationIsCountedInsteadOfSilentlyDiscarded$0(SecurityEventPublisherTest.java:22)
+	at org.mockito.internal.stubbing.StubbedInvocationMatcher.answer(StubbedInvocationMatcher.java:42)
+	at org.mockito.internal.handler.MockHandlerImpl.handle(MockHandlerImpl.java:103)
+	at org.mockito.internal.handler.NullResultGuardian.handle(NullResultGuardian.java:29)
+	at org.mockito.internal.handler.InvocationNotifierHandler.handle(InvocationNotifierHandler.java:34)
+	at org.mockito.internal.creation.bytebuddy.MockMethodInterceptor.doIntercept(MockMethodInterceptor.java:82)
+	at org.mockito.internal.creation.bytebuddy.MockMethodAdvice.handle(MockMethodAdvice.java:134)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.convertAndSend(RabbitTemplate.java:1201)
+	at com.adaptivewaf.gateway.events.SecurityEventPublisher.send(SecurityEventPublisher.java:59)
+	at com.adaptivewaf.gateway.events.SecurityEventPublisher.lambda$publish$0(SecurityEventPublisher.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.189 s -- in com.adaptivewaf.gateway.events.SecurityEventPublisherTest
+[INFO] Running com.adaptivewaf.gateway.filter.AdaptiveDetectionFilterTest
+13:51:11.670 [main] WARN com.adaptivewaf.gateway.filter.AdaptiveDetectionFilter -- Detection unavailable for request aa2288b3-77e2-456e-86ea-b73394ab71e9: IllegalStateException
+13:51:12.043 [main] WARN com.adaptivewaf.gateway.filter.AdaptiveDetectionFilter -- Detection unavailable for request b944c6f2-a5ea-471d-bbcb-3c7a848b135f: IllegalStateException
+13:51:12.115 [main] WARN com.adaptivewaf.gateway.filter.AdaptiveDetectionFilter -- Redis unavailable for request ce7d731a-084a-4769-af2e-f2f35bf838e1; using stateless processing
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.424 s -- in com.adaptivewaf.gateway.filter.AdaptiveDetectionFilterTest
+[INFO] Running com.adaptivewaf.gateway.filter.GatewayHttpIntegrationTest
+13:51:12.398 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.adaptivewaf.gateway.filter.GatewayHttpIntegrationTest]: GatewayHttpIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:51:12.493 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.adaptivewaf.gateway.GatewayApplication for test class com.adaptivewaf.gateway.filter.GatewayHttpIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2026-10-28T13:51:13.146+05:30  INFO 33416 --- [gateway-service] [           main] c.a.g.filter.GatewayHttpIntegrationTest  : Starting GatewayHttpIntegrationTest using Java 21.0.11 with PID 33416 (started by atula in C:\Projects\Adaptive Waf Ids\gateway-service)
+2026-10-28T13:51:13.148+05:30  INFO 33416 --- [gateway-service] [           main] c.a.g.filter.GatewayHttpIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-28T13:51:14.112+05:30  INFO 33416 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-28T13:51:14.113+05:30  INFO 33416 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-28T13:51:14.133+05:30  INFO 33416 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2026-10-28T13:51:14.210+05:30  INFO 33416 --- [gateway-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=cdb15ea5-d620-3b04-b4b2-32ee0a59261e
+2026-10-28T13:51:15.277+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-10-28T13:51:15.278+05:30  INFO 33416 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-10-28T13:51:15.827+05:30  INFO 33416 --- [gateway-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-28T13:51:16.262+05:30  INFO 33416 --- [gateway-service] [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 56865 (http)
+2026-10-28T13:51:16.327+05:30  INFO 33416 --- [gateway-service] [           main] c.a.g.filter.GatewayHttpIntegrationTest  : Started GatewayHttpIntegrationTest in 3.587 seconds (process running for 8.791)
+2026-10-28T13:51:16.961+05:30  WARN 33416 --- [gateway-service] [flux-http-nio-3] c.a.g.filter.AdaptiveDetectionFilter     : Detection unavailable for request 4c6bff8e-2cfa-4973-8b8d-9a5851172478: ServiceUnavailable
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.021 s -- in com.adaptivewaf.gateway.filter.GatewayHttpIntegrationTest
+[INFO] Running com.adaptivewaf.gateway.network.NetworkContextSnapshotTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.adaptivewaf.gateway.network.NetworkContextSnapshotTest
+[INFO] Running com.adaptivewaf.gateway.policy.GatewayPolicyTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.adaptivewaf.gateway.policy.GatewayPolicyTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 28, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  16.566 s
+[INFO] Finished at: 2026-10-28T13:51:20+05:30
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,428 @@
+{
+  "input_sha256": "76d3ce628fa44c70fb7f66e0d22e5cffb3df4adc6dc5b538b7c3e5b249e202c8",
+  "seed": 641,
+  "crs_version_source": "# ------------------------------------------------------------------------\n# OWASP ModSecurity Core Rule Set ver.3.3.10\n",
+  "configuration": "name: adaptive-waf-crs-research\nservices:\n  backend:\n    entrypoint:\n      - java\n      - -jar\n      - /app/current.jar\n      - --server.port=8081\n    image: adaptive-waf-demo:latest\n    networks:\n      fixture: null\n    pull_policy: never\n    volumes:\n      - type: bind\n        source: C:\\Projects\\Adaptive Waf Ids\\demo-backend\\target\\demo-backend-0.1.0.jar\n        target: /app/current.jar\n        read_only: true\n        bind: {}\n  crs:\n    environment:\n      ANOMALY_INBOUND: \"5\"\n      ANOMALY_OUTBOUND: \"4\"\n      BACKEND: http://backend:8081\n      BLOCKING_PARANOIA: \"1\"\n      DETECTION_PARANOIA: \"1\"\n      MODSEC_RULE_ENGINE: \"On\"\n      PORT: \"8080\"\n      SERVER_NAME: localhost\n    image: owasp/modsecurity-crs@sha256:ccec5e3ecd1dcf6b48903268f4fe415fd17914e8bf30fc21263fd05cc7045f29\n    networks:\n      fixture: null\n    ports:\n      - mode: ingress\n        host_ip: 127.0.0.1\n        target: 8080\n        published: \"53458\"\n        protocol: tcp\n    pull_policy: never\nnetworks:\n  fixture:\n    name: adaptive-waf-crs-research_fixture\n",
+  "experiments": [
+    {
+      "mode": "crs_only_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 0,
+        "unresolved": 0,
+        "completed_rps": 27.035277657655826,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 0,
+        "attack_detection_recall_all_submitted": null,
+        "benign_false_positive_rate_all_submitted": null,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 7.756250000966247,
+        "latency_p95_ms": 154.136780004046,
+        "latency_p99_ms": 271.7005560047984,
+        "elapsed_seconds": 0.44386450000456534,
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "per_attack_enforcement_containment": {
+          "COOKIE_INJECTION": 1.0,
+          "DIRECTORY_TRAVERSAL": 1.0,
+          "REMOTE_CODE_EXECUTION": 1.0,
+          "SQL_INJECTION": 1.0,
+          "XSS": 1.0
+        }
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "7e008996-5489-4791-96d6-b342f703e6a2",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 33.496799995191395
+        },
+        {
+          "case_id": "xss",
+          "request_id": "8bae154c-45ef-42a9-9e84-d584d84d8457",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 4.748899998958223
+        },
+        {
+          "case_id": "rce",
+          "request_id": "930c17a0-e44d-473f-9ef9-8c22acb344af",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.230099989101291
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "13a6e0b3-4488-4f9b-bcde-21080b6ef377",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 5.510799994226545
+        },
+        {
+          "case_id": "rce",
+          "request_id": "aa363741-6ca2-4d70-b7a8-ecf433476e07",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 15.962399993441068
+        },
+        {
+          "case_id": "xss",
+          "request_id": "6af1b5c2-50ef-46d6-95c1-959857858216",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 6.441999998060055
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "1d032fb1-18e3-4994-8a72-cc674dd8d33d",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.528600006480701
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "7167df5b-25f1-412f-9c59-1a95e6c92bf8",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 9.862699997029267
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "f84e8b24-88e1-4b93-93b2-55f4531bd8eb",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.287900007213466
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "46fc6773-6ef6-4d98-a4b5-c80d2f501dd6",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 33.90110000327695
+        },
+        {
+          "case_id": "benign",
+          "request_id": "91d7dd3a-943a-4de5-afef-c0a2ba1ad2c9",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 301.0915000049863
+        },
+        {
+          "case_id": "benign",
+          "request_id": "a8050bf7-e13e-4ba9-889b-e229a3ddf202",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.983899995451793
+        }
+      ]
+    },
+    {
+      "mode": "crs_only_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 0,
+        "unresolved": 0,
+        "completed_rps": 362.5969191009198,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 0,
+        "attack_detection_recall_all_submitted": null,
+        "benign_false_positive_rate_all_submitted": null,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 9.00855000509182,
+        "latency_p95_ms": 12.883785000303758,
+        "latency_p99_ms": 14.201716996030884,
+        "elapsed_seconds": 0.033094600003096275,
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "per_attack_enforcement_containment": {
+          "COOKIE_INJECTION": 1.0,
+          "DIRECTORY_TRAVERSAL": 1.0,
+          "REMOTE_CODE_EXECUTION": 1.0,
+          "SQL_INJECTION": 1.0,
+          "XSS": 1.0
+        }
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "6c9dcce2-007f-417c-881c-90d041639620",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.896299997810274
+        },
+        {
+          "case_id": "xss",
+          "request_id": "0eaa4262-13a4-498a-8717-4ad2ce451e96",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 9.640899996156804
+        },
+        {
+          "case_id": "rce",
+          "request_id": "2c722cf0-37f2-4897-89eb-e4c3fe6f4350",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.24729998910334
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "882fd1f0-c535-4428-a129-fca9223e1b7c",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 7.8978999954415485
+        },
+        {
+          "case_id": "rce",
+          "request_id": "5a3da92b-f0c6-4788-8c0c-007a2a6f206d",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 11.53590000467375
+        },
+        {
+          "case_id": "xss",
+          "request_id": "65ac3272-5121-4cb2-b9d4-40854f84f5d4",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 9.511900003417395
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "3e9613f2-2999-4555-8462-e3a5445c82c0",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 14.531199994962662
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "60e6f366-b9b8-4b8e-ae63-86c1123cd1d6",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 8.595999999670312
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "16850712-f3bf-4e05-a35a-c67d0d3965d1",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 8.805999998003244
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "0dd9bc4e-4da8-4b61-994c-3e1b0f9d16dc",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 5.946399993263185
+        },
+        {
+          "case_id": "benign",
+          "request_id": "cec0c1a1-6ea1-46f1-892a-2e520e50fcc1",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 10.328100004699081
+        },
+        {
+          "case_id": "benign",
+          "request_id": "828f18a6-19e0-4ea0-a492-83eedc8ba00d",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": null,
+          "round_trip_ms": 9.211100012180395
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Six development probes repeated twice; no held-out generalization or security interval.",
+    "Reports CRS enforcement interventions against a controlled backend that returns 200 for all probes; per-class ML classification remains unavailable.",
+    "Containerized CRS/backend timing boundary differs from host-JVM gateway comparison. Not an isolated performance ablation.",
+    "No GPU computation, dollars, or full-system CPU cost is inferred from this trial."
+  ]
+}

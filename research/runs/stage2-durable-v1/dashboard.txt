@@ -1,0 +1,18 @@
+
+> adaptive-waf-dashboard@0.1.0 build
+> tsc -b && vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 54 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.79 kB │ gzip:   0.41 kB
+dist/assets/index-PU_C-jH0.css   29.49 kB │ gzip:   6.58 kB
+dist/assets/index-CsXeg8v9.js   370.71 kB │ gzip: 106.98 kB
+✓ built in 771ms
+npm notice
+npm notice New major version of npm available! 11.16.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

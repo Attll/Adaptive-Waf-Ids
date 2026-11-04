@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   corpusSummary,
   deployNetworkFlow,
-  probeGateway,
   sampleHttpCorpus,
   sampleNetworkCorpus,
   type CorpusSummary,
@@ -83,7 +82,7 @@ export function Generator(props: ViewProps) {
 /* ------------------------------------------------------------------ *
  * HTTP payload generator
  * ------------------------------------------------------------------ */
-function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: CorpusSummary }) {
+function HttpGenerator({ notify, refresh, corpus,api,recordRun }: ViewProps & { corpus?: CorpusSummary }) {
   const available = useMemo(() => Object.keys(corpus?.http.labels ?? {}), [corpus]);
   const [selected, setSelected] = useState<string[]>([]);
   const [count, setCount] = useState(24);
@@ -115,27 +114,32 @@ function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: Corpu
     cancelled.current = false;
     setOutcomes([]);
     setProgress(0);
+    const runId=crypto.randomUUID();const collected: HttpOutcome[] = [];
+    recordRun({id:runId,kind:'Generator',count:0,results:[],summary:{state:'running',requested:count},stop:()=>{cancelled.current=true;}});
     try {
       const { samples } = await sampleHttpCorpus(count, selected);
       if (!samples.length) {
         notify("Nothing to send", "The selected classes are not present in the corpus.", "warning");
+        recordRun({id:runId,kind:'Generator',count:0,results:[],summary:{state:'empty'}});
         return;
       }
-      const collected: HttpOutcome[] = [];
       for (let index = 0; index < samples.length; index += 1) {
         if (cancelled.current) break;
         const record = samples[index];
-        const result = await probeGateway({
+        const result = await api.replay({
           label: `${record.label} ${record.path}`,
           method: record.method,
           path: record.path,
           query: record.query,
           body: record.body,
+          headers: record.headers,
+          cookies: record.cookies,
           expected: record.label
         });
         collected.push({ ...result, expected: record.label });
         setOutcomes([...collected].reverse());
         setProgress(index + 1);
+        if(index%5===0){recordRun({id:runId,kind:'Generator',count:collected.length,results:[...collected],summary:{state:'running',requested:samples.length},stop:()=>{cancelled.current=true;}});void refresh();}
         if (delayMs > 0 && index < samples.length - 1) {
           await new Promise((resolve) => window.setTimeout(resolve, delayMs));
         }
@@ -144,9 +148,12 @@ function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: Corpu
         cancelled.current ? "Generation stopped" : "Generation complete",
         `${collected.filter((entry) => entry.blocked).length} of ${collected.length} mitigated at the gateway`
       );
+      const correlation=await api.awaitJournal(collected.flatMap(row=>row.requestId?[row.requestId]:[]));
+      recordRun({id:runId,kind:"Generator",count:collected.length,results:[...collected],summary:{state:cancelled.current?'stopped':'complete',...correlation}});
       await refresh();
     } catch (error) {
       notify("Generation failed", error instanceof Error ? error.message : "unknown error", "danger");
+      recordRun({id:runId,kind:'Generator',count:collected.length,results:[...collected],summary:{state:'failed',error:String(error)}});
     } finally {
       setRunning(false);
     }
@@ -176,6 +183,7 @@ function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: Corpu
                 key={name}
                 className="chip"
                 onClick={() => toggle(name)}
+                aria-pressed={active}
                 disabled={running}
                 style={{
                   borderColor: active ? colorFor(name) : undefined,
@@ -232,7 +240,7 @@ function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: Corpu
           <div className="grid-4 stagger">
             <Metric label="Sent" value={outcomes.length} detail={`${failed} failed to reach the gateway`} tone="info" icon={<Icon name="send" size={13} />} />
             <Metric label="Mitigated" value={blocked} detail={`${forwarded} forwarded to the upstream`} tone="danger" icon={<Icon name="shield" size={13} />} />
-            <Metric label="Attack recall" value={attackOutcomes.length ? percent(caught / attackOutcomes.length, 1) : "—"} detail={`${caught} of ${attackOutcomes.length} labelled attacks blocked`} tone="success" icon={<Icon name="target" size={13} />} />
+            <Metric label="Attack containment" value={attackOutcomes.length ? percent(caught / attackOutcomes.length, 1) : "—"} detail={`${caught} of ${attackOutcomes.length} labelled attacks blocked or rate limited; classification is separate`} tone="success" icon={<Icon name="target" size={13} />} />
             <Metric label="False positives" value={falsePositives} detail={`of ${benignOutcomes.length} benign requests · mean ${milliseconds(meanRoundTrip, 1)}`} tone={falsePositives ? "warning" : "success"} icon={<Icon name="alert" size={13} />} />
           </div>
 
@@ -257,7 +265,7 @@ function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: Corpu
             </Panel>
           </div>
 
-          <Panel title="Generated requests" subtitle="Newest first; each one is journalled and appears in Live Attacks" flush>
+          <Panel title="Generated requests" subtitle="Newest first; journalled requests appear in Requests, and detections also appear in Live Attacks" flush>
             <div className="table-wrap">
               <table>
                 <thead><tr><th>Labelled class</th><th>Method</th><th>Target</th><th>Status</th><th>Gateway outcome</th><th>Classified</th><th>Round trip</th></tr></thead>
@@ -290,7 +298,7 @@ function HttpGenerator({ notify, refresh, corpus }: ViewProps & { corpus?: Corpu
 /* ------------------------------------------------------------------ *
  * Network flow generator
  * ------------------------------------------------------------------ */
-function NetworkGenerator({ notify, corpus }: ViewProps & { corpus?: CorpusSummary }) {
+function NetworkGenerator({ notify, corpus,recordRun,refresh }: ViewProps & { corpus?: CorpusSummary }) {
   const available = useMemo(() => Object.keys(corpus?.network.labels ?? {}), [corpus]);
   const [selected, setSelected] = useState<string[]>([]);
   const [count, setCount] = useState(20);
@@ -345,6 +353,8 @@ function NetworkGenerator({ notify, corpus }: ViewProps & { corpus?: CorpusSumma
         cancelled.current ? "Flow replay stopped" : "Flow replay complete",
         `${collected.filter((entry) => entry.ok).length} of ${collected.length} classified and written to Redis`
       );
+      recordRun({id:crypto.randomUUID(),kind:'Network Generator',count:collected.length,results:collected,summary:{classified:collected.filter(row=>row.ok).length,plane:'network'}});
+      await refresh();
     } catch (error) {
       notify("Flow replay failed", error instanceof Error ? error.message : "unknown error", "danger");
     } finally {
@@ -532,7 +542,7 @@ export function InfrastructurePanel({ api }: ViewProps) {
           spark={history}
         />
         <Metric
-          label="Journalled requests"
+          label="Journalled events"
           value={database.totalEvents ?? 0}
           detail={database.newestEventAt ? `newest ${relativeTime(database.newestEventAt)}` : "no events yet"}
           tone={database.reachable ? "violet" : "danger"}

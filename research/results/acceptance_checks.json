@@ -1,0 +1,17 @@
+{
+  "client_date": "2026-10-28",
+  "timezone": "Asia/Calcutta",
+  "branch": "codex/research-backend-stabilization",
+  "scope": "Initial backend stabilization checkpoint; later research phases incomplete",
+  "checks": [
+    {"component": "python", "tests": 75, "failures": 0, "evidence": "python-after.txt"},
+    {"component": "gateway", "tests": 28, "failures": 0, "skipped": 0, "evidence": "gateway-integration.txt"},
+    {"component": "control", "tests": 9, "failures": 0, "skipped": 0, "evidence": "control-integration.txt"},
+    {"component": "demo_backend", "tests": 2, "failures": 0, "evidence": "backend-baseline-retry.txt", "unchanged_since_baseline": true},
+    {"component": "dashboard", "typecheck_and_build": "passed", "evidence": "dashboard-after.txt"},
+    {"component": "compose", "main_and_isolated_fixture_config": "passed"}
+  ],
+  "real_dependencies_exercised": ["Spring Cloud Gateway on loopback", "WebClient HTTP inference fixture", "Redis 7.4", "RabbitMQ 3.13", "PostgreSQL 16"],
+  "model_effectiveness_diagnostics": ["direct-six-probes-v2.json", "api-six-probes-v2.json"],
+  "limitations": ["No durable deep job migration", "No broker outage replay guarantee", "No exhaustive browser acceptance", "No full matched gateway model-effectiveness benchmark", "No held-out research comparison", "No model training or novel learned policy"]
+}

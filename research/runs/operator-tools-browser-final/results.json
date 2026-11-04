@@ -1,0 +1,35 @@
+{
+  "generatorUpdatesOverview": true,
+  "cacheRows": 3,
+  "allHttpModelsVisible": true,
+  "rlValidationVisible": true,
+  "trainingSharesRlRuns": true,
+  "timing": {
+    "requested": 1000,
+    "completed": 1000,
+    "elapsedSeconds": 14.52159999999404,
+    "httpResponsesPerSecond": 68.86293521377881,
+    "successful2xx": 32,
+    "p50Ms": 20.400000005960464,
+    "p95Ms": 253.10000002384186,
+    "p99Ms": 666,
+    "errors": 6,
+    "rateLimited": 1,
+    "blocked403": 961,
+    "ruleOnlyObserved": 500,
+    "partiallyInspectedObserved": 0,
+    "journalWindowMatched": 500,
+    "fullyInspectedObserved": 0,
+    "fullyInspectedLowerBoundPerSecond": 0,
+    "unmatched": 500,
+    "journalTail": {
+      "expected": 200,
+      "journalled": 200
+    },
+    "cancelled": false
+  },
+  "sharedTimingRun": true,
+  "persistentJobsVisible": true,
+  "deepProbabilitiesVisible": true,
+  "javascriptErrors": []
+}

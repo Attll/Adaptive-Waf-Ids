@@ -1,0 +1,3581 @@
+{
+  "created_at": "2026-10-28T08:32:18.326443+00:00",
+  "input_id": "six-development-probes-repeated",
+  "seed": 641,
+  "input_sha256": "a72146abd1a03b16acea334cac0cfb51574697b91a65f7ce910c2c413b675de9",
+  "experiments": [
+    {
+      "mode": "direct_inference",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "http_success_2xx": 0,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 7.659884285950267,
+        "fully_inspected_rps": 7.659884285950267,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 0.2,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 111.57429999730084,
+        "latency_p95_ms": 228.9845049999711,
+        "latency_p99_ms": 317.68274100104475,
+        "elapsed_seconds": 1.5666033000015887,
+        "macro_f1": 0.2222222222222222,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 1.46875,
+        "cpu_equivalent_percent": 93.75379204157878,
+        "process_group_rss_bytes": 2130464768,
+        "gpu_process_allocated_bytes": 277489152,
+        "gpu_process_peak_allocated_bytes": 278876160,
+        "completed_pipeline_calls": 12
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "a688c2a6-72ed-438a-94b2-4dc00c400240",
+          "expected": "COOKIE_INJECTION",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 339.857300001313
+        },
+        {
+          "case_id": "xss",
+          "request_id": "2f60cb7e-3108-4559-9a45-c87aca85d069",
+          "expected": "XSS",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 104.65639999893028
+        },
+        {
+          "case_id": "rce",
+          "request_id": "7f5b3c81-d608-4053-b4d1-6143dfbfff68",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 135.4323999985354
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "b130792b-915f-4bde-a968-d633c03483db",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 88.71460000227671
+        },
+        {
+          "case_id": "rce",
+          "request_id": "788b6d5f-57bf-439e-82e9-502669634f31",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 123.3862999943085
+        },
+        {
+          "case_id": "xss",
+          "request_id": "34d27022-412f-4cff-94c1-bdfd496101b2",
+          "expected": "XSS",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 85.84040000278037
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "54df20be-cb57-402e-8234-1c95bcc14bb9",
+          "expected": "SQL_INJECTION",
+          "predicted_attack": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 138.27039999887347
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "3398c327-5645-4a6b-a688-6ebfd8814be4",
+          "expected": "COOKIE_INJECTION",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 107.55689999496099
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "37048701-6853-43b9-a047-4d463311cd6f",
+          "expected": "SQL_INJECTION",
+          "predicted_attack": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 125.7459999906132
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "d1253aa1-186d-40ff-bbd8-c9898488e0da",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 93.68740000354592
+        },
+        {
+          "case_id": "benign",
+          "request_id": "8f8d0ded-ebfd-4ad5-b749-4df4d9321524",
+          "expected": "BENIGN",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 113.43810000107624
+        },
+        {
+          "case_id": "benign",
+          "request_id": "aada40d4-86d2-4f9c-b33d-38ad0a6aa49f",
+          "expected": "BENIGN",
+          "predicted_attack": "BENIGN",
+          "completed": true,
+          "http_status": 0,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "round_trip_ms": 109.71049999352545
+        }
+      ]
+    },
+    {
+      "mode": "detection_api",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 8.599858474921298,
+        "fully_inspected_rps": 8.599858474921298,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 0.2,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 113.61585000122432,
+        "latency_p95_ms": 146.75337499502348,
+        "latency_p99_ms": 155.51355499454075,
+        "elapsed_seconds": 1.3953718000120716,
+        "macro_f1": 0.2222222222222222,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 1.296875,
+        "cpu_equivalent_percent": 92.94117883052965,
+        "process_group_rss_bytes": 2132385792,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287395840
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "0a902e3d-b3d3-4ccd-ab34-d6d7f2bfc87b",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 110.55430000000001,
+          "service_inference_ms": 111.1008,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 113.91790000197943
+        },
+        {
+          "case_id": "xss",
+          "request_id": "4c517025-26e1-439b-90bb-df4b7fdff729",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 87.0552,
+          "service_inference_ms": 87.2193,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 105.55419999582227
+        },
+        {
+          "case_id": "rce",
+          "request_id": "0ee8449a-6cc1-4b42-8a61-451fbac6945d",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 133.3844,
+          "service_inference_ms": 133.5883,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 157.70359999442007
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "d597ef39-f064-4a9b-9a12-9f5d09c15469",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 90.5634,
+          "service_inference_ms": 90.7055,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 92.9135999904247
+        },
+        {
+          "case_id": "rce",
+          "request_id": "492e0a10-232a-442d-8cd8-54581760d555",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 118.0545,
+          "service_inference_ms": 118.2413,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 120.36790000274777
+        },
+        {
+          "case_id": "xss",
+          "request_id": "f8d72b14-d375-49a7-8667-f5b886789daa",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 95.9023,
+          "service_inference_ms": 96.0603,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 122.67029999929946
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "eaa13bf8-e1ea-4118-9f34-e270de820b80",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "inference_ms": 124.6331,
+          "service_inference_ms": 124.7941,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 137.79409999551717
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "3bb3e416-09ad-4944-8e00-12f21fac7c76",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 111.0376,
+          "service_inference_ms": 111.384,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 127.69649999972899
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "c568f583-3e89-4167-b536-605bf6f214ef",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "inference_ms": 85.34530000000001,
+          "service_inference_ms": 85.518,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 113.3138000004692
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "68a81576-b41f-4748-bdf5-15f2850700d1",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 78.3505,
+          "service_inference_ms": 78.4813,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 102.45690000010654
+        },
+        {
+          "case_id": "benign",
+          "request_id": "fe2949cc-08fa-4f8c-af4d-3c80b1009901",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 91.3824,
+          "service_inference_ms": 91.5573,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 93.82369999366347
+        },
+        {
+          "case_id": "benign",
+          "request_id": "3c154133-c939-4bbf-927e-d7fb22679f0f",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 89.1389,
+          "service_inference_ms": 89.314,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 104.86829999717884
+        }
+      ]
+    },
+    {
+      "mode": "detection_api",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 12.038861444760538,
+        "fully_inspected_rps": 12.038861444760538,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 0.2,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 326.7545999988215,
+        "latency_p95_ms": 339.2875800054753,
+        "latency_p99_ms": 340.05071600258816,
+        "elapsed_seconds": 0.9967719999986002,
+        "macro_f1": 0.2222222222222222,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.3333333333333333,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 1.015625,
+        "cpu_equivalent_percent": 101.89140545695768,
+        "process_group_rss_bytes": 2136399872,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287395840
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "ce06cb78-2883-40ab-a5e6-11f2019b0498",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 85.2238,
+          "service_inference_ms": 85.9217,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 90.87070000532549
+        },
+        {
+          "case_id": "xss",
+          "request_id": "fc3efbb6-5e3a-4fa0-9705-a3514ab2db23",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 82.5993,
+          "service_inference_ms": 167.5349,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 173.14369999803603
+        },
+        {
+          "case_id": "rce",
+          "request_id": "905cec11-a71a-4b5d-98ae-d553161d2dd6",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 89.8553,
+          "service_inference_ms": 256.7529,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 262.5637999881292
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "dc3a2617-94d7-4ab9-96ef-0bef6e7f6ced",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 74.57289999999999,
+          "service_inference_ms": 331.0585,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 336.6905000002589
+        },
+        {
+          "case_id": "rce",
+          "request_id": "e9a75992-7a9c-4989-974d-00a5101a20a3",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 79.2491,
+          "service_inference_ms": 323.973,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 326.58860000083223
+        },
+        {
+          "case_id": "xss",
+          "request_id": "37a55645-8250-49c7-95b3-9cc8e771f56a",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 74.3141,
+          "service_inference_ms": 315.1674,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 317.9377999913413
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "ea506e62-7b68-4c15-a96c-ec21a19a01f1",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "inference_ms": 88.3198,
+          "service_inference_ms": 313.8919,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 316.77469999704044
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "701ec113-fa54-44b6-8641-b8e6e5dc2f65",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 84.51209999999999,
+          "service_inference_ms": 297.9957,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 326.9205999968108
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "d8e9ce62-62bb-416d-abd3-887590207bfa",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "inference_ms": 83.2725,
+          "service_inference_ms": 327.9406,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 331.06389999738894
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "88a23781-0591-48fd-90f7-9f4c0298ad42",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 83.7194,
+          "service_inference_ms": 309.2659,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 340.24150000186637
+        },
+        {
+          "case_id": "benign",
+          "request_id": "dfe1c3fa-b260-4135-85ea-4a8c1eeff0ad",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 86.60119999999999,
+          "service_inference_ms": 308.347,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 338.5071000084281
+        },
+        {
+          "case_id": "benign",
+          "request_id": "49218486-b328-47e7-a5d8-eccab8aa4ee6",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "inference_ms": 77.2095,
+          "service_inference_ms": 298.4711,
+          "routing_path": [
+            "TRIAGE",
+            "ROUTER_TOP1",
+            "INJECTION_FAST",
+            "DEEP_ESCALATION",
+            "POLICY_PENDING"
+          ],
+          "model_versions": {
+            "triage": "triage-full-v1:isotonic",
+            "router": "router-full-v1:logistic_regression",
+            "injection": "injection-expert-full-v1:isotonic",
+            "execution": "execution-expert-full-v1:isotonic",
+            "deep": "distilbert-full-gpu-v1:temperature"
+          },
+          "round_trip_ms": 329.9373000045307
+        }
+      ]
+    },
+    {
+      "mode": "fixed_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 8,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 6.255854110992529,
+        "fully_inspected_rps": 6.255854110992529,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 6,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 4,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 155.31120000377996,
+        "latency_p95_ms": 203.20189500052945,
+        "latency_p99_ms": 216.45165900758005,
+        "elapsed_seconds": 1.9182032999960938,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.4,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 2.640625,
+        "cpu_equivalent_percent": 137.6613730153304,
+        "process_group_rss_bytes": 2199769088,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "cd5e9fc2-d161-4872-8fbf-5f40583fd029",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 189.6509999933187,
+          "inference_ms": 104.46
+        },
+        {
+          "case_id": "xss",
+          "request_id": "c7822103-0e64-4f55-bbcd-ad095f5bc7a7",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 173.42849999840837,
+          "inference_ms": 112.9729
+        },
+        {
+          "case_id": "rce",
+          "request_id": "ae6150c2-7800-4c16-987e-d0c2f7cbd915",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 172.74819999875035,
+          "inference_ms": 122.2955
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "96c1fe6f-e96e-45e3-a459-490fe9781130",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 124.34650000068359,
+          "inference_ms": 91.3511
+        },
+        {
+          "case_id": "rce",
+          "request_id": "c0df9bdc-7de3-43b4-9205-0825c8d942c3",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 162.52199999871664,
+          "inference_ms": 127.7224
+        },
+        {
+          "case_id": "xss",
+          "request_id": "7a47dadd-ac0b-4e96-9f44-3e80b87e69ce",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 137.79699998849537,
+          "inference_ms": 121.4618
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "006df501-e23f-4eee-89ab-c7fde8ab3c7f",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 141.9768999912776,
+          "inference_ms": 114.88
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "9f302050-1f10-473b-bc0e-cc353508e8ed",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 145.09439999528695,
+          "inference_ms": 115.8783
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "be5c1e38-28e7-4073-9ed5-d912e9891bb7",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 154.8025000083726,
+          "inference_ms": 119.9277
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "b26b38f6-ac5a-4c9b-bad8-082351fabc44",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 219.76410000934266,
+          "inference_ms": 85.7347
+        },
+        {
+          "case_id": "benign",
+          "request_id": "ef28f2e0-30e4-4c63-a6db-dfc5bff0095c",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 155.81989999918733,
+          "inference_ms": 122.3067
+        },
+        {
+          "case_id": "benign",
+          "request_id": "4bac1396-3802-4ab0-844a-a9df6fa43c7c",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 138.16030000452884,
+          "inference_ms": 123.1328
+        }
+      ]
+    },
+    {
+      "mode": "fixed_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 8,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 9.37369061254145,
+        "fully_inspected_rps": 9.37369061254145,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 6,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 4,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 399.0056500042556,
+        "latency_p95_ms": 486.78550500408164,
+        "latency_p99_ms": 488.0372610017366,
+        "elapsed_seconds": 1.2801788000069791,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.4,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 1.625,
+        "cpu_equivalent_percent": 126.93539371149882,
+        "process_group_rss_bytes": 2268991488,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "98e91e3a-b4c9-4592-b770-1f42b0fab101",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 359.899500006577,
+          "inference_ms": 326.5493
+        },
+        {
+          "case_id": "xss",
+          "request_id": "1810274b-4465-47f0-bcc0-9c63affd1ea4",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 145.5085999914445,
+          "inference_ms": 129.7327
+        },
+        {
+          "case_id": "rce",
+          "request_id": "8cda421d-4f47-4beb-a608-990a7fb78da4",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 485.50530000647996,
+          "inference_ms": 451.7112
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "cdf5d7b3-cf6f-4a9e-9c66-18fa0f01e761",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 236.28859999007545,
+          "inference_ms": 203.5629
+        },
+        {
+          "case_id": "rce",
+          "request_id": "175f1b0f-9789-4c61-9f7e-c94e67871ff5",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 457.2401000041282,
+          "inference_ms": 418.7298
+        },
+        {
+          "case_id": "xss",
+          "request_id": "ea4f6c88-04a6-4a8b-bf7e-60cab4250f96",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 488.35020000115037,
+          "inference_ms": 474.3203
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "b0efe9c0-f668-41a4-9300-bcb592b0144f",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 475.51669999666046,
+          "inference_ms": 459.9487
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "e003b154-f942-4c6c-bd41-2c675f761ee3",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 436.98050000239164,
+          "inference_ms": 422.9299
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "98149643-3a37-440b-af18-2e63e257a781",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 417.4856000026921,
+          "inference_ms": 361.6965
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "d49d8782-ffc5-47d5-8691-466c96492e4e",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 380.5257000058191,
+          "inference_ms": 344.739
+        },
+        {
+          "case_id": "benign",
+          "request_id": "8972be60-8de9-4d12-a5a5-c6360640d875",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 363.81530000653584,
+          "inference_ms": 326.076
+        },
+        {
+          "case_id": "benign",
+          "request_id": "6dd8cc9f-53c8-41e1-b85c-7d61b22e3ebb",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 354.56380000687204,
+          "inference_ms": 313.3414
+        }
+      ]
+    },
+    {
+      "mode": "guarded_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 26.687019967041966,
+        "fully_inspected_rps": 4.447836661173661,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 26.649400002497714,
+        "latency_p95_ms": 118.11024500420899,
+        "latency_p99_ms": 122.31316899953526,
+        "elapsed_seconds": 0.44965680000314023,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.625,
+        "cpu_equivalent_percent": 138.9948956616769,
+        "process_group_rss_bytes": 2297434112,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "2f2d13a2-6a18-4ed5-b992-8259ea54b798",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 34.46070000063628,
+          "inference_ms": 2.8845
+        },
+        {
+          "case_id": "xss",
+          "request_id": "4d5a89cd-d333-44f0-9ede-2b46b1babfa4",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 10.451099995407276,
+          "inference_ms": 2.831
+        },
+        {
+          "case_id": "rce",
+          "request_id": "32de435a-46fc-4e87-9df3-be1f4e68b928",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 15.380000011646189,
+          "inference_ms": 4.3664
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "c61308c9-3f93-4acd-8fca-05581e729738",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 11.042900005122647,
+          "inference_ms": 3.0534
+        },
+        {
+          "case_id": "rce",
+          "request_id": "a753234a-4953-4497-9455-50c1418d33cb",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 22.702999995090067,
+          "inference_ms": 3.1162
+        },
+        {
+          "case_id": "xss",
+          "request_id": "e17cdf9b-0f2b-44e8-973a-d6d3de8d54ab",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 11.65719999698922,
+          "inference_ms": 3.0694
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "e69b5c65-ab45-4371-be4d-4a295ee7bf8e",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 33.53489999426529,
+          "inference_ms": 3.4972
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "5869557d-5760-49e6-aeac-424c474f18f0",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 30.59580000990536,
+          "inference_ms": 2.5822
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "3fa34210-c0a0-4053-acf2-a0c82cddb74a",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 30.69610000238754,
+          "inference_ms": 2.9289
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "cb63a7e0-8e9b-48ae-b064-ab1b498318de",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 10.037700005341321,
+          "inference_ms": 2.7435
+        },
+        {
+          "case_id": "benign",
+          "request_id": "8f6991ee-48b7-4b24-8db7-b4e9edf4f1ee",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 113.81180000898894,
+          "inference_ms": 79.0154
+        },
+        {
+          "case_id": "benign",
+          "request_id": "bddbb28d-4733-4302-9267-a3f951fd8e41",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 123.36389999836683,
+          "inference_ms": 92.4838
+        }
+      ]
+    },
+    {
+      "mode": "guarded_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 47.36824030616299,
+        "fully_inspected_rps": 7.894706717693831,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 21.556700005021412,
+        "latency_p95_ms": 160.06775999558153,
+        "latency_p99_ms": 187.059471992543,
+        "elapsed_seconds": 0.25333429999591317,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.734375,
+        "cpu_equivalent_percent": 289.88376229032036,
+        "process_group_rss_bytes": 2303602688,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "6d3b46d5-9b03-4198-96e9-2d33588339d3",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 21.66199999919627,
+          "inference_ms": 4.368
+        },
+        {
+          "case_id": "xss",
+          "request_id": "97de74a7-65e1-4f12-8c8e-39c4a84bb032",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 21.451400010846555,
+          "inference_ms": 5.3023
+        },
+        {
+          "case_id": "rce",
+          "request_id": "390527a0-e0e6-4ef5-beb6-98c199ed9814",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 20.953500003088266,
+          "inference_ms": 3.9616
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "18cb6a42-d4df-4e9b-9439-e796e5929408",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 23.893500008853152,
+          "inference_ms": 4.4386
+        },
+        {
+          "case_id": "rce",
+          "request_id": "74803969-9cd5-400e-9171-06fe759b11f4",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 17.844700007117353,
+          "inference_ms": 4.8129
+        },
+        {
+          "case_id": "xss",
+          "request_id": "9ccbea91-a354-4a59-8240-78909697ab2f",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 18.322199990507215,
+          "inference_ms": 5.4697
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "e9367a00-c3c2-47e0-b4e2-9a8f2a1b2582",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 16.88000001013279,
+          "inference_ms": 5.5558
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "03e5f622-cb24-46e4-bef5-4245eff26c0b",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 132.46259999868926,
+          "inference_ms": 103.7805
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "a4bbb162-6bc7-48fd-b28b-25f89c3472d7",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 119.56969999300782,
+          "inference_ms": 105.6682
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "1d548d0f-86ad-47b9-a844-69a1953c34d4",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 18.09260000300128,
+          "inference_ms": 6.9362
+        },
+        {
+          "case_id": "benign",
+          "request_id": "37d0e10a-9103-498c-9e37-ce13a851755e",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 119.50859999342356,
+          "inference_ms": 105.2572
+        },
+        {
+          "case_id": "benign",
+          "request_id": "45a829b4-e559-4d45-8d34-5ace5dbcdd4c",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 193.8073999917833,
+          "inference_ms": 164.3296
+        }
+      ]
+    },
+    {
+      "mode": "rules_only_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 0,
+        "unresolved": 0,
+        "completed_rps": 39.9169328610245,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 19.480150011077058,
+        "latency_p95_ms": 51.04682000528554,
+        "latency_p99_ms": 61.56440400460271,
+        "elapsed_seconds": 0.30062430001271423,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.484375,
+        "cpu_equivalent_percent": 161.12303628798952,
+        "process_group_rss_bytes": 2285662208,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "9d8d6b0f-9164-49f4-9baf-66e90add5805",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 33.48919999552891,
+          "inference_ms": 2.9695
+        },
+        {
+          "case_id": "xss",
+          "request_id": "0fa13015-8c04-4774-9d94-d72db9efc880",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 9.775900005479343,
+          "inference_ms": 2.6757
+        },
+        {
+          "case_id": "rce",
+          "request_id": "8d4dbfb9-123e-4c21-8845-7cdfae75d7a8",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 11.724499985575676,
+          "inference_ms": 2.7776
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "e436c172-6a8a-4109-a0ed-382a2679b634",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 12.076200000592507,
+          "inference_ms": 3.1841
+        },
+        {
+          "case_id": "rce",
+          "request_id": "36a96f7f-c846-4d15-abb6-c21551128206",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 25.126600012299605,
+          "inference_ms": 3.5273
+        },
+        {
+          "case_id": "xss",
+          "request_id": "4f3173b9-33e5-43f7-acf8-2e0ebce36943",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 33.678399995551445,
+          "inference_ms": 3.3708
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "55e36e04-1b2c-4968-bb0d-26d7806900f2",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 64.19380000443198,
+          "inference_ms": 3.0952
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "197e699b-59cb-4e65-a3fa-6e9c3f071f92",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 40.290200005983934,
+          "inference_ms": 3.6414
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "fae65ce9-b737-4a75-ad07-db467d3950a5",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 30.2633999963291,
+          "inference_ms": 3.5377
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "347788b8-7c09-4771-887c-a85970b6539a",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 13.83370000985451,
+          "inference_ms": 2.7598
+        },
+        {
+          "case_id": "benign",
+          "request_id": "423734ff-c316-41df-89ae-5b952cfbe6f3",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 11.49210000585299,
+          "inference_ms": 2.7615
+        },
+        {
+          "case_id": "benign",
+          "request_id": "d8be0a34-32a7-4680-952e-774a8b7de76c",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 12.625500006834045,
+          "inference_ms": 3.5852
+        }
+      ]
+    },
+    {
+      "mode": "rules_only_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 0,
+        "unresolved": 0,
+        "completed_rps": 177.36812310923682,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 17.929899993760046,
+        "latency_p95_ms": 29.656334996252554,
+        "latency_p99_ms": 30.78638700200827,
+        "elapsed_seconds": 0.06765589999849908,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.328125,
+        "cpu_equivalent_percent": 484.9909616268194,
+        "process_group_rss_bytes": 2293149696,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "9d6846f6-bcd8-4d60-84c9-1de158320981",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 19.39489999494981,
+          "inference_ms": 4.8211
+        },
+        {
+          "case_id": "xss",
+          "request_id": "20800802-8a83-47e6-ac03-d99638405fcf",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 20.04289999604225,
+          "inference_ms": 4.5748
+        },
+        {
+          "case_id": "rce",
+          "request_id": "148abfcf-6030-4c60-9793-60aa914844d5",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 16.910599995753728,
+          "inference_ms": 5.3484
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "490ef043-b9c9-4615-882c-463b2bc2a038",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 18.628899997565895,
+          "inference_ms": 3.9445
+        },
+        {
+          "case_id": "rce",
+          "request_id": "eba09e85-9244-4b3e-bbd2-4f700505352a",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 31.068900003447197,
+          "inference_ms": 5.6109
+        },
+        {
+          "case_id": "xss",
+          "request_id": "dc000a49-baa0-4d21-a092-0909530b04e6",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 17.121400000178255,
+          "inference_ms": 3.5352
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "a7fad338-b476-4666-ac98-ea44c7b06c31",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 28.500599990366027,
+          "inference_ms": 3.9873
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "5832f113-baa0-4313-94f2-59d3f68cc87c",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 28.249199996935204,
+          "inference_ms": 4.7636
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "61d31067-3297-4c35-98cb-41651c095fdf",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 17.230899989954196,
+          "inference_ms": 6.2121
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "0ecb0bea-5573-46b4-b7af-3ae88a22af80",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 13.527800008887425,
+          "inference_ms": 3.1576
+        },
+        {
+          "case_id": "benign",
+          "request_id": "d6162839-e694-49c7-8738-26d084adfb8f",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 16.100000008009374,
+          "inference_ms": 3.5058
+        },
+        {
+          "case_id": "benign",
+          "request_id": "621323bc-848c-486a-93a9-c2a0195ac82c",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "ALLOW",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 16.898000001674518,
+          "inference_ms": 4.0326
+        }
+      ]
+    },
+    {
+      "mode": "both_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 22.437954847835947,
+        "fully_inspected_rps": 3.739659141305991,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 2,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 31.310900005337317,
+        "latency_p95_ms": 104.78116000449518,
+        "latency_p99_ms": 108.51623200374888,
+        "elapsed_seconds": 0.5348080999974627,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.4375,
+        "cpu_equivalent_percent": 81.80504371606855,
+        "process_group_rss_bytes": 2297827328,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "35415f4e-20b6-452a-9327-fae6262a37b3",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 29.866800003219396,
+          "inference_ms": 3.0794
+        },
+        {
+          "case_id": "xss",
+          "request_id": "81632630-cb7b-484e-b5e0-49cdbeb5be9c",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 29.074299993226305,
+          "inference_ms": 3.1004
+        },
+        {
+          "case_id": "rce",
+          "request_id": "24446fe6-109a-4170-967d-7f9148b58c21",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 30.84280001348816,
+          "inference_ms": 3.3333
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "d0af8683-0089-4252-9720-11e46dc982a2",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 30.488100004731677,
+          "inference_ms": 2.7657
+        },
+        {
+          "case_id": "rce",
+          "request_id": "0acdbfe4-ffae-483d-88f1-d8ab92c0a5be",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 31.877300003543496,
+          "inference_ms": 3.0416
+        },
+        {
+          "case_id": "xss",
+          "request_id": "b91bcf88-abbf-4bbd-b580-4bcb55878f08",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 31.778999997186475,
+          "inference_ms": 3.0735
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "ec58236d-7943-4bf0-8943-254c38b2b484",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 51.81720000109635,
+          "inference_ms": 2.9635
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "a7c36e4a-5c1e-47fa-b387-d4f331068d6f",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 25.97280000918545,
+          "inference_ms": 3.315
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "5e3b051a-48a8-4753-a5dd-c1323166a8d6",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 33.2578000088688,
+          "inference_ms": 3.5127
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "725742dd-a22b-4054-9e0e-635116260fac",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 27.117299992823973,
+          "inference_ms": 4.2931
+        },
+        {
+          "case_id": "benign",
+          "request_id": "ea937763-4519-460b-a20e-0a2d69151288",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "MONITOR",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 100.96120000525843,
+          "inference_ms": 87.8545
+        },
+        {
+          "case_id": "benign",
+          "request_id": "21ed0285-96db-4363-a7ae-38b0868daf7d",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "MONITOR",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 109.45000000356231,
+          "inference_ms": 75.3108
+        }
+      ]
+    },
+    {
+      "mode": "both_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 48.78713158261618,
+        "fully_inspected_rps": 8.131188597102696,
+        "classified_count": 12,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 2,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 24.822899998980574,
+        "latency_p95_ms": 156.34814500226634,
+        "latency_p99_ms": 187.77562899398623,
+        "elapsed_seconds": 0.24596649999148212,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.453125,
+        "cpu_equivalent_percent": 184.22224165310797,
+        "process_group_rss_bytes": 2309292032,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "e413eeb5-bca8-4a2e-9f56-6dc8181f01bd",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 34.77790000033565,
+          "inference_ms": 3.9163
+        },
+        {
+          "case_id": "xss",
+          "request_id": "0deb5c82-2e49-4188-a36b-54f06e0f0fda",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 34.877700003562495,
+          "inference_ms": 3.8748
+        },
+        {
+          "case_id": "rce",
+          "request_id": "217d4a48-6b18-422a-a198-cd44f59c621b",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 33.49709999747574,
+          "inference_ms": 3.8525
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "ca10a745-725f-4c05-b93a-314be7545f42",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 10.359499996411614,
+          "inference_ms": 3.0887
+        },
+        {
+          "case_id": "rce",
+          "request_id": "5f8d35b8-eaa8-478a-aaee-2caf053bcac8",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "REMOTE_CODE_EXECUTION",
+          "round_trip_ms": 12.100400010240264,
+          "inference_ms": 3.2604
+        },
+        {
+          "case_id": "xss",
+          "request_id": "f52003f6-4790-4d93-9193-acf898e1c316",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "XSS",
+          "round_trip_ms": 12.282499999855645,
+          "inference_ms": 3.0281
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "81e093c0-2382-4dec-813c-1521924893a1",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 13.417299996945076,
+          "inference_ms": 4.1227
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "11fba4f8-ae4e-4d4e-b341-1a85ebad8b70",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "COOKIE_INJECTION",
+          "round_trip_ms": 12.951800003065728,
+          "inference_ms": 3.495
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "3ca0dcea-be0b-4a1b-ab9b-341e6911ee86",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "SQL_INJECTION",
+          "round_trip_ms": 27.17859999393113,
+          "inference_ms": 3.404
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "d121b3ad-cce0-4f07-95b5-7a15d0a7afea",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 403,
+          "action": "BLOCK",
+          "inspection_status": "RULES_ONLY",
+          "predicted_attack": "DIRECTORY_TRAVERSAL",
+          "round_trip_ms": 22.46720000403002,
+          "inference_ms": 3.5679
+        },
+        {
+          "case_id": "benign",
+          "request_id": "e4051b43-72fb-4d72-8410-198d6f4b6fdc",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "MONITOR",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 195.63249999191612,
+          "inference_ms": 167.167
+        },
+        {
+          "case_id": "benign",
+          "request_id": "7f2e609f-6497-4c26-b0cd-692ea416cfc8",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "MONITOR",
+          "inspection_status": "FULLY_INSPECTED",
+          "predicted_attack": "BENIGN",
+          "round_trip_ms": 124.2064000107348,
+          "inference_ms": 96.5633
+        }
+      ]
+    },
+    {
+      "mode": "direct_backend",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 0,
+        "unresolved": 12,
+        "completed_rps": 91.90993439461303,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 0,
+        "attack_detection_recall_all_submitted": null,
+        "benign_false_positive_rate_all_submitted": null,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 14.000700000906363,
+        "latency_p95_ms": 16.424670004926156,
+        "latency_p99_ms": 16.524374008586165,
+        "elapsed_seconds": 0.1305625999957556,
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.015625,
+        "cpu_equivalent_percent": 11.967439374298571,
+        "process_group_rss_bytes": 2310045696,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "342d0a32-39c0-46ed-9c94-e94915acdfc9",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 2.39280000096187
+        },
+        {
+          "case_id": "xss",
+          "request_id": "a53603a7-e3dd-465a-99c8-39e3a75602f2",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 1.5220999921439216
+        },
+        {
+          "case_id": "rce",
+          "request_id": "db210a39-50af-4336-b11f-f56abad9c994",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 13.487500007613562
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "3d155519-457b-495d-b387-cc7c0f3bb796",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 1.4445999986492097
+        },
+        {
+          "case_id": "rce",
+          "request_id": "9c6bc80e-6569-483e-bc87-9ffd2c054ac6",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 13.283699998282827
+        },
+        {
+          "case_id": "xss",
+          "request_id": "5bb6210b-c0ac-4551-91c3-d3649e90cd18",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 15.923800005111843
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "72a9b605-8d20-4868-ae18-be8adef4dfcf",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 16.549300009501167
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "c93d77d0-9103-4dd5-a521-cd313b46e73a",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 15.490700010559522
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "3263f10b-4f72-4504-8979-9a81c64886c1",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 15.282799999113195
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "ccc40ab2-acee-4c5e-a00f-cf26d793f92b",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 1.4724999928148463
+        },
+        {
+          "case_id": "benign",
+          "request_id": "2b0557b1-9a92-496d-b3dd-b61a93edf711",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 14.513899994199164
+        },
+        {
+          "case_id": "benign",
+          "request_id": "cbe3272a-b876-4cec-8953-c40f508217f8",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 16.322700001182966
+        }
+      ]
+    },
+    {
+      "mode": "direct_backend",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 0,
+        "unresolved": 12,
+        "completed_rps": 200.47177686845825,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 0,
+        "attack_detection_recall_all_submitted": null,
+        "benign_false_positive_rate_all_submitted": null,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 14.631249992817175,
+        "latency_p95_ms": 27.861260002828203,
+        "latency_p99_ms": 27.884492000448518,
+        "elapsed_seconds": 0.05985880001389887,
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "cpu_core_seconds": 0.03125,
+        "cpu_equivalent_percent": 52.20619189282767,
+        "process_group_rss_bytes": 2317950976,
+        "gpu_process_allocated_bytes": 286008832,
+        "gpu_process_peak_allocated_bytes": 287632384
+      },
+      "records": [
+        {
+          "case_id": "cookie",
+          "request_id": "012bec24-d883-4aa1-8a0f-7b928020a0f1",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 2.3459000076400116
+        },
+        {
+          "case_id": "xss",
+          "request_id": "12d696a1-07ed-4031-99b9-5eb45c34755a",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 27.837500005261973
+        },
+        {
+          "case_id": "rce",
+          "request_id": "c3a8542b-094e-403c-aca9-93414ff28e44",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 27.630800002953038
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "c2ebdd5e-5050-4a10-8e3e-9f837cd56ac4",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 27.890299999853596
+        },
+        {
+          "case_id": "rce",
+          "request_id": "d2ece707-c0b5-4be2-a287-df60304500c7",
+          "expected": "REMOTE_CODE_EXECUTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 26.702300005126745
+        },
+        {
+          "case_id": "xss",
+          "request_id": "aba04476-2b16-4600-ad56-2eccf7de9a3e",
+          "expected": "XSS",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 1.8280000076629221
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "87bfa86a-799f-41bc-ae2a-9a1fc303bdce",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 14.95829998748377
+        },
+        {
+          "case_id": "cookie",
+          "request_id": "4ae33cd7-ab6b-4bef-8679-9fb49799a10b",
+          "expected": "COOKIE_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 1.9039000035263598
+        },
+        {
+          "case_id": "sqli",
+          "request_id": "22ee25cf-2e04-47a4-9e57-572de0d6f24d",
+          "expected": "SQL_INJECTION",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 14.556999987689778
+        },
+        {
+          "case_id": "traversal",
+          "request_id": "44ef75a7-743c-4873-88e2-dbc340d8ead0",
+          "expected": "DIRECTORY_TRAVERSAL",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 13.990699997521006
+        },
+        {
+          "case_id": "benign",
+          "request_id": "7310059b-f8b7-4921-ba30-5c2c66205ead",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 12.886099997558631
+        },
+        {
+          "case_id": "benign",
+          "request_id": "ef915e9d-fe0f-403f-aba2-3dafd294cb21",
+          "expected": "BENIGN",
+          "completed": true,
+          "http_status": 200,
+          "action": "UNKNOWN",
+          "inspection_status": "UNKNOWN",
+          "predicted_attack": null,
+          "round_trip_ms": 14.705499997944571
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Prepared development probes only; no generalization or final-test claim.",
+    "Repeated inputs are not independent samples; no security confidence interval inferred.",
+    "Fixed and guarded strategies differ in available mandatory rules; this is not isolated routing novelty evidence.",
+    "Resource CPU/RSS covers client, detection and three Java processes; GPU metrics are allocator observations, not GPU utilization.",
+    "No CRS-only, fitted-conformal or trained-bandit results exist in this report."
+  ]
+}

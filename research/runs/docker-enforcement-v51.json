@@ -1,0 +1,22 @@
+{
+  "policy_propagated": true,
+  "burst_codes": [
+    429,
+    200,
+    200,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429,
+    429
+  ],
+  "rate_limit_observed": true,
+  "policy_restored": true,
+  "block_created": true,
+  "temporary_block_status": 403,
+  "after_expiry_status": 200
+}

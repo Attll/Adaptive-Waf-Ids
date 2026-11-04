@@ -1,0 +1,27 @@
+# Candidate-only configuration; existing deployment artifacts are never overwritten or promoted.
+model_role = "deep_escalation"
+dataset_version = "atrdf-dataset3-dataset4-v1"
+feature_version = "http-deep-v1"
+classes = ["BENIGN", "SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION"]
+device = "auto"
+
+[candidates.char_cnn]
+epochs = 10
+patience = 2
+gradient_clip = 1.0
+batch_size = 128
+learning_rate = 0.001
+max_length = 512
+embedding_dimension = 48
+filters = 64
+dropout = 0.2
+
+[candidates.distilbert]
+pretrained_model = "artifacts/training/deep/distilbert-full-gpu-v1/model"
+tokenizer_source = "artifacts/training/deep/distilbert-full-gpu-v1/tokenizer"
+epochs = 5
+patience = 2
+gradient_clip = 1.0
+batch_size = 16
+learning_rate = 0.00002
+max_length = 256

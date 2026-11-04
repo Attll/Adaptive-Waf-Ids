@@ -1,0 +1,16 @@
+train 50000
+train 100000
+train 150000
+train 200000
+{
+  "groups_per_label": {
+    "BENIGN": 48187,
+    "COOKIE_INJECTION": 5,
+    "DIRECTORY_TRAVERSAL": 30,
+    "REMOTE_CODE_EXECUTION": 4,
+    "SQL_INJECTION": 3144,
+    "XSS": 3
+  },
+  "conflicting_label_groups": 0,
+  "train_validation_overlapping_candidate_groups": 6564
+}

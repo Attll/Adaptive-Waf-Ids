@@ -47,6 +47,14 @@ class AsynchronousEscalationTests(unittest.TestCase):
         self.assertIsNotNone(result.deep_output)
         self.assertIn("DEEP_ESCALATION", result.routing_path)
 
+    def test_rejected_submission_is_not_reported_pending(self) -> None:
+        pipeline = _pipeline(asynchronous=True, scheduler=lambda *args: False)
+        result = pipeline.detect(_request(), BehaviourContext(), None, {})
+        self.assertFalse(result.deep_escalation_pending)
+        self.assertIsNone(result.deep_escalation_id)
+        self.assertIn("DEEP_ESCALATION_REJECTED", result.routing_path)
+        self.assertEqual(result.explanation_evidence["deep_escalation"], "rejected_capacity_or_unavailable")
+
     def test_confident_request_is_never_escalated(self) -> None:
         scheduled: list[str] = []
         pipeline = _pipeline(asynchronous=True, scheduler=lambda identifier, request, result: scheduled.append(identifier), confidence=0.99)

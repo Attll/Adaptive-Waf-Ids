@@ -1,0 +1,95 @@
+{
+  "boundary": "Existing selected deployment artifacts; generated without modifying models",
+  "artifacts": [
+    {
+      "path": "artifacts\\training\\calibration\\calibration-full-v1\\deep\\temperature.json",
+      "bytes": 28,
+      "sha256": "f64f1f3bf283829922bf1c304f7b17a6e4148e657d427a6046cb0b0917940b06"
+    },
+    {
+      "path": "artifacts\\training\\calibration\\calibration-full-v1\\execution\\isotonic\\model.joblib",
+      "bytes": 4275919,
+      "sha256": "bb2bbcd232a9537aef73e64d8bf8b88c7ad9fe654a63f51822bff64396ac43ee"
+    },
+    {
+      "path": "artifacts\\training\\calibration\\calibration-full-v1\\injection\\isotonic\\model.joblib",
+      "bytes": 5106883,
+      "sha256": "52cf228373d7e5c76d211cdb0cc427758890e4b16a8f6ecbf298254926b66ed1"
+    },
+    {
+      "path": "artifacts\\training\\calibration\\calibration-full-v1\\triage\\isotonic\\model.joblib",
+      "bytes": 7031611,
+      "sha256": "cd4897324ed0922d737d33192ca7c74bb0cac8c9e71903f72048265ab0a98115"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\class_mapping.json",
+      "bytes": 158,
+      "sha256": "78feca4fba3bef7c017ec3236f121c028daf4e8521c00b3052c4d8ad48e13d4d"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\config.json",
+      "bytes": 984,
+      "sha256": "76be2a31f495dbf5530a04e5d5a3a999f3a07ceac0267c4acdd75ff0fd21c36a"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\metrics.json",
+      "bytes": 1060,
+      "sha256": "2de31985a08ddec17412f1e1c225ba33c5718f257cb1c9d113adc0e8990ef9e5"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\model\\config.json",
+      "bytes": 1025,
+      "sha256": "50137774787e902b158dadb66ae443fec1d095bd14854d9f671367e393bf9d8c"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\model\\model.safetensors",
+      "bytes": 267844872,
+      "sha256": "0341dc9bece2e28495a8b1a1c952f970c4c08fe832e5509b3a1e8ce4715fde81"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\tokenizer\\tokenizer.json",
+      "bytes": 711649,
+      "sha256": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\tokenizer\\tokenizer_config.json",
+      "bytes": 366,
+      "sha256": "71cd48543bec670f50e0c9c3556df16b1f58ea720ead6a1b4675f08870c60b17"
+    },
+    {
+      "path": "artifacts\\training\\deep\\distilbert-full-gpu-v1\\train.log",
+      "bytes": 29,
+      "sha256": "b5aaf2a26f1b626d92271fb8b1fdb78dbbc6b3c86c0efcfe494e0f9002f37108"
+    },
+    {
+      "path": "artifacts\\training\\experts\\execution\\execution-expert-full-v1\\extra_trees\\model.joblib",
+      "bytes": 4273809,
+      "sha256": "fe8606a1ee31584756c563c0b001d9c65032a438e755399da9dab1d1dbe853dd"
+    },
+    {
+      "path": "artifacts\\training\\experts\\injection\\injection-expert-full-v1\\random_forest\\model.joblib",
+      "bytes": 5104313,
+      "sha256": "f2b8559671189b0c66d3fad7b95b2823fa559c412e51e4cc7b1942848ed70338"
+    },
+    {
+      "path": "artifacts\\training\\network\\network-full-v1\\feature_manifest.json",
+      "bytes": 878,
+      "sha256": "d78e5d2c54b59b91957ea16b4cec17558311af017438fcb49e579f0bb9633d96"
+    },
+    {
+      "path": "artifacts\\training\\network\\network-full-v1\\random_forest\\model.joblib",
+      "bytes": 10728105,
+      "sha256": "7d60ab39a4ab23b900cfc30b5f9ee86e5e5bc258393a81468027ade00ac312c4"
+    },
+    {
+      "path": "artifacts\\training\\router\\router-full-v1\\logistic_regression\\model.joblib",
+      "bytes": 7099,
+      "sha256": "54fd6b36abfe2ed555f9ad36a4f95812942458fd0040889de20f69a834503f97"
+    },
+    {
+      "path": "artifacts\\training\\triage\\triage-full-v1\\random_forest\\model.joblib",
+      "bytes": 7030377,
+      "sha256": "16c861933d66492d9f289e5c94a7a42b3938340724683200006d154cbe56d646"
+    }
+  ]
+}

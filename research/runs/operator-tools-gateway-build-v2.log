@@ -1,0 +1,70 @@
+ Image adaptive-waf-ids/gateway:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.08kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 543B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 63B done
+#5 DONE 0.0s
+
+#6 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#6 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#7 resolve docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a 0.0s done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 5.24kB done
+#8 DONE 0.0s
+
+#9 [build 3/6] COPY pom.xml .
+#9 CACHED
+
+#10 [build 2/6] WORKDIR /workspace
+#10 CACHED
+
+#11 [build 4/6] RUN mvn -q -DskipTests dependency:go-offline
+#11 CACHED
+
+#12 [build 5/6] COPY src src
+#12 DONE 0.0s
+
+#13 [build 6/6] RUN mvn -q -DskipTests package
+#13 DONE 10.7s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=build /workspace/target/gateway-service-0.1.0.jar app.jar
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.9s done
+#16 exporting manifest sha256:3816ecc3ca04f2877da7ffd0c58b7cdeec4a8b94f83b31ef81755364010f0e92 done
+#16 exporting config sha256:d023bb6f034e70d6a15775411406fa047f37c8bba19acfc44dd8b4acaec8238f done
+#16 exporting attestation manifest sha256:15e26a4221f621ba38b217d8523a87b0e06d0c808d8f7ac06284aa4014c6eaca done
+#16 exporting manifest list sha256:fcd68f8cdc8a95bc3f2e7d9d453a8b3a2b83ca2dd0f925ab551db8dd532bc913 done
+#16 naming to docker.io/adaptive-waf-ids/gateway:1.1.0 done
+#16 unpacking to docker.io/adaptive-waf-ids/gateway:1.1.0
+#16 unpacking to docker.io/adaptive-waf-ids/gateway:1.1.0 0.2s done
+#16 DONE 1.1s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image adaptive-waf-ids/gateway:1.1.0 Built 

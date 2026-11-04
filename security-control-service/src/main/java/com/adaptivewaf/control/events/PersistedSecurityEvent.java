@@ -60,6 +60,10 @@ public class PersistedSecurityEvent {
     private double confidence;
     @Column(name = "details_json", nullable = false, columnDefinition = "text")
     private String detailsJson;
+    @Column(name = "inspection_status", length = 32)
+    private String inspectionStatus;
+    @Column(name = "processed_at")
+    private Instant processedAt;
 
     protected PersistedSecurityEvent() { }
 
@@ -88,6 +92,8 @@ public class PersistedSecurityEvent {
         this.triageDecision = builder.triageDecision;
         this.confidence = builder.confidence;
         this.detailsJson = builder.detailsJson;
+        this.inspectionStatus = builder.inspectionStatus;
+        this.processedAt = Instant.now();
     }
 
     public static Builder builder() { return new Builder(); }
@@ -117,6 +123,8 @@ public class PersistedSecurityEvent {
     public String getTriageDecision() { return triageDecision; }
     public double getConfidence() { return confidence; }
     public String getDetailsJson() { return detailsJson; }
+    public String getInspectionStatus() { return inspectionStatus; }
+    public Instant getProcessedAt() { return processedAt; }
 
     public static final class Builder {
         private String eventId;
@@ -143,6 +151,9 @@ public class PersistedSecurityEvent {
         private String triageDecision;
         private double confidence;
         private String detailsJson = "{}";
+        private String inspectionStatus;
+
+        public Builder inspectionStatus(String value) { this.inspectionStatus = value; return this; }
 
         public Builder identity(String eventId, Instant occurredAt, String category, String requestId) {
             this.eventId = eventId; this.occurredAt = occurredAt; this.category = category; this.requestId = requestId;

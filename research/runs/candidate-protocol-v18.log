@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "train": {
+      "SQL_INJECTION": 1000,
+      "BENIGN": 1000,
+      "REMOTE_CODE_EXECUTION": 2,
+      "DIRECTORY_TRAVERSAL": 22,
+      "XSS": 1,
+      "COOKIE_INJECTION": 3
+    },
+    "tune": {
+      "XSS": 1,
+      "REMOTE_CODE_EXECUTION": 1,
+      "BENIGN": 200,
+      "SQL_INJECTION": 200,
+      "DIRECTORY_TRAVERSAL": 4,
+      "COOKIE_INJECTION": 1
+    },
+    "evaluation": {
+      "REMOTE_CODE_EXECUTION": 1,
+      "XSS": 1,
+      "COOKIE_INJECTION": 1,
+      "BENIGN": 200,
+      "SQL_INJECTION": 200,
+      "DIRECTORY_TRAVERSAL": 4
+    }
+  },
+  "sha256": {
+    "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+    "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+    "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+  }
+}

@@ -1,0 +1,20 @@
+# Retain scratch diagnostics locally; commit the evidence used by the audit.
+*
+!.gitignore
+!baseline_checks.json
+!acceptance_checks.json
+!python-baseline-retry.txt
+!gateway-baseline.txt
+!control-baseline-retry.txt
+!backend-baseline-retry.txt
+!dashboard-baseline.txt
+!python-after.txt
+!gateway-integration.txt
+!control-integration.txt
+!dashboard-after.txt
+!direct-six-probes.json
+!direct-six-probes-v2.json
+!api-six-probes.json
+!api-six-probes-v2.json
+!hardware.json
+!artifact_manifest.json

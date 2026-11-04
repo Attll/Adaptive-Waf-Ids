@@ -15,10 +15,16 @@ import reactor.core.publisher.Mono;
 public class RedisBehaviourService {
     private final ReactiveStringRedisTemplate redis;
     private final BehaviourProperties properties;
+    private final com.adaptivewaf.gateway.policy.GatewayPolicy policy;
+    private final com.adaptivewaf.gateway.detection.SourceIdentity sourceIdentity;
 
-    public RedisBehaviourService(ReactiveStringRedisTemplate redis, BehaviourProperties properties) {
+    public RedisBehaviourService(ReactiveStringRedisTemplate redis, BehaviourProperties properties,
+                                 com.adaptivewaf.gateway.policy.GatewayPolicy policy,
+                                 com.adaptivewaf.gateway.detection.SourceIdentity sourceIdentity) {
         this.redis = redis;
         this.properties = properties;
+        this.policy = policy;
+        this.sourceIdentity = sourceIdentity;
     }
 
     public Mono<BehaviourSnapshot> observe(ServerHttpRequest request, String requestId) {
@@ -45,7 +51,8 @@ public class RedisBehaviourService {
                     : Mono.just(true))
                 .then()
             : Mono.empty();
-        Mono<Boolean> attack = risk >= 0.81 || !"BENIGN".equals(predictedAttack)
+        boolean knownAttack = java.util.Set.of("SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION").contains(predictedAttack == null ? "" : predictedAttack);
+        Mono<Boolean> attack = knownAttack || (risk >= 0.81 && !java.util.Set.of("SKIPPED", "UNAVAILABLE", "UNEVALUATED").contains(predictedAttack == null ? "" : predictedAttack))
             ? incrementCounter("waf:ip:" + source + ":attacks", properties.getMediumWindow()).thenReturn(true)
             : Mono.just(false);
         return Mono.when(failedLogin, attack).then();
@@ -56,11 +63,7 @@ public class RedisBehaviourService {
     }
 
     private Mono<Long> rollingCount(String key, Duration window, String member) {
-        double now = System.currentTimeMillis();
-        return redis.opsForZSet().add(key, now + ":" + member + ":" + UUID.randomUUID(), now)
-            .then(redis.opsForZSet().removeRangeByScore(key, Range.closed(0.0, now - window.toMillis())))
-            .then(redis.opsForZSet().size(key))
-            .flatMap(count -> redis.expire(key, window.multipliedBy(2)).thenReturn(count));
+        return RedisWindow.count(redis, key, window);
     }
 
     private Mono<Long> counter(String key) {
@@ -68,16 +71,18 @@ public class RedisBehaviourService {
     }
 
     private Mono<Long> incrementCounter(String key, Duration ttl) {
-        return redis.opsForValue().increment(key).flatMap(value -> redis.expire(key, ttl).thenReturn(value));
+        return RedisWindow.increment(redis, key, ttl);
     }
 
     private BehaviourSnapshot snapshot(long shortCount, long mediumCount, long endpointCount, long failedAuthAttempts, long attackCount, boolean blocked) {
-        double rateRisk = shortCount / (double) properties.getRateLimitShortWindow();
-        double endpointRisk = endpointCount / (double) Math.max(1, properties.getRateLimitShortWindow() * 2);
+        long rateLimit = policy.current().rateLimitShortWindow();
+        if (rateLimit <= 0) { rateLimit = properties.getRateLimitShortWindow(); }
+        double rateRisk = shortCount / (double) rateLimit;
+        double endpointRisk = endpointCount / (double) Math.max(1, rateLimit * 2);
         double authRisk = failedAuthAttempts / 5.0;
         double risk = Math.min(1.0, Math.max(rateRisk, Math.max(endpointRisk, authRisk)));
         return new BehaviourSnapshot(risk, shortCount, mediumCount, failedAuthAttempts, endpointCount, attackCount,
-            shortCount >= properties.getRateLimitShortWindow(), blocked);
+            shortCount >= rateLimit, blocked);
     }
 
     private String blockKey(String source) { return "waf:block:" + source; }
@@ -96,9 +101,6 @@ public class RedisBehaviourService {
     }
 
     private String sourceKey(ServerHttpRequest request) {
-        if (request.getRemoteAddress() == null || request.getRemoteAddress().getAddress() == null) {
-            return "unknown";
-        }
-        return request.getRemoteAddress().getAddress().getHostAddress().replace(":", "_");
+        return sourceIdentity.sourceKey(request);
     }
 }

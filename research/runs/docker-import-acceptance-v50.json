@@ -1,0 +1,118 @@
+{
+  "checks": {
+    "all_requests_persisted": true,
+    "benign_forwarded": true,
+    "five_attacks_blocked": true,
+    "network_full_vector": true,
+    "durable_completed_jobs": true,
+    "dashboard_html": true,
+    "dashboard_authenticated_proxy": true,
+    "browser_internal_route_blocked": true
+  },
+  "requests": [
+    {
+      "case": "benign",
+      "request_id": "3067c031-4a6c-4bed-a718-562843510f83",
+      "http_status": 200,
+      "round_trip_ms": 151.30200001294725,
+      "persisted": true,
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "action": "ALLOW",
+      "prediction": "COOKIE_INJECTION"
+    },
+    {
+      "case": "sqli",
+      "request_id": "c065a7fb-5671-4354-b9dd-9d829fc3fc83",
+      "http_status": 403,
+      "round_trip_ms": 38.36179999052547,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "SQL_INJECTION"
+    },
+    {
+      "case": "xss",
+      "request_id": "17733ad1-41f9-4077-a7b3-fb2a0dd25831",
+      "http_status": 403,
+      "round_trip_ms": 42.420599987963215,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "XSS"
+    },
+    {
+      "case": "traversal",
+      "request_id": "3851ce4c-61b9-4f6c-bba7-1fc7210a0dd9",
+      "http_status": 403,
+      "round_trip_ms": 37.35229998710565,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "DIRECTORY_TRAVERSAL"
+    },
+    {
+      "case": "rce",
+      "request_id": "faff6db1-3045-4dd2-bde4-9d96a3bf3edb",
+      "http_status": 403,
+      "round_trip_ms": 27.837200002977625,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "REMOTE_CODE_EXECUTION"
+    },
+    {
+      "case": "cookie",
+      "request_id": "0fc9ed7c-c8d1-42be-a05a-ac4e034f51ce",
+      "http_status": 403,
+      "round_trip_ms": 14.275499997893348,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "COOKIE_INJECTION"
+    }
+  ],
+  "network": {
+    "status": 200,
+    "result": {
+      "network_context": {
+        "source_ip": "192.0.2.71",
+        "destination_ip": null,
+        "network_risk": 0.026524787549106366,
+        "network_class": "BENIGN",
+        "confidence": 0.9734752124508936,
+        "model_version": "network-full-v1:random_forest",
+        "observed_at": "2026-10-30T03:22:23.872056+00:00",
+        "observation_scope": "PROVIDED_FLOW",
+        "feature_contract": "PROVIDED_FLOW"
+      }
+    }
+  },
+  "deep_jobs": {
+    "jobs": [
+      {
+        "job_id": "a3106771-a9eb-4ea7-81e5-94f10bb46cd4",
+        "request_id": "3067c031-4a6c-4bed-a718-562843510f83",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:22:23.418335+00:00"
+      }
+    ],
+    "statistics": {
+      "enabled": true,
+      "backend": "rabbitmq_postgresql",
+      "workers": 1,
+      "queue_limit": 256,
+      "queue_depth": 0,
+      "running": 0,
+      "pending": 0,
+      "submitted": 1,
+      "resolved": 1,
+      "failed": 0,
+      "expired": 0,
+      "rejected": 0,
+      "last_error_type": null
+    }
+  },
+  "scope": "six development diagnostics; no representative model-only accuracy or browser automation claim"
+}

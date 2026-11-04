@@ -10,6 +10,8 @@ import type { ViewProps } from "../lib/view";
  * afterwards. This page shows what was allowed provisionally and what the deep model eventually concluded.
  */
 export function Escalations({ refreshInterval }: ViewProps) {
+  const [offset,setOffset]=useState(0),[jobs,setJobs]=useState<{job_id:string;request_id:string;state:string;model_version:string;outcome:unknown}[]>([]),[jobError,setJobError]=useState('');
+  useEffect(()=>{let active=true;const poll=async()=>{try{const response=await fetch(`/detection-api/v1/deep/jobs?limit=50&offset=${offset}`);if(!response.ok)throw Error(`Job history HTTP ${response.status}`);const result=await response.json();if(active){setJobs(result.jobs);setJobError('');}}catch(e){if(active)setJobError(String(e));}};void poll();const timer=window.setInterval(()=>void poll(),3000);return()=>{active=false;clearInterval(timer);};},[offset]);
   const [outcomes, setOutcomes] = useState<EscalationOutcome[]>([]);
   const [statistics, setStatistics] = useState<EscalationStatistics>();
   const [error, setError] = useState<string>();
@@ -60,6 +62,7 @@ export function Escalations({ refreshInterval }: ViewProps) {
 
   return (
     <div className="stack">
+      <Panel title="All deferred jobs" subtitle="Persistent job history, including pending, running, failed and expired requests. New arrivals can shift offset pages; request and job IDs identify each result."><div className="btn-row"><button className="btn" disabled={offset===0} onClick={()=>setOffset(Math.max(0,offset-50))}>Previous jobs</button><Badge value={`Rows ${offset+1}–${offset+jobs.length}`} tone="info"/><button className="btn" disabled={jobs.length<50} onClick={()=>setOffset(offset+50)}>Next jobs</button></div>{jobError&&<p role="alert">{jobError}</p>}<div className="table-wrap"><table><thead><tr><th>Request / job</th><th>State</th><th>Model version</th><th>Deep result, probabilities and timing</th></tr></thead><tbody>{jobs.map(job=><tr key={job.job_id}><td className="mono">{job.request_id}<br/>{job.job_id}</td><td><Badge value={job.state} tone="info"/></td><td>{job.model_version}</td><td><details><summary>Inspect result</summary><pre className="code-block">{JSON.stringify(job.outcome,null,2)}</pre></details></td></tr>)}</tbody></table></div></Panel>
       <div className="grid-4 stagger">
         <Metric
           label="Deferred and resolved"
@@ -76,9 +79,9 @@ export function Escalations({ refreshInterval }: ViewProps) {
           icon={<Icon name="alert" size={13} />}
         />
         <Metric
-          label="Queue depth"
-          value={statistics?.queue_depth ?? 0}
-          detail={`${statistics?.workers ?? 0} workers · limit ${statistics?.queue_limit ?? 0}`}
+          label="Pending deep jobs"
+          value={statistics?.pending ?? statistics?.queue_depth ?? 0}
+          detail={`${statistics?.queue_depth ?? 0} waiting · ${statistics?.running ?? 0} running · limit ${statistics?.queue_limit ?? 0}`}
           tone={(statistics?.queue_depth ?? 0) > 0 ? "warning" : "success"}
           icon={<Icon name="bolt" size={13} />}
         />
@@ -93,7 +96,7 @@ export function Escalations({ refreshInterval }: ViewProps) {
 
       <Panel
         title="How deferred escalation works"
-        subtitle="Latency stays flat for unsure requests, and the deep verdict still reaches the operator"
+        subtitle="Deep evidence arrives later; it can affect future requests but cannot undo a completed operation"
         action={
           <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 11.5, color: "var(--text-secondary)" }}>
             <Switch checked={live} onChange={setLive} label="Live refresh" />

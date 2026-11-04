@@ -1,0 +1,16 @@
+# Isolated disposable test dependencies. No existing data directories or volumes are mounted.
+services:
+  redis:
+    image: redis:7.4-alpine
+    ports: ["127.0.0.1::6379"]
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    ports: ["127.0.0.1::5672"]
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: waf_fixture
+      POSTGRES_USER: waf_fixture
+      POSTGRES_PASSWORD: local-fixture-only
+    ports: ["127.0.0.1::5432"]
+    tmpfs: ["/var/lib/postgresql/data"]

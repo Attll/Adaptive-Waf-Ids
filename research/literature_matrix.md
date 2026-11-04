@@ -1,0 +1,16 @@
+# Initial literature matrix and novelty boundaries
+
+Primary sources checked on 28 October 2026. This is an initial matrix, not an exhaustive systematic review.
+
+| Work | Relationship to proposed work | Boundary |
+|---|---|---|
+| [Li et al., A Contextual-Bandit Approach to Personalized News Article Recommendation, WWW 2010](https://arxiv.org/abs/1003.0146) | LinUCB/context-dependent route selection and randomized offline evaluation precede this project | Does not establish WAF effectiveness or valid IPS on deterministic existing logs |
+| [Mozannar and Sontag, Consistent Estimators for Learning to Defer to an Expert, ICML 2020](https://proceedings.mlr.press/v119/mozannar20b.html) | Learning a predictor and deferral decision is established | Model-to-model deferral needs its own cost, availability and label assumptions |
+| [Angelopoulos and Bates, A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification](https://arxiv.org/abs/2107.07511) | Split-conformal uncertainty sets provide an established calibration framework | Exchangeability assumptions matter; no ordinary conformal guarantee under arbitrary adversarial shift |
+| [Kazerouni et al., Conservative Contextual Linear Bandits, NeurIPS 2017](https://papers.nips.cc/paper_files/paper/2017/hash/bdc4626aa1d1df8e14d80d345b2a442d-Abstract.html) | Baseline-relative conservative exploration precedes this proposal | Cumulative reward constraints are not interchangeable with per-class WAF recall/FPR constraints |
+| [Deb et al., Conservative Contextual Bandits: Beyond Linear Representations, ICLR 2025](https://proceedings.iclr.cc/paper_files/paper/2025/hash/dbca58f35bddc6e4003b2dd80e42f838-Abstract-Conference.html) | More recent conservative contextual methods extend beyond linear representations | Linear simplicity needs empirical justification; calling a masked router formally safe would be unsupported |
+| [Joulani et al., Online Learning under Delayed Feedback, ICML 2013](https://proceedings.mlr.press/v28/joulani13.html) | Delayed feedback and its effect on learning are established | Delayed detector output is not verified ground truth and cannot undo an HTTP side effect |
+| [Demetrio et al., WAF-A-MoLE, SoftwareX 2020](https://www.sciencedirect.com/science/article/pii/S2352711019302997) | Syntax-preserving adversarial WAF evaluation motivates held-out local variants | No external target testing or unrestricted attack tooling is part of this checkpoint |
+| [Arp et al., Dos and Don'ts of Machine Learning in Computer Security, USENIX Security 2022](https://www.usenix.net/system/files/sec22-arp.pdf) | Evaluation pitfalls motivate leakage checks and realistic deployment measurements | High prepared-set scores alone do not establish operational utility |
+
+Potential contribution: an empirically tested integration of guarded cost-sensitive routing, disjoint conformal calibration and bounded delayed reconciliation at an actual reactive HTTP gateway. That is a proposed experimental contribution, not established novelty. Each component has substantial prior work. The project must outperform simple static alternatives on comparable inputs and survive realistic failure/shift scenarios before a paper claim is defensible. Broader recent WAF/routing literature and parser-differential work still need systematic coverage.

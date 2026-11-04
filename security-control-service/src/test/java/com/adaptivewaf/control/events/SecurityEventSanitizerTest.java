@@ -10,7 +10,7 @@ class SecurityEventSanitizerTest {
     private final SecurityEventSanitizer sanitizer = new SecurityEventSanitizer(objectMapper);
 
     @Test
-    void redactsCredentialsWhileRetainingTheRequestRepresentation() throws Exception {
+    void redactsCredentialsAndSensitiveRequestContent() throws Exception {
         String sanitized = sanitizer.json(objectMapper.readTree(
             "{\"authorization\":\"Bearer secret\",\"password\":\"p@ss\",\"sourceIp\":\"203.0.113.10\",\"path\":\"/search\",\"query\":\"q=1' OR '1'='1\"}"));
 
@@ -18,6 +18,12 @@ class SecurityEventSanitizerTest {
         assertFalse(sanitized.contains("p@ss"));
         assertTrue(sanitized.contains("203.0.113.10"));
         assertTrue(sanitized.contains("/search"));
-        assertTrue(sanitized.contains("OR "));
+        assertFalse(sanitized.contains("OR "));
+        assertTrue(sanitized.contains("REDACTED"));
+    }
+
+    @Test void oversizedDetailsRemainValidJson() throws Exception {
+        var input = objectMapper.createObjectNode().put("large", "x".repeat(40000));
+        assertTrue(objectMapper.readTree(sanitizer.json(input)).path("truncated").asBoolean());
     }
 }

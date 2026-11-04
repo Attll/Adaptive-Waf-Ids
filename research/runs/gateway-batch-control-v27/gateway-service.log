@@ -1,0 +1,35 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2026-10-28T20:57:45.367+05:30  INFO 53684 --- [gateway-service] [           main] c.a.gateway.GatewayApplication           : Starting GatewayApplication v0.1.0 using Java 21.0.11 with PID 53684 (C:\Projects\Adaptive Waf Ids\gateway-service\target\gateway-service-0.1.0.jar started by atula in C:\Projects\Adaptive Waf Ids)
+2026-10-28T20:57:45.369+05:30  INFO 53684 --- [gateway-service] [           main] c.a.gateway.GatewayApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-10-28T20:57:46.366+05:30  INFO 53684 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-28T20:57:46.368+05:30  INFO 53684 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-28T20:57:46.389+05:30  INFO 53684 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2026-10-28T20:57:46.468+05:30  INFO 53684 --- [gateway-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c89bb606-e448-33db-a93d-52d9b9d364e1
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-10-28T20:57:47.985+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-10-28T20:57:47.986+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-10-28T20:57:47.986+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-10-28T20:57:47.986+05:30  INFO 53684 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-10-28T20:57:48.187+05:30  INFO 53684 --- [gateway-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-28T20:57:48.399+05:30  INFO 53684 --- [gateway-service] [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 57676 (http)
+2026-10-28T20:57:48.457+05:30  INFO 53684 --- [gateway-service] [           main] c.a.gateway.GatewayApplication           : Started GatewayApplication in 3.503 seconds (process running for 4.043)
+2026-10-28T20:57:48.662+05:30  INFO 53684 --- [gateway-service] [oundedElastic-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:50068]
+2026-10-28T20:57:48.703+05:30  INFO 53684 --- [gateway-service] [oundedElastic-2] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#2a54c92e:0/SimpleConnection@32f00b55 [delegate=amqp://guest@127.0.0.1:50068/, localPort=57681]

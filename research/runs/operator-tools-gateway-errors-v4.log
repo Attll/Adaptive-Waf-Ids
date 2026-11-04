@@ -1,0 +1,77 @@
+gateway-1    | 
+gateway-1    |   .   ____          _            __ _ _
+gateway-1    |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+gateway-1    | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+gateway-1    |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+gateway-1    |   '  |____| .__|_| |_|_| |_\__, | / / / /
+gateway-1    |  =========|_|==============|___/=/_/_/_/
+gateway-1    | 
+gateway-1    |  :: Spring Boot ::                (v3.4.5)
+gateway-1    | 
+gateway-1    | 2026-10-30T03:17:20.746Z  INFO 7 --- [gateway-service] [           main] c.a.gateway.GatewayApplication           : Starting GatewayApplication v0.1.0 using Java 21.0.13 with PID 7 (/app/app.jar started by ? in /app)
+gateway-1    | 2026-10-30T03:17:20.748Z  INFO 7 --- [gateway-service] [           main] c.a.gateway.GatewayApplication           : No active profile set, falling back to 1 default profile: "default"
+gateway-1    | 2026-10-30T03:17:21.406Z  INFO 7 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+gateway-1    | 2026-10-30T03:17:21.408Z  INFO 7 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+gateway-1    | 2026-10-30T03:17:21.431Z  INFO 7 --- [gateway-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+gateway-1    | 2026-10-30T03:17:21.492Z  INFO 7 --- [gateway-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c89bb606-e448-33db-a93d-52d9b9d364e1
+gateway-1    | 2026-10-30T03:17:22.651Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+detection-1  | INFO:     Started server process [7]
+detection-1  | INFO:     Waiting for application startup.
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+detection-1  | INFO:     Application startup complete.
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+gateway-1    | 2026-10-30T03:17:22.652Z  INFO 7 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+gateway-1    | 2026-10-30T03:17:22.782Z  INFO 7 --- [gateway-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+gateway-1    | 2026-10-30T03:17:22.920Z  INFO 7 --- [gateway-service] [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080 (http)
+detection-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+gateway-1    | 2026-10-30T03:17:22.956Z  INFO 7 --- [gateway-service] [           main] c.a.gateway.GatewayApplication           : Started GatewayApplication in 2.559 seconds (process running for 2.981)
+detection-1  | INFO:     127.0.0.1:33732 - "GET /ready HTTP/1.1" 200 OK
+gateway-1    | 2026-10-30T03:17:25.077Z  INFO 7 --- [gateway-service] [oundedElastic-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [rabbitmq:5672]
+detection-1  | 
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 104/104 [00:00<00:00, 2512.41it/s]
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+gateway-1    | 2026-10-30T03:17:25.120Z  INFO 7 --- [gateway-service] [oundedElastic-2] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#45bf93bb:0/SimpleConnection@6bb036cd [delegate=amqp://waf@172.26.0.5:5672/, localPort=50656]
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+gateway-1    | 2026-10-30T04:18:36.865Z  WARN 7 --- [gateway-service] [r-http-epoll-28] c.a.g.filter.AdaptiveDetectionFilter     : Detection unavailable for request 57f4e391-5a33-4603-a329-f3ef741ca82b: WebClientRequestException
+gateway-1    | 2026-10-30T04:18:37.003Z  WARN 7 --- [gateway-service] [r-http-epoll-29] c.a.g.filter.AdaptiveDetectionFilter     : Detection unavailable for request afada316-c8dc-4424-b9da-5d7e2c09bba2: WebClientRequestException
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+gateway-1    | 2026-10-30T04:18:37.068Z  WARN 7 --- [gateway-service] [r-http-epoll-30] c.a.g.filter.AdaptiveDetectionFilter     : Detection unavailable for request 10c6a343-c212-46d1-acfc-51944f2396f4: WebClientRequestException
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+gateway-1    | 2026-10-30T04:18:37.137Z  WARN 7 --- [gateway-service] [r-http-epoll-31] c.a.g.filter.AdaptiveDetectionFilter     : Detection unavailable for request 08f5410c-a8d3-4d0c-81b2-73d98b0088cf: WebClientRequestException
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.7:49564 - "POST /internal/v1/tools/models/query HTTP/1.1" 200 OK
+detection-1  | INFO:     127.0.0.1:49928 - "GET /ready HTTP/1.1" 200 OK
+detection-1  | INFO:     127.0.0.1:46898 - "GET /ready HTTP/1.1" 200 OK
+detection-1  | INFO:     172.26.0.12:36694 - "GET /health HTTP/1.0" 200 OK
+detection-1  | INFO:     172.26.0.12:36706 - "GET /ready HTTP/1.0" 200 OK
+detection-1  | INFO:     172.26.0.12:36722 - "GET /v1/models HTTP/1.0" 200 OK
+detection-1  | INFO:     127.0.0.1:43096 - "GET /ready HTTP/1.1" 200 OK
+detection-1  | INFO:     127.0.0.1:37430 - "GET /ready HTTP/1.1" 200 OK
+detection-1  | INFO:     127.0.0.1:50700 - "GET /ready HTTP/1.1" 200 OK
+detection-1  | INFO:     127.0.0.1:58164 - "GET /ready HTTP/1.1" 200 OK

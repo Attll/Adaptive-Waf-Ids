@@ -51,6 +51,7 @@ class HttpRequestRecord:
     source_ip: str | None = None
     request_id: UUID = field(default_factory=uuid4)
     received_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    session_key: str | None = None
 
     def __post_init__(self) -> None:
         if not self.method.strip():
@@ -163,6 +164,8 @@ class DetectionResult:
     deep_output: DeepOutput | None = None
     deep_escalation_pending: bool = False
     deep_escalation_id: str | None = None
+    decision_context: Mapping[str, object] = field(default_factory=dict)
+    session_key: str | None = None
 
     def __post_init__(self) -> None:
         if self.timestamp.tzinfo is None:

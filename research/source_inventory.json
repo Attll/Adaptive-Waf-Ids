@@ -1,0 +1,1200 @@
+{
+  "inventory_boundary": "git-tracked source and configuration at execution time",
+  "files": [
+    {
+      "path": "configs/adaptation_service.toml",
+      "bytes": 92,
+      "sha256": "c902499bf41534a5c471248d012e79ccd7f21b9272865af43148b6c352db8a4b"
+    },
+    {
+      "path": "configs/core.toml",
+      "bytes": 164,
+      "sha256": "2456889c8d57d6463c5766562da9844c195f1656535f1e31310fd9c310047b76"
+    },
+    {
+      "path": "configs/data/atrdf.toml",
+      "bytes": 242,
+      "sha256": "8ce5f76238ec1e21910d1b0edfc18486af35a4bce74459ee2f1e8f4b5ab39b92"
+    },
+    {
+      "path": "configs/data/cicids2018.toml",
+      "bytes": 1214,
+      "sha256": "cb281dd4298ae3e07b0222890ea44cf4d94ec8e24d2c90caf9f33bbeb30b0230"
+    },
+    {
+      "path": "configs/models/benchmark.toml",
+      "bytes": 90,
+      "sha256": "8aa12a339fcc993f69008e8b38a1af3f2d272aab2a526b33c5edd853081a4844"
+    },
+    {
+      "path": "configs/models/calibration.toml",
+      "bytes": 860,
+      "sha256": "8575823ae45bac655c1ed504b7cddb841c7beaea27ab09fd2ef007777ff5c3f9"
+    },
+    {
+      "path": "configs/models/calibration_deployment.toml",
+      "bytes": 530,
+      "sha256": "576d4555ad8927443c4eb0deb39a2fcac0bc87d3eb908202ed3094df8f33bd03"
+    },
+    {
+      "path": "configs/models/deep.toml",
+      "bytes": 521,
+      "sha256": "36962d353e693f7ca364f2822518513b6d8c8ff14fbe12ff2f451ca7e61952d8"
+    },
+    {
+      "path": "configs/models/deep_deployment.toml",
+      "bytes": 247,
+      "sha256": "b33c94da3a9ac194f093f44983095355826ed00b5a973c47fd4309a2dcaec754"
+    },
+    {
+      "path": "configs/models/execution_expert.toml",
+      "bytes": 538,
+      "sha256": "ea537e05ef0b17190f8f0edad424bc95456734313699909f39d349e3230d5823"
+    },
+    {
+      "path": "configs/models/execution_expert_deployment.toml",
+      "bytes": 298,
+      "sha256": "4ca10aad67b26df233ef9a68d8604344057b015f87f5def80a41f44c2816a28c"
+    },
+    {
+      "path": "configs/models/expert_ensemble.toml",
+      "bytes": 486,
+      "sha256": "99ac498e69d333ff686b68629d8a83c2701f57429e5d170194e2c8d119cfe6b0"
+    },
+    {
+      "path": "configs/models/fusion.toml",
+      "bytes": 139,
+      "sha256": "a2b4c0cb418fbd799142d38cc5b20b398fbf751c804c9901f3b47e9aa78e584d"
+    },
+    {
+      "path": "configs/models/injection_expert.toml",
+      "bytes": 534,
+      "sha256": "3c42ef5238d552747dd7a5930ca3824f541efa4bcde86339fa3d3bb225db42f6"
+    },
+    {
+      "path": "configs/models/injection_expert_deployment.toml",
+      "bytes": 302,
+      "sha256": "773f0a46889ff38ad7837f3676e6615677048738f68f2a6c74a9fc9ebbddb3a4"
+    },
+    {
+      "path": "configs/models/network.toml",
+      "bytes": 481,
+      "sha256": "e6fb4a9780f6c4c710598021d7e437bbe869469474181f49a7ecace2e098f060"
+    },
+    {
+      "path": "configs/models/network_deployment.toml",
+      "bytes": 340,
+      "sha256": "e9da36196c7584082d4734201d92095d4e4ccbdf0fdbc163c85bd0af3d6dd2d5"
+    },
+    {
+      "path": "configs/models/pipeline.toml",
+      "bytes": 598,
+      "sha256": "e592f90d90e77c00749f014c4a13a3733564a61ac9e1b1fd9922aac51d875e42"
+    },
+    {
+      "path": "configs/models/policy.toml",
+      "bytes": 110,
+      "sha256": "bb71979348bbbea8bd547284115bfbc479219d5fb88a75c49a92537b37b45129"
+    },
+    {
+      "path": "configs/models/router.toml",
+      "bytes": 605,
+      "sha256": "fb8ae11226dddd192340388493feffae2b5cf40fd1127b36c38585116c0aa153"
+    },
+    {
+      "path": "configs/models/router_deployment.toml",
+      "bytes": 314,
+      "sha256": "43ac4410063821913f02b931f9bd9f43890f2748616bb1a78f7e4976aa83ef9e"
+    },
+    {
+      "path": "configs/models/triage.toml",
+      "bytes": 440,
+      "sha256": "81278022f1a1cb3c39dc307787593e392b3683d53f81afa23fd47aa9664dd1df"
+    },
+    {
+      "path": "configs/models/triage_deployment.toml",
+      "bytes": 243,
+      "sha256": "22d67a91cc6ba59cfb6bca8fcd0d37cf0dcaf923a7f05d2995bdd75797262d3e"
+    },
+    {
+      "path": "configs/network_sensor.toml",
+      "bytes": 117,
+      "sha256": "0cc0d0f07179d6d60edba8fc920b3e4632cda2c95227a6f407454d147dcfefee"
+    },
+    {
+      "path": "configs/service.toml",
+      "bytes": 129,
+      "sha256": "daff0eaa66fb976cb4072c16184fc304a2e3cbdc196daa6e9cef2f821aa2db25"
+    },
+    {
+      "path": "dashboard/nginx.conf",
+      "bytes": 1085,
+      "sha256": "6381bbd781ecb245ab2f600f498426efb78a76d75aa78880d95454229dfe4ec7"
+    },
+    {
+      "path": "dashboard/src/App.tsx",
+      "bytes": 12908,
+      "sha256": "cfe7e39e1fff2a300a865efe459fb0b2b2321b6c079494126007089d09504881"
+    },
+    {
+      "path": "dashboard/src/api.ts",
+      "bytes": 21972,
+      "sha256": "3ef36d68eb150adc7d88776ae861053013030084779d8cf04485288b4513fe4d"
+    },
+    {
+      "path": "dashboard/src/components/Charts.tsx",
+      "bytes": 19950,
+      "sha256": "0d2e1fcf54d5d8622269f6c2352c126d43cbd5afbc35423aa957d7ed00146943"
+    },
+    {
+      "path": "dashboard/src/components/EventTable.tsx",
+      "bytes": 3058,
+      "sha256": "4c0dcf87c634346c50b4f5529e5a1288a093c402edaf3832585b4da4dbbc4144"
+    },
+    {
+      "path": "dashboard/src/components/RequestFlow.tsx",
+      "bytes": 8312,
+      "sha256": "8daf0b3048898540f4761c3377be2b057e0bebd7472cd34abb921015b96a30d9"
+    },
+    {
+      "path": "dashboard/src/components/Ui.tsx",
+      "bytes": 11413,
+      "sha256": "034c173bce23c80145b743d07d5270465be5f0b391ce7356ee10675980efdfb7"
+    },
+    {
+      "path": "dashboard/src/lib/format.ts",
+      "bytes": 8638,
+      "sha256": "9c6a857f23d07dafc92ac8734c64056275e30456fdf5e4480c9940bfbf96ba9c"
+    },
+    {
+      "path": "dashboard/src/lib/useDetectionEvidence.ts",
+      "bytes": 714,
+      "sha256": "d93c2552998d042885022b34c75ec7c23ce9b55540700085f600cb5fa4176244"
+    },
+    {
+      "path": "dashboard/src/lib/useEventStream.ts",
+      "bytes": 3367,
+      "sha256": "2b334ba50c71429906663bbf7bb57e9f542398b8496a0b1cfa9d037e7e992523"
+    },
+    {
+      "path": "dashboard/src/lib/view.ts",
+      "bytes": 4132,
+      "sha256": "7f5bb7e37072aa3c33fa5d86f92186c0e4b22187aede5164e30823f9cedeb958"
+    },
+    {
+      "path": "dashboard/src/main.tsx",
+      "bytes": 227,
+      "sha256": "998f7aa8218a7dbda20b05220d327996bc62a1842ee0ae04bedfc260321522bd"
+    },
+    {
+      "path": "dashboard/src/pages/AccessControl.tsx",
+      "bytes": 8313,
+      "sha256": "10f2c59f50a2312fdf71e4a99546e183d9f8f9e9b285e5aa59604deeb26886de"
+    },
+    {
+      "path": "dashboard/src/pages/Applications.tsx",
+      "bytes": 5813,
+      "sha256": "0d0a41caddb9b4e1891679e3ad1ff421ef6d71c5d6d6dd51bf771c63b700a2b0"
+    },
+    {
+      "path": "dashboard/src/pages/Audit.tsx",
+      "bytes": 7133,
+      "sha256": "3c63a4863776f4ebd1a3525332f6b2b044ec3631a32054ad4099f809a3249088"
+    },
+    {
+      "path": "dashboard/src/pages/Escalations.tsx",
+      "bytes": 11819,
+      "sha256": "0d0c48684cf7b7f85430d1427c1588943f6b2e2041a7408ac32c405910fee7b6"
+    },
+    {
+      "path": "dashboard/src/pages/Generator.tsx",
+      "bytes": 30363,
+      "sha256": "8a6908c81437659ab53a2a86e872c54fede92ddacd89f35c6cfd12602b002647"
+    },
+    {
+      "path": "dashboard/src/pages/LiveAttacks.tsx",
+      "bytes": 11604,
+      "sha256": "07e1f5af13b924c128ff160af5911174e290c64935bcdc4ab7d82e047be0e9c2"
+    },
+    {
+      "path": "dashboard/src/pages/Models.tsx",
+      "bytes": 50222,
+      "sha256": "4d1114ddc5ff43101eb39a9affe76a6f3b5895b852a9a78a1767fb58a3326c70"
+    },
+    {
+      "path": "dashboard/src/pages/Network.tsx",
+      "bytes": 7100,
+      "sha256": "9d0a0bcf521f1e4d43c00e92a140249bc7fcb18845f13f41d4e848247f4e0a3f"
+    },
+    {
+      "path": "dashboard/src/pages/Overview.tsx",
+      "bytes": 11255,
+      "sha256": "cc68f82a58145ef4b42deecd5aac0a2bc0989135cefcaf15e8dfd6ae784e828f"
+    },
+    {
+      "path": "dashboard/src/pages/Policy.tsx",
+      "bytes": 8842,
+      "sha256": "2831c4fcde52358f9408327e5322fe03c148c4bba01086dea20692fa19efe537"
+    },
+    {
+      "path": "dashboard/src/pages/Requests.tsx",
+      "bytes": 7534,
+      "sha256": "e7231e4cc3e758450450fd691ea6f038755fdaf745f2a5a45ce8581ddc7bf756"
+    },
+    {
+      "path": "dashboard/src/pages/Review.tsx",
+      "bytes": 8373,
+      "sha256": "b74687f7e27448e2d8ce0e7a8f78c259382b93acb2889c3739fb3a176e1a9d45"
+    },
+    {
+      "path": "dashboard/src/pages/Services.tsx",
+      "bytes": 6836,
+      "sha256": "e846ceac6124a12155a52e9d0d3f358ddcbb2794e4837432e71d1a18ce412dfe"
+    },
+    {
+      "path": "dashboard/src/pages/Settings.tsx",
+      "bytes": 5046,
+      "sha256": "d562b63fda74fe50718470173a0bcfb02d7afcf1208660889e421c55b7564d22"
+    },
+    {
+      "path": "dashboard/src/pages/Training.tsx",
+      "bytes": 6447,
+      "sha256": "e4f4a0539ccca8e7d5f37240a8b263a658f2a4cafd13c6d393efcedb087ef10a"
+    },
+    {
+      "path": "dashboard/src/pages/Visualizer.tsx",
+      "bytes": 13780,
+      "sha256": "64202bfb91e20e50eca3e6ab85d507d6dccfae6a284e1c24a5a0c0cf8d1e253d"
+    },
+    {
+      "path": "dashboard/vite.config.ts",
+      "bytes": 1505,
+      "sha256": "2d5a85c6358b8e7c46dc04d8b75f19f561dce9c0299da937535783a3639079d9"
+    },
+    {
+      "path": "demo-backend/pom.xml",
+      "bytes": 1075,
+      "sha256": "95d9a83baf9d330fc35c63067560647e07db1b44449c215b8d9f68b0648158d4"
+    },
+    {
+      "path": "demo-backend/src/main/java/com/adaptivewaf/backend/DemoBackendApplication.java",
+      "bytes": 336,
+      "sha256": "117239ac4f183f74692f8807c1be2dcd25ec7f649b5599cf79a877403a7261e5"
+    },
+    {
+      "path": "demo-backend/src/main/java/com/adaptivewaf/backend/DemoController.java",
+      "bytes": 2814,
+      "sha256": "74ead1eea7eb96b2820255f347af9248780c9b633f0fcb11c3173c794c138abc"
+    },
+    {
+      "path": "demo-backend/src/main/resources/application.yml",
+      "bytes": 67,
+      "sha256": "9101d3eb0b9a0466a2dbe1b4a75084688700be19e767a7f77185155ecc28472c"
+    },
+    {
+      "path": "demo-backend/src/test/java/com/adaptivewaf/backend/DemoControllerTest.java",
+      "bytes": 1445,
+      "sha256": "f6f2eab13caf3066502f513fa808766f496cce35d3941d79479f21df4519962d"
+    },
+    {
+      "path": "gateway-service/pom.xml",
+      "bytes": 2029,
+      "sha256": "79c388efec004625c2310640b72ad9e920f7ed8892af7a0ce4e10991c45f890c"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/GatewayApplication.java",
+      "bytes": 991,
+      "sha256": "fca2cc105baffad07744b537e7180455dd9717573f2afd10410247484031ac5a"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/BehaviourProperties.java",
+      "bytes": 2661,
+      "sha256": "de25d631150dc28d4b0033cd57469e01abcd4a08aad41407c678abbfb21f4fd3"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/BehaviourSnapshot.java",
+      "bytes": 1033,
+      "sha256": "5c9c6fd622a8a4f6c0143aea1a0d49a94464740b193a49a4204b2af23520e02b"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/OperatingMode.java",
+      "bytes": 656,
+      "sha256": "41010e28335edf929b4e50dcf3e5d9a4ad0c7a5fd117b4e99f15be2d8d954086"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/OperatingModeController.java",
+      "bytes": 797,
+      "sha256": "020b76c29be5e06cef7c7105de6ec3f87005962029623ee4b2a7521318e5eddb"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/RedisBehaviourService.java",
+      "bytes": 5744,
+      "sha256": "053f1ead219f243c1df0e146f834fe3d93e79f88088e2d3347abbec391e55f4c"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/RedisLoadModeService.java",
+      "bytes": 1484,
+      "sha256": "9b55ed5cfe9d05c3af62c8ad70422362ab12174ca985ca0d71f825b60d88232d"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/behaviour/RedisWindow.java",
+      "bytes": 1541,
+      "sha256": "a395f5c5d70aa51a69bde053622f5bade9d5a33116f7642f115c3d2bd3627f31"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/detection/DetectionClient.java",
+      "bytes": 2081,
+      "sha256": "cb44676a567896b6fdba16e1644ffe59c115476aa5ae00aad7cd19235385a1a9"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/detection/DetectionProperties.java",
+      "bytes": 2402,
+      "sha256": "8147bd60bef09052c41048370fabf2045749951ccee43c09100878e329274519"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/detection/DetectionVerdict.java",
+      "bytes": 1101,
+      "sha256": "920df7a50d809e955ba131a83813d66503f40ee36ba357903e74a2c240f2ef2b"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/detection/InspectionStatus.java",
+      "bytes": 246,
+      "sha256": "156c80a49c62db907d4c095ddf977884a4a205161c2d2eeeb832ae92907198ff"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/detection/SourceIdentity.java",
+      "bytes": 1701,
+      "sha256": "554425c03737a77e46ea723ba7dec3a301bc816698658d40db24a0e53251057f"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/events/SecurityEvent.java",
+      "bytes": 3902,
+      "sha256": "b65218ce2401b5b3eda1588002008fb9b29a41844f6177b7f612cce41e1b0a19"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/events/SecurityEventProperties.java",
+      "bytes": 746,
+      "sha256": "fad288d9cea9f4b43259f752348e8a67387a612cdabd88ff7913b836edae40a3"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/events/SecurityEventPublisher.java",
+      "bytes": 4294,
+      "sha256": "0fc12bb0239fd4a49caa3f7812dbac1b2407ffc714ca2d1039dc24b2bf33a9e3"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/filter/AdaptiveDetectionFilter.java",
+      "bytes": 25447,
+      "sha256": "b77fdb78463c7272678c1e50edb999f8e568c72039545d245740c88472da35d0"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/network/NetworkContextProperties.java",
+      "bytes": 658,
+      "sha256": "f2ccf508e843b62edaa8588d0d8a3a66d494f826db81c34afa723c909ea549bf"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/network/NetworkContextSnapshot.java",
+      "bytes": 1155,
+      "sha256": "b96633abc4d927b229ed67b1aa05ee5b857d5271c52ee11757dff980427e1c8b"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/network/RedisNetworkContextService.java",
+      "bytes": 1917,
+      "sha256": "ff7ff613e9b71218bb4e120b2e90e3ae2c2bc189be3f308399cd865bcde8426e"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/policy/GatewayPolicy.java",
+      "bytes": 2455,
+      "sha256": "2145593a0ece07df8c823611d76dc3cacfc21a91c7b2cc142434a68873f84849"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/policy/GatewayPolicyController.java",
+      "bytes": 1032,
+      "sha256": "a861c2d430653d951d0b0140d0204c1bc0340fe51f256bdb196de41ebeb08aa5"
+    },
+    {
+      "path": "gateway-service/src/main/java/com/adaptivewaf/gateway/policy/GatewayPolicyProperties.java",
+      "bytes": 1165,
+      "sha256": "687e3b764ba225e2db8e62a79c54da697b6070dd69983b0d7600fb65a84b01dd"
+    },
+    {
+      "path": "gateway-service/src/main/resources/application.yml",
+      "bytes": 2221,
+      "sha256": "175a4c1537a34580b6db24b77f847b48b75776d9eedb849f70b5c2db85b620e2"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/behaviour/OperatingModeTest.java",
+      "bytes": 675,
+      "sha256": "fd3210373ca8b4600302d0908817b1745eb6c202ebd960a76e01a58b94b2dfd7"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/behaviour/RedisWindowIntegrationTest.java",
+      "bytes": 3388,
+      "sha256": "7cbb08dc38a13a0d3793fa116a2c45256ec299232a3e982318edb3ca3bff9d69"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/detection/SourceIdentityTest.java",
+      "bytes": 1646,
+      "sha256": "3d7ee5cd2d0f52da2ff09f8a9bc570d423fe021cc9cffc90bc77d490c803e75d"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/events/PublisherConfirmationIntegrationTest.java",
+      "bytes": 2410,
+      "sha256": "03b0dfa3f57a3103ea3b9a3e4e2923a158486a010d95ca10de05674f80e04192"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/events/SecurityEventPublisherTest.java",
+      "bytes": 1754,
+      "sha256": "fc3f1ee4cd08b86a80a087ecd0fd1b443d1dc3e1f48ce2b4ca0bca859a6bb1c7"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/filter/AdaptiveDetectionFilterTest.java",
+      "bytes": 10522,
+      "sha256": "4707fa82f8b844a3c378fbceb69b2e8baf702cc2e6899eea56a58ddd163ba61e"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/filter/GatewayHttpIntegrationTest.java",
+      "bytes": 5761,
+      "sha256": "3d4641604a0f7959bb828ee87494badd28da25343cc931822b0f2f5160b2746d"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/network/NetworkContextSnapshotTest.java",
+      "bytes": 889,
+      "sha256": "6944f5226813b6a5be65a476cb8dc68a66187997c13b1767ee62733d7b82ca3b"
+    },
+    {
+      "path": "gateway-service/src/test/java/com/adaptivewaf/gateway/policy/GatewayPolicyTest.java",
+      "bytes": 790,
+      "sha256": "a30a8975c30e9edae0f207c581204c2ade93fc76b6a8a8d14e5f2d6a898c8b1c"
+    },
+    {
+      "path": "infra/docker/compose.phase3.yml",
+      "bytes": 450,
+      "sha256": "f2713f3c2639d9023958f2cc3e20a0856c18760feeae3a666e666b87f55636a4"
+    },
+    {
+      "path": "infra/docker/compose.phase4.yml",
+      "bytes": 299,
+      "sha256": "a2b21eaa087361c4f5ebbd924d08f3fbe6f2d4288c401ba7b522f9e6c5682bb4"
+    },
+    {
+      "path": "infra/docker/compose.phase5.yml",
+      "bytes": 621,
+      "sha256": "40683b503ec8ebcdc65a127058c0e93102052b7a62dbef7e21036dfd0e0de24b"
+    },
+    {
+      "path": "infra/docker/compose.phase8.yml",
+      "bytes": 307,
+      "sha256": "d82b66807a99aa6180e7989e5313a1bcf15e9e7aa3ecf232b30fc0056ed11967"
+    },
+    {
+      "path": "infra/docker/compose.phase9.yml",
+      "bytes": 299,
+      "sha256": "342e88b3ded2c7be23a17f3867697f83ff24c6ec69202946f0a0615604dc9a89"
+    },
+    {
+      "path": "infra/docker/compose.yml",
+      "bytes": 3456,
+      "sha256": "d6e3ab78d4de398e83e497ec72c15d050102bc0d0a29177f9fe6a35eab560bbf"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 608,
+      "sha256": "bc81c78680d3680ff59ae260764f14bb91af015daf4d7f719911f56a6d034dac"
+    },
+    {
+      "path": "research/compose.integration.yml",
+      "bytes": 496,
+      "sha256": "ab0b631d99d91e4aba68c9d95f058fff3ae37ed7ba5ccda642d1d6e259bd2cec"
+    },
+    {
+      "path": "scripts/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/benchmark_pipeline.py",
+      "bytes": 2569,
+      "sha256": "98af1214462e1793c29abb1cbce6aacc02e834cf962a92f94e369de448b90a5f"
+    },
+    {
+      "path": "scripts/build_probe_corpus.py",
+      "bytes": 5358,
+      "sha256": "0a0ce6cc76561e77db6e48d69a0a2bd66cc3a044d1306067c74be22905ba174e"
+    },
+    {
+      "path": "scripts/calibrate_models.py",
+      "bytes": 6133,
+      "sha256": "4c87f507480c12ebdfce2ac5897dc7f5342a0ecfda7de13cbb325ff3effe1223"
+    },
+    {
+      "path": "scripts/capture_network_flows.py",
+      "bytes": 2854,
+      "sha256": "7c9272ba56e2d7a2699a2d55f6d7340926c5ce63a6a1353d5b3638432b1ee326"
+    },
+    {
+      "path": "scripts/evaluate_expert_ensembles.py",
+      "bytes": 2834,
+      "sha256": "32e4331680fb37135f5cd6223f8b1eb52c39bb66e4ca68dea932577eb47239f8"
+    },
+    {
+      "path": "scripts/evaluate_phase10.py",
+      "bytes": 5632,
+      "sha256": "35b5ec8005c155df821e2b266e3ffd0dd2d5e6a3420a43d50a71e0158cf7dd09"
+    },
+    {
+      "path": "scripts/inspect_datasets.py",
+      "bytes": 1476,
+      "sha256": "7af8ce043f9b1c2f95c15ba962d60fa5f522841bd23edd3b78ea68f91a8370fb"
+    },
+    {
+      "path": "scripts/inspect_network.py",
+      "bytes": 2157,
+      "sha256": "0e2cec27d3f8b3c61a1594dd0fc4eba7c8296c1fabb64a8351140171e263dfa4"
+    },
+    {
+      "path": "scripts/inspect_pipeline.py",
+      "bytes": 4033,
+      "sha256": "0c8506a7151667b66387f7101781296e58c1f65cdcaa0caad53ee6921d58d0c2"
+    },
+    {
+      "path": "scripts/inspect_runtime.py",
+      "bytes": 2224,
+      "sha256": "51d5368d8d1169358da98aa12099b461da74eaf82e00c3e9a3aa70b71a8dcfe8"
+    },
+    {
+      "path": "scripts/prepare_atrdf.py",
+      "bytes": 1685,
+      "sha256": "3a8be0635e58a960d7d5924c3336c8157dbdfdaf30c0445e8a4a4684a79dddfe"
+    },
+    {
+      "path": "scripts/prepare_cicids.py",
+      "bytes": 2071,
+      "sha256": "dceabdbd672a8722ca05b67bde183a529d83b9cbfdfdc1c72a59d8b4f4c644e4"
+    },
+    {
+      "path": "scripts/replay_network_flows.py",
+      "bytes": 1688,
+      "sha256": "0b389fe24110f1be08bb7cd52c75d0b4ffdbdece67e2f3e06c2275d85502bf18"
+    },
+    {
+      "path": "scripts/research_inventory.py",
+      "bytes": 1004,
+      "sha256": "1e6c1f64109cd53000c60f78a02a4755708b7c96d8cdff69a19a257a865f56a9"
+    },
+    {
+      "path": "scripts/research_probe.py",
+      "bytes": 12228,
+      "sha256": "4312294f826476365e2cd366fabc0c4eb7a8c1c6c72b05cb0bd88b55922bf3c3"
+    },
+    {
+      "path": "scripts/run_network_sensor.py",
+      "bytes": 967,
+      "sha256": "12175e76a68c023e99ebaca6850d81a97da7430c2d06607489366c8688ecca0f"
+    },
+    {
+      "path": "scripts/run_training_adaptation_service.py",
+      "bytes": 858,
+      "sha256": "129101e4f205c3b55759b82b942a3a7732dfc219425ce5bc3b87a9a474d8e315"
+    },
+    {
+      "path": "scripts/simulate_policy.py",
+      "bytes": 1302,
+      "sha256": "da8ee9c8e6f1242501eb459566247d54a53c8dd5ca7bceb1bc028721775f2eee"
+    },
+    {
+      "path": "scripts/smoke_platform.py",
+      "bytes": 12386,
+      "sha256": "b045ff83278ab78198afe069beea57d39e6044c148d1fc94519e95178cf97b5d"
+    },
+    {
+      "path": "scripts/train_deep.py",
+      "bytes": 3130,
+      "sha256": "e2af4c0f3429172c5bd66bf27110f8fee693f308df5858d4b59e2757ecc522f0"
+    },
+    {
+      "path": "scripts/train_expert.py",
+      "bytes": 4096,
+      "sha256": "5a493a4b2b8cdea56099a6cdce3db3987e2bfdfc50b640fe0ae1629b530c8a05"
+    },
+    {
+      "path": "scripts/train_network.py",
+      "bytes": 3841,
+      "sha256": "b3a3843e7356405624009f2e01722db9708477baaf00dbda7c1f7eb87649a365"
+    },
+    {
+      "path": "scripts/train_router.py",
+      "bytes": 3884,
+      "sha256": "5d61bfaf9bfe97cfff10847fc7c2a5022aaf696c5d4377cfde4d898ba0f66dbb"
+    },
+    {
+      "path": "scripts/train_triage.py",
+      "bytes": 3867,
+      "sha256": "60768941bc7200938d3e1f22a016170f262dba50d88e25499b149fc633e17ab3"
+    },
+    {
+      "path": "security-control-service/pom.xml",
+      "bytes": 2309,
+      "sha256": "ae5adeaae828b2b8ab4c8ac41ae7f4f1aa9baf26d171d581cad42ae4b8ec43e6"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/SecurityControlApplication.java",
+      "bytes": 539,
+      "sha256": "6c0cdf3151cf0c4807d0603e4951d4b41ab5f0339b9aa9e49c6a542bd38ded28"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/config/ControlProperties.java",
+      "bytes": 2499,
+      "sha256": "1f88c6cb38dcb1eec67913b760b815a8b6c0ad694ecc2cd538c1ca6eedff5db6"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/config/SecurityConfiguration.java",
+      "bytes": 3911,
+      "sha256": "7818e376e5149cb6d2924900975b1ff8267bfc450860c0aa8b0b53c5de41735b"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/EscalationController.java",
+      "bytes": 7128,
+      "sha256": "6aed0ba8313777c0f8a1ae2dda15711ee1a7e49f653fd478e39c8c3179d3481a"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/PersistedSecurityEvent.java",
+      "bytes": 8027,
+      "sha256": "3cea6cf60b248f5e78893a42ff6d0372cf6bca54ab9a3a8bd843c954e794a260"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/RabbitTopology.java",
+      "bytes": 1745,
+      "sha256": "abd782938d0a3fba94231f3547c637d845cc595426b7ad139471a6d3c3abdb67"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/SecurityEventBroadcaster.java",
+      "bytes": 2449,
+      "sha256": "6e32f6b4f19cf69a8f82eb9615c711b93ecd0f7aff8a4a96b057d3be311b9dcb"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/SecurityEventConsumer.java",
+      "bytes": 4871,
+      "sha256": "c4be3677df5b1c7feb708f12382b5bad691ba5038d3a036d24e0f5db0e289d8b"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/SecurityEventController.java",
+      "bytes": 11987,
+      "sha256": "c06a0847569f77575ab937fbbef36f782c085416ca3582c38169cba89820e572"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/SecurityEventRepository.java",
+      "bytes": 545,
+      "sha256": "e2935277fc5b80005008d816097b1b405d87e777917be375edc2c67c84d60475"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/SecurityEventSanitizer.java",
+      "bytes": 2448,
+      "sha256": "92a6ae42600c38b7ede8dd966d274368a7df946540eec4cc99cf345a05c18671"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/StreamTicketService.java",
+      "bytes": 1609,
+      "sha256": "23a298bdf49bd8c60156ca48daf3ee421331ce17a3e8652af6c121e467c7598f"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/events/WebSocketConfiguration.java",
+      "bytes": 2281,
+      "sha256": "128f0661ad832950377faea54833ceab9f6317895bf8fe10da30a6c3e6c66d07"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/plane/ControlPlaneController.java",
+      "bytes": 3720,
+      "sha256": "62a9afd49c3740d006e1cea9789fe68d212260bff57e4ae399d334a1b941a10f"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/plane/ControlPlaneService.java",
+      "bytes": 13892,
+      "sha256": "1f64c662c477492ea3c437f94d855e2d3a31d2c6c259b5d88f7c712b812c6c59"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/plane/InfrastructureController.java",
+      "bytes": 7332,
+      "sha256": "f1a869d67dd82aa150ffcb73d792e45dca2dd6abd3278e888ed9c5e072655692"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/plane/InternalPolicyController.java",
+      "bytes": 584,
+      "sha256": "ab7776f4f7d0949debfc1171e5ffd8935103f9fd84df28b8d2ad63e90674f1ee"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/training/InternalTrainingController.java",
+      "bytes": 1794,
+      "sha256": "6d6cab47f111eea08d0c6133f9f1d901f240268be69f879873443427d88e101b"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/training/TrainingLifecycleController.java",
+      "bytes": 1428,
+      "sha256": "24a86ce1d43c058117253a90b5ca9389369193e20ce5c10fcc38d6ecb55c69a7"
+    },
+    {
+      "path": "security-control-service/src/main/java/com/adaptivewaf/control/training/TrainingLifecycleService.java",
+      "bytes": 7331,
+      "sha256": "4c2d57c2fa46ad8ae54f9cd365dd1b89742caea35fd2db1a8b399154c843362e"
+    },
+    {
+      "path": "security-control-service/src/main/resources/application.yml",
+      "bytes": 1375,
+      "sha256": "42fd9a21cd5de95a09add209fe06e6cc77ec73f57dad0b21e2db9a6c5ff7c5dd"
+    },
+    {
+      "path": "security-control-service/src/main/resources/db/migration/V1__security_events.sql",
+      "bytes": 615,
+      "sha256": "6ef1a0ac0ddc7dfd443ef1cdf59cf71e572a1c02e7271844d4b87060195eba00"
+    },
+    {
+      "path": "security-control-service/src/main/resources/db/migration/V2__control_plane.sql",
+      "bytes": 3007,
+      "sha256": "a85a550a6b34cff6082175eaab0867d3b77adfe192d6134e93d2517ca220ec85"
+    },
+    {
+      "path": "security-control-service/src/main/resources/db/migration/V3__training_adaptation.sql",
+      "bytes": 987,
+      "sha256": "0ab6f269b2a5beebe4c45643e7da81210cedf89704f03c913efbb186bdb1efc6"
+    },
+    {
+      "path": "security-control-service/src/main/resources/db/migration/V4__request_evidence.sql",
+      "bytes": 1767,
+      "sha256": "97a09f1b504bb8c08bc3b4e697ddfe9a3bdb5ad294173d98a4d19e2559a8cee4"
+    },
+    {
+      "path": "security-control-service/src/main/resources/db/migration/V5__inspection_coverage.sql",
+      "bytes": 255,
+      "sha256": "79fe7ba6d37ce9aee1a000f4da7949853a871c22f0561f9e35d40c45e567e22b"
+    },
+    {
+      "path": "security-control-service/src/test/java/com/adaptivewaf/control/config/InternalSecurityTest.java",
+      "bytes": 1592,
+      "sha256": "b23957c734c6c9dd5e239d0af5f8d0b031e565845489ad9dd93aef61b29babf1"
+    },
+    {
+      "path": "security-control-service/src/test/java/com/adaptivewaf/control/events/EventPipelineIntegrationTest.java",
+      "bytes": 4244,
+      "sha256": "626f063ce9231b2771e10e83fbc6dfcd46bf37152cee33b89005a404e58245c9"
+    },
+    {
+      "path": "security-control-service/src/test/java/com/adaptivewaf/control/events/SecurityEventConsumerTest.java",
+      "bytes": 2921,
+      "sha256": "1dd89fe6de51673100cfe7b943ae24cfc5c69e487de4cae88f019ac3d477c3c4"
+    },
+    {
+      "path": "security-control-service/src/test/java/com/adaptivewaf/control/events/SecurityEventSanitizerTest.java",
+      "bytes": 1331,
+      "sha256": "055b13697eb7bfc8d02a412f812d2a81da30df90881a552c8d43c95d3008ad9d"
+    },
+    {
+      "path": "security-control-service/src/test/java/com/adaptivewaf/control/events/StreamTicketServiceTest.java",
+      "bytes": 459,
+      "sha256": "81c6f8623740b7822f90a3481e7510a221a3a90623763f5628e6bea0483f5a97"
+    },
+    {
+      "path": "src/adaptive_waf/__init__.py",
+      "bytes": 122,
+      "sha256": "0a187e76f485b9dbf613ba5329b3c4b59a41b2154a8ba6ed842b6f89ae4ea976"
+    },
+    {
+      "path": "src/adaptive_waf/adaptation/__init__.py",
+      "bytes": 149,
+      "sha256": "0363c4f80e8e14e784f8a6fa90fc490910dccacd3c08edb9e3dbab8277a6e5fd"
+    },
+    {
+      "path": "src/adaptive_waf/adaptation/drift.py",
+      "bytes": 1315,
+      "sha256": "8724302ff62102f631a6e3105142d4e9cbdec9f8dd56d92f7b3583f617c3b989"
+    },
+    {
+      "path": "src/adaptive_waf/adaptation/service.py",
+      "bytes": 4976,
+      "sha256": "ce0ac12f61b1545b95897c2409432838047a8957738260aa6c1f89c6d85c2129"
+    },
+    {
+      "path": "src/adaptive_waf/config.py",
+      "bytes": 1609,
+      "sha256": "80078f11b7a59a4edf3e6a1dc4e9e5a08e2a7416c9c15a434d34a857a531a29e"
+    },
+    {
+      "path": "src/adaptive_waf/contracts.py",
+      "bytes": 6731,
+      "sha256": "bbff6de6b9844d10e954aa7497864c403e788ba979078371fd5f2a529d40a7ae"
+    },
+    {
+      "path": "src/adaptive_waf/data/__init__.py",
+      "bytes": 655,
+      "sha256": "dfb743d5fa35c4dd54ddc6675c295c2fcde5ca1de57c4baf77dc6d05c7e77370"
+    },
+    {
+      "path": "src/adaptive_waf/data/atrdf.py",
+      "bytes": 6679,
+      "sha256": "fe15347efa836a18304e2b34e8c40c75f2b4c88663e07a3884865c209c7a28f3"
+    },
+    {
+      "path": "src/adaptive_waf/data/cicids.py",
+      "bytes": 2972,
+      "sha256": "e9d2bebf90458c63866e97209e1dc60e151030118df5510a700f490f9c01be5b"
+    },
+    {
+      "path": "src/adaptive_waf/data/inspection.py",
+      "bytes": 5770,
+      "sha256": "ecee03d85f0ff3c488933a6ff02796f853226f404fd4fad38f812cb6b327042d"
+    },
+    {
+      "path": "src/adaptive_waf/data/preparation.py",
+      "bytes": 5707,
+      "sha256": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d"
+    },
+    {
+      "path": "src/adaptive_waf/features/__init__.py",
+      "bytes": 212,
+      "sha256": "a44d560980600a510881a2db417f344bea41e0f50b02c523e6230fe34e932193"
+    },
+    {
+      "path": "src/adaptive_waf/features/canonical.py",
+      "bytes": 2517,
+      "sha256": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c"
+    },
+    {
+      "path": "src/adaptive_waf/features/classical.py",
+      "bytes": 3958,
+      "sha256": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3"
+    },
+    {
+      "path": "src/adaptive_waf/network_sensor/__init__.py",
+      "bytes": 334,
+      "sha256": "0856e31eb26049dadd52ae341f850ad708ae9a9b91ef980f4b15d282b6fbe824"
+    },
+    {
+      "path": "src/adaptive_waf/network_sensor/core.py",
+      "bytes": 2176,
+      "sha256": "ab84992a1add517244d8ac9b94cbe4a841b7b655a7ceaac13e30f6d2d7fc8e74"
+    },
+    {
+      "path": "src/adaptive_waf/network_sensor/flows.py",
+      "bytes": 5675,
+      "sha256": "ed4603b588255dd8bee28c98a3132d98e97194c63f4077750bace700af278d36"
+    },
+    {
+      "path": "src/adaptive_waf/network_sensor/redis_store.py",
+      "bytes": 2533,
+      "sha256": "bde938cad4a5cac98083d9cd6c6cb257c5bdc1308330821ceedcc98ab3ba5c5d"
+    },
+    {
+      "path": "src/adaptive_waf/network_sensor/service.py",
+      "bytes": 3199,
+      "sha256": "d8dd10017ca0d4aa1252a74f4bf8b205d52db41aea07c956583b93e4e71c80d9"
+    },
+    {
+      "path": "src/adaptive_waf/randomness.py",
+      "bytes": 406,
+      "sha256": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/__init__.py",
+      "bytes": 489,
+      "sha256": "e7bbedc78221cf7025a41638ed559f973067a6cca15f9beba8946f698cb79fd3"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/artifacts.py",
+      "bytes": 7591,
+      "sha256": "4adc1f8258e3b599f8abda24a51a1e787fe923218ca269f115f0884b8ce9468a"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/behaviour.py",
+      "bytes": 599,
+      "sha256": "98c1838f8ea84169cf0ea8074b9925f29ab81cd17036c057ef222f15ac0e2a74"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/benchmark.py",
+      "bytes": 5568,
+      "sha256": "5fa4be05b070cea09163b6d0e6c51a87cfb9030d74742deafd601431a4538af1"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/fusion.py",
+      "bytes": 2814,
+      "sha256": "d272730939912fc8d7c8bd306c37d6407603ff3e0454ec017fe3b86be856f486"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/network.py",
+      "bytes": 2040,
+      "sha256": "660e323f1dfc72559ba634aa2a6d7e0395b9deecb89afd8849fba75a65ceeb6a"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/pipeline.py",
+      "bytes": 10291,
+      "sha256": "354ec02dc8d6855ef0f3451766d032bb42aebb7e5edf943342823253254c7432"
+    },
+    {
+      "path": "src/adaptive_waf/runtime/policy.py",
+      "bytes": 2385,
+      "sha256": "a62e8db1f74d8e0e5b1830780d1eae51df7ed40fb87943637c7d88e7a5d4f0da"
+    },
+    {
+      "path": "src/adaptive_waf/service/__init__.py",
+      "bytes": 75,
+      "sha256": "120cf8483c5c368bd745c166cb20e8279946c1d163b3f143eefce1658afd6781"
+    },
+    {
+      "path": "src/adaptive_waf/service/app.py",
+      "bytes": 17910,
+      "sha256": "a32bcdde31c0e37c2c072b2a61410b4098fd122e64fe4fc4a0c59b8c71109c8c"
+    },
+    {
+      "path": "src/adaptive_waf/service/catalog.py",
+      "bytes": 12253,
+      "sha256": "d361701834c256667fd213b92f545f0a330ee2f9bfd34aed1cee66f1b332fe66"
+    },
+    {
+      "path": "src/adaptive_waf/service/corpus.py",
+      "bytes": 3387,
+      "sha256": "d8359d9ad7a9918cc3aab8da4f03264d862285392c870b48cdc80db9c64704ab"
+    },
+    {
+      "path": "src/adaptive_waf/service/escalation.py",
+      "bytes": 10978,
+      "sha256": "27b6153e7119a05de65d6b345d6a843ce2012cd47bc93a0065c1dad49b189c5d"
+    },
+    {
+      "path": "src/adaptive_waf/service/runtime.py",
+      "bytes": 6017,
+      "sha256": "730339a766451bb6846755ca53dc1ab263e597efa74a0fd9b0d8928cd7a9bf73"
+    },
+    {
+      "path": "src/adaptive_waf/training/__init__.py",
+      "bytes": 330,
+      "sha256": "8841ae024ffb36b35a29389c3f37c0f821eab2b237d9e9f6c3f3946f2c8bc7ae"
+    },
+    {
+      "path": "src/adaptive_waf/training/calibration.py",
+      "bytes": 1485,
+      "sha256": "59e8fba59cf97bc4225224437d08d71d80fcce2b913e23b1a02520794c0d5d3b"
+    },
+    {
+      "path": "src/adaptive_waf/training/deep_calibration.py",
+      "bytes": 2525,
+      "sha256": "e8501561843093e775e2257db7084e46c3b7fb619a251197f566220fde6f4f01"
+    },
+    {
+      "path": "src/adaptive_waf/training/deep_data.py",
+      "bytes": 2017,
+      "sha256": "ff2ab2dfc26c544bf3378a8e066cd759c625a5fd25533a06f168814c94d140fe"
+    },
+    {
+      "path": "src/adaptive_waf/training/deep_evaluation.py",
+      "bytes": 2494,
+      "sha256": "89864432925cc864dfbc979e023b07ae8c55ce91e8eefa4595cec736bd406b5a"
+    },
+    {
+      "path": "src/adaptive_waf/training/deep_training.py",
+      "bytes": 7876,
+      "sha256": "98c1a366a6ec962bc0bb0b8063719b48fb954734e05619b0de58aeda262f8c14"
+    },
+    {
+      "path": "src/adaptive_waf/training/ensemble.py",
+      "bytes": 1395,
+      "sha256": "b9b5d008bf442315a7eaea6e5cf27dda37074a080320ded1288d37bb60ad21a6"
+    },
+    {
+      "path": "src/adaptive_waf/training/ensemble_evaluation.py",
+      "bytes": 1713,
+      "sha256": "af7185b9a87011e716b5f59c9726bc3f30ef1d1c4cdeaa4b9a43cc3b4d2cccb0"
+    },
+    {
+      "path": "src/adaptive_waf/training/evaluation.py",
+      "bytes": 3922,
+      "sha256": "ed158ab6541bb8d2fa57aad962fae5541aeac6aa4820aa7ed1a9736211b38be9"
+    },
+    {
+      "path": "src/adaptive_waf/training/expert_data.py",
+      "bytes": 1812,
+      "sha256": "2ce45a7da1065e56ad6a887df12201e20d7bee28d8e6e1a6e45103ae5f7bdcd3"
+    },
+    {
+      "path": "src/adaptive_waf/training/http_data.py",
+      "bytes": 3404,
+      "sha256": "999b813770d76a465a202a868e7e108ab5f38a1eca70c78526e66e491292c0f9"
+    },
+    {
+      "path": "src/adaptive_waf/training/models.py",
+      "bytes": 2173,
+      "sha256": "601d61562dfe0a116943cae812f4af6729b5c978b4c4a0fd337d83b0663672cd"
+    },
+    {
+      "path": "src/adaptive_waf/training/network_data.py",
+      "bytes": 1975,
+      "sha256": "25f2849a58f5d57c642974d80beeb32d15c54147fc5c88767bf50c008c7fdea5"
+    },
+    {
+      "path": "src/adaptive_waf/training/router_data.py",
+      "bytes": 2027,
+      "sha256": "cf129affc8cb235ed18e0b6d460c8d01006aa81a8037198512ffe27965ae4f54"
+    },
+    {
+      "path": "src/adaptive_waf/training/router_evaluation.py",
+      "bytes": 6236,
+      "sha256": "1a64aaf8cece7b26712ea65c8c30ef9c2ab53d3ed3d56fe282cb8dd1f324fddf"
+    },
+    {
+      "path": "src/adaptive_waf/training/router_runner.py",
+      "bytes": 3696,
+      "sha256": "e7d7826fe2dbb24d4480b346016ccb49545e102f4af258b081dc0b27fc55d6bc"
+    },
+    {
+      "path": "src/adaptive_waf/training/runner.py",
+      "bytes": 2635,
+      "sha256": "fde7f16d663efde127ff01978b4dc2a6350bb67263f11dd7d0d6e6964ed9bae8"
+    },
+    {
+      "path": "tests/test_adaptation.py",
+      "bytes": 2586,
+      "sha256": "5abc88541dde06bb1bb5b748e89ad17195385944334796962f148b812a6893f7"
+    },
+    {
+      "path": "tests/test_atrdf_loader.py",
+      "bytes": 2706,
+      "sha256": "42b5e3d299f96b0b4f0065cf9eaf788650106be90dd4e26b8a4fd870bf19a45e"
+    },
+    {
+      "path": "tests/test_benchmark.py",
+      "bytes": 2383,
+      "sha256": "028cf8a5811edea34e6ed5d44bbe09be47f89b9e78e939bb7c5ea11f92b92796"
+    },
+    {
+      "path": "tests/test_calibration.py",
+      "bytes": 506,
+      "sha256": "3c0a766b5a84b642438cf8aaaa1545f4c38aced107575bb02a8047870843742e"
+    },
+    {
+      "path": "tests/test_cicids_loader.py",
+      "bytes": 1684,
+      "sha256": "a7008e04d97769f0231a446378ffbbd42a025861f6cd392880cd5aa590d69dd3"
+    },
+    {
+      "path": "tests/test_config.py",
+      "bytes": 1376,
+      "sha256": "8cedcfd000e7b329d0ff68ee48e89d151cd72a93beddaa8918cbb0a272354977"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "bytes": 2022,
+      "sha256": "7552f2754543c6dab03d816d494b56e86914ca900e950df6a837846da8f40f75"
+    },
+    {
+      "path": "tests/test_data_inspection.py",
+      "bytes": 1990,
+      "sha256": "61985a278ce2988921cf188682f0c101c217901a7e92ecbeb915af7007af8fe2"
+    },
+    {
+      "path": "tests/test_deep_data.py",
+      "bytes": 1311,
+      "sha256": "12d590657b98815d85d69baf0917519edebbd15658cef980ab42e906bfc93d2f"
+    },
+    {
+      "path": "tests/test_detection_service.py",
+      "bytes": 8976,
+      "sha256": "b2bc896dd2aa9dac3b2e05d8f9d47afeed3f3be4e47397cf8ffd47a9966dadc2"
+    },
+    {
+      "path": "tests/test_ensemble.py",
+      "bytes": 1133,
+      "sha256": "93a1b8e37b54828679ec23eaaced771a2cc18fc52cdaaee9dbd9f8868e3229e2"
+    },
+    {
+      "path": "tests/test_escalation.py",
+      "bytes": 8271,
+      "sha256": "9f0937188ae87b2f3eea9d314bb821fbce58615bc084b772128fa2b5b6e2d1bf"
+    },
+    {
+      "path": "tests/test_expert_data.py",
+      "bytes": 1376,
+      "sha256": "dd752200467f6a3d2cb015d8b24ce544f3a399c4b5307deec5fe891276591cd7"
+    },
+    {
+      "path": "tests/test_features.py",
+      "bytes": 2049,
+      "sha256": "0151a1b02d00b4d0b566c1592dcff3d7457fc4342416f127bc2fdcb7d31f69d1"
+    },
+    {
+      "path": "tests/test_fusion.py",
+      "bytes": 987,
+      "sha256": "304fb642b04b599af3bd81179c37c8ca8c67c3291496ac271180dd68a41e4eaf"
+    },
+    {
+      "path": "tests/test_inspect_pipeline.py",
+      "bytes": 1901,
+      "sha256": "e89adfe72c138577a693c43e2db39f7927e11001eff8f6ac23a564dd7d7f063d"
+    },
+    {
+      "path": "tests/test_network_data.py",
+      "bytes": 1059,
+      "sha256": "885f0e32f0945b20283a73d7dbe27a30b04cd54bd7417619008dffcc15a52f23"
+    },
+    {
+      "path": "tests/test_network_runtime.py",
+      "bytes": 996,
+      "sha256": "47b1088ae297ef398686267c8a2270388982206960f5efebb9c2adfe8ab2f8a0"
+    },
+    {
+      "path": "tests/test_network_sensor.py",
+      "bytes": 2502,
+      "sha256": "90885ec279d822ab1f2e27066c6c547d3daf0290b5cc5fe981ebdb3d59ece6ab"
+    },
+    {
+      "path": "tests/test_phase10_evaluation.py",
+      "bytes": 433,
+      "sha256": "ee623bfdbe7a793fa37e072f8df189a80dfbe4c8a1877483044ee6231e5758ea"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "bytes": 2882,
+      "sha256": "39f469885a9ec79d80031c6e6f20ba1fc97c58a5204604153c229b56e482f3e3"
+    },
+    {
+      "path": "tests/test_policy.py",
+      "bytes": 1083,
+      "sha256": "8ee6c38f7698e021c9f75b1113af6176774f6d7a3dda15fff5cb4e050fe87bc7"
+    },
+    {
+      "path": "tests/test_preparation.py",
+      "bytes": 3647,
+      "sha256": "ef950b3480fcaa03337fb1800906c28ca93569899c11523332f23aee90ec9b97"
+    },
+    {
+      "path": "tests/test_randomness.py",
+      "bytes": 457,
+      "sha256": "f6ed6b2d629da6bd0dbf05086547cbee83b9b99ade480e03506dbbf06f87fdd7"
+    },
+    {
+      "path": "tests/test_research_probe.py",
+      "bytes": 1910,
+      "sha256": "4247ff0a08a47e3c706ce5ea166f18465fd796f4e313d4f4c902d4d8ca307e66"
+    },
+    {
+      "path": "tests/test_router_data.py",
+      "bytes": 1090,
+      "sha256": "0b82fd2a1d1d801c2d4ef511bab02cbde143be440633fbf14e1434e992025572"
+    },
+    {
+      "path": "tests/test_router_evaluation.py",
+      "bytes": 1027,
+      "sha256": "ade945a50f5c1ad2419a31296964c4567f57f49eb8aecf558bd4e628de86e6af"
+    },
+    {
+      "path": "tests/test_runtime_deadlines.py",
+      "bytes": 3076,
+      "sha256": "5fca2009f411d26eafaac2576469432497153f817c2b575c99a595fbb41bf55d"
+    },
+    {
+      "path": "tests/test_training_framework.py",
+      "bytes": 1355,
+      "sha256": "45d1a36b5a25c66b1b40daa0cbbbc9d89daedbb9b512b6bc02dfb534c475e60f"
+    },
+    {
+      "path": "tests/test_triage_data.py",
+      "bytes": 1033,
+      "sha256": "c64ec98008262db10d998892414b21e43d344dd6d7f9f0f171d4a5c3ec13109d"
+    }
+  ]
+}

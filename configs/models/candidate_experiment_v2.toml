@@ -1,0 +1,43 @@
+# Prospective model-only candidate protocol. Expensive execution requires approval.
+protocol = "artifacts/research/protocols/http-v2-20261028-02"
+device = "auto"
+seeds = [641, 642, 643]
+
+[limits]
+wall_minutes = 90
+rss_gib = 8
+
+[candidates.structural]
+# New multinomial logistic baseline on transport-neutral structural features.
+
+[candidates.lexical]
+# Character TF-IDF(3..5), <=50,000 features, class-balanced logistic, no rule features.
+
+[candidates.byte_cnn]
+epochs = 8
+patience = 2
+batch_size = 32
+learning_rate = 0.001
+max_length = 1024
+embedding_dimension = 32
+filters = 48
+dropout = 0.2
+gpu_memory_fraction = 0.5
+
+[candidates.compact_transformer]
+pretrained_model = "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be"
+epochs = 4
+patience = 2
+batch_size = 8
+learning_rate = 0.00002
+max_length = 256
+gpu_memory_fraction = 0.5
+
+[candidates.full_transformer]
+pretrained_model = "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be"
+epochs = 3
+patience = 2
+batch_size = 8
+learning_rate = 0.00002
+max_length = 256
+gpu_memory_fraction = 0.5

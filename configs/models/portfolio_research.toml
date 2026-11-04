@@ -1,0 +1,26 @@
+seed = 641
+device = "auto"
+train_split = "train"
+selection_split = "validation"
+reserved_final_split = "UNASSIGNED_DO_NOT_READ"
+max_samples_per_class = 1000
+sequential_gpu_jobs = true
+
+[xgboost]
+n_estimators = 200
+max_depth = 6
+tree_method = "hist"
+
+[lightgbm]
+n_estimators = 200
+max_depth = 6
+# Requires a verified GPU-capable LightGBM build; CUDA presence alone is insufficient.
+default_device = "cpu"
+
+[compact_transformer]
+model = "prajjwal1/bert-tiny"
+download_approved = false
+epochs = 5
+patience = 2
+max_length = 256
+batch_size = 16

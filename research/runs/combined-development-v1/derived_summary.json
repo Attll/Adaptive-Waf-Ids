@@ -1,0 +1,2708 @@
+{
+  "source": "research\\runs\\combined-development-v1\\metrics.json",
+  "source_sha256": "d7834b649f300aa7320c8e26b5d4b939f72768779c38cd1f79249eb1889d2c78",
+  "experiments": [
+    {
+      "mode": "direct_inference",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "http_success_2xx": 0,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 5.50534982370976,
+        "fully_inspected_rps": 5.50534982370976,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.5,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 116.09679999673972,
+        "latency_p95_ms": 495.2836249954993,
+        "latency_p99_ms": 836.9412049930547,
+        "elapsed_seconds": 2.1796979999926407,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0,
+        "completed_pipeline_calls": 12
+      },
+      "journal_stage_invocations": {}
+    },
+    {
+      "mode": "detection_api",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 7.689371436778046,
+        "fully_inspected_rps": 7.689371436778046,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.5,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 125.0290500029223,
+        "latency_p95_ms": 164.89768499086495,
+        "latency_p99_ms": 165.50105699439882,
+        "elapsed_seconds": 1.5605957000079798,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {}
+    },
+    {
+      "mode": "detection_api",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 8.92314318307355,
+        "fully_inspected_rps": 8.92314318307355,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.5,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 431.23419999028556,
+        "latency_p95_ms": 457.9648300015833,
+        "latency_p99_ms": 460.6327260064427,
+        "elapsed_seconds": 1.3448176000092644,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {}
+    },
+    {
+      "mode": "fixed_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 8,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 6.586481378657866,
+        "fully_inspected_rps": 6.586481378657866,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.5,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 6,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 4,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 140.866849993472,
+        "latency_p95_ms": 219.53450000146398,
+        "latency_p99_ms": 254.25578000023967,
+        "elapsed_seconds": 1.8219136000116123,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.4,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "feature_extraction": 12,
+        "triage": 12,
+        "router": 12,
+        "injection_expert": 12,
+        "deep": 10
+      }
+    },
+    {
+      "mode": "fixed_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 8,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 8.256581527585539,
+        "fully_inspected_rps": 8.256581527585539,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.5,
+        "attack_detection_recall_all_submitted": 0.4,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 6,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 4,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 466.2691000048653,
+        "latency_p95_ms": 509.81283000146504,
+        "latency_p99_ms": 515.4868059995351,
+        "elapsed_seconds": 1.4533859999937704,
+        "macro_f1": 0.39999999999999997,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.4,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "feature_extraction": 12,
+        "triage": 12,
+        "router": 12,
+        "injection_expert": 12,
+        "deep": 10
+      }
+    },
+    {
+      "mode": "guarded_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 23.137860190973008,
+        "fully_inspected_rps": 3.856310031828835,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 23.169349995441735,
+        "latency_p95_ms": 138.16915999996127,
+        "latency_p99_ms": 138.3129519999784,
+        "elapsed_seconds": 0.5186305000097491,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "triage": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "guarded_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 38.491640899205635,
+        "fully_inspected_rps": 6.41527348320094,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 31.220450000546407,
+        "latency_p95_ms": 183.06943499410403,
+        "latency_p99_ms": 225.50756699391064,
+        "elapsed_seconds": 0.31175599999551196,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "triage": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "rules_only_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 0,
+        "unresolved": 0,
+        "completed_rps": 32.79903702070437,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 30.382199998712167,
+        "latency_p95_ms": 44.05156000357237,
+        "latency_p99_ms": 46.97967199856066,
+        "elapsed_seconds": 0.36586439999518916,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12
+      }
+    },
+    {
+      "mode": "rules_only_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 0,
+        "unresolved": 0,
+        "completed_rps": 105.50916083272153,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 34.72759999567643,
+        "latency_p95_ms": 39.767185004166095,
+        "latency_p99_ms": 40.22271700887359,
+        "elapsed_seconds": 0.11373420000018086,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12
+      }
+    },
+    {
+      "mode": "both_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 22.46162571636787,
+        "fully_inspected_rps": 3.7436042860613115,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 2,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 30.42565000214381,
+        "latency_p95_ms": 119.24338999888275,
+        "latency_p99_ms": 134.8441179985821,
+        "elapsed_seconds": 0.5342444999987492,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "execution_expert": 2
+      }
+    },
+    {
+      "mode": "both_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 39.08560529331222,
+        "fully_inspected_rps": 6.51426754888537,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 2,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 37.57989999576239,
+        "latency_p95_ms": 181.87006000225657,
+        "latency_p99_ms": 231.56841200921923,
+        "elapsed_seconds": 0.307018399995286,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "execution_expert": 2
+      }
+    },
+    {
+      "mode": "single_fast_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 28.853554505454817,
+        "fully_inspected_rps": 4.808925750909136,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 2,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 31.28054999979213,
+        "latency_p95_ms": 74.66887500049778,
+        "latency_p99_ms": 79.62129499792354,
+        "elapsed_seconds": 0.4158932999998797,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2
+      }
+    },
+    {
+      "mode": "single_fast_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 58.929371183767046,
+        "fully_inspected_rps": 9.821561863961174,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 2,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 18.383249996986706,
+        "latency_p95_ms": 156.71928500159993,
+        "latency_p99_ms": 164.3890570026997,
+        "elapsed_seconds": 0.20363360000192188,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2
+      }
+    },
+    {
+      "mode": "always_deep_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 25.40626200810982,
+        "fully_inspected_rps": 4.234377001351636,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 31.068650001543574,
+        "latency_p95_ms": 88.5264649950841,
+        "latency_p99_ms": 88.8360929900955,
+        "elapsed_seconds": 0.4723245000059251,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "always_deep_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 54.81719834632188,
+        "fully_inspected_rps": 9.13619972438698,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 21.957050004857592,
+        "latency_p95_ms": 131.60857500115523,
+        "latency_p99_ms": 149.39403500189658,
+        "elapsed_seconds": 0.21890940000594128,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "confidence_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 26.225730545240392,
+        "fully_inspected_rps": 4.370955090873398,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 31.243599994922988,
+        "latency_p95_ms": 80.82717999932355,
+        "latency_p99_ms": 88.14191599260086,
+        "elapsed_seconds": 0.4575658999965526,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "confidence_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 57.030561252761636,
+        "fully_inspected_rps": 9.50509354212694,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 23.283899994567037,
+        "latency_p95_ms": 133.86281999046327,
+        "latency_p99_ms": 160.65776399380414,
+        "elapsed_seconds": 0.21041349999723025,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "cost_threshold_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 18.75809235807372,
+        "fully_inspected_rps": 3.12634872634562,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 44.99070000019856,
+        "latency_p95_ms": 106.11177499231415,
+        "latency_p99_ms": 112.78899499739056,
+        "elapsed_seconds": 0.639723900007084,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "cost_threshold_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 58.946594876272734,
+        "fully_inspected_rps": 9.824432479378789,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 31.863750002230518,
+        "latency_p95_ms": 147.84776000087732,
+        "latency_p99_ms": 147.90091200222378,
+        "elapsed_seconds": 0.2035740999999689,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "deep": 2
+      }
+    },
+    {
+      "mode": "calibrated_fusion_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 16.851478232655555,
+        "fully_inspected_rps": 2.8085797054425927,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 41.8474000034621,
+        "latency_p95_ms": 141.1588550043234,
+        "latency_p99_ms": 146.8682510095823,
+        "elapsed_seconds": 0.7121037000033539,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "execution_expert": 2
+      }
+    },
+    {
+      "mode": "calibrated_fusion_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 2,
+        "fully_inspected": 2,
+        "unresolved": 0,
+        "completed_rps": 39.90783949653658,
+        "fully_inspected_rps": 6.651306582756097,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 1.0,
+        "attack_detection_recall_all_submitted": 1.0,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 10,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 28.77845000330126,
+        "latency_p95_ms": 243.79988500004401,
+        "latency_p99_ms": 248.17845700745238,
+        "elapsed_seconds": 0.30069279999588616,
+        "macro_f1": 1.0,
+        "per_class": {
+          "BENIGN": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 1.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "semantic_rules": 12,
+        "feature_extraction": 2,
+        "router": 2,
+        "injection_expert": 2,
+        "execution_expert": 2
+      }
+    },
+    {
+      "mode": "direct_backend",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 0,
+        "unresolved": 12,
+        "completed_rps": 94.4779972478727,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 0,
+        "exact_class_accuracy_all_submitted": null,
+        "attack_detection_recall_all_submitted": null,
+        "benign_false_positive_rate_all_submitted": null,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 13.597850003861822,
+        "latency_p95_ms": 20.895235006901196,
+        "latency_p99_ms": 24.86856700837962,
+        "elapsed_seconds": 0.12701370001013856,
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {}
+    },
+    {
+      "mode": "direct_backend",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 12,
+        "fully_inspected": 0,
+        "unresolved": 12,
+        "completed_rps": 385.0399158339964,
+        "fully_inspected_rps": 0.0,
+        "classified_count": 0,
+        "exact_class_accuracy_all_submitted": null,
+        "attack_detection_recall_all_submitted": null,
+        "benign_false_positive_rate_all_submitted": null,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 10
+          },
+          "benign": {
+            "ALLOW": 0,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 2
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 0
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 2.1385000000009313,
+        "latency_p95_ms": 26.01995999866631,
+        "latency_p99_ms": 26.51839200349059,
+        "elapsed_seconds": 0.03116559999762103,
+        "enforcement_attack_containment_rate": 0.0,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {}
+    },
+    {
+      "mode": "deep_only_control_gateway",
+      "concurrency": 1,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 6,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 8.123953660218849,
+        "fully_inspected_rps": 8.123953660218849,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.6666666666666666,
+        "attack_detection_recall_all_submitted": 0.6,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 4,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 6,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 45.566249995317776,
+        "latency_p95_ms": 467.0054849942965,
+        "latency_p99_ms": 862.1322169947966,
+        "elapsed_seconds": 1.4771132999885594,
+        "macro_f1": 0.5833333333333334,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.6,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "deep": 12
+      }
+    },
+    {
+      "mode": "deep_only_control_gateway",
+      "concurrency": 4,
+      "metrics": {
+        "request_count": 12,
+        "completed_http_responses": 12,
+        "http_success_2xx": 6,
+        "fully_inspected": 12,
+        "unresolved": 0,
+        "completed_rps": 58.33698749684438,
+        "fully_inspected_rps": 58.33698749684438,
+        "classified_count": 12,
+        "exact_class_accuracy_all_submitted": 0.6666666666666666,
+        "attack_detection_recall_all_submitted": 0.6,
+        "benign_false_positive_rate_all_submitted": 0.0,
+        "enforcement_confusion": {
+          "attack": {
+            "ALLOW": 4,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 6,
+            "UNKNOWN": 0
+          },
+          "benign": {
+            "ALLOW": 2,
+            "MONITOR": 0,
+            "RATE_LIMIT": 0,
+            "BLOCK": 0,
+            "UNKNOWN": 0
+          }
+        },
+        "classification_by_class": {
+          "BENIGN": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "COOKIE_INJECTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "count": 2,
+            "exact_matches": 0
+          },
+          "SQL_INJECTION": {
+            "count": 2,
+            "exact_matches": 2
+          },
+          "XSS": {
+            "count": 2,
+            "exact_matches": 2
+          }
+        },
+        "partial_inspections": 0,
+        "fallback_or_bypass": 0,
+        "latency_p50_ms": 55.37579999509035,
+        "latency_p95_ms": 89.41898000412037,
+        "latency_p99_ms": 96.26379599838403,
+        "elapsed_seconds": 0.205701400001999,
+        "macro_f1": 0.5833333333333334,
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 2
+          },
+          "COOKIE_INJECTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "DIRECTORY_TRAVERSAL": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "REMOTE_CODE_EXECUTION": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "SQL_INJECTION": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          },
+          "XSS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2
+          }
+        },
+        "enforcement_attack_containment_rate": 0.6,
+        "enforcement_benign_interruption_rate": 0.0
+      },
+      "journal_stage_invocations": {
+        "deep": 12
+      }
+    }
+  ],
+  "scope": "Recomputed solely from measured records and original elapsed time; no new experiment or inferred missing outcomes"
+}

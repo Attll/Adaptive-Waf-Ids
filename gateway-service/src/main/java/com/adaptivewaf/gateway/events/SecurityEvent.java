@@ -33,7 +33,8 @@ public record SecurityEvent(
     double gatewayLatencyMs,
     Map<String, Object> behaviour,
     Map<String, Object> network,
-    JsonNode detection
+    JsonNode detection,
+    String inspectionStatus
 ) {
     public static Builder builder(String category) { return new Builder(category); }
 
@@ -58,6 +59,9 @@ public record SecurityEvent(
         private Map<String, Object> behaviour;
         private Map<String, Object> network;
         private JsonNode detection;
+        private String inspectionStatus;
+
+        public Builder inspectionStatus(String value) { this.inspectionStatus = value; return this; }
 
         private Builder(String category) { this.category = category; }
 
@@ -86,7 +90,7 @@ public record SecurityEvent(
         public SecurityEvent build() {
             return new SecurityEvent(UUID.randomUUID(), Instant.now(), category, requestId, sourceIp, method, path, query,
                 statusCode, action, predictedAttack, risk, mitigation, mode, userAgent, upstream,
-                detectionLatencyMs, upstreamLatencyMs, gatewayLatencyMs, behaviour, network, detection);
+                detectionLatencyMs, upstreamLatencyMs, gatewayLatencyMs, behaviour, network, detection, inspectionStatus);
         }
     }
 }

@@ -11,11 +11,14 @@ public class RedisNetworkContextService {
     private final ReactiveStringRedisTemplate redis;
     private final ObjectMapper objectMapper;
     private final NetworkContextProperties properties;
+    private final com.adaptivewaf.gateway.detection.SourceIdentity sourceIdentity;
 
-    public RedisNetworkContextService(ReactiveStringRedisTemplate redis, ObjectMapper objectMapper, NetworkContextProperties properties) {
+    public RedisNetworkContextService(ReactiveStringRedisTemplate redis, ObjectMapper objectMapper, NetworkContextProperties properties,
+                                     com.adaptivewaf.gateway.detection.SourceIdentity sourceIdentity) {
         this.redis = redis;
         this.objectMapper = objectMapper;
         this.properties = properties;
+        this.sourceIdentity = sourceIdentity;
     }
 
     public Mono<NetworkContextSnapshot> context(ServerHttpRequest request) {
@@ -34,7 +37,6 @@ public class RedisNetworkContextService {
     }
 
     private String sourceKey(ServerHttpRequest request) {
-        if (request.getRemoteAddress() == null || request.getRemoteAddress().getAddress() == null) { return null; }
-        return request.getRemoteAddress().getAddress().getHostAddress().replace(":", "_");
+        return sourceIdentity.sourceIp(request) == null ? null : sourceIdentity.sourceKey(request);
     }
 }

@@ -15,6 +15,27 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfiguration {
+    @Bean
+    @org.springframework.core.annotation.Order(1)
+    SecurityFilterChain internalSecurity(HttpSecurity http,
+            @org.springframework.beans.factory.annotation.Value("${adaptive-waf.control.internal-token:}") String token) throws Exception {
+        var authentication = new org.springframework.web.filter.OncePerRequestFilter() {
+            @Override protected void doFilterInternal(jakarta.servlet.http.HttpServletRequest request,
+                    jakarta.servlet.http.HttpServletResponse response, jakarta.servlet.FilterChain chain)
+                    throws java.io.IOException, jakarta.servlet.ServletException {
+                String supplied = request.getHeader("X-WAF-Internal-Token");
+                if (token.isBlank() || supplied == null || !java.security.MessageDigest.isEqual(
+                        token.getBytes(java.nio.charset.StandardCharsets.UTF_8), supplied.getBytes(java.nio.charset.StandardCharsets.UTF_8))) {
+                    response.sendError(401, "Service credentials are required");
+                    return;
+                }
+                chain.doFilter(request, response);
+            }
+        };
+        return http.securityMatcher("/internal/**").csrf(csrf -> csrf.disable())
+            .addFilterBefore(authentication, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()).build();
+    }
     @Bean PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
 
     @Bean ApplicationRunner bootstrapAdministrator(JdbcTemplate jdbc, ControlProperties properties, PasswordEncoder encoder) {
@@ -33,7 +54,7 @@ public class SecurityConfiguration {
     @Bean SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/actuator/health", "/actuator/info", "/internal/**").permitAll()
+                .requestMatchers("/actuator/health", "/actuator/info").permitAll()
                 .requestMatchers("/v1/stream/**").permitAll()
                 .anyRequest().hasRole("ADMIN"))
             .httpBasic(httpBasic -> httpBasic.authenticationEntryPoint((request, response, exception) ->

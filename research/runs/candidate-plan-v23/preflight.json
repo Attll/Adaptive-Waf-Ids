@@ -1,0 +1,636 @@
+{
+  "config_sha256": "6d3d1b43b60371bcbb06b23a535d0266a977d5cb1cf854581bcc6ad813036876",
+  "protocol_sha256": "2455979590797cc5cec4f017e8b4d904030bcdbc807660e868999e82f86b15c1",
+  "counts": {
+    "train": {
+      "SQL_INJECTION": 1000,
+      "BENIGN": 1000,
+      "REMOTE_CODE_EXECUTION": 2,
+      "DIRECTORY_TRAVERSAL": 22,
+      "XSS": 1,
+      "COOKIE_INJECTION": 3
+    },
+    "tune": {
+      "XSS": 1,
+      "REMOTE_CODE_EXECUTION": 1,
+      "BENIGN": 200,
+      "SQL_INJECTION": 200,
+      "DIRECTORY_TRAVERSAL": 4,
+      "COOKIE_INJECTION": 1
+    },
+    "evaluation": {
+      "REMOTE_CODE_EXECUTION": 1,
+      "XSS": 1,
+      "COOKIE_INJECTION": 1,
+      "BENIGN": 200,
+      "SQL_INJECTION": 200,
+      "DIRECTORY_TRAVERSAL": 4
+    }
+  },
+  "runs": [
+    {
+      "candidate": "structural",
+      "seed": 641,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {},
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "structural",
+      "seed": 642,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {},
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "structural",
+      "seed": 643,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {},
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "lexical",
+      "seed": 641,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {},
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "lexical",
+      "seed": 642,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {},
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "lexical",
+      "seed": 643,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {},
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "byte_cnn",
+      "seed": 641,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "epochs": 8,
+        "patience": 2,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "max_length": 1024,
+        "embedding_dimension": 32,
+        "filters": 48,
+        "dropout": 0.2,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "byte_cnn",
+      "seed": 642,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "epochs": 8,
+        "patience": 2,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "max_length": 1024,
+        "embedding_dimension": 32,
+        "filters": 48,
+        "dropout": 0.2,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "byte_cnn",
+      "seed": 643,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "epochs": 8,
+        "patience": 2,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "max_length": 1024,
+        "embedding_dimension": 32,
+        "filters": 48,
+        "dropout": 0.2,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {}
+    },
+    {
+      "candidate": "compact_transformer",
+      "seed": 641,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "pretrained_model": "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be",
+        "epochs": 4,
+        "patience": 2,
+        "batch_size": 8,
+        "learning_rate": 2e-05,
+        "max_length": 256,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {
+        "config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+        "tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+        "model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+      }
+    },
+    {
+      "candidate": "compact_transformer",
+      "seed": 642,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "pretrained_model": "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be",
+        "epochs": 4,
+        "patience": 2,
+        "batch_size": 8,
+        "learning_rate": 2e-05,
+        "max_length": 256,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {
+        "config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+        "tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+        "model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+      }
+    },
+    {
+      "candidate": "compact_transformer",
+      "seed": 643,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "pretrained_model": "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be",
+        "epochs": 4,
+        "patience": 2,
+        "batch_size": 8,
+        "learning_rate": 2e-05,
+        "max_length": 256,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {
+        "config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+        "tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+        "model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+      }
+    },
+    {
+      "candidate": "full_transformer",
+      "seed": 641,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "pretrained_model": "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be",
+        "epochs": 3,
+        "patience": 2,
+        "batch_size": 8,
+        "learning_rate": 2e-05,
+        "max_length": 256,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {
+        "config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+        "tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+        "model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+      }
+    },
+    {
+      "candidate": "full_transformer",
+      "seed": 642,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "pretrained_model": "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be",
+        "epochs": 3,
+        "patience": 2,
+        "batch_size": 8,
+        "learning_rate": 2e-05,
+        "max_length": 256,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {
+        "config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+        "tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+        "model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+      }
+    },
+    {
+      "candidate": "full_transformer",
+      "seed": 643,
+      "classes": [
+        "BENIGN",
+        "SQL_INJECTION",
+        "XSS",
+        "COOKIE_INJECTION",
+        "DIRECTORY_TRAVERSAL",
+        "REMOTE_CODE_EXECUTION"
+      ],
+      "options": {
+        "pretrained_model": "C:/Users/atula/.cache/huggingface/hub/models--distilbert-base-uncased/snapshots/12040accade4e8a0f71eabdb258fecc2e7e948be",
+        "epochs": 3,
+        "patience": 2,
+        "batch_size": 8,
+        "learning_rate": 2e-05,
+        "max_length": 256,
+        "gpu_memory_fraction": 0.5
+      },
+      "populations_sha256": {
+        "train": "8530db50ec1f1a196e6b76c80f4c938752bce870f1d6f75943491508b722a75b",
+        "tune": "d1f04277a26c4fb443d2c023da282151a05e8cb40387bc5c67cc84596e9f2e27",
+        "evaluation": "01caf6468bb3e169d2c8a3de9176701490178b4da4dad17d7c500b0006f30085"
+      },
+      "representation": "http-inspection-text-v2",
+      "token_representation": "field-token-budget-v1",
+      "source_sha256": {
+        "src/adaptive_waf/features/inspection.py": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+        "src/adaptive_waf/features/classical.py": "5797734df5af5f187bfabc60aa1094e24a47b09c2407ed3ad2ac444cc9dfe8a3",
+        "src/adaptive_waf/features/canonical.py": "4c3a7fe1775462ccf424f50153c633f496997b7a630e6d6f1981a47cd40a098c",
+        "src/adaptive_waf/training/candidate_data.py": "f3f5ba44f98557ba9489b6cb8389e81a20c823fef80910129f5967d04290b323",
+        "src/adaptive_waf/training/candidates.py": "a25a2062827148c1e9dcbc297360bb0dafc1fac831c044068317e72571bd5124",
+        "src/adaptive_waf/training/deep_training.py": "62d81785d27ccf4d2d5a5c20eab079a10c2678329ac5345b9a65c7aae5e451c5",
+        "src/adaptive_waf/randomness.py": "73c371f8484599919dc56c5baea2ce4b88de407a2459bac30850337bb24d38f7",
+        "src/adaptive_waf/data/preparation.py": "d5ec93c53aa82b09aa9b563455da7d06568cb0b8e7b9739d6bd242ca9c9df52d",
+        "src/adaptive_waf/contracts.py": "906b9958c363995d6e268b0bc9537e69d586bc858306dfe271ef702183153ad6",
+        "scripts/candidate_experiments.py": "8a8d4aaeea29d5b38c1282eab4c702d6ea8598495b8717c87f01eb633eccd690"
+      },
+      "initialization_sha256": {
+        "config.json": "69c94b0222d5d1f4b0ad027ca7416cdafb98378cbbb8305d0bf47c9365c60c83",
+        "tokenizer.json": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+        "model.safetensors": "5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063"
+      }
+    }
+  ],
+  "limits": {
+    "wall_minutes": 90,
+    "rss_gib": 8
+  },
+  "evaluation_only_after_all_fits": true,
+  "downloads": false,
+  "deployment": false
+}

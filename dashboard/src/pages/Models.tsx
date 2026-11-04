@@ -13,7 +13,7 @@ import {
 import { ConfusionMatrix, DonutChart, GroupedBarChart, RankedBars, ScatterChart } from "../components/Charts";
 import { buildFlow, RequestFlow } from "../components/RequestFlow";
 import { Badge, EmptyState, Icon, KV, Metric, Panel, Segmented, Switch, Tabs } from "../components/Ui";
-import { bytes, colorFor, label as humanize, milliseconds, percent, scalar, sortedEntries } from "../lib/format";
+import { bytes, colorFor, label as humanize, milliseconds, parseJson, percent, scalar, sortedEntries } from "../lib/format";
 import { PROBE_FAMILIES, PROBE_LIBRARY, type ViewProps } from "../lib/view";
 
 type Tab = "pipeline" | "comparison" | "playground" | "batch" | "registry";
@@ -890,14 +890,14 @@ function RegistryTab({ snapshot, api, mutate }: ViewProps) {
         )}
       </Panel>
 
-      <Panel title="Governed model registry" subtitle="Promotion, assignment, approval, and retirement are all audit logged" flush>
+      <Panel title="Governed model registry" subtitle="Administrative lifecycle records. Registry promotion does not reload the detection runtime; serving versions are reported above." flush>
         {snapshot.models.length ? (
           <div className="table-wrap">
             <table>
               <thead><tr><th>Model</th><th>Artifact version</th><th>Lifecycle</th><th>Recorded metrics</th><th>Actions</th></tr></thead>
               <tbody>
                 {snapshot.models.map((model) => {
-                  const metrics = JSON.parse(model.metricsJson || "{}") as Record<string, unknown>;
+                  const metrics = parseJson(model.metricsJson);
                   return (
                     <tr key={model.modelVersionId}>
                       <td className="cell-strong">{model.modelName}</td>

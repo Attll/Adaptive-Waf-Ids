@@ -1,0 +1,18 @@
+{
+  "routing_run_survived_adaptation_restart": true,
+  "saved_run_id": "0cc8111f-a410-47e8-8b78-8452abe73690",
+  "deep_job_pages_disjoint": true,
+  "page_sizes": [
+    10,
+    10
+  ],
+  "large_upload_reached_schema_validation_status": 422,
+  "policy_files": [
+    "policy-641-unconstrained.json",
+    "policy-641-constrained.json",
+    "policy-642-unconstrained.json",
+    "policy-642-constrained.json",
+    "policy-643-unconstrained.json",
+    "policy-643-constrained.json"
+  ]
+}

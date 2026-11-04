@@ -1,0 +1,301 @@
+{
+  "unauthenticated_cache_status": 401,
+  "replay": [
+    {
+      "status": 200,
+      "result": {
+        "status": 200,
+        "requestId": "5f2cd1b4-b053-493c-9ee7-a965b4aca1e5",
+        "bodyPreview": "{\"status\":\"ok\"}",
+        "roundTripMs": 161.10293
+      }
+    },
+    {
+      "status": 200,
+      "result": {
+        "status": 403,
+        "requestId": "4767c8df-2b56-4788-a879-fd00d99d05be",
+        "bodyPreview": "{\"error\":{\"code\":\"waf_blocked\",\"predicted_attack\":\"XSS\"},\"request_id\":\"4767c8df-2b56-4788-a879-fd00d99d05be\"}",
+        "roundTripMs": 20.057706
+      }
+    },
+    {
+      "status": 200,
+      "result": {
+        "status": 403,
+        "requestId": "69342599-712e-4271-ba35-a2b1cc490eaf",
+        "bodyPreview": "{\"error\":{\"code\":\"waf_blocked\",\"predicted_attack\":\"COOKIE_INJECTION\"},\"request_id\":\"69342599-712e-4271-ba35-a2b1cc490eaf\"}",
+        "roundTripMs": 10.854826
+      }
+    },
+    {
+      "status": 200,
+      "result": {
+        "status": 200,
+        "requestId": "c7ca95c4-6d3a-47b0-b62d-1b42b02de8ea",
+        "bodyPreview": "{\"body\":\"{\\\"note\\\":\\\"operator fixture\\\"}\",\"request_id\":\"c7ca95c4-6d3a-47b0-b62d-1b42b02de8ea\",\"status\":\"backend_reached\"}",
+        "roundTripMs": 139.675805
+      }
+    }
+  ],
+  "redis": {
+    "status": 500,
+    "data": {
+      "timestamp": "2026-10-30T04:09:44.039+00:00",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/v1/control/tools/redis"
+    }
+  },
+  "models": [
+    {
+      "stage": "triage",
+      "algorithm": "deployed",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.129+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "triage",
+      "algorithm": "random_forest",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.187+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "triage",
+      "algorithm": "extra_trees",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.311+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "triage",
+      "algorithm": "logistic_regression",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.368+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "deployed",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.426+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "random_forest",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.483+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "extra_trees",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.560+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "router",
+      "algorithm": "logistic_regression",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.618+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "deployed",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.676+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "random_forest",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.737+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "extra_trees",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.793+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "injection",
+      "algorithm": "logistic_regression",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.870+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "deployed",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.928+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "random_forest",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:44.983+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "extra_trees",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.039+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "execution",
+      "algorithm": "logistic_regression",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.095+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "deep",
+      "algorithm": "deployed",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.150+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "deployed",
+      "status": 422,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.206+00:00",
+        "status": 422,
+        "error": "Unprocessable Entity",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "random_forest",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.284+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "extra_trees",
+      "status": 422,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.340+00:00",
+        "status": 422,
+        "error": "Unprocessable Entity",
+        "path": "/v1/control/tools/models/query"
+      }
+    },
+    {
+      "stage": "network",
+      "algorithm": "logistic_regression",
+      "status": 400,
+      "response": {
+        "timestamp": "2026-10-30T04:09:45.395+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/v1/control/tools/models/query"
+      }
+    }
+  ],
+  "rl": {
+    "status": 400,
+    "report": {
+      "timestamp": "2026-10-30T04:09:45.486+00:00",
+      "status": 400,
+      "error": "Bad Request",
+      "path": "/v1/control/tools/rl/validate"
+    }
+  },
+  "checks": {
+    "cache_auth": true,
+    "replay_gateway_results": true,
+    "cookie_evidence_blocked": true,
+    "journal_correlation": true,
+    "live_redis_values": false,
+    "all_models_queryable": false,
+    "rl_shadow_validation": false
+  }
+}

@@ -9,3 +9,11 @@ dashboard/node_modules/
 dashboard/dist/
 **/target/
 artifacts/benchmarks/
+
+research/
+releases/
+*.zip
+artifacts/
+!release-build/
+.env
+**/.env

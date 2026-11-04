@@ -1,0 +1,150 @@
+ Image adaptive-waf-ids/dashboard:1.1.0 Building 
+ Image adaptive-waf-ids/control:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.59kB done
+#1 DONE 0.0s
+
+#2 [dashboard internal] load build definition from Dockerfile
+#2 transferring dockerfile: 453B done
+#2 DONE 0.0s
+
+#3 [control internal] load build definition from Dockerfile
+#3 transferring dockerfile: 550B done
+#3 DONE 0.0s
+
+#4 [control internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#4 DONE 0.0s
+
+#5 [control internal] load metadata for docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#5 DONE 0.0s
+
+#6 [dashboard internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#6 DONE 0.0s
+
+#7 [dashboard internal] load metadata for docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#7 DONE 0.0s
+
+#8 [control internal] load .dockerignore
+#8 transferring context: 63B done
+#8 DONE 0.0s
+
+#9 [dashboard internal] load .dockerignore
+#9 transferring context: 265B done
+#9 DONE 0.0s
+
+#10 [dashboard internal] load build context
+#10 transferring context: 50.50kB done
+#10 DONE 0.0s
+
+#11 [dashboard build 1/6] FROM docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#11 resolve docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85 0.0s done
+#11 DONE 0.0s
+
+#12 [dashboard build 3/6] COPY dashboard/package*.json ./
+#12 CACHED
+
+#13 [dashboard build 2/6] WORKDIR /app
+#13 CACHED
+
+#14 [dashboard build 4/6] RUN npm ci
+#14 CACHED
+
+#15 [control stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#15 resolve docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a 0.0s done
+#15 DONE 0.0s
+
+#16 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#16 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.0s done
+#16 DONE 0.0s
+
+#17 [control build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#17 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e 0.0s done
+#17 DONE 0.0s
+
+#18 [control internal] load build context
+#18 transferring context: 16.96kB done
+#18 DONE 0.0s
+
+#19 [control build 2/6] WORKDIR /workspace
+#19 CACHED
+
+#20 [control build 3/6] COPY pom.xml .
+#20 CACHED
+
+#21 [control build 4/6] RUN mvn -q -DskipTests dependency:go-offline
+#21 CACHED
+
+#22 [dashboard build 5/6] COPY dashboard .
+#22 DONE 0.0s
+
+#23 [control build 5/6] COPY src src
+#23 DONE 0.0s
+
+#24 [control build 6/6] RUN mvn -q -DskipTests package
+#24 ...
+
+#25 [dashboard build 6/6] RUN npm run build
+#25 0.476 
+#25 0.476 > adaptive-waf-dashboard@0.1.0 build
+#25 0.476 > tsc -b && vite build
+#25 0.476 
+#25 4.844 vite v6.4.3 building for production...
+#25 4.914 transforming...
+#25 5.940 ✓ 56 modules transformed.
+#25 6.095 rendering chunks...
+#25 6.104 computing gzip size...
+#25 6.116 dist/index.html                   0.81 kB │ gzip:   0.42 kB
+#25 6.116 dist/assets/index-PU_C-jH0.css   29.49 kB │ gzip:   6.58 kB
+#25 6.117 dist/assets/index-m6B30kDt.js   395.07 kB │ gzip: 113.98 kB
+#25 6.117 ✓ built in 1.25s
+#25 DONE 6.2s
+
+#16 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#16 CACHED
+
+#24 [control build 6/6] RUN mvn -q -DskipTests package
+#24 ...
+
+#26 [dashboard stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+#26 DONE 0.0s
+
+#27 [dashboard stage-1 3/3] COPY dashboard/nginx.conf /etc/nginx/conf.d/default.conf
+#27 DONE 0.0s
+
+#28 [dashboard] exporting to image
+#28 exporting layers 0.1s done
+#28 exporting manifest sha256:31b6e2cfa9bd0fc5635ddf3c8d557a15c2dbd09dd85d17e265789124f4c66995 done
+#28 exporting config sha256:f1d06339746fdea082941016399f36a6524908ad465e494b1f181f8d2d3f3fd5 done
+#28 exporting attestation manifest sha256:a0f79a4beb40bbb82ff017818f667787df105bbfe75d4be281cccc36ccde8abc 0.0s done
+#28 exporting manifest list sha256:5a5f25205ff9a8602ce2dc8ee5dc09e5359416459a0b9a409c8ad40183691fe0 done
+#28 naming to docker.io/adaptive-waf-ids/dashboard:1.1.0 done
+#28 unpacking to docker.io/adaptive-waf-ids/dashboard:1.1.0 0.0s done
+#28 DONE 0.2s
+
+#29 [dashboard] resolving provenance for metadata file
+#29 DONE 0.0s
+
+#24 [control build 6/6] RUN mvn -q -DskipTests package
+#24 DONE 9.0s
+
+#30 [control stage-1 2/3] WORKDIR /app
+#30 CACHED
+
+#31 [control stage-1 3/3] COPY --from=build /workspace/target/security-control-service-0.1.0.jar app.jar
+#31 DONE 0.1s
+
+#32 [control] exporting to image
+#32 exporting layers 1.2s done
+#32 exporting manifest sha256:d4e53af4ca4a5259619808527dbdc2aee22ddf1ebbc59cfa6cd1818beea86655 done
+#32 exporting config sha256:5bd7c74ac17f62acf8d23e47b1f5873491e970c1109d03993aa9d93768a0296a done
+#32 exporting attestation manifest sha256:d9011010bb6054679813fe50764c7d80c23fd011df6134c65733196ff9108517 done
+#32 exporting manifest list sha256:4248fceea4ae390b67c0e5a17d96f1958f43d40b512c606ffcd808ea8b5cd95d done
+#32 naming to docker.io/adaptive-waf-ids/control:1.1.0 done
+#32 unpacking to docker.io/adaptive-waf-ids/control:1.1.0
+#32 unpacking to docker.io/adaptive-waf-ids/control:1.1.0 0.3s done
+#32 DONE 1.6s
+
+#33 [control] resolving provenance for metadata file
+#33 DONE 0.0s
+ Image adaptive-waf-ids/dashboard:1.1.0 Built 
+ Image adaptive-waf-ids/control:1.1.0 Built 

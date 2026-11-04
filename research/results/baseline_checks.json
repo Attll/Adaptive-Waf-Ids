@@ -1,0 +1,15 @@
+{
+  "client_date": "2026-10-28",
+  "timezone": "Asia/Calcutta",
+  "source_revision": "12a6a4a",
+  "historical_metrics_rerun": false,
+  "checks": [
+    {"component": "python", "tests": 68, "failures": 0, "evidence": "python-baseline-retry.txt"},
+    {"component": "gateway", "tests": 4, "failures": 0, "evidence": "gateway-baseline.txt"},
+    {"component": "control", "tests": 2, "failures": 0, "evidence": "control-baseline-retry.txt"},
+    {"component": "demo_backend", "tests": 2, "failures": 0, "evidence": "backend-baseline-retry.txt"},
+    {"component": "dashboard", "typecheck_and_build": "passed", "evidence": "dashboard-baseline.txt"}
+  ],
+  "initial_unsuccessful_attempts": ["Python Windows asyncio sandbox socket stall", "Mockito JVM attachment sandbox stall"],
+  "dependency_installations": 0
+}

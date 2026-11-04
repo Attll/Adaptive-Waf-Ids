@@ -28,11 +28,12 @@ public class SecurityEventConsumer {
     @Transactional
     public void consume(String payload) {
         try {
-            JsonNode event = objectMapper.readTree(payload);
+            JsonNode event = sanitizer.sanitize(objectMapper.readTree(payload));
             String eventId = requiredText(event, "eventId");
             if (repository.existsByEventId(eventId)) { return; }
             JsonNode detection = event.path("detection");
             PersistedSecurityEvent persisted = PersistedSecurityEvent.builder()
+                .inspectionStatus(text(event, "inspectionStatus"))
                 .identity(eventId, Instant.parse(requiredText(event, "occurredAt")), requiredText(event, "category"), text(event, "requestId"))
                 .request(text(event, "sourceIp"), text(event, "method"), text(event, "path"), text(event, "query"),
                     text(event, "userAgent"), text(event, "upstream"))
@@ -45,7 +46,12 @@ public class SecurityEventConsumer {
                 .details(sanitizer.json(event))
                 .build();
             repository.save(persisted);
-            broadcaster.broadcast(persisted);
+            if (org.springframework.transaction.support.TransactionSynchronizationManager.isSynchronizationActive()) {
+                org.springframework.transaction.support.TransactionSynchronizationManager.registerSynchronization(
+                    new org.springframework.transaction.support.TransactionSynchronization() {
+                        @Override public void afterCommit() { broadcaster.broadcast(persisted); }
+                    });
+            } else { broadcaster.broadcast(persisted); }
         } catch (Exception error) {
             throw new IllegalArgumentException("security event could not be persisted", error);
         }

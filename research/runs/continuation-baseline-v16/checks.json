@@ -1,0 +1,22 @@
+[
+  {
+    "component": "gateway-service",
+    "exit_code": 1
+  },
+  {
+    "component": "security-control-service",
+    "exit_code": 0
+  },
+  {
+    "component": "demo-backend",
+    "exit_code": 0
+  },
+  {
+    "component": "python",
+    "exit_code": 0
+  },
+  {
+    "component": "dashboard",
+    "exit_code": 0
+  }
+]

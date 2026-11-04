@@ -1,0 +1,54 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2026-10-28T21:00:12.776+05:30  INFO 55372 --- [security-control-service] [           main] c.a.control.SecurityControlApplication   : Starting SecurityControlApplication v0.1.0 using Java 21.0.11 with PID 55372 (C:\Projects\Adaptive Waf Ids\security-control-service\target\security-control-service-0.1.0.jar started by atula in C:\Projects\Adaptive Waf Ids)
+2026-10-28T21:00:12.779+05:30  INFO 55372 --- [security-control-service] [           main] c.a.control.SecurityControlApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-10-28T21:00:13.920+05:30  INFO 55372 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-28T21:00:13.921+05:30  INFO 55372 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-28T21:00:14.067+05:30  INFO 55372 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 136 ms. Found 1 JPA repository interface.
+2026-10-28T21:00:14.084+05:30  INFO 55372 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-28T21:00:14.085+05:30  INFO 55372 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-28T21:00:14.099+05:30  INFO 55372 --- [security-control-service] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.adaptivewaf.control.events.SecurityEventRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-28T21:00:14.099+05:30  INFO 55372 --- [security-control-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-10-28T21:00:14.963+05:30  INFO 55372 --- [security-control-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 63008 (http)
+2026-10-28T21:00:14.979+05:30  INFO 55372 --- [security-control-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-28T21:00:14.979+05:30  INFO 55372 --- [security-control-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2026-10-28T21:00:15.008+05:30  INFO 55372 --- [security-control-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-28T21:00:15.009+05:30  INFO 55372 --- [security-control-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2176 ms
+2026-10-28T21:00:15.393+05:30  INFO 55372 --- [security-control-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-28T21:00:15.618+05:30  INFO 55372 --- [security-control-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@29188050
+2026-10-28T21:00:15.620+05:30  INFO 55372 --- [security-control-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-28T21:00:15.644+05:30  INFO 55372 --- [security-control-service] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:50067/waf_fixture (PostgreSQL 16.15)
+2026-10-28T21:00:15.701+05:30  INFO 55372 --- [security-control-service] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.028s)
+2026-10-28T21:00:15.735+05:30  INFO 55372 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
+2026-10-28T21:00:15.739+05:30  INFO 55372 --- [security-control-service] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-28T21:00:15.846+05:30  INFO 55372 --- [security-control-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-28T21:00:15.935+05:30  INFO 55372 --- [security-control-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2026-10-28T21:00:15.980+05:30  INFO 55372 --- [security-control-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-28T21:00:16.330+05:30  INFO 55372 --- [security-control-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-28T21:00:16.419+05:30  INFO 55372 --- [security-control-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-28T21:00:17.080+05:30  INFO 55372 --- [security-control-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-28T21:00:17.124+05:30  INFO 55372 --- [security-control-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-28T21:00:17.907+05:30  INFO 55372 --- [security-control-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name users
+2026-10-28T21:00:18.496+05:30  INFO 55372 --- [security-control-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-28T21:00:18.977+05:30  INFO 55372 --- [security-control-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 63008 (http) with context path '/'
+2026-10-28T21:00:18.980+05:30  INFO 55372 --- [security-control-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:50068]
+2026-10-28T21:00:19.022+05:30  INFO 55372 --- [security-control-service] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4f55da9b:0/SimpleConnection@3697a307 [delegate=amqp://guest@127.0.0.1:50068/, localPort=63023]
+2026-10-28T21:00:19.054+05:30  INFO 55372 --- [security-control-service] [.1-63008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-28T21:00:19.054+05:30  INFO 55372 --- [security-control-service] [.1-63008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-28T21:00:19.055+05:30  INFO 55372 --- [security-control-service] [.1-63008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-28T21:00:19.079+05:30  INFO 55372 --- [security-control-service] [           main] c.a.control.SecurityControlApplication   : Started SecurityControlApplication in 6.801 seconds (process running for 7.39)

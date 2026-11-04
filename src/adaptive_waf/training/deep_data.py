@@ -29,6 +29,8 @@ def load_deep_dataset(
         texts.append(serialize_deep_request(_request_from_record(record["request"])))
         labels.append(label)
         counts[label] = counts.get(label, 0) + 1
+        if max_samples_per_class is not None and all(counts.get(name, 0) >= max_samples_per_class for name in allowed):
+            break
     if not texts:
         raise ValueError(f"no deep-learning records found in {path}")
     missing = sorted(allowed - set(labels))

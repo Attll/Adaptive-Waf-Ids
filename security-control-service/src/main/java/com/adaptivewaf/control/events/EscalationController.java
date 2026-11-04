@@ -49,14 +49,19 @@ public class EscalationController {
 
     @PostMapping("/internal/v1/security/escalations")
     public Map<String, Object> record(@RequestBody JsonNode payload) {
+        payload = sanitizer.sanitize(payload);
         String escalationId = payload.path("escalation_id").asText(UUID.randomUUID().toString());
+        String eventId = UUID.nameUUIDFromBytes(("deep:" + escalationId).getBytes(java.nio.charset.StandardCharsets.UTF_8)).toString();
+        if (repository.existsByEventId(eventId)) {
+            return Map.of("escalationId", escalationId, "journalled", true, "duplicate", true);
+        }
         JsonNode revised = payload.path("revised");
         JsonNode provisional = payload.path("provisional");
         boolean changed = payload.path("changed").asBoolean(false);
         String revisedAttack = revised.path("predicted_attack").asText("UNKNOWN");
 
         PersistedSecurityEvent event = PersistedSecurityEvent.builder()
-            .identity(UUID.randomUUID().toString(), Instant.now(), "security.escalation", payload.path("request_id").asText(null))
+            .identity(eventId, Instant.now(), "security.escalation", payload.path("request_id").asText(null))
             .request(payload.path("source_ip").asText(null), payload.path("method").asText(null),
                 payload.path("path").asText(null), payload.path("query").asText(null), null, null)
             .outcome(0, changed ? "ESCALATION_REVISED" : "ESCALATION_CONFIRMED", revisedAttack,
@@ -72,6 +77,8 @@ public class EscalationController {
             broadcaster.broadcast(event);
         } catch (RuntimeException error) {
             LOGGER.warn("Escalation {} could not be journalled: {}", escalationId, error.getClass().getSimpleName());
+            throw new org.springframework.web.server.ResponseStatusException(
+                org.springframework.http.HttpStatus.SERVICE_UNAVAILABLE, "Escalation journal unavailable");
         }
 
         synchronized (recent) {

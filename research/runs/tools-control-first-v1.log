@@ -1,0 +1,72 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.adaptivewaf:security-control-service >--------------
+[INFO] Building security-control-service 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ security-control-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 6 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ security-control-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 21 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ security-control-service ---
+[INFO] skip non existing resourceDirectory C:\Projects\Adaptive Waf Ids\security-control-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ security-control-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug parameters release 21] to target\test-classes
+[WARNING] /C:/Projects/Adaptive Waf Ids/security-control-service/src/test/java/com/adaptivewaf/control/config/InternalSecurityTest.java:[20,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[WARNING] /C:/Projects/Adaptive Waf Ids/security-control-service/src/test/java/com/adaptivewaf/control/config/InternalSecurityTest.java:[21,6] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ security-control-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.adaptivewaf.control.config.InternalSecurityTest
+09:30:17.090 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.adaptivewaf.control.config.InternalSecurityTest]: InternalSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:30:17.208 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.adaptivewaf.control.SecurityControlApplication for test class com.adaptivewaf.control.config.InternalSecurityTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2026-10-30T09:30:17.583+05:30  INFO 20048 --- [security-control-service] [           main] c.a.control.config.InternalSecurityTest  : Starting InternalSecurityTest using Java 21.0.11 with PID 20048 (started by atula in C:\Projects\Adaptive Waf Ids\security-control-service)
+2026-10-30T09:30:17.584+05:30  INFO 20048 --- [security-control-service] [           main] c.a.control.config.InternalSecurityTest  : No active profile set, falling back to 1 default profile: "default"
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-30T09:30:19.114+05:30  INFO 20048 --- [security-control-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name users
+2026-10-30T09:30:20.208+05:30  INFO 20048 --- [security-control-service] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-30T09:30:20.208+05:30  INFO 20048 --- [security-control-service] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-30T09:30:20.210+05:30  INFO 20048 --- [security-control-service] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-30T09:30:20.241+05:30  INFO 20048 --- [security-control-service] [           main] c.a.control.config.InternalSecurityTest  : Started InternalSecurityTest in 2.966 seconds (process running for 3.748)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.500 s -- in com.adaptivewaf.control.config.InternalSecurityTest
+[INFO] Running com.adaptivewaf.control.events.EventPipelineIntegrationTest
+[WARNING] Tests run: 4, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.001 s -- in com.adaptivewaf.control.events.EventPipelineIntegrationTest
+[INFO] Running com.adaptivewaf.control.events.SecurityEventConsumerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.242 s -- in com.adaptivewaf.control.events.SecurityEventConsumerTest
+[INFO] Running com.adaptivewaf.control.events.SecurityEventSanitizerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.adaptivewaf.control.events.SecurityEventSanitizerTest
+[INFO] Running com.adaptivewaf.control.events.StreamTicketServiceTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.adaptivewaf.control.events.StreamTicketServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[WARNING] Tests run: 10, Failures: 0, Errors: 0, Skipped: 4
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.583 s
+[INFO] Finished at: 2026-10-30T09:30:20+05:30
+[INFO] ------------------------------------------------------------------------

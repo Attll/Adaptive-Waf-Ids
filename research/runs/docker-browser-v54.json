@@ -1,0 +1,93 @@
+{
+  "title": "Adaptive WAF-IDS",
+  "errors": [],
+  "pages": [
+    {
+      "name": "Overview",
+      "heading": "Overview",
+      "text": "Security\n/\nOverview\nSynced 08:56:03 am\nRefresh\nA\nadmin\nOverview\nRequests observed\n54\n0 fully inspected · 1 detection unavailable\nDetections\n31\n57.4% of observed traffic\nBlocked at gateway\n30\n10 additionally rate limited\nEnd-to-end p95\n204.9 ms\np50 10.5 ms · p99 5010.5 ms\nTraffic and enforcement timeline\n\nOne bucket per minute across the retained window\n\nOpen request log\n0\n4\n7\n11\n14\n08:24\n08:28\n08:32\n08:36\n08:40\n08:44\n08:48\n08:52\nRequests\nDetections\nBlocked\nAttack classification\n\nEvery class the pipeline assigned in this window\n\n54\nrequests\nBenign\n11\nRate Limit\n10\nCookie Injection\n8\nSql Injection\n8\nXss\n5\nRemote Code Execution\n5\nDirectory Traversal\n5\nBehavioural\n1\nUnavailable\n1\nEndpoints targe"
+    },
+    {
+      "name": "Live Attacks\n31",
+      "heading": "Live Attacks",
+      "text": "Security\n/\nLive Attacks\nSynced 08:56:03 am\nRefresh\nA\nadmin\nLive Attacks\n5m\n15m\n1h\nAll\nBlocked only\nLive stream\n31 detections · 0 pushed\nDetections in view\n31\n28 blocked at the gateway\nDeep escalations\n0\nLow-confidence expert output adjudicated\nMean decision latency\n21.9 ms\nIngress to response, gateway measured\nMean confidence\n94.0%\nConfidence of the deciding stage\nAttack volume\n\nDetections and blocks per minute across the retained window\n\n0\n3\n5\n8\n10\n08:24\n08:28\n08:32\n08:36\n08:40\n08:44\n08:48\n08:52\nDetections\nBlocked\nAttack feed\n\nNewest first, pushed over the live stream\n\nCookie Injection\nBlock\n08:51:22 am\nGET /account?***REDACTED***\nfrom 172.26.0.1\nrisk 99.0%\nconfidence 99.0%\nlatency 12.7 ms\n"
+    },
+    {
+      "name": "Requests\n54",
+      "heading": "Requests",
+      "text": "Security\n/\nRequests\nSynced 08:56:03 am\nRefresh\nA\nadmin\nRequests\nAll\nDetections\nMitigated\nAllowed\nNewest\nRisk\nSlowest\n54 of 54\nIn view\n54\n31 classified as attacks\nMitigated\n40\n74.1% of the current view\nMean risk\n82.1%\npeak 100.0%\nMean latency\n135.9 ms\ninference 30.87 ms\nVolume over time\n\nRetained window, one bucket per minute\n\n0\n4\n7\n11\n14\n08:24\n08:28\n08:32\n08:36\n08:40\n08:44\n08:48\n08:52\nRequests\nDetections\nClassification split\n\nAcross the filtered view\n\n54\nrequests\nBenign\n11\nRate Limit\n10\nCookie Injection\n8\nSql Injection\n8\nXss\n5\nRemote Code Execution\n5\nDirectory Traversal\n5\nBehavioural\n1\nUnavailable\n1\nBusiest endpoints\nGET /health\n23\nGET /search\n11\nGET /account\n5\nGET /comment\n5\nGET /run\n5\nGET "
+    },
+    {
+      "name": "Request Visualizer",
+      "heading": "Request Visualizer",
+      "text": "Security\n/\nRequest Visualizer\nSynced 08:56:03 am\nRefresh\nA\nadmin\nRequest Visualizer\nDecision\nBenign\nAllow · HTTP 200\nFused risk\n30.69%\nconfidence 69.3%\nInference\n21.58 ms\n5 stages timed\nEnd to end\n46.92 ms\nupstream 2.94 ms\nRequest journey\n\nAllowed provisionally on the fast verdict while the deep model adjudicates in the background\n\nAllow\n1\nGateway ingress\n\nGET /health\n\nSource: 172.26.0.1\nMode: Normal\nRequest: e8542d71\n0.1ms\n2\nFeature extraction\n\nCanonicalised\n\nRepresentation: http-classical-v1\n10.0ms\n3\nTriage\n\nSuspicious\n\nSuspicious: 0.00%\nModel: triage-full-v1:isotonic\n1.8ms\n4\nRouter\n\nInjection\n\nExecution: 2.1%\nInjection: 97.9%\n9.7ms\n5\nInjection expert\n\nBenign\n\nConfidence: 69.31%\nRisk: 30.6"
+    },
+    {
+      "name": "Escalations",
+      "heading": "Escalations",
+      "text": "Security\n/\nEscalations\nSynced 08:56:03 am\nRefresh\nA\nadmin\nEscalations\nDeferred and resolved\n0\n0 submitted · 0 rejected when full\nVerdicts revised\n0\nnothing adjudicated yet\nPending deep jobs\n0\n0 waiting · 0 running · limit 0\nMedian deep latency\n—\nmean wait in queue —\nHow deferred escalation works\n\nDeep evidence arrives later; it can affect future requests but cannot undo a completed operation\n\nLive\n1\nFast experts\n\nConfidence below the threshold\n\n2\nAnswer immediately\n\nCaller gets the fast verdict; request allowed provisionally\n\n3\nBackground worker\n\nQueued for one of 0 deep workers\n\n4\nDeep adjudication\n\nTransformer re-classifies the same request\n\n5\nRevised verdict\n\nJournalled and streamed to th"
+    },
+    {
+      "name": "Models",
+      "heading": "Models",
+      "text": "Security\n/\nModels\nSynced 08:56:03 am\nRefresh\nA\nadmin\nModels\nPipeline\nComparison\nQuery models\nBatch probe\nRegistry\nReading artifacts\n\nLoading the deployed pipeline and its evaluation record."
+    },
+    {
+      "name": "Generator",
+      "heading": "Generator",
+      "text": "Security\n/\nGenerator\nSynced 08:56:03 am\nRefresh\nA\nadmin\nGenerator\nHTTP payloads\nNetwork flows\n360 HTTP records · 160 flow records sampled from the training datasets\nGenerate HTTP traffic from the dataset\n\nRandomised records from the processed ATRDF split are replayed through the gateway to the demo upstream\n\nBenign\n60\nCookie Injection\n60\nDirectory Traversal\n60\nRemote Code Execution\n60\nSql Injection\n60\nXss\n60\nRequests to send\n24 requests\nDelay between requests\n120 ms\nSend through the gateway\nStop\nPreview sample\nAll classes\nRedis and database\nReading store status\n\nQuerying Redis and Postgres."
+    },
+    {
+      "name": "Training",
+      "heading": "Training",
+      "text": "Security\n/\nTraining\nSynced 08:56:03 am\nRefresh\nA\nadmin\nTraining\nRegistered runs\n0\n0 completed\nShadow evaluations\n0\nEvaluated without serving traffic\nChallengers\n0\nAwaiting an operator decision\nPromotion policy\nOperator gated\nCandidate review, runtime acknowledgement and measured gates are required\nControlled training lifecycle\n\nEvery run recorded by the adaptation workflow\n\nNo training runs registered\n\nRuns appear after the adaptation service registers a candidate with the control plane.\n\nCurated feedback signal\n\nOperator verdicts that will seed the next curation run\n\nNo entries recorded"
+    },
+    {
+      "name": "Research",
+      "heading": "Research",
+      "text": "Security\n/\nResearch\nSynced 08:56:03 am\nRefresh\nA\nadmin\nResearch\nResearch runtime\n\nLoading measured runtime telemetry…"
+    },
+    {
+      "name": "Policy",
+      "heading": "Policy",
+      "text": "Security\n/\nPolicy\nSynced 08:56:03 am\nRefresh\nA\nadmin\nPolicy\nAuthoritative version\nv3\nImmutable, stored by the control plane\nGateway applied\nv3\nIn sync with the control plane\nBlock threshold\n81%\nFused risk above this is rejected\nShort-window limit\n40\nRequests per source per short window\nEnforcement policy\n\nSaving creates a new immutable version; the gateway refreshes its cache independently\n\nVersion 3\nBlock-risk threshold\n81%\nShort-window request limit\n40 requests\nSave new version\nReset\nProjected effect\n\nThe retained window replayed against the proposed threshold\n\n72%\nwould block\n90%\nattacks caught\nRequests in window\n54\nWould be blocked\n39\nCurrently blocked\n30\nDetections missed at this thresh"
+    },
+    {
+      "name": "Access Control",
+      "heading": "Access Control",
+      "text": "Security\n/\nAccess Control\nSynced 08:56:03 am\nRefresh\nA\nadmin\nAccess Control\nActive blocks\n0\n1 expired or lifted\nSources observed\n1\nDistinct addresses in the retained window\nOffending sources\n1\nHave at least one detection against them\nBehavioural limit\n40\nRequests per source per short window\nBlock a source address\n\nWrites to the enforcement store and records the administrator action\n\nSource address\nDuration\n15 minutes\n1 hour\n6 hours\n24 hours\nAudit reason\nBlock source\nLift block\n\nA manual block affects enforcement only. It does not change model behaviour or the risk threshold.\n\nSuggested blocks\n\nSources with recorded detections, ranked by attack volume\n\n172.26.0.1\n31 detections · 30 blocked · "
+    },
+    {
+      "name": "Applications",
+      "heading": "Applications",
+      "text": "Security\n/\nApplications\nSynced 08:56:03 am\nRefresh\nA\nadmin\nApplications\nRegistered\n1\n1 currently protected\nEndpoints seen\n6\nDistinct method and path pairs\nMean upstream latency\n9.69 ms\nTime spent inside the protected application\nRequests reaching upstream\n24\n55.6% rejected first\nProtected application registry\n\nToggling protection is recorded in the audit log\n\ndemo-backend\nProtected\nUpstream\nhttp://127.0.0.1:8081\nApplication id\n00000000-0000-0000…\nRequests observed\n54\nRegister an application\n\nThe gateway proxies matched traffic to this upstream\n\nName\nUpstream URL\nRegister\nEndpoint traffic\n\nWhere requests are landing across the protected surface\n\nGET /health\n23\nGET /search\n11\nGET /account\n5\nGE"
+    },
+    {
+      "name": "Network",
+      "heading": "Network",
+      "text": "Security\n/\nNetwork\nSynced 08:56:03 am\nRefresh\nA\nadmin\nNetwork\nFlows in window\n2\nCurrent sensor process window\nHigh-risk sources\n0\nAt or above 81%\nPeak network risk\n2.7%\nAcross retained flow evidence\nServing model\nnetwork-full-v1:random…\nRedis up\nNetwork risk over the retained flows\n\nNewest sample on the right\n\n0%\n1%\n1%\n2%\n3%\n08:48\n08:50\nNetwork risk\nFlow classification\n\nClasses assigned by the offline flow detector\n\n2\nflows\nBenign\n2\nBusiest source addresses\n192.0.2.71\n2\nRisk against classifier confidence\n\nEach point is one classified flow\n\n0%\n25%\n50%\n75%\n100%\nConfidence (%)\nNetwork risk\nRecent network classifications\nObserved\tSource\tDestination\tClassification\tRisk\tConfidence\n08:50:17 am\n5m a"
+    },
+    {
+      "name": "Review",
+      "heading": "Review",
+      "text": "Security\n/\nReview\nSynced 08:56:03 am\nRefresh\nA\nadmin\nReview\nReviews submitted\n0\n0 distinct requests\nConfirmed attacks\n0\nOperator agreed with the pipeline\nFalse positives\n0\nFlagged for the next curation run\nOperator agreement\n—\nConfirmed attacks or upheld benign classifications; wrong-type corrections excluded\nChoose a request\n\nReviewed requests are marked\n\nTime\tRequest\tClassification\tRisk\tAction\n08:53:56 am\t\nGET\n/health?***REDACTED***\n\tBenign\t\n30.7%\n\tAllow\n08:53:53 am\t\nGET\n/health?***REDACTED***\n\tBehavioural\t\n100.0%\n\tBlock\n08:53:23 am\t\nGET\n/health?***REDACTED***\n\tBenign\t\n66.7%\n\tAllow\n08:53:23 am\t\nGET\n/health?***REDACTED***\n\tBenign\t\n33.3%\n\tAllow\n08:53:23 am\t\nGET\n/health?***REDACTED***\n\tRate L"
+    },
+    {
+      "name": "Services",
+      "heading": "Services",
+      "text": "Security\n/\nServices\nSynced 08:56:03 am\nRefresh\nA\nadmin\nServices\nServices ready\n5/5\nAll connected services are healthy\nLive stream\nLive\n0 events pushed this session\nPoll interval\n15s\nFull snapshot refresh cadence\nGateway p95\n204.9 ms\nmean inference 30.86 ms\nGateway\nUp\n\nTerminates traffic, calls detection, applies policy, and journals every decision.\n\nState\nNormal mode · policy v3\nProbe\nGET /gateway-api/actuator/health\nDetection\nUp\n\nRuns the adaptive hierarchy: triage, router, fast experts, and deep escalation.\n\nState\n6 model versions reported\nProbe\nGET /detection-api/ready\nControl plane\nUp\n\nOwns policy, the model registry, the event journal, reviews, and the audit log.\n\nState\n54 events retain"
+    },
+    {
+      "name": "Audit",
+      "heading": "Audit",
+      "text": "Security\n/\nAudit\nSynced 08:56:03 am\nRefresh\nA\nadmin\nAudit\nRecorded changes\n3\n1 distinct actors\nOperator actions\n3\nMade from this console\nAutomated actions\n0\nWritten by the adaptation workflow\nMost recent\n2m ago\nBlock\nTable\nTimeline\n3 entries\nBy operation\n3\nchanges\nUpdate\n2\nBlock\n1\nBy actor\nadmin\n3\nBy entity\nPolicy\n2\nBlocked Entity\n1\nAdministrator activity\n\nNewest first; every governed change is recorded\n\nWhen\tActor\tOperation\tTarget\tChange\n30 Oct, 08:53:53 am\n2m ago\n\tadmin\tBlock\tBlocked Entity\n172.26.0.1\n\t\nSourceip\n172.26.0.1\nReason\nOwned release expiry acceptance\n\n30 Oct, 08:53:23 am\n2m ago\n\tadmin\tUpdate\tPolicy\n00000000-0000-0000-0…\n\t\nVersion\n2\n3\nBlockriskthreshold\n0.81\nRatelimitshortwindow\n"
+    },
+    {
+      "name": "Settings",
+      "heading": "Settings",
+      "text": "Security\n/\nSettings\nSynced 08:56:03 am\nRefresh\nA\nadmin\nSettings\nSession\nA\nadmin\n\nAdministrator · authenticated against the control plane\n\nSign out\nForce refresh\n\nCredentials stay in memory for this tab only and are never written to browser storage.\n\nLive data\n\nHow this console keeps itself current\n\nPush decisions over WebSocket\nFalls back to polling automatically when the socket cannot connect\n\nSnapshot poll interval\n\n5s\n15s\n60s\nOff\nStream state\nLive\nEvents pushed\n0\nLast push\nNone yet\nConnected services\n\nWhere this console reads and writes\n\nTraffic and enforcement\n/gateway-api → :8080\nInference runtime\n/detection-api → :8000\nGovernance and journal\n/control-api → :8082\nLive event stream\n/cont"
+    }
+  ],
+  "stream": "Streaming\n0",
+  "body": "OBSERVE\n\nOverview\nLive Attacks\n31\nRequests\n54\nRequest Visualizer\nEscalations\n\nINTELLIGENCE\n\nModels\nGenerator\nTraining\nResearch\n\nENFORCE\n\nPolicy\nAccess Control\nApplications\nNetwork\n\nOPERATE\n\nReview\nServices\nAudit\nSettings\nStreaming\n0\nSecurity\n/\nSettings\nSynced 08:56:03 am\nRefresh\nA\nadmin\nSettings\nSession\nA\nadmin\n\nAdministrator · authenticated against the control plane\n\nSign out\nForce refresh\n\nCredentials stay in memory for this tab only and are never written to browser storage.\n\nLive data\n\nHow this console keeps itself current\n\nPush decisions over WebSocket\nFalls back to polling automatically when the socket cannot connect\n\nSnapshot poll interval\n\n5s\n15s\n60s\nOff\nStream state\nLive\nEvents pushed\n0\nLast push\nNone yet\nConnected services\n\nWhere this console reads and writes\n\nTraffic and enforcement\n/gateway-api → :8080\nInference runtime\n/detection-api → :8000\nGovernance and journal\n/control-api → :8082\nLive event stream\n/control-ws/v1/stream/events\nNetwork context\n/sensor-api → :8083\nTraining lifecycle\n/adaptation-api → :8084\nCurrent state\n\nWhat the console is holding right now\n\nRetained requests\n54\nRegistered models\n0\nTraining runs\n0\nReviews submitted\n0\nActive blocks\n1\nGateway mode\nNormal\nRuntime models\nTriage, Router, Injection, Execution, Deep, Rules, Strategy, Network"
+}

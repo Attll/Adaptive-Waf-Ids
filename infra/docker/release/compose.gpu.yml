@@ -1,0 +1,9 @@
+services:
+  detection:
+    image: adaptive-waf-ids/detection:1.0.0-gpu
+    build:
+      args:
+        TORCH_INDEX_URL: https://download.pytorch.org/whl/cu130
+    environment:
+      WAF_DEEP_DEVICE: auto
+    gpus: all

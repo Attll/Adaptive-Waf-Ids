@@ -9,9 +9,8 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
- * Removes credential material from a security event while keeping the request representation intact. Request
- * identity, payloads, and model evidence are retained verbatim so an operator can see exactly what was submitted
- * and how the pipeline judged it.
+ * Keeps operational identity and model evidence while removing credentials and raw query/body/header/cookie
+ * content from both structured journal columns and nested details. Oversized details remain valid JSON.
  */
 @Component
 public class SecurityEventSanitizer {
@@ -29,7 +28,7 @@ public class SecurityEventSanitizer {
     public String json(JsonNode input) {
         try {
             String value = objectMapper.writeValueAsString(sanitize(input));
-            return value.length() <= MAX_DETAILS_LENGTH ? value : value.substring(0, MAX_DETAILS_LENGTH) + "...[truncated]";
+            return value.length() <= MAX_DETAILS_LENGTH ? value : "{\"truncated\":true,\"reason\":\"event_details_limit\"}";
         } catch (Exception error) { throw new IllegalArgumentException("event cannot be serialized", error); }
     }
 
@@ -39,7 +38,7 @@ public class SecurityEventSanitizer {
             Iterator<Map.Entry<String, JsonNode>> fields = object.fields();
             while (fields.hasNext()) {
                 Map.Entry<String, JsonNode> field = fields.next();
-                if (credential(field.getKey())) { object.put(field.getKey(), "***REDACTED***"); }
+                if (credential(field.getKey()) || sensitiveContent(field.getKey())) { object.put(field.getKey(), "***REDACTED***"); }
                 else { redact(field.getValue()); }
             }
         } else if (node.isArray()) {
@@ -51,5 +50,9 @@ public class SecurityEventSanitizer {
         String normalized = key.toLowerCase(Locale.ROOT);
         return normalized.contains("authorization") || normalized.contains("password") || normalized.contains("token")
             || normalized.contains("secret") || normalized.contains("api_key") || normalized.contains("apikey");
+    }
+
+    private boolean sensitiveContent(String key) {
+        return java.util.Set.of("query", "body", "cookies", "cookie", "headers").contains(key.toLowerCase(Locale.ROOT));
     }
 }

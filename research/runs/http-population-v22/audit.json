@@ -1,0 +1,168 @@
+{
+  "representation": "http-inspection-text-v2",
+  "sources_sha256": {
+    "train": "efdc8291d8126cc153a1439eecdebf33c12574cf4cd2b314703dab5ce8d92f39",
+    "validation": "673509b2631bc85b60a85c20d632d664fcb6c5218b59a16be57242c10677fa40"
+  },
+  "counts": {
+    "train": {
+      "XSS": 7975,
+      "BENIGN": 185680,
+      "COOKIE_INJECTION": 7668,
+      "SQL_INJECTION": 7735,
+      "DIRECTORY_TRAVERSAL": 3866,
+      "REMOTE_CODE_EXECUTION": 3890
+    },
+    "validation": {
+      "BENIGN": 36914,
+      "XSS": 1686,
+      "REMOTE_CODE_EXECUTION": 845,
+      "SQL_INJECTION": 1709,
+      "COOKIE_INJECTION": 1649,
+      "DIRECTORY_TRAVERSAL": 817
+    }
+  },
+  "groups_per_label": {
+    "BENIGN": 48187,
+    "COOKIE_INJECTION": 5,
+    "DIRECTORY_TRAVERSAL": 30,
+    "REMOTE_CODE_EXECUTION": 4,
+    "SQL_INJECTION": 3144,
+    "XSS": 3
+  },
+  "representation_source_sha256": "ed13f02913c62bea8bc5a9d6c3fd9252ced2b353c9c9e3754168f4c9da9fef74",
+  "conflicting_label_groups": 0,
+  "train_validation_overlapping_candidate_groups": 6564,
+  "headers_per_label": {
+    "XSS": {
+      "host": 9661,
+      "user-agent": 9661,
+      "accept-encoding": 9661,
+      "accept": 9661,
+      "connection": 9661,
+      "accept-language": 9661,
+      "sec-fetch-site": 9661,
+      "sec-fetch-mode": 9661,
+      "sec-fetch-user": 9661,
+      "sec-fetch-dest": 9661,
+      "set-cookie": 9661,
+      "date": 9661,
+      "sec-ch-ua-mobile": 6791,
+      "cache-control": 6791,
+      "upgrade-insecure-requests": 13,
+      "sec-ch-ua-platform": 26
+    },
+    "BENIGN": {
+      "host": 222594,
+      "user-agent": 222594,
+      "accept-encoding": 222594,
+      "accept": 222594,
+      "connection": 222594,
+      "accept-language": 199513,
+      "sec-fetch-site": 199513,
+      "sec-fetch-mode": 199513,
+      "sec-fetch-user": 199513,
+      "sec-fetch-dest": 199513,
+      "set-cookie": 199513,
+      "date": 199513,
+      "content-length": 20739,
+      "sec-ch-ua-platform": 103725,
+      "sec-ch-ua-mobile": 103725,
+      "cache-control": 103725
+    },
+    "COOKIE_INJECTION": {
+      "host": 9317,
+      "user-agent": 9317,
+      "accept-encoding": 9317,
+      "accept": 9317,
+      "connection": 9317,
+      "accept-language": 9317,
+      "sec-fetch-site": 9317,
+      "sec-fetch-mode": 9317,
+      "sec-fetch-user": 9317,
+      "sec-fetch-dest": 9317,
+      "set-cookie": 9317,
+      "date": 9317,
+      "cookie": 9286,
+      "content-length": 4637,
+      "sec-ch-ua-mobile": 6548,
+      "cache-control": 6548,
+      "upgrade-insecure-requests": 8,
+      "sec-ch-ua-platform": 11
+    },
+    "SQL_INJECTION": {
+      "host": 9444,
+      "user-agent": 9444,
+      "accept-encoding": 9444,
+      "accept": 9444,
+      "connection": 9444,
+      "accept-language": 9444,
+      "sec-fetch-site": 9444,
+      "sec-fetch-mode": 9444,
+      "sec-fetch-user": 9444,
+      "sec-fetch-dest": 9444,
+      "set-cookie": 9444,
+      "date": 9444,
+      "sec-ch-ua-mobile": 6726,
+      "cache-control": 6726,
+      "sec-ch-ua-platform": 29,
+      "upgrade-insecure-requests": 12
+    },
+    "DIRECTORY_TRAVERSAL": {
+      "host": 4683,
+      "user-agent": 4683,
+      "accept-encoding": 4683,
+      "accept": 4683,
+      "connection": 4683,
+      "accept-language": 4683,
+      "sec-fetch-site": 4683,
+      "sec-fetch-mode": 4683,
+      "sec-fetch-user": 4683,
+      "sec-fetch-dest": 4683,
+      "set-cookie": 4683,
+      "date": 4683,
+      "sec-ch-ua-mobile": 3340,
+      "cache-control": 3340,
+      "upgrade-insecure-requests": 7,
+      "sec-ch-ua-platform": 18
+    },
+    "REMOTE_CODE_EXECUTION": {
+      "host": 4735,
+      "user-agent": 4735,
+      "accept-encoding": 4735,
+      "accept": 4735,
+      "connection": 4735,
+      "accept-language": 4735,
+      "sec-fetch-site": 4735,
+      "sec-fetch-mode": 4735,
+      "sec-fetch-user": 4735,
+      "sec-fetch-dest": 4735,
+      "set-cookie": 4735,
+      "date": 4735,
+      "sec-ch-ua-mobile": 3367,
+      "cache-control": 3367,
+      "sec-ch-ua-platform": 12,
+      "upgrade-insecure-requests": 2
+    }
+  },
+  "field_truncations_at_512_character_budget": {
+    "XSS": {},
+    "BENIGN": {
+      "PATH": 11719
+    },
+    "COOKIE_INJECTION": {
+      "COOKIES": 4637
+    },
+    "SQL_INJECTION": {
+      "QUERY": 4612
+    },
+    "DIRECTORY_TRAVERSAL": {
+      "PATH": 1562
+    },
+    "REMOTE_CODE_EXECUTION": {
+      "PATH": 4735
+    }
+  },
+  "legacy_test_opened": false,
+  "scope": "Dataset quality audit of previously used train/validation, not independent final evaluation. No request content exported."
+}

@@ -1,0 +1,134 @@
+{
+  "checks": {
+    "all_requests_persisted": true,
+    "benign_forwarded": true,
+    "five_attacks_blocked": true,
+    "network_full_vector": true,
+    "durable_completed_jobs": true,
+    "dashboard_html": true,
+    "dashboard_authenticated_proxy": true,
+    "browser_internal_route_blocked": true
+  },
+  "requests": [
+    {
+      "case": "benign",
+      "request_id": "2241d0e7-d844-4bc3-9dba-aafe4f2a08d6",
+      "http_status": 200,
+      "round_trip_ms": 86.58750000176951,
+      "persisted": true,
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "action": "ALLOW",
+      "prediction": "COOKIE_INJECTION"
+    },
+    {
+      "case": "sqli",
+      "request_id": "7ad7bc7e-d199-4850-8851-fe3a3d10c4a8",
+      "http_status": 403,
+      "round_trip_ms": 40.19200001494028,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "SQL_INJECTION"
+    },
+    {
+      "case": "xss",
+      "request_id": "9841c317-32d0-4a61-8137-855d74ae710b",
+      "http_status": 403,
+      "round_trip_ms": 16.25309998053126,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "XSS"
+    },
+    {
+      "case": "traversal",
+      "request_id": "4f5d2e8c-b818-4a7f-a7c5-70684dd04a58",
+      "http_status": 403,
+      "round_trip_ms": 22.0508000056725,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "DIRECTORY_TRAVERSAL"
+    },
+    {
+      "case": "rce",
+      "request_id": "85ae0425-1a0f-4998-9b7c-5c8fd7992f56",
+      "http_status": 403,
+      "round_trip_ms": 28.666400001384318,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "REMOTE_CODE_EXECUTION"
+    },
+    {
+      "case": "cookie",
+      "request_id": "31f0c13e-0801-4270-ab3d-f97121f141fb",
+      "http_status": 403,
+      "round_trip_ms": 25.440899975365028,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "COOKIE_INJECTION"
+    }
+  ],
+  "network": {
+    "status": 200,
+    "result": {
+      "network_context": {
+        "source_ip": "192.0.2.71",
+        "destination_ip": null,
+        "network_risk": 0.026524787549106477,
+        "network_class": "BENIGN",
+        "confidence": 0.9734752124508935,
+        "model_version": "network-full-v1:random_forest",
+        "observed_at": "2026-10-30T03:13:48.178791+00:00",
+        "observation_scope": "PROVIDED_FLOW",
+        "feature_contract": "PROVIDED_FLOW"
+      }
+    }
+  },
+  "deep_jobs": {
+    "jobs": [
+      {
+        "job_id": "99cd5aee-f4bc-4644-90d1-9187f8e59184",
+        "request_id": "2241d0e7-d844-4bc3-9dba-aafe4f2a08d6",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:13:47.914483+00:00"
+      },
+      {
+        "job_id": "b6a399b5-6745-4d99-adb4-b2d93d53b888",
+        "request_id": "88931df9-0817-402f-8696-50a8db1fb1e6",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:11:38.368486+00:00"
+      },
+      {
+        "job_id": "a8efefb9-77bd-4c66-9fae-b09dd974e765",
+        "request_id": "215ad2a3-f60c-48b4-ae4b-8fddf27ee4af",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:11:37.951201+00:00"
+      }
+    ],
+    "statistics": {
+      "enabled": true,
+      "backend": "rabbitmq_postgresql",
+      "workers": 1,
+      "queue_limit": 256,
+      "queue_depth": 0,
+      "running": 0,
+      "pending": 0,
+      "submitted": 3,
+      "resolved": 3,
+      "failed": 0,
+      "expired": 0,
+      "rejected": 0,
+      "last_error_type": null
+    }
+  },
+  "scope": "six development diagnostics; no representative model-only accuracy or browser automation claim"
+}

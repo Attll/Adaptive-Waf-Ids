@@ -1,0 +1,6 @@
+ Container adaptive-waf-research-redis-1 Stopping 
+ Container adaptive-waf-research-rabbitmq-1 Stopping 
+ Container adaptive-waf-research-postgres-1 Stopping 
+ Container adaptive-waf-research-postgres-1 Stopped 
+ Container adaptive-waf-research-redis-1 Stopped 
+ Container adaptive-waf-research-rabbitmq-1 Stopped 

@@ -15,3 +15,10 @@ artifacts/
 **/target/
 dashboard/node_modules/
 dashboard/dist/
+
+release-build/
+releases/
+infra/docker/release/.env
+
+# Local ZIP archives
+*.[zZ][iI][pP]

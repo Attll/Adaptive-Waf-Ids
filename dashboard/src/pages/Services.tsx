@@ -12,6 +12,9 @@ type ServiceRow = {
   responsibility: string;
 };
 
+const reportedModelCount = (snapshot: DashboardSnapshot) =>
+  ["triage","router","injection","execution","deep","network"].filter((key)=>snapshot.runtimeModels.models[key]!==undefined).length;
+
 export function Services({ snapshot, stream, refreshInterval }: ViewProps) {
   const rows = serviceRows(snapshot);
   const healthy = rows.filter((row) => row.status === "UP").length;
@@ -23,7 +26,7 @@ export function Services({ snapshot, stream, refreshInterval }: ViewProps) {
         <Metric label="Services ready" value={`${healthy}/${rows.length}`} detail={healthy === rows.length ? "All connected services are healthy" : "One or more dependencies are degraded"} tone={healthy === rows.length ? "success" : "danger"} icon={<Icon name="health" size={13} />} />
         <Metric label="Live stream" value={humanize(stream.state)} detail={`${stream.received} events pushed this session`} tone={stream.state === "live" ? "success" : "warning"} icon={<Icon name="live" size={13} />} />
         <Metric label="Poll interval" value={refreshInterval ? `${refreshInterval}s` : "Off"} detail="Full snapshot refresh cadence" tone="info" icon={<Icon name="refresh" size={13} />} />
-        <Metric label="Inference p95" value={milliseconds(summary.latencyP95Ms, 1)} detail={`mean inference ${milliseconds(summary.detectionLatencyMeanMs, 2)}`} tone="violet" icon={<Icon name="clock" size={13} />} />
+        <Metric label="Gateway p95" value={milliseconds(summary.latencyP95Ms, 1)} detail={`mean inference ${milliseconds(summary.detectionLatencyMeanMs, 2)}`} tone="violet" icon={<Icon name="clock" size={13} />} />
       </div>
 
       <div className="grid-2">
@@ -47,7 +50,7 @@ export function Services({ snapshot, stream, refreshInterval }: ViewProps) {
         <Panel title="Control-plane dependencies" subtitle="Reported by the control service actuator">
           <HealthComponents health={snapshot.controlHealth} />
         </Panel>
-        <Panel title="Pipeline throughput" subtitle="Retained window">
+        <Panel title="Pipeline retained counts" subtitle="Retained window">
           <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
             <RadialGauge value={summary.total ? summary.detections / summary.total : 0} label="detected" color="#f5a524" />
             <RadialGauge value={summary.total ? summary.deepEscalations / summary.total : 0} label="escalated" color="#a855f7" />
@@ -56,7 +59,7 @@ export function Services({ snapshot, stream, refreshInterval }: ViewProps) {
             <KV k="Requests retained" v={String(summary.total)} />
             <KV k="Deep escalations" v={`${summary.deepEscalations} (${percent(summary.total ? summary.deepEscalations / summary.total : 0, 1)})`} />
             <KV k="Mean upstream latency" v={milliseconds(summary.upstreamLatencyMeanMs, 2)} />
-            <KV k="Runtime models" v={String(Object.keys(snapshot.runtimeModels.models).length)} />
+            <KV k="Reported model versions" v={String(reportedModelCount(snapshot))} />
           </dl>
         </Panel>
       </div>
@@ -114,7 +117,7 @@ function serviceRows(snapshot: DashboardSnapshot): ServiceRow[] {
     {
       name: "Detection",
       status: healthStatus(snapshot.detectionReady),
-      detail: `${Object.keys(snapshot.runtimeModels.models).length} inference models loaded`,
+      detail: `${reportedModelCount(snapshot)} model versions reported`,
       endpoint: "GET /detection-api/ready",
       responsibility: "Runs the adaptive hierarchy: triage, router, fast experts, and deep escalation."
     },

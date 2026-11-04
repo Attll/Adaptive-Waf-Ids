@@ -1,0 +1,7 @@
+{
+  "status": "PARTIALLY_INVALID",
+  "valid": ["HTTP observations", "classification and enforcement observations", "client timings", "Python GPU allocator observations"],
+  "invalid": ["Aggregated Java CPU and RSS metrics sampled launcher PIDs rather than their JVM children on Windows"],
+  "cleanup_issue": "The Windows java launcher spawned child JVMs; the cleanup stopped only launcher processes. Owned children were subsequently identified by recorded fixture ports and stopped.",
+  "follow_up": "Runner now resolves java.home and launches the JVM directly, and cleans up descendants. Use a new run ID after the cookie repair. Original observations are preserved."
+}

@@ -1,0 +1,24 @@
+services:
+  backend:
+    image: adaptive-waf-demo:latest
+    pull_policy: never
+    entrypoint: ["java", "-jar", "/app/current.jar", "--server.port=8081"]
+    volumes:
+      - ../demo-backend/target/demo-backend-0.1.0.jar:/app/current.jar:ro
+    networks: [fixture]
+  crs:
+    image: owasp/modsecurity-crs@sha256:ccec5e3ecd1dcf6b48903268f4fe415fd17914e8bf30fc21263fd05cc7045f29
+    pull_policy: never
+    environment:
+      BACKEND: http://backend:8081
+      SERVER_NAME: localhost
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      ANOMALY_OUTBOUND: "4"
+    ports: ["127.0.0.1:${WAF_CRS_TEST_PORT:?Select a free loopback port}:8080"]
+    networks: [fixture]
+networks:
+  fixture: {}

@@ -1,0 +1,14 @@
+# Owned temporary browser/service logs remain local; retain curated metrics and test outputs.
+ui-fixture-v*/
+ui-fixture-v*.log
+*-package-v*.log
+gateway-cookie-package*.log
+research-package-v*.log
+crs-fixture-port.txt
+gateway-comparison-v*/*.log
+gateway-comparison-v*.log
+model-thread-profile-v*.log
+deep-device-profile-v*.log
+crs-comparison-v*.log
+deep-control-comparison-v*/*.log
+deep-control-comparison-v*.log

@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/actuator/waf")
 public class GatewayPolicyController {
     private final GatewayPolicy policy;
-    public GatewayPolicyController(GatewayPolicy policy) { this.policy = policy; }
+    private final com.adaptivewaf.gateway.behaviour.BehaviourProperties behaviour;
+    public GatewayPolicyController(GatewayPolicy policy, com.adaptivewaf.gateway.behaviour.BehaviourProperties behaviour) {
+        this.policy = policy; this.behaviour = behaviour;
+    }
     @GetMapping("/policy")
     public Map<String, Object> current() {
         GatewayPolicy.CachedPolicy cached = policy.current();
-        return Map.of("version", cached.version(), "blockRiskThreshold", cached.blockRiskThreshold(), "rateLimitShortWindow", cached.rateLimitShortWindow());
+        return Map.of("version", cached.version(), "blockRiskThreshold", cached.blockRiskThreshold(), "rateLimitShortWindow",
+            cached.rateLimitShortWindow() > 0 ? cached.rateLimitShortWindow() : behaviour.getRateLimitShortWindow());
     }
 }

@@ -5,6 +5,9 @@ import java.time.Duration;
 
 @ConfigurationProperties(prefix = "adaptive-waf.policy")
 public class GatewayPolicyProperties {
+    private String internalToken = "";
+    public String getInternalToken() { return internalToken; }
+    public void setInternalToken(String token) { internalToken = token; }
     private double blockRiskThreshold = 0.81;
     private String controlServiceBaseUrl = "http://127.0.0.1:8082";
     private Duration refreshInterval = Duration.ofSeconds(30);

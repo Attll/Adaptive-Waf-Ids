@@ -11,6 +11,10 @@ spring:
   rabbitmq:
     host: ${RABBITMQ_HOST:127.0.0.1}
     port: ${RABBITMQ_PORT:5672}
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
   cloud:
     gateway:
       routes:
@@ -29,11 +33,16 @@ management:
 
 adaptive-waf:
   detection:
+    session-hmac-secret: ${WAF_SESSION_HMAC_SECRET:}
     base-url: ${DETECTION_SERVICE_URL:http://127.0.0.1:8000}
     timeout: ${DETECTION_TIMEOUT:5s}
     max-body-bytes: ${DETECTION_MAX_BODY_BYTES:65536}
+    body-read-timeout: ${DETECTION_BODY_READ_TIMEOUT:5s}
+    fail-closed: ${DETECTION_FAIL_CLOSED:false}
+    trusted-proxy-ips: ${WAF_TRUSTED_PROXY_IPS:}
     path-prefix-to-strip: ${DETECTION_PATH_PREFIX_TO_STRIP:/backend}
   policy:
+    internal-token: ${WAF_INTERNAL_TOKEN:}
     block-risk-threshold: ${WAF_BLOCK_RISK_THRESHOLD:0.81}
     control-service-base-url: ${CONTROL_SERVICE_URL:http://127.0.0.1:8082}
     refresh-interval: ${POLICY_REFRESH_INTERVAL:30s}

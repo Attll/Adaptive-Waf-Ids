@@ -1,11 +1,14 @@
-import { useMemo } from "react";
+import { useMemo,useEffect,useState } from "react";
 import type { TrainingRun } from "../api";
 import { GroupedBarChart, RankedBars } from "../components/Charts";
 import { Badge, EmptyState, Icon, Metric, Panel } from "../components/Ui";
 import { colorFor, formatDateTime, label as humanize, parseJson, shortId } from "../lib/format";
 import type { ViewProps } from "../lib/view";
 
-export function Training({ snapshot }: ViewProps) {
+export function Training({ snapshot,runs:consoleRuns,api,goTo }: ViewProps) {
+  const [routingRuns,setRoutingRuns]=useState<Awaited<ReturnType<typeof api.routingRuns>>['runs']>([]);
+  const [routingError,setRoutingError]=useState('');
+  useEffect(()=>{let active=true;void api.routingRuns().then(result=>{if(active){setRoutingRuns(result.runs);setRoutingError('');}}).catch(error=>{if(active)setRoutingError(String(error));});return()=>{active=false;};},[api,consoleRuns]);
   const runs = snapshot.trainingRuns;
 
   const comparison = useMemo(() => {
@@ -15,7 +18,7 @@ export function Training({ snapshot }: ViewProps) {
       .slice(0, 8)
       .reverse();
     const metricNames = [...new Set(scored.flatMap((entry) => Object.keys(entry.metrics)))]
-      .filter((name) => scored.some((entry) => typeof entry.metrics[name] === "number"))
+      .filter((name) => /accuracy|precision|recall|f1|auc|fpr|coverage/.test(name) && scored.some((entry) => typeof entry.metrics[name] === "number"))
       .slice(0, 4);
     return {
       groups: scored.map((entry) => entry.run.modelName),
@@ -32,11 +35,13 @@ export function Training({ snapshot }: ViewProps) {
 
   return (
     <div className="stack">
+      <Panel title="Saved routing experiments" subtitle="Persistent offline policy training; no automatic deployment"><button className="btn" onClick={()=>goTo('RL Training')}>Open RL Training</button>{routingError&&<p>{routingError}</p>}<div className="table-wrap"><table><thead><tr><th>Run ID</th><th>Population</th><th>Elapsed seconds</th></tr></thead><tbody>{routingRuns.map(run=><tr key={run.run_id}><td>{run.run_id}</td><td>{run.data_origin}</td><td>{run.elapsed_seconds.toFixed(3)}</td></tr>)}</tbody></table></div></Panel>
+      {consoleRuns.some(run=>run.kind==='RL Training')&&<Panel title="Offline routing training runs" subtitle="Shared with RL Training; these fitted policies remain shadow-only"><div className="table-wrap"><table><thead><tr><th>Run ID</th><th>Policies</th><th>Summary</th></tr></thead><tbody>{consoleRuns.filter(run=>run.kind==='RL Training').map(run=><tr key={run.id}><td className="mono">{run.id}</td><td>{run.count}</td><td><pre>{JSON.stringify(run.summary)}</pre></td></tr>)}</tbody></table></div></Panel>}
       <div className="grid-4 stagger">
         <Metric label="Registered runs" value={runs.length} detail={`${completed} completed`} tone="info" icon={<Icon name="training" size={13} />} />
         <Metric label="Shadow evaluations" value={shadow} detail="Evaluated without serving traffic" tone="violet" icon={<Icon name="layers" size={13} />} />
         <Metric label="Challengers" value={runs.filter((run) => run.status === "CHALLENGER").length} detail="Awaiting an operator decision" tone="warning" icon={<Icon name="target" size={13} />} />
-        <Metric label="Automatic promotions" value="0" detail="No candidate is ever promoted without approval" tone="success" icon={<Icon name="shield" size={13} />} />
+        <Metric label="Promotion policy" value="Operator gated" detail="Candidate review, runtime acknowledgement and measured gates are required" tone="success" icon={<Icon name="shield" size={13} />} />
       </div>
 
       {comparison.groups.length > 0 && (

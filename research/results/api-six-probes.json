@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-28T07:41:30.147102+00:00",
+  "mode": "local-api",
+  "boundary": "client HTTP round trip",
+  "input_set": "phase10-six-development-probes-v1",
+  "input_sha256": "a72146abd1a03b16acea334cac0cfb51574697b91a65f7ce910c2c413b675de9",
+  "seed": 641,
+  "workers": 1,
+  "config_sha256": {
+    "configs\\adaptation_service.toml": "c902499bf41534a5c471248d012e79ccd7f21b9272865af43148b6c352db8a4b",
+    "configs\\core.toml": "2456889c8d57d6463c5766562da9844c195f1656535f1e31310fd9c310047b76",
+    "configs\\data\\atrdf.toml": "8ce5f76238ec1e21910d1b0edfc18486af35a4bce74459ee2f1e8f4b5ab39b92",
+    "configs\\data\\cicids2018.toml": "cb281dd4298ae3e07b0222890ea44cf4d94ec8e24d2c90caf9f33bbeb30b0230",
+    "configs\\models\\benchmark.toml": "8aa12a339fcc993f69008e8b38a1af3f2d272aab2a526b33c5edd853081a4844",
+    "configs\\models\\calibration.toml": "8575823ae45bac655c1ed504b7cddb841c7beaea27ab09fd2ef007777ff5c3f9",
+    "configs\\models\\calibration_deployment.toml": "576d4555ad8927443c4eb0deb39a2fcac0bc87d3eb908202ed3094df8f33bd03",
+    "configs\\models\\deep.toml": "36962d353e693f7ca364f2822518513b6d8c8ff14fbe12ff2f451ca7e61952d8",
+    "configs\\models\\deep_deployment.toml": "b33c94da3a9ac194f093f44983095355826ed00b5a973c47fd4309a2dcaec754",
+    "configs\\models\\execution_expert.toml": "ea537e05ef0b17190f8f0edad424bc95456734313699909f39d349e3230d5823",
+    "configs\\models\\execution_expert_deployment.toml": "4ca10aad67b26df233ef9a68d8604344057b015f87f5def80a41f44c2816a28c",
+    "configs\\models\\expert_ensemble.toml": "99ac498e69d333ff686b68629d8a83c2701f57429e5d170194e2c8d119cfe6b0",
+    "configs\\models\\fusion.toml": "a2b4c0cb418fbd799142d38cc5b20b398fbf751c804c9901f3b47e9aa78e584d",
+    "configs\\models\\injection_expert.toml": "3c42ef5238d552747dd7a5930ca3824f541efa4bcde86339fa3d3bb225db42f6",
+    "configs\\models\\injection_expert_deployment.toml": "773f0a46889ff38ad7837f3676e6615677048738f68f2a6c74a9fc9ebbddb3a4",
+    "configs\\models\\network.toml": "e6fb4a9780f6c4c710598021d7e437bbe869469474181f49a7ecace2e098f060",
+    "configs\\models\\network_deployment.toml": "e9da36196c7584082d4734201d92095d4e4ccbdf0fdbc163c85bd0af3d6dd2d5",
+    "configs\\models\\pipeline.toml": "e592f90d90e77c00749f014c4a13a3733564a61ac9e1b1fd9922aac51d875e42",
+    "configs\\models\\policy.toml": "bb71979348bbbea8bd547284115bfbc479219d5fb88a75c49a92537b37b45129",
+    "configs\\models\\router.toml": "fb8ae11226dddd192340388493feffae2b5cf40fd1127b36c38585116c0aa153",
+    "configs\\models\\router_deployment.toml": "43ac4410063821913f02b931f9bd9f43890f2748616bb1a78f7e4976aa83ef9e",
+    "configs\\models\\triage.toml": "81278022f1a1cb3c39dc307787593e392b3683d53f81afa23fd47aa9664dd1df",
+    "configs\\models\\triage_deployment.toml": "22d67a91cc6ba59cfb6bca8fcd0d37cf0dcaf923a7f05d2995bdd75797262d3e",
+    "configs\\network_sensor.toml": "0cc0d0f07179d6d60edba8fc920b3e4632cda2c95227a6f407454d147dcfefee",
+    "configs\\service.toml": "daff0eaa66fb976cb4072c16184fc304a2e3cbdc196daa6e9cef2f821aa2db25"
+  },
+  "environment": {
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "limitations": [
+    "Development diagnostics only; not held-out generalization evidence.",
+    "No hardware utilization sampling, uncertainty intervals, or final-test evaluation.",
+    "Gateway classification requires joining the persisted decision journal by request ID.",
+    "Direct mode has no HTTP responses; completed_http_responses counts completed pipeline calls there."
+  ],
+  "metrics": {
+    "request_count": 6,
+    "completed_http_responses": 6,
+    "http_success_2xx": 6,
+    "fully_inspected": 2,
+    "unresolved": 0,
+    "completed_rps": 5.264371470866982,
+    "fully_inspected_rps": 1.7547904902889941,
+    "classified_count": 6,
+    "attack_detection_recall_all_submitted": 0.2,
+    "benign_false_positive_rate_all_submitted": 0.0,
+    "enforcement_confusion": {
+      "attack": {
+        "ALLOW": 0,
+        "MONITOR": 0,
+        "RATE_LIMIT": 0,
+        "BLOCK": 0,
+        "UNKNOWN": 5
+      },
+      "benign": {
+        "ALLOW": 0,
+        "MONITOR": 0,
+        "RATE_LIMIT": 0,
+        "BLOCK": 0,
+        "UNKNOWN": 1
+      }
+    },
+    "classification_by_class": {
+      "BENIGN": {
+        "count": 1,
+        "exact_matches": 1
+      },
+      "COOKIE_INJECTION": {
+        "count": 1,
+        "exact_matches": 1
+      },
+      "DIRECTORY_TRAVERSAL": {
+        "count": 1,
+        "exact_matches": 0
+      },
+      "REMOTE_CODE_EXECUTION": {
+        "count": 1,
+        "exact_matches": 0
+      },
+      "SQL_INJECTION": {
+        "count": 1,
+        "exact_matches": 0
+      },
+      "XSS": {
+        "count": 1,
+        "exact_matches": 0
+      }
+    },
+    "latency_p50_ms": 130.65869999991264,
+    "latency_p95_ms": 433.40297499889857,
+    "latency_p99_ms": 509.8398750000343,
+    "elapsed_seconds": 1.1397372000064934
+  },
+  "records": [
+    {
+      "case_id": "cookie",
+      "request_id": "41d4138f-27d3-4932-b9d3-d33cbe01a7d4",
+      "expected": "COOKIE_INJECTION",
+      "completed": true,
+      "http_status": 200,
+      "action": "UNKNOWN",
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "predicted_attack": "COOKIE_INJECTION",
+      "inference_ms": 151.3333,
+      "service_inference_ms": 371.9224,
+      "routing_path": [
+        "TRIAGE",
+        "ROUTER_TOP1",
+        "INJECTION_FAST",
+        "DEEP_ESCALATION_DEFERRED",
+        "POLICY_PENDING"
+      ],
+      "model_versions": {
+        "triage": "triage-full-v1:isotonic",
+        "router": "router-full-v1:logistic_regression",
+        "injection": "injection-expert-full-v1:isotonic",
+        "execution": "execution-expert-full-v1:isotonic",
+        "deep": "distilbert-full-gpu-v1:temperature"
+      },
+      "round_trip_ms": 528.9491000003181
+    },
+    {
+      "case_id": "xss",
+      "request_id": "923d943d-02c2-46f7-b7ee-d47a2e3a5d6b",
+      "expected": "XSS",
+      "completed": true,
+      "http_status": 200,
+      "action": "UNKNOWN",
+      "inspection_status": "FULLY_INSPECTED",
+      "predicted_attack": "BENIGN",
+      "inference_ms": 139.8195,
+      "service_inference_ms": 140.0743,
+      "routing_path": [
+        "TRIAGE",
+        "ROUTER_TOP1",
+        "INJECTION_FAST",
+        "POLICY_PENDING"
+      ],
+      "model_versions": {
+        "triage": "triage-full-v1:isotonic",
+        "router": "router-full-v1:logistic_regression",
+        "injection": "injection-expert-full-v1:isotonic",
+        "execution": "execution-expert-full-v1:isotonic",
+        "deep": "distilbert-full-gpu-v1:temperature"
+      },
+      "round_trip_ms": 146.76459999463987
+    },
+    {
+      "case_id": "sqli",
+      "request_id": "de2952e5-e284-464a-a2c8-e151364d1565",
+      "expected": "SQL_INJECTION",
+      "completed": true,
+      "http_status": 200,
+      "action": "UNKNOWN",
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "predicted_attack": "BENIGN",
+      "inference_ms": 134.9871,
+      "service_inference_ms": 135.377,
+      "routing_path": [
+        "TRIAGE",
+        "ROUTER_TOP1",
+        "INJECTION_FAST",
+        "DEEP_ESCALATION_DEFERRED",
+        "POLICY_PENDING"
+      ],
+      "model_versions": {
+        "triage": "triage-full-v1:isotonic",
+        "router": "router-full-v1:logistic_regression",
+        "injection": "injection-expert-full-v1:isotonic",
+        "execution": "execution-expert-full-v1:isotonic",
+        "deep": "distilbert-full-gpu-v1:temperature"
+      },
+      "round_trip_ms": 140.8582000003662
+    },
+    {
+      "case_id": "rce",
+      "request_id": "5e7335cb-dc9c-4f6b-8dae-0be65a441e00",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "completed": true,
+      "http_status": 200,
+      "action": "UNKNOWN",
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "predicted_attack": "BENIGN",
+      "inference_ms": 117.5801,
+      "service_inference_ms": 117.7849,
+      "routing_path": [
+        "TRIAGE",
+        "ROUTER_TOP1",
+        "INJECTION_FAST",
+        "DEEP_ESCALATION_DEFERRED",
+        "POLICY_PENDING"
+      ],
+      "model_versions": {
+        "triage": "triage-full-v1:isotonic",
+        "router": "router-full-v1:logistic_regression",
+        "injection": "injection-expert-full-v1:isotonic",
+        "execution": "execution-expert-full-v1:isotonic",
+        "deep": "distilbert-full-gpu-v1:temperature"
+      },
+      "round_trip_ms": 120.45919999945909
+    },
+    {
+      "case_id": "benign",
+      "request_id": "d20950e1-5401-4f85-bb77-ffa2f4fd566a",
+      "expected": "BENIGN",
+      "completed": true,
+      "http_status": 200,
+      "action": "UNKNOWN",
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "predicted_attack": "BENIGN",
+      "inference_ms": 95.5496,
+      "service_inference_ms": 95.7354,
+      "routing_path": [
+        "TRIAGE",
+        "ROUTER_TOP1",
+        "INJECTION_FAST",
+        "DEEP_ESCALATION_DEFERRED",
+        "POLICY_PENDING"
+      ],
+      "model_versions": {
+        "triage": "triage-full-v1:isotonic",
+        "router": "router-full-v1:logistic_regression",
+        "injection": "injection-expert-full-v1:isotonic",
+        "execution": "execution-expert-full-v1:isotonic",
+        "deep": "distilbert-full-gpu-v1:temperature"
+      },
+      "round_trip_ms": 98.17250000196509
+    },
+    {
+      "case_id": "traversal",
+      "request_id": "d416638e-42bc-4ec5-b6a2-ecf0a705b172",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "completed": true,
+      "http_status": 200,
+      "action": "UNKNOWN",
+      "inspection_status": "FULLY_INSPECTED",
+      "predicted_attack": "BENIGN",
+      "inference_ms": 97.2254,
+      "service_inference_ms": 97.3789,
+      "routing_path": [
+        "TRIAGE",
+        "ROUTER_TOP1",
+        "INJECTION_FAST",
+        "POLICY_PENDING"
+      ],
+      "model_versions": {
+        "triage": "triage-full-v1:isotonic",
+        "router": "router-full-v1:logistic_regression",
+        "injection": "injection-expert-full-v1:isotonic",
+        "execution": "execution-expert-full-v1:isotonic",
+        "deep": "distilbert-full-gpu-v1:temperature"
+      },
+      "round_trip_ms": 99.91099999751896
+    }
+  ]
+}

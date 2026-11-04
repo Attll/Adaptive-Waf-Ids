@@ -1,0 +1,1204 @@
+{
+  "scope": "six repeated development requests; warmed in-process inference, not generalization or gateway throughput",
+  "torch": "2.13.0+cu126",
+  "threads": 1,
+  "model_run_id": "distilbert-full-gpu-v1",
+  "records": [
+    {
+      "device": "cpu",
+      "mode": "offline_batch",
+      "batch_size": 1,
+      "requests": 12,
+      "requests_per_second": 28.412844309894332,
+      "batch_p95_ms": 47.559954997996094,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 0.0
+    },
+    {
+      "device": "cpu",
+      "mode": "offline_batch",
+      "batch_size": 2,
+      "requests": 12,
+      "requests_per_second": 32.891860608371985,
+      "batch_p95_ms": 67.49985000351444,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 1.1920928955078125e-07
+    },
+    {
+      "device": "cpu",
+      "mode": "offline_batch",
+      "batch_size": 4,
+      "requests": 12,
+      "requests_per_second": 32.643583481565116,
+      "batch_p95_ms": 126.590635003231,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 1.1920928955078125e-07
+    },
+    {
+      "device": "cpu",
+      "mode": "offline_batch",
+      "batch_size": 6,
+      "requests": 12,
+      "requests_per_second": 33.15181792211428,
+      "batch_p95_ms": 183.4186200001568,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 2.468004822731018e-08
+    },
+    {
+      "device": "cpu",
+      "mode": "serialized_lock",
+      "concurrency": 1,
+      "requests": 12,
+      "requests_per_second": 30.326433733106377,
+      "request_p50_ms": 33.90455000044312,
+      "request_p95_ms": 39.757210000243504,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": null,
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 25.396099998033606,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 32.43460001249332,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 38.54500000306871,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 34.16900000593159,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 33.89350000361446,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 28.817400001571514,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 24.401200003921986,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 34.800100009306334,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 41.238799996790476,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 34.346000000368804,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 33.915599997271784,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 31.676500002504326,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cpu",
+      "mode": "microbatch",
+      "concurrency": 1,
+      "requests": 12,
+      "requests_per_second": 22.266053360999468,
+      "request_p50_ms": 45.49484999006381,
+      "request_p95_ms": 55.90486500586849,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": {
+        "enabled": true,
+        "queue_depth": 0,
+        "inflight": 0,
+        "max_batch": 4,
+        "queue_limit": 32,
+        "wait_ms": 2.0,
+        "batches": 12,
+        "completed": 12,
+        "expired": 0,
+        "rejected": 0,
+        "caller_timeouts": 0,
+        "total_queue_wait_ms": 107.88020001200493,
+        "closed": false
+      },
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 27.876499996636994,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 39.37089999089949,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 52.92170000029728,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 48.11979999067262,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 55.99820001225453,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 51.28800000238698,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 39.346400008071214,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 34.70720000041183,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 55.828500000643544,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 42.86989998945501,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 48.15989999042358,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 41.35909999604337,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cpu",
+      "mode": "serialized_lock",
+      "concurrency": 4,
+      "requests": 12,
+      "requests_per_second": 29.554058806865132,
+      "request_p50_ms": 132.48745000601048,
+      "request_p95_ms": 146.56662000488723,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": null,
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 25.315300008514896,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 58.36480000289157,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 98.9261000067927,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 135.97659999504685,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 147.96120001119561,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 145.42559999972582,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 129.75469999946654,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 126.03909999597818,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 129.99539999873377,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 134.97950001328718,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 144.58569999260362,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 140.76639999984764,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cpu",
+      "mode": "microbatch",
+      "concurrency": 4,
+      "requests": 12,
+      "requests_per_second": 32.19106038111013,
+      "request_p50_ms": 124.63849999767262,
+      "request_p95_ms": 136.67721999736386,
+      "maximum_probability_delta": 1.1920928955078125e-07,
+      "predictions_equal_to_single": true,
+      "batch_statistics": {
+        "enabled": true,
+        "queue_depth": 0,
+        "inflight": 0,
+        "max_batch": 4,
+        "queue_limit": 32,
+        "wait_ms": 2.0,
+        "batches": 3,
+        "completed": 12,
+        "expired": 0,
+        "rejected": 0,
+        "caller_timeouts": 0,
+        "total_queue_wait_ms": 3.206500012311153,
+        "closed": false
+      },
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 125.2231000107713,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 124.75459999404848,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 4.547473508864641e-12
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 124.52240000129677,
+          "prediction": "XSS",
+          "maximum_delta": 2.468004822731018e-08
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 124.16959999245591,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 1.5347723092418164e-12
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 109.42310000245925,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.1920928955078125e-07
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 109.34220001217909,
+          "prediction": "BENIGN",
+          "maximum_delta": 2.4868995751603507e-14
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 109.31080000591464,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 109.22489999211393,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 4.547473508864641e-12
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 136.67020000866614,
+          "prediction": "XSS",
+          "maximum_delta": 2.468004822731018e-08
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 136.6764999984298,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 1.5347723092418164e-12
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 136.67809999606106,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.6763806343078613e-08
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 136.6705000109505,
+          "prediction": "BENIGN",
+          "maximum_delta": 2.4868995751603507e-14
+        }
+      ]
+    },
+    {
+      "device": "cpu",
+      "mode": "serialized_lock",
+      "concurrency": 8,
+      "requests": 12,
+      "requests_per_second": 26.936335297724433,
+      "request_p50_ms": 245.18330000137212,
+      "request_p95_ms": 302.2241250073421,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": null,
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 32.250200005364604,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 74.75359999807552,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 118.95050000748597,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 159.49279999767896,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 198.7111000053119,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 231.71629999706056,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 258.6503000056837,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 294.2045999952825,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 305.82910000521224,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 299.2746000090847,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 290.94370000530034,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 280.77129999292083,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cpu",
+      "mode": "microbatch",
+      "concurrency": 8,
+      "requests": 12,
+      "requests_per_second": 31.735612726417394,
+      "request_p50_ms": 236.44850000709994,
+      "request_p95_ms": 249.92932500172174,
+      "maximum_probability_delta": 1.1920928955078125e-07,
+      "predictions_equal_to_single": true,
+      "batch_statistics": {
+        "enabled": true,
+        "queue_depth": 0,
+        "inflight": 0,
+        "max_batch": 4,
+        "queue_limit": 32,
+        "wait_ms": 2.0,
+        "batches": 3,
+        "completed": 12,
+        "expired": 0,
+        "rejected": 0,
+        "caller_timeouts": 0,
+        "total_queue_wait_ms": 944.6274000220001,
+        "closed": false
+      },
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 126.10480000148527,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 125.73820000397973,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 4.547473508864641e-12
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 125.44509999861475,
+          "prediction": "XSS",
+          "maximum_delta": 2.468004822731018e-08
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 125.37900000461377,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 1.5347723092418164e-12
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 237.1705999976257,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.1920928955078125e-07
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 236.66410001169425,
+          "prediction": "BENIGN",
+          "maximum_delta": 2.4868995751603507e-14
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 236.23290000250563,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 235.73770000075456,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 4.547473508864641e-12
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 249.75200000335462,
+          "prediction": "XSS",
+          "maximum_delta": 2.468004822731018e-08
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 249.9515999952564,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 1.5347723092418164e-12
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 249.91110000701156,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.6763806343078613e-08
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 249.81390000903048,
+          "prediction": "BENIGN",
+          "maximum_delta": 2.4868995751603507e-14
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "mode": "offline_batch",
+      "batch_size": 1,
+      "requests": 12,
+      "requests_per_second": 464.9324686772959,
+      "batch_p95_ms": 2.302899999631336,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 0.0
+    },
+    {
+      "device": "cuda",
+      "mode": "offline_batch",
+      "batch_size": 2,
+      "requests": 12,
+      "requests_per_second": 481.60857265862296,
+      "batch_p95_ms": 5.3884750086581334,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 1.8067657947540283e-07
+    },
+    {
+      "device": "cuda",
+      "mode": "offline_batch",
+      "batch_size": 4,
+      "requests": 12,
+      "requests_per_second": 902.8666007658662,
+      "batch_p95_ms": 3.78883499870426,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 1.8067657947540283e-07
+    },
+    {
+      "device": "cuda",
+      "mode": "offline_batch",
+      "batch_size": 6,
+      "requests": 12,
+      "requests_per_second": 1189.8859690596444,
+      "batch_p95_ms": 5.055750000610715,
+      "predictions_equal_to_single": true,
+      "maximum_probability_delta": 9.12696123123169e-08
+    },
+    {
+      "device": "cuda",
+      "mode": "serialized_lock",
+      "concurrency": 1,
+      "requests": 12,
+      "requests_per_second": 439.00083426125565,
+      "request_p50_ms": 2.0559000040520914,
+      "request_p95_ms": 2.6470600001630364,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": null,
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 3.2547000009799376,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 2.079699988826178,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 2.0457000064197928,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 2.0465999987209216,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 2.005800008191727,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 2.065200009383261,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 2.067699999315664,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 2.0905999990645796,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 2.02170001284685,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 2.1498999994946644,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 1.967699994565919,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 2.02980000176467,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "mode": "microbatch",
+      "concurrency": 1,
+      "requests": 12,
+      "requests_per_second": 65.90925942765487,
+      "request_p50_ms": 15.458599998964928,
+      "request_p95_ms": 16.648444995371392,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": {
+        "enabled": true,
+        "queue_depth": 0,
+        "inflight": 0,
+        "max_batch": 4,
+        "queue_limit": 32,
+        "wait_ms": 2.0,
+        "batches": 12,
+        "completed": 12,
+        "expired": 0,
+        "rejected": 0,
+        "caller_timeouts": 0,
+        "total_queue_wait_ms": 138.16620003490243,
+        "closed": false
+      },
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 11.286000008112751,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 15.718900001957081,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 14.692700002342463,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 15.645499996026047,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 15.194299994618632,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 16.585399993346073,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 15.440400005900301,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 15.476799992029555,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 16.725499997846782,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 13.350400011404417,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 15.287200003513135,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 15.69829999061767,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "mode": "serialized_lock",
+      "concurrency": 4,
+      "requests": 12,
+      "requests_per_second": 381.3203854038884,
+      "request_p50_ms": 9.092900007090066,
+      "request_p95_ms": 11.017040004662704,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": null,
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 2.9393000004347414,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 5.778799997642636,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 8.16369999665767,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 10.887800002819858,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 11.17500000691507,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 10.233799999696203,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 9.810299990931526,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 8.944100001826882,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 8.997600001748651,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 9.063300007255748,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 9.122500006924383,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 9.188600000925362,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "mode": "microbatch",
+      "concurrency": 4,
+      "requests": 12,
+      "requests_per_second": 792.4767544167221,
+      "request_p50_ms": 4.37660000170581,
+      "request_p95_ms": 5.360500000824686,
+      "maximum_probability_delta": 1.8067657947540283e-07,
+      "predictions_equal_to_single": true,
+      "batch_statistics": {
+        "enabled": true,
+        "queue_depth": 0,
+        "inflight": 0,
+        "max_batch": 4,
+        "queue_limit": 32,
+        "wait_ms": 2.0,
+        "batches": 3,
+        "completed": 12,
+        "expired": 0,
+        "rejected": 0,
+        "caller_timeouts": 0,
+        "total_queue_wait_ms": 2.590899995993823,
+        "closed": false
+      },
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 5.593699999735691,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 5.1697000017156824,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 5.184119800105691e-11
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 5.039400013629347,
+          "prediction": "XSS",
+          "maximum_delta": 3.3993273973464966e-08
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 4.769899998791516,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 7.048583938740194e-12
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 4.124099999899045,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.8067657947540283e-07
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 4.159199990681373,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 4.090499991434626,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 4.120899990084581,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 5.184119800105691e-11
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 4.445099999429658,
+          "prediction": "XSS",
+          "maximum_delta": 3.3993273973464966e-08
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 4.389900001115166,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 7.048583938740194e-12
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 4.363300002296455,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.8067657947540283e-07
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 4.296300001442432,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "mode": "serialized_lock",
+      "concurrency": 8,
+      "requests": 12,
+      "requests_per_second": 317.89089977110723,
+      "request_p50_ms": 18.073150007694494,
+      "request_p95_ms": 24.88023499972769,
+      "maximum_probability_delta": 0.0,
+      "predictions_equal_to_single": true,
+      "batch_statistics": null,
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 3.5995999933220446,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 5.783300002804026,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 7.801400002790615,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 9.928200001013465,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 13.168599994969554,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 16.569500003242865,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 19.576800012146123,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 23.040100000798702,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 24.377199995797127,
+          "prediction": "XSS",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 24.445100003504194,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 24.85309999610763,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 24.91340000415221,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "mode": "microbatch",
+      "concurrency": 8,
+      "requests": 12,
+      "requests_per_second": 833.0209506222931,
+      "request_p50_ms": 7.386350000160746,
+      "request_p95_ms": 8.153595004114322,
+      "maximum_probability_delta": 1.8067657947540283e-07,
+      "predictions_equal_to_single": true,
+      "batch_statistics": {
+        "enabled": true,
+        "queue_depth": 0,
+        "inflight": 0,
+        "max_batch": 4,
+        "queue_limit": 32,
+        "wait_ms": 2.0,
+        "batches": 3,
+        "completed": 12,
+        "expired": 0,
+        "rejected": 0,
+        "caller_timeouts": 0,
+        "total_queue_wait_ms": 31.458099983865395,
+        "closed": false
+      },
+      "raw": [
+        {
+          "index": 0,
+          "elapsed_ms": 5.862300007720478,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 1,
+          "elapsed_ms": 5.415999999968335,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 5.184119800105691e-11
+        },
+        {
+          "index": 2,
+          "elapsed_ms": 5.100700000184588,
+          "prediction": "XSS",
+          "maximum_delta": 3.3993273973464966e-08
+        },
+        {
+          "index": 3,
+          "elapsed_ms": 4.896499987808056,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 7.048583938740194e-12
+        },
+        {
+          "index": 4,
+          "elapsed_ms": 8.275200001662597,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.8067657947540283e-07
+        },
+        {
+          "index": 5,
+          "elapsed_ms": 8.05410000612028,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        },
+        {
+          "index": 6,
+          "elapsed_ms": 7.690599988563918,
+          "prediction": "BENIGN",
+          "maximum_delta": 7.105427357601002e-14
+        },
+        {
+          "index": 7,
+          "elapsed_ms": 7.371300001977943,
+          "prediction": "SQL_INJECTION",
+          "maximum_delta": 5.184119800105691e-11
+        },
+        {
+          "index": 8,
+          "elapsed_ms": 7.555599993793294,
+          "prediction": "XSS",
+          "maximum_delta": 3.3993273973464966e-08
+        },
+        {
+          "index": 9,
+          "elapsed_ms": 7.507100002840161,
+          "prediction": "DIRECTORY_TRAVERSAL",
+          "maximum_delta": 7.048583938740194e-12
+        },
+        {
+          "index": 10,
+          "elapsed_ms": 7.398000001558103,
+          "prediction": "BENIGN",
+          "maximum_delta": 1.8067657947540283e-07
+        },
+        {
+          "index": 11,
+          "elapsed_ms": 7.37469999876339,
+          "prediction": "BENIGN",
+          "maximum_delta": 0.0
+        }
+      ]
+    }
+  ]
+}

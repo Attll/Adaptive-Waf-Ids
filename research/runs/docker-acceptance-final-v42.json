@@ -1,0 +1,198 @@
+{
+  "checks": {
+    "all_requests_persisted": true,
+    "benign_forwarded": true,
+    "five_attacks_blocked": true,
+    "network_full_vector": true,
+    "durable_completed_jobs": true,
+    "dashboard_html": true,
+    "dashboard_authenticated_proxy": true,
+    "browser_internal_route_blocked": true
+  },
+  "requests": [
+    {
+      "case": "benign",
+      "request_id": "6cfcc3a3-9c25-4044-b06e-0536923c42a9",
+      "http_status": 200,
+      "round_trip_ms": 73.36449998547323,
+      "persisted": true,
+      "inspection_status": "PARTIALLY_INSPECTED",
+      "action": "ALLOW",
+      "prediction": "COOKIE_INJECTION"
+    },
+    {
+      "case": "sqli",
+      "request_id": "396373f4-6108-4eae-9d57-b3a8e735f8ef",
+      "http_status": 403,
+      "round_trip_ms": 32.284999993862584,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "SQL_INJECTION"
+    },
+    {
+      "case": "xss",
+      "request_id": "593669a4-f266-4f5d-8721-102256b9cd6a",
+      "http_status": 403,
+      "round_trip_ms": 14.63380001951009,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "XSS"
+    },
+    {
+      "case": "traversal",
+      "request_id": "f07a994e-0b18-442f-8e8f-e64e268600db",
+      "http_status": 403,
+      "round_trip_ms": 13.974000001326203,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "DIRECTORY_TRAVERSAL"
+    },
+    {
+      "case": "rce",
+      "request_id": "13705593-102c-4aec-a323-7e32fe44d8f7",
+      "http_status": 403,
+      "round_trip_ms": 32.94090001145378,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "REMOTE_CODE_EXECUTION"
+    },
+    {
+      "case": "cookie",
+      "request_id": "d160ad84-d83f-4c87-9dc8-7fc3a22b4bbf",
+      "http_status": 403,
+      "round_trip_ms": 27.69580000312999,
+      "persisted": true,
+      "inspection_status": "RULES_ONLY",
+      "action": "BLOCK",
+      "prediction": "COOKIE_INJECTION"
+    }
+  ],
+  "network": {
+    "status": 200,
+    "result": {
+      "network_context": {
+        "source_ip": "192.0.2.71",
+        "destination_ip": null,
+        "network_risk": 0.026524787549106477,
+        "network_class": "BENIGN",
+        "confidence": 0.9734752124508935,
+        "model_version": "network-full-v1:random_forest",
+        "observed_at": "2026-10-30T03:18:57.209025+00:00",
+        "observation_scope": "PROVIDED_FLOW",
+        "feature_contract": "PROVIDED_FLOW"
+      }
+    }
+  },
+  "deep_jobs": {
+    "jobs": [
+      {
+        "job_id": "f4212ef8-7f81-4e4a-9b53-38ed82f3a7c7",
+        "request_id": "6cfcc3a3-9c25-4044-b06e-0536923c42a9",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:18:56.940299+00:00"
+      },
+      {
+        "job_id": "a83a078c-834e-4533-980f-f8cb2bd48382",
+        "request_id": "af8bbafe-61c9-4427-8400-6cd3d96a0709",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:18:53.171613+00:00"
+      },
+      {
+        "job_id": "e5845a7a-02c3-480a-b4a8-278ff99da5b0",
+        "request_id": "f08227c8-8ccd-48bc-b792-deb8e2d9ab36",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:18:52.801605+00:00"
+      },
+      {
+        "job_id": "b41e17db-2449-4027-90a8-4facce9ceff9",
+        "request_id": "966717e6-4cbc-487a-b4c1-82b67e46700d",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:45.159227+00:00"
+      },
+      {
+        "job_id": "615adbb3-138e-42f4-be12-77ce0d699f7b",
+        "request_id": "a667a371-a0db-4912-81ce-b85ef01df6c4",
+        "state": "FAILED",
+        "attempts": 0,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:29.532029+00:00"
+      },
+      {
+        "job_id": "8a839857-047a-4882-90ba-33bc1384ef36",
+        "request_id": "b4d1e5e9-ec56-4d3a-b7d3-4b7f33669889",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:27.563348+00:00"
+      },
+      {
+        "job_id": "4f0a9889-abae-414e-b736-c5a23e4ef63f",
+        "request_id": "e50868fb-f237-4d55-8d44-f400ceb391a2",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:21.335855+00:00"
+      },
+      {
+        "job_id": "21aca6b1-356d-4c6c-ad36-68415fb3cc11",
+        "request_id": "9bcfe4db-9832-4b86-81ba-b42a820714a7",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:16:20.188525+00:00"
+      },
+      {
+        "job_id": "99cd5aee-f4bc-4644-90d1-9187f8e59184",
+        "request_id": "2241d0e7-d844-4bc3-9dba-aafe4f2a08d6",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:13:47.914483+00:00"
+      },
+      {
+        "job_id": "b6a399b5-6745-4d99-adb4-b2d93d53b888",
+        "request_id": "88931df9-0817-402f-8696-50a8db1fb1e6",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:11:38.368486+00:00"
+      },
+      {
+        "job_id": "a8efefb9-77bd-4c66-9fae-b09dd974e765",
+        "request_id": "215ad2a3-f60c-48b4-ae4b-8fddf27ee4af",
+        "state": "COMPLETED",
+        "attempts": 1,
+        "model_version": "distilbert-full-gpu-v1:temperature",
+        "created_at": "2026-10-30T03:11:37.951201+00:00"
+      }
+    ],
+    "statistics": {
+      "enabled": true,
+      "backend": "rabbitmq_postgresql",
+      "workers": 1,
+      "queue_limit": 256,
+      "queue_depth": 0,
+      "running": 0,
+      "pending": 0,
+      "submitted": 11,
+      "resolved": 10,
+      "failed": 1,
+      "expired": 0,
+      "rejected": 0,
+      "last_error_type": null
+    }
+  },
+  "scope": "six development diagnostics; no representative model-only accuracy or browser automation claim"
+}

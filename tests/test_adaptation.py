@@ -11,6 +11,20 @@ from adaptive_waf.adaptation.service import AdaptationSettings, create_app
 
 
 class AdaptationTests(unittest.TestCase):
+    def test_curation_preserves_latest_correction_and_never_overwrites_exports(self):
+        class Client(_Client):
+            def request(self, *args):
+                return {"feedback": [
+                    {"eventId":"same", "verdict":"FALSE_POSITIVE", "submittedAt":"2026-10-02T00:00:00Z"},
+                    {"eventId":"same", "verdict":"CONFIRMED_ATTACK", "submittedAt":"2026-10-01T00:00:00Z"}]}
+        with tempfile.TemporaryDirectory() as directory:
+            with TestClient(create_app(AdaptationSettings(curated_root=Path(directory)), Client())) as client:
+                first = client.post("/v1/adaptation/curate").json()
+                second = client.post("/v1/adaptation/curate").json()
+            self.assertNotEqual(first["path"], second["path"])
+            self.assertIn("FALSE_POSITIVE", Path(first["path"]).read_text())
+            self.assertNotIn("CONFIRMED_ATTACK", Path(first["path"]).read_text())
+
     def test_psi_distinguishes_stable_and_shifted_distributions(self) -> None:
         reference = [float(value) for value in range(100)]
         self.assertAlmostEqual(population_stability_index(reference, reference), 0.0)

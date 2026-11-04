@@ -11,6 +11,11 @@ export type Section =
   | "Generator"
   | "Models"
   | "Training"
+  | "Research"
+  | "Redis Cache"
+  | "Model Lab"
+  | "Timing"
+  | "RL Training"
   | "Policy"
   | "Access Control"
   | "Applications"
@@ -19,8 +24,11 @@ export type Section =
   | "Services"
   | "Audit"
   | "Settings";
+export type ToolRun={id:string;kind:string;count:number;results:unknown[];summary?:Record<string,unknown>;stop?:()=>void};
 
 export type ViewProps = {
+  runs:ToolRun[];
+  recordRun:(run:ToolRun)=>void;
   snapshot: DashboardSnapshot;
   selected?: EventRecord;
   select: (event: EventRecord) => void;

@@ -1,2 +1,5 @@
 inference_timeout_ms = 30000
 network_inference_timeout_ms = 5000
+http_workers = 1
+network_workers = 1
+inference_queue_limit = 16

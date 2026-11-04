@@ -1,0 +1,618 @@
+ Image adaptive-waf-ids/adaptation:1.1.0 Building 
+ Image adaptive-waf-ids/detection:1.1.0 Building 
+ Image adaptive-waf-ids/dashboard:1.1.0 Building 
+ Image adaptive-waf-ids/control:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.63kB done
+#1 DONE 0.0s
+
+#2 [adaptation internal] load build definition from Python.Dockerfile
+#2 transferring dockerfile: 1.93kB done
+#2 DONE 0.0s
+
+#3 [dashboard internal] load build definition from Dockerfile
+#3 transferring dockerfile: 453B done
+#3 DONE 0.0s
+
+#4 [control internal] load build definition from Dockerfile
+#4 transferring dockerfile: 550B done
+#4 DONE 0.0s
+
+#5 [detection internal] load metadata for docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#5 ...
+
+#6 [control internal] load metadata for docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#6 DONE 1.4s
+
+#5 [detection internal] load metadata for docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#5 DONE 1.4s
+
+#7 [adaptation internal] load .dockerignore
+#7 transferring context: 265B done
+#7 DONE 0.0s
+
+#8 [adaptation dependencies 1/5] FROM docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#8 resolve docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd 0.0s done
+#8 DONE 0.0s
+
+#9 [adaptation internal] load build context
+#9 transferring context: 1.72MB 0.5s done
+#9 DONE 0.5s
+
+#7 [dashboard internal] load .dockerignore
+#7 transferring context: 265B done
+#7 DONE 0.0s
+
+#10 [control internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#10 DONE 1.9s
+
+#11 [dashboard internal] load metadata for docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#11 DONE 1.9s
+
+#12 [dashboard internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#12 DONE 1.9s
+
+#13 [control internal] load .dockerignore
+#13 transferring context: 63B done
+#13 DONE 0.0s
+
+#14 [dashboard build 1/6] FROM docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#14 resolve docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85 0.0s done
+#14 DONE 0.0s
+
+#15 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#15 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.0s done
+#15 DONE 0.0s
+
+#16 [control stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a
+#16 resolve docker.io/library/eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a 0.0s done
+#16 DONE 0.0s
+
+#17 [control build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#17 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e 0.0s done
+#17 DONE 0.0s
+
+#18 [control internal] load build context
+#18 transferring context: 11.97kB 0.0s done
+#18 DONE 0.0s
+
+#19 [adaptation dependencies 2/5] WORKDIR /app
+#19 CACHED
+
+#20 [adaptation dependencies 3/5] COPY pyproject.toml ./
+#20 CACHED
+
+#21 [control build 2/6] WORKDIR /workspace
+#21 CACHED
+
+#22 [control build 3/6] COPY pom.xml .
+#22 CACHED
+
+#23 [control build 4/6] RUN mvn -q -DskipTests dependency:go-offline
+#23 CACHED
+
+#24 [control build 5/6] COPY src src
+#24 DONE 0.0s
+
+#25 [adaptation dependencies 4/5] COPY src ./src
+#25 DONE 0.1s
+
+#26 [dashboard internal] load build context
+#26 transferring context: 446.97kB 0.1s done
+#26 DONE 0.1s
+
+#27 [dashboard build 2/6] WORKDIR /app
+#27 CACHED
+
+#28 [dashboard build 3/6] COPY dashboard/package*.json ./
+#28 CACHED
+
+#29 [dashboard build 4/6] RUN npm ci
+#29 CACHED
+
+#30 [dashboard build 5/6] COPY dashboard .
+#30 DONE 0.0s
+
+#31 [dashboard build 6/6] RUN npm run build
+#31 0.550 
+#31 0.550 > adaptive-waf-dashboard@0.1.0 build
+#31 0.550 > tsc -b && vite build
+#31 0.550 
+#31 ...
+
+#32 [detection internal] load build context
+#32 transferring context: 124.01MB 5.9s
+#32 ...
+
+#31 [dashboard build 6/6] RUN npm run build
+#31 5.352 vite v6.4.3 building for production...
+#31 5.438 transforming...
+#31 6.374 ✓ 56 modules transformed.
+#31 6.529 rendering chunks...
+#31 6.538 computing gzip size...
+#31 6.548 dist/index.html                   0.81 kB │ gzip:   0.43 kB
+#31 6.548 dist/assets/index-PU_C-jH0.css   29.49 kB │ gzip:   6.58 kB
+#31 6.548 dist/assets/index-B9lI4Byw.js   392.64 kB │ gzip: 113.38 kB
+#31 6.549 ✓ built in 1.17s
+#31 DONE 6.7s
+
+#32 [detection internal] load build context
+#32 ...
+
+#33 [adaptation dependencies 5/5] RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir '.[service,durable]' 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#33 4.642 Processing /app
+#33 4.645   Installing build dependencies: started
+#33 ...
+
+#15 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#15 CACHED
+
+#34 [dashboard stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+#34 DONE 0.0s
+
+#35 [dashboard stage-1 3/3] COPY dashboard/nginx.conf /etc/nginx/conf.d/default.conf
+#35 DONE 0.0s
+
+#32 [detection internal] load build context
+#32 ...
+
+#36 [dashboard] exporting to image
+#36 exporting layers 0.0s done
+#36 exporting manifest sha256:37731a5805ca97ea5ac457df89b0965df75e68cbb586536a4eb145470b7f3d56 done
+#36 exporting config sha256:614ae7aadf68e9f3f3e4e06cb2a1ebe54cfddc0b7a6377f893fc4c13db3980b4 done
+#36 exporting attestation manifest sha256:f2e152b28b0d387b6cba86026ff3a843a1c08e22fe5a65de1dec689f0279612f 0.0s done
+#36 exporting manifest list sha256:18ffb80d14a063d9469ad6de765751e170fd008d2da0a32c22978febb5f32854 done
+#36 naming to docker.io/adaptive-waf-ids/dashboard:1.1.0 done
+#36 unpacking to docker.io/adaptive-waf-ids/dashboard:1.1.0 0.0s done
+#36 DONE 0.1s
+
+#32 [detection internal] load build context
+#32 ...
+
+#37 [dashboard] resolving provenance for metadata file
+#37 DONE 0.1s
+
+#32 [detection internal] load build context
+#32 ...
+
+#38 [control build 6/6] RUN mvn -q -DskipTests package
+#38 ...
+
+#32 [detection internal] load build context
+#32 transferring context: 230.40MB 11.0s
+#32 ...
+
+#38 [control build 6/6] RUN mvn -q -DskipTests package
+#38 DONE 11.0s
+
+#39 [control stage-1 2/3] WORKDIR /app
+#39 CACHED
+
+#32 [detection internal] load build context
+#32 ...
+
+#40 [control stage-1 3/3] COPY --from=build /workspace/target/security-control-service-0.1.0.jar app.jar
+#40 DONE 0.1s
+
+#32 [detection internal] load build context
+#32 ...
+
+#41 [control] exporting to image
+#41 exporting layers 1.6s done
+#41 exporting manifest sha256:f1cf47483d7a8091ac7f90207ffcacd2f61f397e10fa6b4bceaff20cfc3928ad done
+#41 exporting config sha256:bf0441c2effb0a78e413f70fde882cbabd9ef1f5d27f3ec95a10b798594e67af done
+#41 exporting attestation manifest sha256:091745839cf3cd3bf0152fc4ea208c4c31c88e15ac303ec5eb1855a37c4d8245 0.0s done
+#41 exporting manifest list sha256:698f2abc0ac985310411dce8cd3e30dedacd64e92395b5129cfb051ae3591827 done
+#41 naming to docker.io/adaptive-waf-ids/control:1.1.0 done
+#41 unpacking to docker.io/adaptive-waf-ids/control:1.1.0 0.3s done
+#41 DONE 2.0s
+
+#32 [detection internal] load build context
+#32 ...
+
+#42 [control] resolving provenance for metadata file
+#42 DONE 0.1s
+
+#32 [detection internal] load build context
+#32 transferring context: 314.18MB 16.1s
+#32 ...
+
+#33 [adaptation dependencies 5/5] RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir '.[service,durable]' 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#33 8.384   Installing build dependencies: finished with status 'done'
+#33 8.385   Getting requirements to build wheel: started
+#33 8.594   Getting requirements to build wheel: finished with status 'done'
+#33 8.596   Preparing metadata (pyproject.toml): started
+#33 8.767   Preparing metadata (pyproject.toml): finished with status 'done'
+#33 8.982 Collecting scikit-learn==1.9.0
+#33 9.049   Downloading scikit_learn-1.9.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (11 kB)
+#33 9.082 Collecting joblib==1.5.3
+#33 9.094   Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+#33 9.397 Collecting numpy>=1.24.1 (from scikit-learn==1.9.0)
+#33 9.412   Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+#33 9.617 Collecting scipy>=1.10.0 (from scikit-learn==1.9.0)
+#33 9.629   Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+#33 9.669      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 1.5 MB/s eta 0:00:00
+#33 9.756 Collecting narwhals>=2.0.1 (from scikit-learn==1.9.0)
+#33 9.767   Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+#33 9.787 Collecting threadpoolctl>=3.5.0 (from scikit-learn==1.9.0)
+#33 9.799   Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+#33 10.12 Collecting ijson<4,>=3.2 (from adaptive-waf==0.1.0)
+#33 10.14   Downloading ijson-3.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (23 kB)
+#33 10.25 Collecting fastapi<1,>=0.115 (from adaptive-waf==0.1.0)
+#33 10.26   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+#33 10.34 Collecting uvicorn<1,>=0.30 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 10.35   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+#33 10.39 Collecting httpx<1,>=0.28 (from adaptive-waf==0.1.0)
+#33 10.40   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#33 10.42 Collecting pika<2,>=1.3 (from adaptive-waf==0.1.0)
+#33 10.43   Downloading pika-1.4.4-py3-none-any.whl.metadata (13 kB)
+#33 10.47 Collecting psycopg<4,>=3.2 (from psycopg[binary]<4,>=3.2; extra == "durable"->adaptive-waf==0.1.0)
+#33 10.48   Downloading psycopg-3.3.6-py3-none-any.whl.metadata (4.4 kB)
+#33 10.58 Collecting starlette>=0.46.0 (from fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 10.72   Downloading starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+#33 10.86 Collecting pydantic>=2.9.0 (from fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 10.87   Downloading pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+#33 10.93      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 137.6/137.6 kB 2.4 MB/s eta 0:00:00
+#33 10.96 Collecting typing-extensions>=4.8.0 (from fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 10.97   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#33 10.98 Collecting typing-inspection>=0.4.2 (from fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 11.00   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#33 11.02 Collecting annotated-doc>=0.0.2 (from fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 11.03   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#33 11.07 Collecting opentelemetry-api>=1.44.0 (from fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 11.08   Downloading opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+#33 11.11 Collecting anyio (from httpx<1,>=0.28->adaptive-waf==0.1.0)
+#33 11.12   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#33 11.15 Collecting certifi (from httpx<1,>=0.28->adaptive-waf==0.1.0)
+#33 11.16   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+#33 11.18 Collecting httpcore==1.* (from httpx<1,>=0.28->adaptive-waf==0.1.0)
+#33 11.19   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#33 11.21 Collecting idna (from httpx<1,>=0.28->adaptive-waf==0.1.0)
+#33 11.22   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#33 11.24 Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.28->adaptive-waf==0.1.0)
+#33 11.25   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#33 11.51 Collecting psycopg-binary==3.3.6 (from psycopg[binary]<4,>=3.2; extra == "durable"->adaptive-waf==0.1.0)
+#33 11.52   Downloading psycopg_binary-3.3.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+#33 11.57 Collecting click>=7.0 (from uvicorn<1,>=0.30->uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 11.58   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#33 11.63 Collecting httptools>=0.8.0 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 11.65   Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#33 11.67 Collecting python-dotenv>=0.13 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 11.68   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+#33 11.73 Collecting pyyaml>=5.1 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 11.75   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#33 11.80 Collecting uvloop>=0.15.1 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 11.82   Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+#33 11.97 Collecting watchfiles>=0.20 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 11.98   Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#33 12.15 Collecting websockets>=13.0 (from uvicorn[standard]<1,>=0.30; extra == "service"->adaptive-waf==0.1.0)
+#33 12.16   Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+#33 12.20 Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 12.21   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#33 13.26 Collecting pydantic-core==2.50.2 (from pydantic>=2.9.0->fastapi<1,>=0.115->adaptive-waf==0.1.0)
+#33 13.27   Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+#33 13.35 Downloading scikit_learn-1.9.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.3 MB)
+#33 15.81    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.3/9.3 MB 3.8 MB/s eta 0:00:00
+#33 15.82 Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+#33 15.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 309.1/309.1 kB 4.1 MB/s eta 0:00:00
+#33 15.94 Downloading fastapi-0.162.0-py3-none-any.whl (148 kB)
+#33 15.97    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.9/148.9 kB 4.3 MB/s eta 0:00:00
+#33 15.98 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#33 16.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 233.9 kB/s eta 0:00:00
+#33 16.27 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#33 16.31    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 3.6 MB/s eta 0:00:00
+#33 16.32 Downloading ijson-3.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (135 kB)
+#33 16.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.6/135.6 kB 4.2 MB/s eta 0:00:00
+#33 16.36 Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+#33 16.46    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 490.6/490.6 kB 5.2 MB/s eta 0:00:00
+#33 16.47 Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+#33 ...
+
+#32 [detection internal] load build context
+#32 transferring context: 357.47MB 19.2s done
+#32 DONE 19.2s
+
+#19 [detection dependencies 2/5] WORKDIR /app
+#19 CACHED
+
+#20 [detection dependencies 3/5] COPY pyproject.toml ./
+#20 CACHED
+
+#25 [detection dependencies 4/5] COPY src ./src
+#25 DONE 0.1s
+
+#33 [detection dependencies 5/5] RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir '.[service,durable]' 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#33 20.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 3.8 MB/s eta 0:00:00
+#33 20.89 Downloading pika-1.4.4-py3-none-any.whl (165 kB)
+#33 20.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 165.3/165.3 kB 3.7 MB/s eta 0:00:00
+#33 20.94 Downloading psycopg-3.3.6-py3-none-any.whl (215 kB)
+#33 21.01    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 215.5/215.5 kB 3.8 MB/s eta 0:00:00
+#33 21.02 Downloading psycopg_binary-3.3.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+#33 22.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 3.8 MB/s eta 0:00:00
+#33 22.48 Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+#33 32.23    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 3.8 MB/s eta 0:00:00
+#33 32.23 Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+#33 32.25 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+#33 32.27    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.4/87.4 kB 6.7 MB/s eta 0:00:00
+#33 32.28 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#33 32.31 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#33 32.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 4.8 MB/s eta 0:00:00
+#33 32.35 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#33 32.36 Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (499 kB)
+#33 32.49    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 499.1/499.1 kB 4.1 MB/s eta 0:00:00
+#33 32.50 Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+#33 32.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 5.9 MB/s eta 0:00:00
+#33 32.52 Downloading pydantic-2.14.2-py3-none-any.whl (490 kB)
+#33 32.64    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 490.4/490.4 kB 4.2 MB/s eta 0:00:00
+#33 32.65 Downloading pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+#33 33.24    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 3.8 MB/s eta 0:00:00
+#33 33.25 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+#33 33.26 Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+#33 33.55    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 2.9 MB/s eta 0:00:00
+#33 33.56 Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+#33 33.59    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.6/80.6 kB 4.4 MB/s eta 0:00:00
+#33 33.60 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#33 33.63    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 4.5 MB/s eta 0:00:00
+#33 33.64 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#33 33.66    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 6.9 MB/s eta 0:00:00
+#33 33.67 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#33 33.67    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 6.8 MB/s eta 0:00:00
+#33 33.68 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#33 33.70 Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.0 MB)
+#33 34.70    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 3.9 MB/s eta 0:00:00
+#33 34.71 Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+#33 34.82    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 458.4/458.4 kB 4.2 MB/s eta 0:00:00
+#33 34.83 Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (225 kB)
+#33 34.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.5/225.5 kB 4.5 MB/s eta 0:00:00
+#33 34.89 Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+#33 34.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.1/135.1 kB 2.8 MB/s eta 0:00:00
+#33 34.95 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#33 35.03 Building wheels for collected packages: adaptive-waf
+#33 35.03   Building wheel for adaptive-waf (pyproject.toml): started
+#33 35.18   Building wheel for adaptive-waf (pyproject.toml): finished with status 'done'
+#33 35.18   Created wheel for adaptive-waf: filename=adaptive_waf-0.1.0-py3-none-any.whl size=116219 sha256=46115958f2f4d43fd1e7f6ac7b69600cc79689eccd6bf0b03e9f5ee56be34d73
+#33 35.18   Stored in directory: /tmp/pip-ephem-wheel-cache-7bijnlqq/wheels/57/0f/98/bb57b2b57b95807699b822a35c022f139d38a02c27922f27ce
+#33 35.18 Successfully built adaptive-waf
+#33 35.31 Installing collected packages: websockets, uvloop, typing-extensions, threadpoolctl, pyyaml, python-dotenv, psycopg-binary, pika, numpy, narwhals, joblib, ijson, idna, httptools, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, scipy, pydantic-core, psycopg, opentelemetry-api, httpcore, anyio, watchfiles, starlette, scikit-learn, pydantic, httpx, fastapi, adaptive-waf
+#33 41.99 Successfully installed adaptive-waf-0.1.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.23 click-8.5.0 fastapi-0.162.0 h11-0.16.0 httpcore-1.0.9 httptools-0.9.0 httpx-0.28.1 idna-3.20 ijson-3.6.0 joblib-1.5.3 narwhals-2.28.0 numpy-2.4.6 opentelemetry-api-1.45.2 pika-1.4.4 psycopg-3.3.6 psycopg-binary-3.3.6 pydantic-2.14.2 pydantic-core-2.50.2 python-dotenv-1.2.4 pyyaml-6.0.3 scikit-learn-1.9.0 scipy-1.17.1 starlette-1.10.0 threadpoolctl-3.7.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.3
+#33 42.12 
+#33 42.12 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#33 42.12 [notice] To update, run: python -m pip install --upgrade pip
+#33 DONE 42.6s
+
+#33 [adaptation dependencies 5/5] RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir '.[service,durable]' 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#33 DONE 42.6s
+
+#43 [detection dependencies 5/5] RUN python -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir '.[service,durable]' 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#43 CACHED
+
+#44 [detection dependencies 3/5] COPY pyproject.toml ./
+#44 CACHED
+
+#45 [detection dependencies 4/5] COPY src ./src
+#45 CACHED
+
+#46 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#46 0.465 Looking in indexes: https://download.pytorch.org/whl/cpu
+#46 0.687 Collecting torch==2.13.0
+#46 ...
+
+#47 [adaptation base 3/9] RUN useradd --uid 10001 --create-home waf && mkdir -p /app/artifacts && chown waf:waf /app/artifacts
+#47 CACHED
+
+#46 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#46 0.827   Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (37 kB)
+#46 0.888 Collecting filelock (from torch==2.13.0)
+#46 0.951   Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+#46 0.953 Requirement already satisfied: typing-extensions>=4.10.0 in /opt/venv/lib/python3.11/site-packages (from torch==2.13.0) (4.16.0)
+#46 0.953 Requirement already satisfied: setuptools>=77.0.3 in /opt/venv/lib/python3.11/site-packages (from torch==2.13.0) (79.0.1)
+#46 0.986 Collecting sympy>=1.13.3 (from torch==2.13.0)
+#46 0.997   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+#46 1.051 Collecting networkx>=2.5.1 (from torch==2.13.0)
+#46 1.063   Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+#46 1.394 Collecting jinja2 (from torch==2.13.0)
+#46 1.411   Downloading https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#46 1.458 Collecting fsspec>=0.8.5 (from torch==2.13.0)
+#46 1.469   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+#46 1.623 Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.13.0)
+#46 1.635   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+#46 1.700 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.13.0)
+#46 1.715   Downloading https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#46 2.025 Downloading https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl (191.8 MB)
+#46 ...
+
+#48 [detection base 4/9] COPY --from=dependencies /opt/venv /opt/venv
+#48 DONE 2.4s
+
+#48 [adaptation base 4/9] COPY --from=dependencies /opt/venv /opt/venv
+#48 DONE 2.4s
+
+#49 [detection base 5/9] RUN /opt/venv/bin/pip install --no-cache-dir 'psutil>=7,<8'
+#49 1.461 Collecting psutil<8,>=7
+#49 1.521   Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+#49 1.613 Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+#49 2.004    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 413.0 kB/s eta 0:00:00
+#49 2.201 Installing collected packages: psutil
+#49 2.259 Successfully installed psutil-7.2.2
+#49 2.403 
+#49 2.403 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#49 2.403 [notice] To update, run: pip install --upgrade pip
+#49 DONE 2.5s
+
+#50 [adaptation base 6/9] COPY src ./src
+#50 DONE 0.0s
+
+#51 [adaptation base 7/9] COPY configs ./configs
+#51 DONE 0.0s
+
+#46 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#46 ...
+
+#51 [detection base 7/9] COPY configs ./configs
+#51 DONE 0.0s
+
+#52 [adaptation base 8/9] COPY scripts ./scripts
+#52 DONE 0.0s
+
+#53 [detection base 9/9] COPY datasets/samples ./datasets/samples
+#53 DONE 0.0s
+
+#54 [adaptation] exporting to image
+#54 exporting layers
+#54 exporting layers 8.1s done
+#54 exporting manifest sha256:b90b011f03d8b3da0555e44d26a63a31d17971975a07a237b56adef85c6121fe done
+#54 exporting config sha256:4a54042bc8c901dbe9eac51dd708f54eb7db636db6d47c9531a7a47a8c3ed5c4 done
+#54 exporting attestation manifest sha256:c79212fa908134f22b386cc1dc277b43e506a197775b4b6643acc8190c176141 0.0s done
+#54 exporting manifest list sha256:9bffbfbc338198bd9730c0577c1e3526ea136154fe1868c86f46cbb23c6fd1e3 done
+#54 naming to docker.io/adaptive-waf-ids/adaptation:1.1.0 done
+#54 unpacking to docker.io/adaptive-waf-ids/adaptation:1.1.0
+#54 unpacking to docker.io/adaptive-waf-ids/adaptation:1.1.0 2.7s done
+#54 DONE 10.9s
+
+#55 [adaptation] resolving provenance for metadata file
+#55 DONE 0.0s
+
+#46 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#46 54.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 191.8/191.8 MB 3.8 MB/s eta 0:00:00
+#46 54.35 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+#46 54.40    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.7/221.7 kB 4.8 MB/s eta 0:00:00
+#46 54.41 Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+#46 54.85    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 4.8 MB/s eta 0:00:00
+#46 54.86 Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+#46 56.69    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 3.4 MB/s eta 0:00:00
+#46 56.70 Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+#46 56.75    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.5/162.5 kB 3.3 MB/s eta 0:00:00
+#46 56.77 Downloading https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl (134 kB)
+#46 56.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 9.6 MB/s eta 0:00:00
+#46 56.80 Downloading https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#46 56.81 Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#46 56.92    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 5.1 MB/s eta 0:00:00
+#46 57.33 Installing collected packages: mpmath, sympy, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+#46 68.58 Successfully installed MarkupSafe-3.0.3 filelock-4.2.4 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 sympy-1.14.0 torch-2.13.0+cpu
+#46 DONE 69.5s
+
+#56 [detection deep-dependencies 2/2] RUN /opt/venv/bin/pip install --no-cache-dir 'transformers==5.16.1'
+#56 0.697 Collecting transformers==5.16.1
+#56 0.762   Downloading transformers-5.16.1-py3-none-any.whl.metadata (32 kB)
+#56 0.915 Collecting huggingface-hub<2.0,>=1.5.0 (from transformers==5.16.1)
+#56 0.926   Downloading huggingface_hub-1.33.0-py3-none-any.whl.metadata (16 kB)
+#56 0.929 Requirement already satisfied: numpy>=1.17 in /opt/venv/lib/python3.11/site-packages (from transformers==5.16.1) (2.4.6)
+#56 0.950 Collecting packaging>=20.0 (from transformers==5.16.1)
+#56 0.958   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#56 0.961 Requirement already satisfied: pyyaml>=5.1 in /opt/venv/lib/python3.11/site-packages (from transformers==5.16.1) (6.0.3)
+#56 1.426 Collecting regex>=2025.10.22 (from transformers==5.16.1)
+#56 1.447   Downloading regex-2026.9.29-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#56 1.452      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.6/40.6 kB 9.2 MB/s eta 0:00:00
+#56 1.579 Collecting tokenizers<0.24.0,>=0.23.1 (from transformers==5.16.1)
+#56 1.587   Downloading tokenizers-0.23.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.8 kB)
+#56 1.612 Collecting typer (from transformers==5.16.1)
+#56 1.622   Downloading typer-0.27.3-py3-none-any.whl.metadata (16 kB)
+#56 1.960 Collecting safetensors>=0.8.0 (from transformers==5.16.1)
+#56 1.969   Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+#56 2.009 Collecting tqdm>=4.60 (from transformers==5.16.1)
+#56 2.021   Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+#56 2.024      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.4/57.4 kB 35.7 MB/s eta 0:00:00
+#56 2.081 Requirement already satisfied: click<9.0.0,>=8.4.2 in /opt/venv/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (8.5.0)
+#56 2.082 Requirement already satisfied: filelock>=3.10.0 in /opt/venv/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (4.2.4)
+#56 2.083 Requirement already satisfied: fsspec>=2023.5.0 in /opt/venv/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (2026.9.0)
+#56 2.145 Collecting hf-xet<2.0.0,>=1.6.0 (from huggingface-hub<2.0,>=1.5.0->transformers==5.16.1)
+#56 2.153   Downloading hf_xet-1.7.1-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+#56 2.155 Requirement already satisfied: httpx<1,>=0.23.0 in /opt/venv/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (0.28.1)
+#56 2.164 Requirement already satisfied: typing-extensions>=4.1.0 in /opt/venv/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (4.16.0)
+#56 2.212 Collecting shellingham>=1.3.0 (from typer->transformers==5.16.1)
+#56 2.220   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+#56 2.267 Collecting rich>=13.8.0 (from typer->transformers==5.16.1)
+#56 2.362   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+#56 2.365 Requirement already satisfied: annotated-doc>=0.0.2 in /opt/venv/lib/python3.11/site-packages (from typer->transformers==5.16.1) (0.0.5)
+#56 2.401 Requirement already satisfied: anyio in /opt/venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (4.15.1)
+#56 2.402 Requirement already satisfied: certifi in /opt/venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (2026.10.23)
+#56 2.403 Requirement already satisfied: httpcore==1.* in /opt/venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (1.0.9)
+#56 2.403 Requirement already satisfied: idna in /opt/venv/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (3.20)
+#56 2.406 Requirement already satisfied: h11>=0.16 in /opt/venv/lib/python3.11/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.16.1) (0.16.0)
+#56 2.432 Collecting markdown-it-py>=2.2.0 (from rich>=13.8.0->typer->transformers==5.16.1)
+#56 2.441   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+#56 2.463 Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.8.0->typer->transformers==5.16.1)
+#56 2.471   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+#56 2.573 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers==5.16.1)
+#56 2.587   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#56 2.614 Downloading transformers-5.16.1-py3-none-any.whl (12.1 MB)
+#56 5.834    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.1/12.1 MB 3.6 MB/s eta 0:00:00
+#56 5.845 Downloading huggingface_hub-1.33.0-py3-none-any.whl (846 kB)
+#56 6.052    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 846.4/846.4 kB 4.2 MB/s eta 0:00:00
+#56 6.061 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#56 6.088    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.0/130.0 kB 4.8 MB/s eta 0:00:00
+#56 6.095 Downloading regex-2026.9.29-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (804 kB)
+#56 6.249    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 805.0/805.0 kB 5.4 MB/s eta 0:00:00
+#56 6.262 Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)
+#56 6.372    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 516.0/516.0 kB 4.7 MB/s eta 0:00:00
+#56 6.381 Downloading tokenizers-0.23.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.4 MB)
+#56 7.356    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 3.5 MB/s eta 0:00:00
+#56 7.389 Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+#56 7.406    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.2/80.2 kB 4.8 MB/s eta 0:00:00
+#56 7.414 Downloading typer-0.27.3-py3-none-any.whl (123 kB)
+#56 7.433    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.3/123.3 kB 7.6 MB/s eta 0:00:00
+#56 7.442 Downloading hf_xet-1.7.1-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+#56 8.476    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 4.1 MB/s eta 0:00:00
+#56 8.484 Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+#56 8.578    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 3.4 MB/s eta 0:00:00
+#56 8.587 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+#56 8.598 Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+#56 8.622    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.7/91.7 kB 5.0 MB/s eta 0:00:00
+#56 8.630 Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+#56 9.021    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 3.2 MB/s eta 0:00:00
+#56 9.028 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#56 9.380 Installing collected packages: tqdm, shellingham, safetensors, regex, pygments, packaging, mdurl, hf-xet, markdown-it-py, rich, huggingface-hub, typer, tokenizers, transformers
+#56 15.06 Successfully installed hf-xet-1.7.1 huggingface-hub-1.33.0 markdown-it-py-4.2.0 mdurl-0.1.2 packaging-26.3 pygments-2.21.0 regex-2026.9.29 rich-15.0.0 safetensors-0.8.0 shellingham-1.5.4 tokenizers-0.23.3 tqdm-4.70.1 transformers-5.16.1 typer-0.27.3
+#56 15.18 
+#56 15.18 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#56 15.18 [notice] To update, run: python -m pip install --upgrade pip
+#56 DONE 15.5s
+
+#57 [detection base 4/9] COPY --from=dependencies /opt/venv /opt/venv
+#57 CACHED
+
+#58 [detection base 5/9] RUN /opt/venv/bin/pip install --no-cache-dir 'psutil>=7,<8'
+#58 CACHED
+
+#59 [detection base 6/9] COPY src ./src
+#59 CACHED
+
+#60 [detection base 7/9] COPY configs ./configs
+#60 CACHED
+
+#61 [detection base 8/9] COPY scripts ./scripts
+#61 CACHED
+
+#62 [detection base 9/9] COPY datasets/samples ./datasets/samples
+#62 CACHED
+
+#63 [detection detection 1/4] COPY --from=deep-dependencies /opt/venv /opt/venv
+#63 DONE 4.4s
+
+#64 [detection detection 2/4] COPY release-build/artifacts ./artifacts
+#64 DONE 0.5s
+
+#65 [detection detection 3/4] COPY release-build/model-manifest.json ./model-manifest.json
+#65 DONE 0.0s
+
+#66 [detection detection 4/4] RUN chown -R waf:waf /app/artifacts
+#66 DONE 0.5s
+
+#67 [detection] exporting to image
+#67 exporting layers
+#67 exporting layers 31.1s done
+#67 exporting manifest sha256:e31bc4463b128f18a86defa4ca70aadca8b712a65362cb542b9e93730ce76606 0.0s done
+#67 exporting config sha256:07f36758ec5d1c420bdfe9a077cee009ab1ea82a798ee7e5489fdc0472466e9c done
+#67 exporting attestation manifest sha256:ca3383440f3b79fa84988171e61add71d66cfe0505cab3d808127b0708111837 0.0s done
+#67 exporting manifest list sha256:7de8c172f2c33f3f196c9412e45a7f926a3bf38681b2dd38bef39cb4c31cfce7 done
+#67 naming to docker.io/adaptive-waf-ids/detection:1.1.0 done
+#67 unpacking to docker.io/adaptive-waf-ids/detection:1.1.0
+#67 unpacking to docker.io/adaptive-waf-ids/detection:1.1.0 10.2s done
+#67 DONE 41.4s
+
+#68 [detection] resolving provenance for metadata file
+#68 DONE 0.0s
+ Image adaptive-waf-ids/detection:1.1.0 Built 
+ Image adaptive-waf-ids/adaptation:1.1.0 Built 
+ Image adaptive-waf-ids/dashboard:1.1.0 Built 
+ Image adaptive-waf-ids/control:1.1.0 Built 

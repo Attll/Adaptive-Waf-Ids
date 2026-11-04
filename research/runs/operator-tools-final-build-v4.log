@@ -1,0 +1,243 @@
+ Image adaptive-waf-ids/dashboard:1.1.0 Building 
+ Image adaptive-waf-ids/adaptation:1.1.0 Building 
+ Image adaptive-waf-ids/detection:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.61kB done
+#1 DONE 0.0s
+
+#2 [dashboard internal] load build definition from Dockerfile
+#2 transferring dockerfile: 453B 0.0s done
+#2 DONE 0.0s
+
+#3 [detection internal] load build definition from Python.Dockerfile
+#3 transferring dockerfile: 2.27kB done
+#3 DONE 0.0s
+
+#4 [detection internal] load metadata for docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#4 ...
+
+#5 [dashboard internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#5 DONE 1.6s
+
+#4 [adaptation internal] load metadata for docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#4 DONE 1.6s
+
+#6 [dashboard internal] load metadata for docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#6 DONE 1.6s
+
+#7 [dashboard internal] load .dockerignore
+#7 transferring context: 265B done
+#7 DONE 0.0s
+
+#8 [dashboard internal] load build context
+#8 transferring context: 17.98kB 0.0s done
+#8 DONE 0.0s
+
+#9 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#9 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.0s done
+#9 DONE 0.0s
+
+#10 [adaptation dependencies 1/4] FROM docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd
+#10 resolve docker.io/library/python:3.11-slim-bookworm@sha256:94a8fee35252d06ab75856f15f12c7bae67b10e8a6da93c7fded82b2610926cd 0.0s done
+#10 DONE 0.0s
+
+#11 [dashboard build 1/6] FROM docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#11 resolve docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85 0.0s done
+#11 DONE 0.0s
+
+#12 [dashboard build 2/6] WORKDIR /app
+#12 CACHED
+
+#13 [dashboard build 3/6] COPY dashboard/package*.json ./
+#13 CACHED
+
+#14 [dashboard build 4/6] RUN npm ci
+#14 CACHED
+
+#15 [dashboard build 5/6] COPY dashboard .
+#15 DONE 0.0s
+
+#16 [adaptation internal] load build context
+#16 transferring context: 127.40kB 0.1s done
+#16 DONE 0.1s
+
+#17 [adaptation base 4/9] COPY --from=dependencies /opt/venv /opt/venv
+#17 CACHED
+
+#18 [adaptation dependencies 2/4] WORKDIR /app
+#18 CACHED
+
+#19 [adaptation base 3/9] RUN useradd --uid 10001 --create-home waf && mkdir -p /app/artifacts && chown waf:waf /app/artifacts
+#19 CACHED
+
+#20 [adaptation dependencies 3/4] COPY pyproject.toml ./
+#20 CACHED
+
+#21 [adaptation dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#21 CACHED
+
+#22 [adaptation base 5/9] RUN /opt/venv/bin/pip install --no-cache-dir 'psutil>=7,<8'
+#22 CACHED
+
+#23 [adaptation base 6/9] COPY src ./src
+#23 DONE 0.1s
+
+#24 [adaptation base 7/9] COPY configs ./configs
+#24 DONE 0.0s
+
+#25 [detection internal] load build context
+#25 ...
+
+#26 [adaptation base 8/9] COPY scripts ./scripts
+#26 DONE 0.1s
+
+#27 [adaptation base 9/9] COPY datasets/samples ./datasets/samples
+#27 DONE 0.0s
+
+#25 [detection internal] load build context
+#25 ...
+
+#28 [adaptation adaptation 1/1] RUN mkdir -p /app/artifacts/adaptation && chown -R waf:waf /app/artifacts/adaptation
+#28 DONE 0.2s
+
+#25 [detection internal] load build context
+#25 ...
+
+#29 [adaptation] exporting to image
+#29 exporting layers 0.1s done
+#29 exporting manifest sha256:d7cf826592db64f8700db9fe1e0cab9f84ec3d9559ffc4e803ec6e3b8bdfc9df done
+#29 exporting config sha256:7c13468d2d2e8b7c1165c5e79f7b47adac01ad3a8002722c77437c0be4e7ac95 done
+#29 exporting attestation manifest sha256:eeb0b1fd2747373c37a58c0b8e49dfd758d19e1dd95c88bced0f5acf9ee09acc 0.0s done
+#29 exporting manifest list sha256:f444b7b8f9b0ddd00758ba2d3982f87bf81142a4f5e87a8937f8e19506664471 done
+#29 naming to docker.io/adaptive-waf-ids/adaptation:1.1.0 done
+#29 unpacking to docker.io/adaptive-waf-ids/adaptation:1.1.0 0.1s done
+#29 DONE 0.3s
+
+#25 [detection internal] load build context
+#25 ...
+
+#30 [adaptation] resolving provenance for metadata file
+#30 DONE 0.1s
+
+#25 [detection internal] load build context
+#25 transferring context: 103.64MB 5.2s
+#25 ...
+
+#31 [dashboard build 6/6] RUN npm run build
+#31 0.341 
+#31 0.341 > adaptive-waf-dashboard@0.1.0 build
+#31 0.341 > tsc -b && vite build
+#31 0.341 
+#31 5.736 vite v6.4.3 building for production...
+#31 5.831 transforming...
+#31 7.432 ✓ 56 modules transformed.
+#31 7.666 rendering chunks...
+#31 7.692 computing gzip size...
+#31 7.705 dist/index.html                   0.81 kB │ gzip:   0.43 kB
+#31 7.705 dist/assets/index-PU_C-jH0.css   29.49 kB │ gzip:   6.58 kB
+#31 7.705 dist/assets/index-B-3WW4V6.js   396.92 kB │ gzip: 114.40 kB
+#31 7.705 ✓ built in 1.94s
+#31 DONE 7.8s
+
+#25 [detection internal] load build context
+#25 ...
+
+#9 [dashboard stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#9 CACHED
+
+#32 [dashboard stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+#32 DONE 0.0s
+
+#33 [dashboard stage-1 3/3] COPY dashboard/nginx.conf /etc/nginx/conf.d/default.conf
+#33 DONE 0.0s
+
+#25 [detection internal] load build context
+#25 ...
+
+#34 [dashboard] exporting to image
+#34 exporting layers 0.1s done
+#34 exporting manifest sha256:34c3c91dcfecb443e2dba1de4a3d19c1e91f63b790ce066c261e1e61195a35d0 done
+#34 exporting config sha256:6c470a91e210bac15138ef38eb83cda77e181082e4e1f666dab44caa8e27fa09 done
+#34 exporting attestation manifest sha256:ca1021ba47ddeedcac3046f94df3e34232136d6a9a1ef989b01bbb7f63e1eb89 0.0s done
+#34 exporting manifest list sha256:85730ac4d9becb186ccc0b621125800b61fff21a580fe3e42aad5b49e7bfaf45 done
+#34 naming to docker.io/adaptive-waf-ids/dashboard:1.1.0 done
+#34 unpacking to docker.io/adaptive-waf-ids/dashboard:1.1.0 0.0s done
+#34 DONE 0.2s
+
+#25 [detection internal] load build context
+#25 ...
+
+#35 [dashboard] resolving provenance for metadata file
+#35 DONE 0.1s
+
+#25 [detection internal] load build context
+#25 transferring context: 231.32MB 10.2s
+#25 transferring context: 336.76MB 15.2s
+#25 transferring context: 358.98MB 16.1s done
+#25 DONE 16.1s
+
+#36 [detection deep-dependencies 1/2] RUN /opt/venv/bin/pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 'torch==2.13.0'
+#36 CACHED
+
+#37 [detection dependencies 4/4] RUN python -m venv /opt/venv && python -c "import tomllib; p=tomllib.load(open('pyproject.toml','rb'))['project']; open('/tmp/requirements.txt','w').write('\n'.join(p['dependencies']+p['optional-dependencies']['service']+p['optional-dependencies']['durable']))" && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt 'scikit-learn==1.9.0' 'joblib==1.5.3'
+#37 CACHED
+
+#38 [detection dependencies 3/4] COPY pyproject.toml ./
+#38 CACHED
+
+#18 [detection dependencies 2/4] WORKDIR /app
+#18 CACHED
+
+#39 [detection base 7/9] COPY configs ./configs
+#39 CACHED
+
+#40 [detection base 5/9] RUN /opt/venv/bin/pip install --no-cache-dir 'psutil>=7,<8'
+#40 CACHED
+
+#41 [detection base 6/9] COPY src ./src
+#41 CACHED
+
+#19 [detection base 3/9] RUN useradd --uid 10001 --create-home waf && mkdir -p /app/artifacts && chown waf:waf /app/artifacts
+#19 CACHED
+
+#42 [detection base 8/9] COPY scripts ./scripts
+#42 CACHED
+
+#43 [detection base 4/9] COPY --from=dependencies /opt/venv /opt/venv
+#43 CACHED
+
+#44 [detection deep-dependencies 2/2] RUN /opt/venv/bin/pip install --no-cache-dir 'transformers==5.16.1'
+#44 CACHED
+
+#45 [detection base 9/9] COPY datasets/samples ./datasets/samples
+#45 CACHED
+
+#46 [detection detection 1/4] COPY --from=deep-dependencies /opt/venv /opt/venv
+#46 DONE 13.0s
+
+#47 [detection detection 2/4] COPY release-build/artifacts ./artifacts
+#47 DONE 0.7s
+
+#48 [detection detection 3/4] COPY release-build/model-manifest.json ./model-manifest.json
+#48 DONE 0.0s
+
+#49 [detection detection 4/4] RUN chown -R waf:waf /app/artifacts
+#49 DONE 0.7s
+
+#50 [detection] exporting to image
+#50 exporting layers
+#50 exporting layers 28.4s done
+#50 exporting manifest sha256:a63879a2658b99c31c32b030924413a61410bd3a88091103354cb8c7382ac468 0.0s done
+#50 exporting config sha256:f99ccd6dd23d6472df4cfb6ecdef3491b14011dbb93dc1b72227859b78037573 done
+#50 exporting attestation manifest sha256:7f5baa329628b26bd3e47c373295ae3a9b504bc84ec7055433c5e0f8f8632e66 0.0s done
+#50 exporting manifest list sha256:b1af0a10c99e63e9225666f677612bd84e5190f039d0d58f237a4cd9a9564401 done
+#50 naming to docker.io/adaptive-waf-ids/detection:1.1.0 done
+#50 unpacking to docker.io/adaptive-waf-ids/detection:1.1.0
+#50 unpacking to docker.io/adaptive-waf-ids/detection:1.1.0 8.4s done
+#50 DONE 37.0s
+
+#51 [detection] resolving provenance for metadata file
+#51 DONE 0.0s
+ Image adaptive-waf-ids/dashboard:1.1.0 Built 
+ Image adaptive-waf-ids/detection:1.1.0 Built 
+ Image adaptive-waf-ids/adaptation:1.1.0 Built 

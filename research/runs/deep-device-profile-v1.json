@@ -1,0 +1,640 @@
+{
+  "scope": "Existing deep model only; warmed tokenization + inference + device transfer + probabilities. Six repeated development inputs, not a new accuracy evaluation.",
+  "torch": "2.13.0+cu126",
+  "python": "3.14.6",
+  "cpu_threads": 1,
+  "model_run_id": "distilbert-full-gpu-v1",
+  "cuda_device": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "records": [
+    {
+      "device": "cpu",
+      "repeat": 0,
+      "case_id": "benign",
+      "expected": "BENIGN",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 1.0,
+        "SQL_INJECTION": 1.1643825459373147e-08,
+        "XSS": 1.2417740613557271e-08,
+        "COOKIE_INJECTION": 1.2133277493830974e-08,
+        "DIRECTORY_TRAVERSAL": 5.423791638037301e-09,
+        "REMOTE_CODE_EXECUTION": 3.7385458284688866e-08
+      },
+      "elapsed_ms": 26.704999996582046,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 0,
+      "case_id": "sqli",
+      "expected": "SQL_INJECTION",
+      "predicted": "SQL_INJECTION",
+      "scores": {
+        "BENIGN": 4.966173946741037e-06,
+        "SQL_INJECTION": 0.9999935626983643,
+        "XSS": 7.959719710015634e-07,
+        "COOKIE_INJECTION": 1.4799063308146287e-07,
+        "DIRECTORY_TRAVERSAL": 2.315407670039349e-07,
+        "REMOTE_CODE_EXECUTION": 2.849521365533292e-07
+      },
+      "elapsed_ms": 34.0654000028735,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 0,
+      "case_id": "xss",
+      "expected": "XSS",
+      "predicted": "XSS",
+      "scores": {
+        "BENIGN": 0.00015439339040312916,
+        "SQL_INJECTION": 0.003967760596424341,
+        "XSS": 0.9958220720291138,
+        "COOKIE_INJECTION": 4.392058599478332e-06,
+        "DIRECTORY_TRAVERSAL": 3.319496681797318e-05,
+        "REMOTE_CODE_EXECUTION": 1.813018025131896e-05
+      },
+      "elapsed_ms": 40.85569999006111,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 0,
+      "case_id": "traversal",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "predicted": "DIRECTORY_TRAVERSAL",
+      "scores": {
+        "BENIGN": 1.0488411135156639e-06,
+        "SQL_INJECTION": 2.1432168750834535e-07,
+        "XSS": 2.0961424240795168e-07,
+        "COOKIE_INJECTION": 1.2211728517286247e-07,
+        "DIRECTORY_TRAVERSAL": 0.999997615814209,
+        "REMOTE_CODE_EXECUTION": 8.07868673291523e-07
+      },
+      "elapsed_ms": 37.60189999593422,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 0,
+      "case_id": "rce",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9833692908287048,
+        "SQL_INJECTION": 0.00014157328405417502,
+        "XSS": 0.00035118695814162493,
+        "COOKIE_INJECTION": 5.0275088142370805e-05,
+        "DIRECTORY_TRAVERSAL": 4.2613057303242385e-05,
+        "REMOTE_CODE_EXECUTION": 0.01604493334889412
+      },
+      "elapsed_ms": 38.47630000382196,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 0,
+      "case_id": "cookie",
+      "expected": "COOKIE_INJECTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 1.0,
+        "SQL_INJECTION": 1.2049146569381719e-08,
+        "XSS": 1.3192521741700602e-08,
+        "COOKIE_INJECTION": 1.2801882220969674e-08,
+        "DIRECTORY_TRAVERSAL": 5.458423046889038e-09,
+        "REMOTE_CODE_EXECUTION": 3.8754571107801894e-08
+      },
+      "elapsed_ms": 32.36559999641031,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 1,
+      "case_id": "benign",
+      "expected": "BENIGN",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 1.0,
+        "SQL_INJECTION": 1.1643825459373147e-08,
+        "XSS": 1.2417740613557271e-08,
+        "COOKIE_INJECTION": 1.2133277493830974e-08,
+        "DIRECTORY_TRAVERSAL": 5.423791638037301e-09,
+        "REMOTE_CODE_EXECUTION": 3.7385458284688866e-08
+      },
+      "elapsed_ms": 27.3083000065526,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 1,
+      "case_id": "sqli",
+      "expected": "SQL_INJECTION",
+      "predicted": "SQL_INJECTION",
+      "scores": {
+        "BENIGN": 4.966173946741037e-06,
+        "SQL_INJECTION": 0.9999935626983643,
+        "XSS": 7.959719710015634e-07,
+        "COOKIE_INJECTION": 1.4799063308146287e-07,
+        "DIRECTORY_TRAVERSAL": 2.315407670039349e-07,
+        "REMOTE_CODE_EXECUTION": 2.849521365533292e-07
+      },
+      "elapsed_ms": 36.0142999998061,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 1,
+      "case_id": "xss",
+      "expected": "XSS",
+      "predicted": "XSS",
+      "scores": {
+        "BENIGN": 0.00015439339040312916,
+        "SQL_INJECTION": 0.003967760596424341,
+        "XSS": 0.9958220720291138,
+        "COOKIE_INJECTION": 4.392058599478332e-06,
+        "DIRECTORY_TRAVERSAL": 3.319496681797318e-05,
+        "REMOTE_CODE_EXECUTION": 1.813018025131896e-05
+      },
+      "elapsed_ms": 42.859900000621565,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 1,
+      "case_id": "traversal",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "predicted": "DIRECTORY_TRAVERSAL",
+      "scores": {
+        "BENIGN": 1.0488411135156639e-06,
+        "SQL_INJECTION": 2.1432168750834535e-07,
+        "XSS": 2.0961424240795168e-07,
+        "COOKIE_INJECTION": 1.2211728517286247e-07,
+        "DIRECTORY_TRAVERSAL": 0.999997615814209,
+        "REMOTE_CODE_EXECUTION": 8.07868673291523e-07
+      },
+      "elapsed_ms": 41.30470000382047,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 1,
+      "case_id": "rce",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9833692908287048,
+        "SQL_INJECTION": 0.00014157328405417502,
+        "XSS": 0.00035118695814162493,
+        "COOKIE_INJECTION": 5.0275088142370805e-05,
+        "DIRECTORY_TRAVERSAL": 4.2613057303242385e-05,
+        "REMOTE_CODE_EXECUTION": 0.01604493334889412
+      },
+      "elapsed_ms": 38.70039999310393,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 1,
+      "case_id": "cookie",
+      "expected": "COOKIE_INJECTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 1.0,
+        "SQL_INJECTION": 1.2049146569381719e-08,
+        "XSS": 1.3192521741700602e-08,
+        "COOKIE_INJECTION": 1.2801882220969674e-08,
+        "DIRECTORY_TRAVERSAL": 5.458423046889038e-09,
+        "REMOTE_CODE_EXECUTION": 3.8754571107801894e-08
+      },
+      "elapsed_ms": 32.76630000618752,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 2,
+      "case_id": "benign",
+      "expected": "BENIGN",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 1.0,
+        "SQL_INJECTION": 1.1643825459373147e-08,
+        "XSS": 1.2417740613557271e-08,
+        "COOKIE_INJECTION": 1.2133277493830974e-08,
+        "DIRECTORY_TRAVERSAL": 5.423791638037301e-09,
+        "REMOTE_CODE_EXECUTION": 3.7385458284688866e-08
+      },
+      "elapsed_ms": 27.66700000211131,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 2,
+      "case_id": "sqli",
+      "expected": "SQL_INJECTION",
+      "predicted": "SQL_INJECTION",
+      "scores": {
+        "BENIGN": 4.966173946741037e-06,
+        "SQL_INJECTION": 0.9999935626983643,
+        "XSS": 7.959719710015634e-07,
+        "COOKIE_INJECTION": 1.4799063308146287e-07,
+        "DIRECTORY_TRAVERSAL": 2.315407670039349e-07,
+        "REMOTE_CODE_EXECUTION": 2.849521365533292e-07
+      },
+      "elapsed_ms": 36.94270001142286,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 2,
+      "case_id": "xss",
+      "expected": "XSS",
+      "predicted": "XSS",
+      "scores": {
+        "BENIGN": 0.00015439339040312916,
+        "SQL_INJECTION": 0.003967760596424341,
+        "XSS": 0.9958220720291138,
+        "COOKIE_INJECTION": 4.392058599478332e-06,
+        "DIRECTORY_TRAVERSAL": 3.319496681797318e-05,
+        "REMOTE_CODE_EXECUTION": 1.813018025131896e-05
+      },
+      "elapsed_ms": 41.771599993808195,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 2,
+      "case_id": "traversal",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "predicted": "DIRECTORY_TRAVERSAL",
+      "scores": {
+        "BENIGN": 1.0488411135156639e-06,
+        "SQL_INJECTION": 2.1432168750834535e-07,
+        "XSS": 2.0961424240795168e-07,
+        "COOKIE_INJECTION": 1.2211728517286247e-07,
+        "DIRECTORY_TRAVERSAL": 0.999997615814209,
+        "REMOTE_CODE_EXECUTION": 8.07868673291523e-07
+      },
+      "elapsed_ms": 37.18339999613818,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 2,
+      "case_id": "rce",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9833692908287048,
+        "SQL_INJECTION": 0.00014157328405417502,
+        "XSS": 0.00035118695814162493,
+        "COOKIE_INJECTION": 5.0275088142370805e-05,
+        "DIRECTORY_TRAVERSAL": 4.2613057303242385e-05,
+        "REMOTE_CODE_EXECUTION": 0.01604493334889412
+      },
+      "elapsed_ms": 35.60689999721944,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cpu",
+      "repeat": 2,
+      "case_id": "cookie",
+      "expected": "COOKIE_INJECTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 1.0,
+        "SQL_INJECTION": 1.2049146569381719e-08,
+        "XSS": 1.3192521741700602e-08,
+        "COOKIE_INJECTION": 1.2801882220969674e-08,
+        "DIRECTORY_TRAVERSAL": 5.458423046889038e-09,
+        "REMOTE_CODE_EXECUTION": 3.8754571107801894e-08
+      },
+      "elapsed_ms": 30.74830000696238,
+      "cuda_peak_allocated_bytes": null
+    },
+    {
+      "device": "cuda",
+      "repeat": 0,
+      "case_id": "benign",
+      "expected": "BENIGN",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9999998807907104,
+        "SQL_INJECTION": 1.1643800590377396e-08,
+        "XSS": 1.241771396820468e-08,
+        "COOKIE_INJECTION": 1.213322864401789e-08,
+        "DIRECTORY_TRAVERSAL": 5.4237601077034014e-09,
+        "REMOTE_CODE_EXECUTION": 3.7385312623428035e-08
+      },
+      "elapsed_ms": 3.238899997086264,
+      "cuda_peak_allocated_bytes": 278301696
+    },
+    {
+      "device": "cuda",
+      "repeat": 0,
+      "case_id": "sqli",
+      "expected": "SQL_INJECTION",
+      "predicted": "SQL_INJECTION",
+      "scores": {
+        "BENIGN": 4.965966127201682e-06,
+        "SQL_INJECTION": 0.9999936819076538,
+        "XSS": 7.959629897413834e-07,
+        "COOKIE_INJECTION": 1.4798894198975177e-07,
+        "DIRECTORY_TRAVERSAL": 2.3153859274316346e-07,
+        "REMOTE_CODE_EXECUTION": 2.84947304862726e-07
+      },
+      "elapsed_ms": 2.769699989585206,
+      "cuda_peak_allocated_bytes": 278740992
+    },
+    {
+      "device": "cuda",
+      "repeat": 0,
+      "case_id": "xss",
+      "expected": "XSS",
+      "predicted": "XSS",
+      "scores": {
+        "BENIGN": 0.00015439133858308196,
+        "SQL_INJECTION": 0.003967732656747103,
+        "XSS": 0.9958221912384033,
+        "COOKIE_INJECTION": 4.392042683321051e-06,
+        "DIRECTORY_TRAVERSAL": 3.319465395179577e-05,
+        "REMOTE_CODE_EXECUTION": 1.8130027456209064e-05
+      },
+      "elapsed_ms": 2.7089999930467457,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 0,
+      "case_id": "traversal",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "predicted": "DIRECTORY_TRAVERSAL",
+      "scores": {
+        "BENIGN": 1.0487830195415881e-06,
+        "SQL_INJECTION": 2.1431797847526468e-07,
+        "XSS": 2.096104196880333e-07,
+        "COOKIE_INJECTION": 1.2211515354465519e-07,
+        "DIRECTORY_TRAVERSAL": 0.9999974966049194,
+        "REMOTE_CODE_EXECUTION": 8.078500854935555e-07
+      },
+      "elapsed_ms": 2.538399989134632,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 0,
+      "case_id": "rce",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9833691716194153,
+        "SQL_INJECTION": 0.00014157354598864913,
+        "XSS": 0.0003511895483825356,
+        "COOKIE_INJECTION": 5.027532097301446e-05,
+        "DIRECTORY_TRAVERSAL": 4.2613293771864846e-05,
+        "REMOTE_CODE_EXECUTION": 0.016045071184635162
+      },
+      "elapsed_ms": 2.592199991340749,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 0,
+      "case_id": "cookie",
+      "expected": "COOKIE_INJECTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9999998807907104,
+        "SQL_INJECTION": 1.2049098607747055e-08,
+        "XSS": 1.3192519077165343e-08,
+        "COOKIE_INJECTION": 1.2801855575617083e-08,
+        "DIRECTORY_TRAVERSAL": 5.458412388748002e-09,
+        "REMOTE_CODE_EXECUTION": 3.8754567555088215e-08
+      },
+      "elapsed_ms": 2.3627999908057973,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 1,
+      "case_id": "benign",
+      "expected": "BENIGN",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9999998807907104,
+        "SQL_INJECTION": 1.1643800590377396e-08,
+        "XSS": 1.241771396820468e-08,
+        "COOKIE_INJECTION": 1.213322864401789e-08,
+        "DIRECTORY_TRAVERSAL": 5.4237601077034014e-09,
+        "REMOTE_CODE_EXECUTION": 3.7385312623428035e-08
+      },
+      "elapsed_ms": 2.5000000023283064,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 1,
+      "case_id": "sqli",
+      "expected": "SQL_INJECTION",
+      "predicted": "SQL_INJECTION",
+      "scores": {
+        "BENIGN": 4.965966127201682e-06,
+        "SQL_INJECTION": 0.9999936819076538,
+        "XSS": 7.959629897413834e-07,
+        "COOKIE_INJECTION": 1.4798894198975177e-07,
+        "DIRECTORY_TRAVERSAL": 2.3153859274316346e-07,
+        "REMOTE_CODE_EXECUTION": 2.84947304862726e-07
+      },
+      "elapsed_ms": 3.869799998938106,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 1,
+      "case_id": "xss",
+      "expected": "XSS",
+      "predicted": "XSS",
+      "scores": {
+        "BENIGN": 0.00015439133858308196,
+        "SQL_INJECTION": 0.003967732656747103,
+        "XSS": 0.9958221912384033,
+        "COOKIE_INJECTION": 4.392042683321051e-06,
+        "DIRECTORY_TRAVERSAL": 3.319465395179577e-05,
+        "REMOTE_CODE_EXECUTION": 1.8130027456209064e-05
+      },
+      "elapsed_ms": 3.0522000015480444,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 1,
+      "case_id": "traversal",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "predicted": "DIRECTORY_TRAVERSAL",
+      "scores": {
+        "BENIGN": 1.0487830195415881e-06,
+        "SQL_INJECTION": 2.1431797847526468e-07,
+        "XSS": 2.096104196880333e-07,
+        "COOKIE_INJECTION": 1.2211515354465519e-07,
+        "DIRECTORY_TRAVERSAL": 0.9999974966049194,
+        "REMOTE_CODE_EXECUTION": 8.078500854935555e-07
+      },
+      "elapsed_ms": 2.9061999957775697,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 1,
+      "case_id": "rce",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9833691716194153,
+        "SQL_INJECTION": 0.00014157354598864913,
+        "XSS": 0.0003511895483825356,
+        "COOKIE_INJECTION": 5.027532097301446e-05,
+        "DIRECTORY_TRAVERSAL": 4.2613293771864846e-05,
+        "REMOTE_CODE_EXECUTION": 0.016045071184635162
+      },
+      "elapsed_ms": 2.6129000034416094,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 1,
+      "case_id": "cookie",
+      "expected": "COOKIE_INJECTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9999998807907104,
+        "SQL_INJECTION": 1.2049098607747055e-08,
+        "XSS": 1.3192519077165343e-08,
+        "COOKIE_INJECTION": 1.2801855575617083e-08,
+        "DIRECTORY_TRAVERSAL": 5.458412388748002e-09,
+        "REMOTE_CODE_EXECUTION": 3.8754567555088215e-08
+      },
+      "elapsed_ms": 2.3717000003671274,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 2,
+      "case_id": "benign",
+      "expected": "BENIGN",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9999998807907104,
+        "SQL_INJECTION": 1.1643800590377396e-08,
+        "XSS": 1.241771396820468e-08,
+        "COOKIE_INJECTION": 1.213322864401789e-08,
+        "DIRECTORY_TRAVERSAL": 5.4237601077034014e-09,
+        "REMOTE_CODE_EXECUTION": 3.7385312623428035e-08
+      },
+      "elapsed_ms": 2.5274999934481457,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 2,
+      "case_id": "sqli",
+      "expected": "SQL_INJECTION",
+      "predicted": "SQL_INJECTION",
+      "scores": {
+        "BENIGN": 4.965966127201682e-06,
+        "SQL_INJECTION": 0.9999936819076538,
+        "XSS": 7.959629897413834e-07,
+        "COOKIE_INJECTION": 1.4798894198975177e-07,
+        "DIRECTORY_TRAVERSAL": 2.3153859274316346e-07,
+        "REMOTE_CODE_EXECUTION": 2.84947304862726e-07
+      },
+      "elapsed_ms": 2.3711999965598807,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 2,
+      "case_id": "xss",
+      "expected": "XSS",
+      "predicted": "XSS",
+      "scores": {
+        "BENIGN": 0.00015439133858308196,
+        "SQL_INJECTION": 0.003967732656747103,
+        "XSS": 0.9958221912384033,
+        "COOKIE_INJECTION": 4.392042683321051e-06,
+        "DIRECTORY_TRAVERSAL": 3.319465395179577e-05,
+        "REMOTE_CODE_EXECUTION": 1.8130027456209064e-05
+      },
+      "elapsed_ms": 2.479200004017912,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 2,
+      "case_id": "traversal",
+      "expected": "DIRECTORY_TRAVERSAL",
+      "predicted": "DIRECTORY_TRAVERSAL",
+      "scores": {
+        "BENIGN": 1.0487830195415881e-06,
+        "SQL_INJECTION": 2.1431797847526468e-07,
+        "XSS": 2.096104196880333e-07,
+        "COOKIE_INJECTION": 1.2211515354465519e-07,
+        "DIRECTORY_TRAVERSAL": 0.9999974966049194,
+        "REMOTE_CODE_EXECUTION": 8.078500854935555e-07
+      },
+      "elapsed_ms": 2.4253999872598797,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 2,
+      "case_id": "rce",
+      "expected": "REMOTE_CODE_EXECUTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9833691716194153,
+        "SQL_INJECTION": 0.00014157354598864913,
+        "XSS": 0.0003511895483825356,
+        "COOKIE_INJECTION": 5.027532097301446e-05,
+        "DIRECTORY_TRAVERSAL": 4.2613293771864846e-05,
+        "REMOTE_CODE_EXECUTION": 0.016045071184635162
+      },
+      "elapsed_ms": 2.413400012301281,
+      "cuda_peak_allocated_bytes": 279112704
+    },
+    {
+      "device": "cuda",
+      "repeat": 2,
+      "case_id": "cookie",
+      "expected": "COOKIE_INJECTION",
+      "predicted": "BENIGN",
+      "scores": {
+        "BENIGN": 0.9999998807907104,
+        "SQL_INJECTION": 1.2049098607747055e-08,
+        "XSS": 1.3192519077165343e-08,
+        "COOKIE_INJECTION": 1.2801855575617083e-08,
+        "DIRECTORY_TRAVERSAL": 5.458412388748002e-09,
+        "REMOTE_CODE_EXECUTION": 3.8754567555088215e-08
+      },
+      "elapsed_ms": 2.4127000069711357,
+      "cuda_peak_allocated_bytes": 279112704
+    }
+  ],
+  "summary": [
+    {
+      "device": "cpu",
+      "calls": 18,
+      "p50_ms": 36.47850000561448,
+      "p95_ms": 41.9348449948302,
+      "exact_matches": 12
+    },
+    {
+      "device": "cuda",
+      "calls": 18,
+      "p50_ms": 2.532949991291389,
+      "p95_ms": 3.3335349973640396,
+      "exact_matches": 12
+    }
+  ],
+  "max_probability_delta_cpu_cuda": 1.3783574104309082e-07,
+  "cpu_cuda_predictions_equal": true
+}

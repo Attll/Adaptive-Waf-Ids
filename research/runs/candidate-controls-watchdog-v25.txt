@@ -1,0 +1,4 @@
+{"epoch": 1, "tune_log_loss": 0.7372826511912818}
+{"epoch": 2, "tune_log_loss": 0.7080413413379538}
+{"epoch": 1, "tune_log_loss": 0.7372826511912818}
+{"epoch": 2, "tune_log_loss": 0.7080413413379538}

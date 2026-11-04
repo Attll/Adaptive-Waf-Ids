@@ -1,0 +1,12 @@
+{
+  "username": "dev",
+  "role": "ADMIN",
+  "authenticated_admin_endpoints": {
+    "/v1/control/policy": 200,
+    "/v1/control/models": 200,
+    "/v1/control/audit": 200,
+    "/v1/control/blocks": 200,
+    "/v1/security/events?limit=1": 200
+  },
+  "password_storage": "bcrypt; plaintext not stored in admin_users"
+}

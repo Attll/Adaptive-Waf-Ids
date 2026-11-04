@@ -20,12 +20,9 @@ public class RedisLoadModeService {
     }
 
     public Mono<OperatingMode> recordRequest(String requestId) {
-        double now = System.currentTimeMillis();
         Duration window = properties.getShortWindow();
-        return redis.opsForZSet().add(REQUEST_KEY, now + ":" + requestId + ":" + UUID.randomUUID(), now)
-            .then(redis.opsForZSet().removeRangeByScore(REQUEST_KEY, Range.closed(0.0, now - window.toMillis())))
-            .then(redis.opsForZSet().size(REQUEST_KEY))
-            .flatMap(count -> redis.expire(REQUEST_KEY, window.multipliedBy(2)).thenReturn(OperatingMode.forRequestCount(count, properties)))
+        return RedisWindow.count(redis, REQUEST_KEY, window)
+            .map(count -> OperatingMode.forRequestCount(count, properties))
             .flatMap(mode -> redis.opsForValue().set(MODE_KEY, mode.name(), window.multipliedBy(2)).thenReturn(mode));
     }
 

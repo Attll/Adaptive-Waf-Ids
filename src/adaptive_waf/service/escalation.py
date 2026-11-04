@@ -12,6 +12,7 @@ from collections import deque
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 import json
+import os
 from queue import Empty, Full, Queue
 from threading import Lock, Thread
 from typing import Any, Callable
@@ -92,6 +93,7 @@ class EscalationWorker:
         self._resolved = 0
         self._rejected = 0
         self._failed = 0
+        self._running = 0
 
     def bind(self, adjudicator: Callable[[Any], tuple[Any, float]]) -> None:
         """Supply the callable that runs the deep model, once the pipeline has finished loading."""
@@ -134,6 +136,8 @@ class EscalationWorker:
                 "submitted": self._submitted,
                 "resolved": self._resolved,
                 "failed": self._failed,
+                "pending": max(0, self._submitted - self._resolved - self._failed),
+                "running": self._running,
                 "rejected": self._rejected,
                 "retained": len(outcomes),
                 "verdict_changed": changed,
@@ -148,10 +152,14 @@ class EscalationWorker:
             except Empty:
                 continue
             try:
+                with self._lock:
+                    self._running += 1
                 self._resolve(escalation_id, request, provisional, submitted_at)
             except Exception as error:  # a worker thread must never die on one bad request
                 self._record(_failure(escalation_id, request, provisional, submitted_at, error))
             finally:
+                with self._lock:
+                    self._running -= 1
                 self._queue.task_done()
 
     def _resolve(self, escalation_id: str, request, provisional, submitted_at) -> None:
@@ -204,14 +212,15 @@ class ControlPlaneReporter:
         self._url = base_url.rstrip("/") + "/internal/v1/security/escalations"
         self._timeout = timeout_seconds
 
-    def __call__(self, outcome: EscalationOutcome) -> None:
+    def __call__(self, outcome: EscalationOutcome) -> bool:
         body = json.dumps(outcome.as_payload()).encode("utf-8")
-        request = urllib.request.Request(self._url, data=body, method="POST", headers={"Content-Type": "application/json"})
+        request = urllib.request.Request(self._url, data=body, method="POST", headers={
+            "Content-Type": "application/json", "X-WAF-Internal-Token": os.environ.get("WAF_INTERNAL_TOKEN", "")})
         try:
             with urllib.request.urlopen(request, timeout=self._timeout):
-                return
+                return True
         except (urllib.error.URLError, OSError, TimeoutError):
-            return  # the control plane being unavailable must not affect detection
+            return False
 
 
 class DisabledEscalationWorker:
@@ -256,7 +265,7 @@ def _failure(escalation_id, request, provisional, submitted_at, error) -> Escala
         revised_confidence=provisional["confidence"],
         changed=False,
         model_version="unavailable",
-        error=f"{type(error).__name__}: {error}",
+        error=type(error).__name__,
     )
 
 

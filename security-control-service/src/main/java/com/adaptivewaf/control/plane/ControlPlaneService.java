@@ -34,9 +34,11 @@ public class ControlPlaneService {
 
     @Transactional
     public PolicySnapshot updatePolicy(PolicyUpdate update, String administrator) {
-        if (update.blockRiskThreshold() < 0 || update.blockRiskThreshold() > 1 || update.rateLimitShortWindow() < 1) {
+        if (!Double.isFinite(update.blockRiskThreshold()) || update.blockRiskThreshold() < 0 || update.blockRiskThreshold() > 1 || update.rateLimitShortWindow() < 1) {
             throw new IllegalArgumentException("policy threshold or rate limit is invalid");
         }
+        // Serialize version allocation and active-row replacement for this application.
+        jdbc.queryForObject("select application_id from protected_applications where application_id = ? for update", UUID.class, DEFAULT_APPLICATION_ID);
         PolicySnapshot old = activePolicy();
         int version = old.version() + 1;
         jdbc.update("update policy_versions set active = false where application_id = ? and active = true", DEFAULT_APPLICATION_ID);
@@ -79,21 +81,25 @@ public class ControlPlaneService {
     @Transactional
     public BlockView block(BlockRequest request, String administrator) {
         if (request.sourceIp() == null || request.sourceIp().isBlank()) { throw new IllegalArgumentException("source IP is required"); }
+        String sourceIp = canonicalIp(request.sourceIp());
+        java.time.Duration duration = request.duration() == null ? properties.getBlocks().getDefaultDuration() : request.duration();
+        if (duration.isNegative() || duration.isZero()) { throw new IllegalArgumentException("block duration must be positive"); }
         Instant expiry = Instant.now().plus(request.duration() == null ? properties.getBlocks().getDefaultDuration() : request.duration());
-        BlockView old = findBlock(request.sourceIp());
-        BlockView current = new BlockView(request.sourceIp(), request.reason(), expiry, true);
+        BlockView old = findBlock(sourceIp);
+        BlockView current = new BlockView(sourceIp, request.reason(), expiry, true);
         jdbc.update("insert into blocked_entities(source_ip, reason, blocked_by, expires_at, active, updated_at) values (?, ?, ?, ?, true, now()) on conflict (source_ip) do update set reason = excluded.reason, blocked_by = excluded.blocked_by, expires_at = excluded.expires_at, active = true, updated_at = now()",
-            request.sourceIp(), request.reason(), administrator, Timestamp.from(expiry));
-        redis.opsForValue().set("waf:block:" + request.sourceIp(), "manual:" + request.reason(), request.duration() == null ? properties.getBlocks().getDefaultDuration() : request.duration());
-        audit(administrator, "BLOCKED_ENTITY", request.sourceIp(), "BLOCK", old, current);
+            sourceIp, request.reason(), administrator, Timestamp.from(expiry));
+        redis.opsForValue().set("waf:block:" + sourceIp.replace(':', '_'), "manual:" + request.reason(), duration);
+        audit(administrator, "BLOCKED_ENTITY", sourceIp, "BLOCK", old, current);
         return current;
     }
 
     @Transactional
     public void unblock(String sourceIp, String administrator) {
+        sourceIp = canonicalIp(sourceIp);
         BlockView old = findBlock(sourceIp);
         jdbc.update("update blocked_entities set active = false, updated_at = now() where source_ip = ?", sourceIp);
-        redis.delete("waf:block:" + sourceIp);
+        redis.delete("waf:block:" + sourceIp.replace(':', '_'));
         audit(administrator, "BLOCKED_ENTITY", sourceIp, "UNBLOCK", old, Map.of("active", false));
     }
 
@@ -130,6 +136,15 @@ public class ControlPlaneService {
 
     @Transactional
     public FeedbackView submitFeedback(FeedbackCreate request, String administrator) {
+        if (request.verdict() == null || !java.util.Set.of("CONFIRMED_ATTACK", "FALSE_POSITIVE", "WRONG_ATTACK_TYPE", "BENIGN").contains(request.verdict())) {
+            throw new IllegalArgumentException("unrecognized feedback verdict");
+        }
+        if (request.correctAttackType() != null && !java.util.Set.of("BENIGN", "SQL_INJECTION", "XSS", "COOKIE_INJECTION", "DIRECTORY_TRAVERSAL", "REMOTE_CODE_EXECUTION", "BRUTE_FORCE", "DOS_DDOS", "BOT_ANOMALY").contains(request.correctAttackType())) {
+            throw new IllegalArgumentException("unrecognized corrected class");
+        }
+        if (jdbc.queryForObject("select count(*) from security_events where event_id = ?", Long.class, request.eventId()) == 0) {
+            throw new IllegalArgumentException("feedback must reference an existing event");
+        }
         if ("WRONG_ATTACK_TYPE".equals(request.verdict()) && (request.correctAttackType() == null || request.correctAttackType().isBlank())) {
             throw new IllegalArgumentException("correct attack type is required for WRONG_ATTACK_TYPE feedback");
         }
@@ -150,6 +165,12 @@ public class ControlPlaneService {
         try {
             return jdbc.queryForObject("select source_ip, reason, expires_at, active from blocked_entities where source_ip = ?", (row, index) -> new BlockView(row.getString("source_ip"), row.getString("reason"), row.getTimestamp("expires_at").toInstant(), row.getBoolean("active")), sourceIp);
         } catch (EmptyResultDataAccessException error) { return null; }
+    }
+
+    private String canonicalIp(String source) {
+        java.net.InetAddress address = io.netty.util.NetUtil.createInetAddressFromIpAddressString(source);
+        if (address == null) { throw new IllegalArgumentException("source must be an IP literal"); }
+        return io.netty.util.NetUtil.toAddressString(address);
     }
 
     private void audit(String administrator, String entityType, String entityId, String action, Object oldValue, Object newValue) {

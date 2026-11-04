@@ -37,7 +37,7 @@ export function Review({ snapshot, selected, select, api, mutate, liveIds }: Vie
   );
 
   const falsePositives = feedback.filter((item) => item.verdict === "FALSE_POSITIVE").length;
-  const agreement = feedback.length ? 1 - falsePositives / feedback.length : 1;
+  const agreement = feedback.length ? feedback.filter((item) => item.verdict === "CONFIRMED_ATTACK" || (item.verdict === "BENIGN" && item.predictedAttack === "BENIGN")).length / feedback.length : undefined;
 
   return (
     <div className="stack">
@@ -45,7 +45,7 @@ export function Review({ snapshot, selected, select, api, mutate, liveIds }: Vie
         <Metric label="Reviews submitted" value={feedback.length} detail={`${reviewedIds.size} distinct requests`} tone="info" icon={<Icon name="feedback" size={13} />} />
         <Metric label="Confirmed attacks" value={byVerdict.CONFIRMED_ATTACK ?? 0} detail="Operator agreed with the pipeline" tone="success" icon={<Icon name="check" size={13} />} />
         <Metric label="False positives" value={falsePositives} detail="Flagged for the next curation run" tone="danger" icon={<Icon name="alert" size={13} />} />
-        <Metric label="Operator agreement" value={percent(agreement, 0)} detail="Share of reviews that upheld the decision" tone="violet" icon={<Icon name="target" size={13} />} />
+        <Metric label="Operator agreement" value={agreement===undefined?"—":percent(agreement, 0)} detail="Confirmed attacks or upheld benign classifications; wrong-type corrections excluded" tone="violet" icon={<Icon name="target" size={13} />} />
       </div>
 
       <div className="split">
@@ -86,7 +86,7 @@ export function Review({ snapshot, selected, select, api, mutate, liveIds }: Vie
         </Panel>
       </div>
 
-      <Panel title="Submitted reviews" subtitle="Stored for curated retraining; nothing here promotes a model or changes policy" flush>
+      <Panel title="Submitted reviews" subtitle="Reviewed metadata for curation; model training and policy activation require separate validated runs" flush>
         {feedback.length ? (
           <div className="table-wrap">
             <table>
@@ -184,7 +184,7 @@ function FeedbackForm({
         </button>
       </div>
       <p className="muted" style={{ fontSize: 11.5, marginTop: 12 }}>
-        Reviews are curated into the next training dataset. They never promote a model or change enforcement automatically.
+        Reviews are eligible for metadata curation. Supervised training requires verified request data and a separate validated run; feedback never changes enforcement automatically.
       </p>
     </Panel>
   );

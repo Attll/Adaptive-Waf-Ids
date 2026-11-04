@@ -13,11 +13,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class StreamTicketService {
-    private static final Duration TICKET_LIFETIME = Duration.ofMinutes(10);
+    private static final Duration TICKET_LIFETIME = Duration.ofSeconds(30);
     private final Map<String, Ticket> tickets = new ConcurrentHashMap<>();
 
-    public Ticket issue(String administrator) {
+    public synchronized Ticket issue(String administrator) {
         purgeExpired();
+        if (tickets.size() >= 10000) { throw new IllegalStateException("stream ticket capacity exhausted"); }
         Ticket ticket = new Ticket(UUID.randomUUID().toString(), administrator, Instant.now().plus(TICKET_LIFETIME));
         tickets.put(ticket.value(), ticket);
         return ticket;
@@ -25,7 +26,7 @@ public class StreamTicketService {
 
     public boolean isValid(String value) {
         if (value == null || value.isBlank()) { return false; }
-        Ticket ticket = tickets.get(value);
+        Ticket ticket = tickets.remove(value);
         if (ticket == null) { return false; }
         if (ticket.expiresAt().isBefore(Instant.now())) { tickets.remove(value); return false; }
         return true;

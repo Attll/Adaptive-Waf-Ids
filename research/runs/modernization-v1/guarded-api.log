@@ -1,0 +1,60 @@
+{
+  "request_count": 6,
+  "completed_http_responses": 6,
+  "http_success_2xx": 6,
+  "fully_inspected": 5,
+  "unresolved": 1,
+  "completed_rps": 11.222152229042829,
+  "fully_inspected_rps": 9.351793524202357,
+  "classified_count": 6,
+  "attack_detection_recall_all_submitted": 1.0,
+  "benign_false_positive_rate_all_submitted": 0.0,
+  "enforcement_confusion": {
+    "attack": {
+      "ALLOW": 0,
+      "MONITOR": 0,
+      "RATE_LIMIT": 0,
+      "BLOCK": 0,
+      "UNKNOWN": 5
+    },
+    "benign": {
+      "ALLOW": 0,
+      "MONITOR": 0,
+      "RATE_LIMIT": 0,
+      "BLOCK": 0,
+      "UNKNOWN": 1
+    }
+  },
+  "classification_by_class": {
+    "BENIGN": {
+      "count": 1,
+      "exact_matches": 1
+    },
+    "COOKIE_INJECTION": {
+      "count": 1,
+      "exact_matches": 1
+    },
+    "DIRECTORY_TRAVERSAL": {
+      "count": 1,
+      "exact_matches": 1
+    },
+    "REMOTE_CODE_EXECUTION": {
+      "count": 1,
+      "exact_matches": 1
+    },
+    "SQL_INJECTION": {
+      "count": 1,
+      "exact_matches": 1
+    },
+    "XSS": {
+      "count": 1,
+      "exact_matches": 1
+    }
+  },
+  "partial_inspections": 1,
+  "fallback_or_bypass": 0,
+  "latency_p50_ms": 2.085200001602061,
+  "latency_p95_ms": 380.6575249946036,
+  "latency_p99_ms": 474.94118499234906,
+  "elapsed_seconds": 0.5346568000095431
+}

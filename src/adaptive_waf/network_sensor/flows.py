@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import math
-from statistics import fmean, pstdev
+from statistics import fmean, pstdev, stdev
+
+FEATURE_CONTRACTS = ('frame-population-v1', 'payload-sample-v2')
 
 
 @dataclass(frozen=True, slots=True)
@@ -16,6 +18,7 @@ class PacketObservation:
     length: int
     flags: frozenset[str] = frozenset()
     tcp_window: int = 0
+    payload_length: int | None = None
 
 
 @dataclass(slots=True)
@@ -29,10 +32,14 @@ class FlowAccumulator:
     protocol: int
     _forward: list[PacketObservation] = field(default_factory=list)
     _backward: list[PacketObservation] = field(default_factory=list)
+    feature_contract: str = 'frame-population-v1'
 
     @classmethod
-    def from_packet(cls, packet: PacketObservation) -> "FlowAccumulator":
-        flow = cls(packet.source_ip, packet.destination_ip, packet.source_port, packet.destination_port, packet.protocol)
+    def from_packet(cls, packet: PacketObservation, feature_contract='frame-population-v1') -> "FlowAccumulator":
+        if feature_contract not in FEATURE_CONTRACTS:
+            raise ValueError('unsupported flow feature contract')
+        flow = cls(packet.source_ip, packet.destination_ip, packet.source_port, packet.destination_port, packet.protocol,
+                   feature_contract=feature_contract)
         flow.add(packet)
         return flow
 
@@ -42,6 +49,8 @@ class FlowAccumulator:
     def add(self, packet: PacketObservation) -> None:
         if not self.accepts(packet):
             raise ValueError("packet does not belong to this flow")
+        if self.feature_contract == 'payload-sample-v2' and (packet.payload_length is None or packet.payload_length < 0):
+            raise ValueError('payload contract requires a measured transport payload length')
         (self._forward if packet.source_ip == self.source_ip and packet.source_port == self.source_port else self._backward).append(packet)
 
     def features(self) -> dict[str, float]:
@@ -50,9 +59,10 @@ class FlowAccumulator:
             raise ValueError("flow has no packets")
         duration_seconds = max(0.000001, packets[-1].timestamp - packets[0].timestamp)
         duration_microseconds = duration_seconds * 1_000_000
-        forward_lengths = [packet.length for packet in self._forward]
-        backward_lengths = [packet.length for packet in self._backward]
-        all_lengths = [packet.length for packet in packets]
+        length = lambda packet: packet.length if self.feature_contract == 'frame-population-v1' else packet.payload_length
+        forward_lengths = [length(packet) for packet in self._forward]
+        backward_lengths = [length(packet) for packet in self._backward]
+        all_lengths = [length(packet) for packet in packets]
         iats = [later.timestamp - earlier.timestamp for earlier, later in zip(packets, packets[1:])]
         active, idle = self._activity_periods(packets)
         flags = {flag: sum(flag in packet.flags for packet in packets) for flag in ("S", "R", "P", "A")}
@@ -89,8 +99,9 @@ class FlowAccumulator:
 
     @staticmethod
     def _mean(values: list[float | int]) -> float: return float(fmean(values)) if values else 0.0
-    @staticmethod
-    def _std(values: list[float | int]) -> float: return float(pstdev(values)) if len(values) > 1 else 0.0
+    def _std(self, values: list[float | int]) -> float:
+        statistic = pstdev if self.feature_contract == 'frame-population-v1' else stdev
+        return float(statistic(values)) if len(values) > 1 else 0.0
     @staticmethod
     def _min(values: list[float | int]) -> float: return float(min(values)) if values else 0.0
     @staticmethod

@@ -1,0 +1,84 @@
+ Image adaptive-waf-ids/dashboard:1.1.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.57kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 453B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#4 DONE 1.5s
+
+#3 [internal] load metadata for docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#3 DONE 1.8s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 265B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 30.69kB 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#7 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.0s done
+#7 DONE 0.0s
+
+#8 [build 1/6] FROM docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85
+#8 resolve docker.io/library/node:24-alpine@sha256:8a32c8cf649a49915a66e81e7a609223c708d0adabf288ee3f4077d765542f85 0.0s done
+#8 DONE 0.0s
+
+#9 [build 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [build 3/6] COPY dashboard/package*.json ./
+#10 CACHED
+
+#11 [build 4/6] RUN npm ci
+#11 CACHED
+
+#12 [build 5/6] COPY dashboard .
+#12 DONE 0.0s
+
+#13 [build 6/6] RUN npm run build
+#13 0.255 
+#13 0.255 > adaptive-waf-dashboard@0.1.0 build
+#13 0.255 > tsc -b && vite build
+#13 0.255 
+#13 3.416 vite v6.4.3 building for production...
+#13 3.476 transforming...
+#13 4.238 ✓ 56 modules transformed.
+#13 4.354 rendering chunks...
+#13 4.360 computing gzip size...
+#13 4.369 dist/index.html                   0.81 kB │ gzip:   0.43 kB
+#13 4.369 dist/assets/index-PU_C-jH0.css   29.49 kB │ gzip:   6.58 kB
+#13 4.369 dist/assets/index-D2EN07BD.js   399.59 kB │ gzip: 115.17 kB
+#13 4.369 ✓ built in 932ms
+#13 DONE 4.4s
+
+#7 [stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#7 CACHED
+
+#14 [stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+#14 DONE 0.0s
+
+#15 [stage-1 3/3] COPY dashboard/nginx.conf /etc/nginx/conf.d/default.conf
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers 0.0s done
+#16 exporting manifest sha256:dedbcc8c364a46297497275317e59d1beb8a1531b23e24b6fd5613b08dae70ee done
+#16 exporting config sha256:f968bf8b332890faec42ac2f00723272ca394ae2b15f428c444e617468656512 done
+#16 exporting attestation manifest sha256:958f23d2e4a369b4d3525b554137ccdef23cde604762bb6c29cde1118d796889 done
+#16 exporting manifest list sha256:a5f73b7997272ea2c2c4cd7a383df885e478d19ec036b17fb6f9d4f80ef283a5 done
+#16 naming to docker.io/adaptive-waf-ids/dashboard:1.1.0 done
+#16 unpacking to docker.io/adaptive-waf-ids/dashboard:1.1.0 0.0s done
+#16 DONE 0.1s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image adaptive-waf-ids/dashboard:1.1.0 Built 
